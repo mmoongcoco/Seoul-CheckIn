@@ -15,6 +15,7 @@
 <body>
 
     <body>
+    	<jsp:include page="${pageContext.request.contextPath}/app/fix/header.jsp"/>
         <div id="__next" data-reactroot="">
             <div class="Padding_padding___Nyki Padding_padding_isLoggedOut__WyPs1"></div>
             <main class="CommunityPostDetail_CommunityPostDetail__07nTA">

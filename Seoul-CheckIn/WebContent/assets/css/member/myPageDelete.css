@@ -19,6 +19,7 @@ body{
     margin: 0 auto;
     position: relative;
     max-width: 1060px;
+    margin-top: 40px;
 }
 
 .container > nav{
@@ -58,6 +59,8 @@ h2{
     max-width: 1060px;
     position: relative;
     height: 636.328px;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .mainAside{
@@ -68,10 +71,9 @@ h2{
     margin-bottom: 0;
     top: 0;
     left: 0;
-    width: 250px;
     position: absolute;
-    width: 208px;
-    height: 440px;
+    width: 250px;
+    height: 100%;
 }
 
 .mainContainer > aside > .header{
@@ -141,12 +143,12 @@ label[for='attach'] div{
     line-height: 1;
     border-radius: 50%;
     box-shadow: 0 2px 2px 0 rgb(0 0 0 / 10%);
-    background-image: url(/SeoulCheckIn_HONG/html/img/cameraIcon.png);
+    background-image: url(../../images/member/cameraIcon.png);
     background-size: 30px 30px;
     background-repeat: no-repeat;
     background-position: center;
-    width: 10px;
-    height: 10px;
+    width: 30px;
+    height: 30px;
     text-align: center;
     background-color: #fff;
 }
@@ -198,7 +200,7 @@ label[for='attach'] div{
     align-items: center;
     font-size: 16px;
     font-weight: 400;
-    line-height: 1.06;
+    line-height: 2;
     
 }
 
@@ -212,6 +214,11 @@ label[for='attach'] div{
     font-size: 18px;
     font-weight: 600;
     color: #333333;
+}
+
+.myPagelist_end {
+	padding-bottom: 15px;
+    border-bottom: 1px solid #e1e2e3;
 }
 
 section{

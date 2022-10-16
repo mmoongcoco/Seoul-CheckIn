@@ -892,7 +892,7 @@ div.info>em {
 /* <!-- =========  depth2  ========= --> */
 
 div.pc_depth2.view {
-    display: block;
+    display: none;
     height: 100%;
     width: 405px;
     /*     background: goldenrod; _ 확인 완료 */
@@ -919,7 +919,7 @@ div.map_cont_wrap>button.btn_fold {
     height: 104px;
     position: absolute;
     top: 50%;
-    left: 810px;
+    left: 405px;
     transform: translateY(-50%);
     z-index: 29;
     background: url(https://korean.visitkorea.or.kr/resources/images/location/btn_fold.png) no-repeat;
@@ -1686,6 +1686,7 @@ a.btn_apply {
 
 /* 닫기 버튼  */
 button.layer_close {
+	display: none;
     position: absolute;
     left: 810px;
     top: 11%;

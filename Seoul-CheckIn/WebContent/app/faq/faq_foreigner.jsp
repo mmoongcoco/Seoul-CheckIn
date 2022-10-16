@@ -77,11 +77,12 @@
             padding-top:10px;
             }
           </style>
-          <div style="position: fixed;right: 17px;bottom: 17px; width: 55px; background: black; height: 55px; text-align: center; line-height: 55px;border-radius: 50%;">
+          <div style="position: fixed;right: 17px; bottom: 17px; width: 55px; background: black; height: 55px; text-align: center; line-height: 55px;border-radius: 50%;">
             <a id="goTop" href="javascript:void(0)">
                 <img src="${pageContext.request.contextPath}/assets/images/main/btn_top.png" style=" border-radius: 50%; margin: 0;margin-bottom: 3px">
             </a>
         </div>
+        
         <section class="breadcrumb"></section>
         <div class="container breadcrumb-container">
             <div class="col-md-9 col-sm-9 col-xs-12 breadcrumb-container-path" style="float:left;">
