@@ -42,7 +42,7 @@
                 <div><img src="${pageContext.request.contextPath}/assets/images/main/capture3.png" class="images"></div>
                 <div><img src="${pageContext.request.contextPath}/assets/images/main/capture4.png" class="images"></div>
                 <div><img src="${pageContext.request.contextPath}/assets/images/main/capture5.png" class="images"></div>
-                <div><img src="${pageContext.request.contextPath}/assets/images/main/banner3.jpg" class="images"></div>
+                <div><img src="${pageContext.request.contextPath}/assets/images/main/banner3.png" class="images"></div>
             </div>
             <!-- &gt; 는 > -->
             <div class="arrow right next">&gt;</div>

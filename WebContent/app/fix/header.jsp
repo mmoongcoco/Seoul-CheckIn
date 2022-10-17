@@ -124,7 +124,7 @@
 
                             <li>
                                 <a href="javascript:void(0);" id="join_login_button"
-                                    style="position: relative; left: 39px; top: -1px;">
+                                    style="position: relative; left: 50px; top: -2px;">
                                     회원가입/로그인
                                 </a>
 
@@ -309,7 +309,7 @@
                             내국인 회원가입
                         </p>
                         <div class="image1_wrap">
-                            <img src="images/Korean.png" alt="" id="image1">
+                            <img src="${pageContext.request.contextPath}/assets/images/fix/Korean.png" alt="" id="image1">
                         </div>
                         <button type="button" class="orange">개인회원가입</button>
 
@@ -319,7 +319,7 @@
                             FOREIGNERS
                         </p>
                         <div class="image2_wrap">
-                            <img src="images/foreigner4.png" alt="" id="image2">
+                            <img src="${pageContext.request.contextPath}/assets/images/fix/foreigner4.png" alt="" id="image2">
                         </div>
                         <button type="button" class="orange">Sign Up</button>
                     </div>
