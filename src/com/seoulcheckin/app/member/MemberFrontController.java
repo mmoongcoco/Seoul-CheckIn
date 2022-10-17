@@ -26,16 +26,14 @@ public class MemberFrontController extends HttpServlet {
 		String contextPath = req.getContextPath();
 		String request = requestURI.substring(contextPath.length());
 		Result result = null;
-		
-		// 회원가입 페이지 요청(정적)
-		if(request.equals("/member/join.me")) {
+				
+		// 아이디 조회
+		if(request.equals("/member/checkId.me")) {
+			new CheckIdController().execute(req, resp);
 			
 		// 회원가입 submit
 		}else if(request.equals("/member/joinOk.me")) {
-			
-		// 로그인 페이지 요청(정적)
-		}else if(request.equals("/member/login.me")) {
-		
+
 		// 로그인 submit
 		}else if(request.equals("/member/loginOk.me")) {
 		

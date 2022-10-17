@@ -13,6 +13,11 @@ body {
     font-weight: 400;
     display: flex;
     background-color: #eee;
+    overflow-x: hidden;
+}
+
+body::-webkit-scrollbar{
+	display: none;
 }
 
 #wrapper {
