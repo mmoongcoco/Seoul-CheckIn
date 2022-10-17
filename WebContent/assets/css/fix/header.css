@@ -121,6 +121,10 @@ body{
 }
 
 
+input#email:focus{
+	border: 1px solid blue;
+}
+
 .vertical::before {
     display: inline-block;
     content: "";

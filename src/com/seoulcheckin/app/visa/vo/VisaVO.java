@@ -1,14 +1,20 @@
 package com.seoulcheckin.app.visa.vo;
 
 public class VisaVO {
+	private int visaNumber;
 	private String visaName;
-	private String visaContinent;
-	private String visaNation;
-	private String visaPurpose;
-	private String visaPeriod;
 	private String visaContent;
+	private String navigatorNumber;
 	
 	public VisaVO() {;}
+
+	public int getVisaNumber() {
+		return visaNumber;
+	}
+
+	public void setVisaNumber(int visaNumber) {
+		this.visaNumber = visaNumber;
+	}
 
 	public String getVisaName() {
 		return visaName;
@@ -16,38 +22,6 @@ public class VisaVO {
 
 	public void setVisaName(String visaName) {
 		this.visaName = visaName;
-	}
-
-	public String getVisaContinent() {
-		return visaContinent;
-	}
-
-	public void setVisaContinent(String visaContinent) {
-		this.visaContinent = visaContinent;
-	}
-
-	public String getVisaNation() {
-		return visaNation;
-	}
-
-	public void setVisaNation(String visaNation) {
-		this.visaNation = visaNation;
-	}
-
-	public String getVisaPurpose() {
-		return visaPurpose;
-	}
-
-	public void setVisaPurpose(String visaPurpose) {
-		this.visaPurpose = visaPurpose;
-	}
-
-	public String getVisaPeriod() {
-		return visaPeriod;
-	}
-
-	public void setVisaPeriod(String visaPeriod) {
-		this.visaPeriod = visaPeriod;
 	}
 
 	public String getVisaContent() {
@@ -58,9 +32,17 @@ public class VisaVO {
 		this.visaContent = visaContent;
 	}
 
+	public String getNavigatorNumber() {
+		return navigatorNumber;
+	}
+
+	public void setNavigatorNumber(String navigatorNumber) {
+		this.navigatorNumber = navigatorNumber;
+	}
+
 	@Override
 	public String toString() {
-		return "VisaVO [visaName=" + visaName + ", visaContinent=" + visaContinent + ", visaNation=" + visaNation
-				+ ", visaPurpose=" + visaPurpose + ", visaPeriod=" + visaPeriod + ", visaContent=" + visaContent + "]";
+		return "VisaVO [visaNumber=" + visaNumber + ", visaName=" + visaName + ", visaContent=" + visaContent
+				+ ", navigatorNumber=" + navigatorNumber + "]";
 	}
 }

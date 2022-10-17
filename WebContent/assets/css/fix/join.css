@@ -379,6 +379,18 @@ label {
     display: flex;
 }
 
+p.css-1u2lazp {
+	display: none;
+    color: #fe415c;
+    font-weight: 400;
+    text-align: left;
+    letter-spacing: 0.0192em;
+    font-size: 13px;
+    line-height: 18px;
+    margin-bottom: 8px;
+    margin-top: 0px;
+}
+
 .InputCode_InputCode__CvGhV {
     position: relative;
     margin-top: 10px;
@@ -421,20 +433,24 @@ label {
     flex: 1 1;
 }
 
-.BtnGetCode_BtnGetCode__wR5FL.isKR {
+.BtnGetCode_BtnGetCode__wR5FL.join.isKR {
     display: block;
+    background-color: #f2f4f7;
+    color: #ccc;
+   	cursor: default;
 }
 
-.BtnGetCode_BtnGetCode__wR5FL {
+.BtnGetCode_BtnGetCode__wR5FL.join {
     position: relative;
     margin-left: 10px;
     min-width: 117px;
     padding: 16px 15px 14px;
-    display: none;
     border-radius: 5px;
-    background-color: #f2f4f7;
     font-weight: 700;
-    color: #ccc;
+    border: 1px solid #e1e2e3;
+    background-color: #ffffff;
+    color: #3366ff;
+    cursor : pointer;
 }
 
 .BtnGetCode_BtnGetCode__wR5FL:after {
@@ -453,11 +469,45 @@ label {
     margin-top: 10px;
 }
 
-.InputCode_InputCode_input__X4opi.disabled {
-    background-color: #f2f4f7 !important;
+.InputCode_InputCode__CvGhV .InputCode_InputCode_input__X4opi {
+	cursor: auto;
+}
+
+.InputCode_InputCode__CvGhV .InputCode_InputCode_input__X4opi.disabled {
+	background-color: #f2f4f7 !important;
+    cursor: default;
+}
+
+input[type='text']:focus, input[type='password']:focus {
+	border: 1px solid #36f;
+}
+
+.css-1teuqrm {
+	display: none;
+	color: #36f;
+	font-weight: 600;
+	text-align: left;
+	letter-spacing: 0.0192em;
+	font-size: 13px;
+	line-height: 18px;
+	margin-top: 8px;
+	margin-bottom: 0px;
+}
+
+.css-1lnssh6 {
+	display: none;
+	color: #36f;
+	font-weight: 600;
+	text-align: left;
+	letter-spacing: 0.0192em;
+	font-size: 13px;
+	line-height: 18px;
+	margin-top: 0px;
+	margin-bottom: 0px;
 }
 
 .Agreement_checkboxAll__SkIo_ {
+	display: none;
     color: #ececec;
     height: auto;
     padding-bottom: 14px;
@@ -500,9 +550,10 @@ label {
 .style_wrapper__TaLWc input[type=checkbox] {
     position: absolute;
     left: 1px;
-    opacity: 0;
+    opacity: 1;
     vertical-align: top;
     cursor: pointer;
+    margin-top: 3px;
 }
 
 .Agreement_checkbox__OGFNT {
@@ -511,14 +562,6 @@ label {
 
 .Agreement_checkbox__OGFNT>div:last-of-type {
     color: #939393;
-}
-
-.style_wrapper__TaLWc input[type=checkbox] {
-    position: absolute;
-    left: 1px;
-    opacity: 0;
-    vertical-align: top;
-    cursor: pointer;
 }
 
 .Agreement_checkbox__OGFNT>div:last-of-type span {
