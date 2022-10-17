@@ -18,7 +18,7 @@ body {
     font-size: 14px;
     line-height: 1.42857143;
     color: #333333;
-    background-color: #f8f8fa;
+/*     background-color: #f8f8fa; */
 }
 
 a,
@@ -50,7 +50,6 @@ embed,
 fieldset,
 figcaption,
 figure,
-footer,
 form,
 h1,
 h2,
