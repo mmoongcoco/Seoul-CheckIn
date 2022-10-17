@@ -1,19 +1,15 @@
-package com.seoulcheckin.app.member.dao;
+package com.seoulcheckin.app.navigator.dao;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.seoulcheckin.mybatis.config.MyBatisConfig;
 
-public class MemberDAO {
+public class NavigatorDAO {
 	SqlSessionFactory sqlSessionFactory = MyBatisConfig.getSqlSessionFactory();
 	SqlSession sqlSession;
 	
-	public MemberDAO() {
+	public NavigatorDAO() {
 		sqlSession = sqlSessionFactory.openSession(true);
-	}
-	
-	public int checkId(String memberEmail) {
-		return sqlSession.selectOne("Member.checkId", memberEmail);
 	}
 }

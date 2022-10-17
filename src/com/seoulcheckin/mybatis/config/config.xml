@@ -8,9 +8,13 @@
 	</settings>
 
 	<typeAliases>
+<<<<<<< HEAD
 		<typeAlias type="com.seoulcheckin.app.member.vo.MemberVo" alias="memberVO"/>
 		<typeAlias type="com.seoulcheckin.app.school.vo.SchoolDTO" alias="schoolDTO"/>
 		<typeAlias type="com.seoulcheckin.app.school.vo.SchoolVO" alias="schoolVO"/>
+=======
+		<typeAlias type="com.seoulcheckin.app.member.vo.MemberVO" alias="memberVO"/>
+>>>>>>> project/member
 	</typeAliases>
 	
 	<environments default="mysql">
