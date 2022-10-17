@@ -13,13 +13,13 @@
     box-sizing: border-box;
 }
 
-body {
+/* body {
     font-family: -apple-system, Helvetica, Arial, 'Apple SD Gothic Neo', 'Nanum Gothic', 'Malgun Gothic' sans-serif;
     font-size: 14px;
     line-height: 1.42857143;
     color: #333333;
-/*     background-color: #f8f8fa; */
-}
+    background-color: #f8f8fa;
+} */
 
 a,
 abbr,

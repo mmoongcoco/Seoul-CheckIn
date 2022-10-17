@@ -8,6 +8,68 @@ let $top = $("#goTop").click(function(){
 });
 /* topbutton js end */
 
+
+
+
+
+/* 헤더 js strat*/
+
+var $ul = $(".divdiv").next();
+var $div = $(".ulul").prev();
+var check = -1;
+
+
+// $div.on("click", function(){
+    // $('.divdiv').click(function(){
+    //     $ul.toggle(500);
+
+    //     $("#head").css({
+    //         height : "200px"
+
+    //     })
+    // $ul.hide(1000);
+    // $ul.show(1000);
+    // $ul.hide(2000);
+    // $ul.show(2000);
+    // $ul.toggle(2000);
+    // $ul.fadeOut(2000);
+    // $ul.fadeIn(2000);
+    // $ul.fadeToggle(1000);
+    // $ul.slideToggle(2000);
+    // $("#hello").css("background","gold");
+        
+
+    $('.divdiv').click(function(){
+        check *= -1;
+        $ul.toggle(100);
+
+
+    // if 문으로 
+    //     if (check >0){
+    //         $("#head").css({
+    //             height : "200px"
+    //         })
+    //     } else {
+    //         $("#head").css({
+    //             height : "50px"
+    //     })
+    // }
+
+    // 삼항연산자 
+    check > 0 ? $("#head").css({height : "200px"}) : $("#head").css({height : "50px"})
+
+
+
+})
+
+
+
+
+/* header js end */
+ 
+ 
+ 
+ 
  
 /* 슬라이드 배너 스크립트 */
 
@@ -31,7 +93,7 @@ let $top = $("#goTop").click(function(){
         // 0.5초 뒤에 야비하게 돌아가도록 하는 setTimeout
         setTimeout(function(){
             banner.style.transition = "transform 0s"
-            banner.style.transform = "translate(-1084px)"; /* 수정부탁드령 */
+            banner.style.transform = "translate(- " + 1084 + "px)"; /* 수정부탁드령 */
         }, 500);
         //돌아왔으니 count 초기화
         count = 0;
@@ -53,10 +115,10 @@ var count = 0, temp = buttons[count];
 let firstDiv = document.createElement("div");
 let lastDiv = document.createElement("div");
 //img 태그 추가하고 banner 안 마지막에 붙임
-firstDiv.innerHTML = `<img src="../images/slideBanner/capture1.png">`;
+firstDiv.innerHTML = '<img src="/assets/images/main/capture1.png">';
 banner.appendChild(firstDiv);
 //img 태그 추가하고 banner 안 document.querySelector("div.banner div") 바로 앞에 붙임
-lastDiv.innerHTML = `<img src="../images/slideBanner/banner3.jpg">`;
+lastDiv.innerHTML = '<img src="/assets/images/main/banner3.png">';
 banner.insertBefore(lastDiv, document.querySelector("div.banner div"));
 
 buttons[count].style.backgroundColor = "black";
@@ -91,20 +153,20 @@ arrow.addEventListener("click", function(){
                 // 마지막 이미지 보여주는 것
                 count = 5;
             }else{
-                banner.style.transform = "translate(-" +  1080 * (count + 1) + "px)";
+                banner.style.transform = "translate(-" +  1084 * (count + 1) + "px)";
             }
         }else{
             count++;
             // 마지막 사진에서 다음버튼 누른 경우
             if(count == 6) {
-                banner.style.transform = "translate(-" + 1080 * (count + 1) + "px)";
+                banner.style.transform = "translate(-" + 1084 * (count + 1) + "px)";
                 setTimeout(function(){
                     banner.style.transition = "transform 0s"
                     banner.style.transform = "translate(-1084px)";
                 }, 500);
                 count = 0;
             }else{
-                banner.style.transform = "translate(-" + 1080  * (count + 1) + "px)";
+                banner.style.transform = "translate(-" + 1084  * (count + 1) + "px)";
             }
         }
         temp.style.backgroundColor = "#f0f0f0";
@@ -119,7 +181,6 @@ arrow.addEventListener("click", function(){
 });
 
 /* 슬라이드배너 스크립트 끝 */
-
 
 
 /* subslide banner start */
