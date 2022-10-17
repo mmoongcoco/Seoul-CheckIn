@@ -2532,7 +2532,7 @@
 
 
             <!-- footer start  -->
-            <footer class="footer">
+            <footer id="footer">
 
                 <div class="border-box">
                     <div class="wrapper">
