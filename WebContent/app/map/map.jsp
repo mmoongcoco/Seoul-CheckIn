@@ -8,8 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>서울은 처음이지 | 서울 체크인</title>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/map/seoulPage.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/map/seoulPage.css">
 </head>
 <body>
 	<!-- header -->
