@@ -28,7 +28,7 @@ public class BannerFrontController extends HttpServlet {
 		Result result = null;
 		
 		// 메인 페이지 요청
-		if(request.equals("/banner/.main")) {
+		if(request.equals("/banner.main")) {
 			
 		}
 		
