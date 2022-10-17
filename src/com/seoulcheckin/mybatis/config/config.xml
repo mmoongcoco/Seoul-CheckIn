@@ -8,13 +8,48 @@
 	</settings>
 
 	<typeAliases>
-<<<<<<< HEAD
+	
+	<!-- member Alias -->
 		<typeAlias type="com.seoulcheckin.app.member.vo.MemberVo" alias="memberVO"/>
+		<typeAlias type="com.seoulcheckin.app.member.vo.MemberVO" alias="memberVO"/>
+	<!-- member Alias -->
+	
+	<!-- school Alias -->
 		<typeAlias type="com.seoulcheckin.app.school.vo.SchoolDTO" alias="schoolDTO"/>
 		<typeAlias type="com.seoulcheckin.app.school.vo.SchoolVO" alias="schoolVO"/>
-=======
-		<typeAlias type="com.seoulcheckin.app.member.vo.MemberVO" alias="memberVO"/>
->>>>>>> project/member
+	<!-- school Alias -->
+	
+	<!-- banner Alias -->
+		<typeAlias type="com.seoulcheckin.app.banner.vo.BannerVO" alias="bannerVO"/>
+	<!-- banner Alias -->
+	
+	<!-- faq Alias -->
+	<!-- faq Alias -->
+	
+	<!-- file Alias -->	
+	<!-- file Alias -->
+	
+	<!-- map Alias -->
+	<!-- map Alias -->
+	
+	<!-- message Alias -->
+	<!-- message Alias -->
+	
+	<!-- myprogram Alias -->
+	<!-- myprogram Alias -->
+
+	<!-- navigator Alias -->	
+	<!-- navigator Alias -->	
+	
+	<!-- visa Alias -->
+	<!-- visa Alias -->
+	
+	<!-- notice Alias -->
+	<!-- notice Alias -->
+	
+	
+
+	
 	</typeAliases>
 	
 	<environments default="mysql">
