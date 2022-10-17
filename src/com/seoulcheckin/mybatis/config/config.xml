@@ -10,7 +10,6 @@
 	<typeAliases>
 	
 	<!-- member Alias -->
-		<typeAlias type="com.seoulcheckin.app.member.vo.MemberVo" alias="memberVO"/>
 		<typeAlias type="com.seoulcheckin.app.member.vo.MemberVO" alias="memberVO"/>
 	<!-- member Alias -->
 	
