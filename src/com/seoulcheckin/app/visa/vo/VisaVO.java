@@ -4,7 +4,7 @@ public class VisaVO {
 	private int visaNumber;
 	private String visaName;
 	private String visaContent;
-	private String navigatorNumber;
+	private int navigatorNumber;
 	
 	public VisaVO() {;}
 
@@ -32,11 +32,11 @@ public class VisaVO {
 		this.visaContent = visaContent;
 	}
 
-	public String getNavigatorNumber() {
+	public int getNavigatorNumber() {
 		return navigatorNumber;
 	}
 
-	public void setNavigatorNumber(String navigatorNumber) {
+	public void setNavigatorNumber(int navigatorNumber) {
 		this.navigatorNumber = navigatorNumber;
 	}
 
