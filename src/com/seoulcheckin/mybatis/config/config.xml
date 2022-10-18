@@ -38,9 +38,11 @@
 	<!-- myprogram Alias -->
 
 	<!-- navigator Alias -->	
+		<typeAlias type="com.seoulcheckin.app.navigator.vo.NavigatorVO" alias="navigatorVO"/>
 	<!-- navigator Alias -->	
 	
 	<!-- visa Alias -->
+		<typeAlias type="com.seoulcheckin.app.visa.vo.VisaVO" alias="visaVO"/>
 	<!-- visa Alias -->
 	
 	<!-- notice Alias -->
