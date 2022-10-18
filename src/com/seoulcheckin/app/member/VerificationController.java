@@ -29,6 +29,10 @@ public class VerificationController implements Execute {
 		PrintWriter out = resp.getWriter();
 		
 		int verificationNumber = (int)(Math.random() * 10000);
+		if(String.valueOf(verificationNumber).length() == 3) {
+			verificationNumber = 0 + verificationNumber;
+		}
+		
 		System.out.println(verificationNumber);
 		
 		params.put("to", memberPhoneNumber);
