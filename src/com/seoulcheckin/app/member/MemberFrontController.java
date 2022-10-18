@@ -27,6 +27,7 @@ public class MemberFrontController extends HttpServlet {
 		String request = requestURI.substring(contextPath.length());
 		Result result = null;
 				
+		System.out.println("프론트");
 		// 아이디 조회
 		if(request.equals("/member/checkId.me")) {
 			new CheckIdController().execute(req, resp);
@@ -45,11 +46,12 @@ public class MemberFrontController extends HttpServlet {
 		
 		// 로그아웃
 		}else if(request.equals("member/logout.me")) {
-			System.out.println("if문");
 			new LogoutController().execute(req, resp);
 			
 		// 마이페이지 페이지 요청
 		}else if(request.equals("/member/mypage.me")) {
+			System.out.println("if문");
+			new MyPageController().execute(req, resp);
 		
 		// 마이페이지 프로필 변경
 		}else if(request.equals("/member/profile.me")) {

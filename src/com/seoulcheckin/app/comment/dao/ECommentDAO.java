@@ -1,19 +1,15 @@
-package com.seoulcheckin.app.myprogram.dao;
+package com.seoulcheckin.app.comment.dao;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.seoulcheckin.mybatis.config.MyBatisConfig;
 
-public class MyProgramDAO {
+public class ECommentDAO {
 	SqlSessionFactory sqlSessionFactory = MyBatisConfig.getSqlSessionFactory();
 	SqlSession sqlSession;
 	
-	public MyProgramDAO() {
+	public ECommentDAO() {
 		sqlSession = sqlSessionFactory.openSession(true);
-	}
-	
-	public int myClassCount(int memberNumber) {
-		return sqlSession.selectOne("MyProgram.myClassCount", memberNumber);
 	}
 }

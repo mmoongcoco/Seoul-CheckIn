@@ -31,9 +31,14 @@ public class LoginOkController implements Execute{
 			memberNumber = memberDAO.login(memberVO);
 			
 			System.out.println("LoginOk " + memberNumber);
+			System.out.println("LoginOk " + memberEmail);
+
 			session.removeAttribute("logout");
 			session.setAttribute("memberNumber", memberNumber);
+			session.setAttribute("memberEmail", memberEmail);
+		
 			System.out.println(session.getAttribute("memberNumber"));
+		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

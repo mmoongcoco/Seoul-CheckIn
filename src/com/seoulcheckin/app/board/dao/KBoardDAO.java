@@ -5,11 +5,16 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.seoulcheckin.mybatis.config.MyBatisConfig;
 
-public class BoardDAO {
+public class KBoardDAO {
 	SqlSessionFactory sqlSessionFactory = MyBatisConfig.getSqlSessionFactory();
 	SqlSession sqlSession;
 	
-	public BoardDAO() {
+	public KBoardDAO() {
 		sqlSession = sqlSessionFactory.openSession(true);
 	}
+	
+	public int myBoardCount(int memberNumber){
+		return sqlSession.selectOne("KBoard.myBoardCount", memberNumber);
+	}
+
 }

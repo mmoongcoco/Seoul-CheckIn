@@ -1,13 +1,13 @@
 package com.seoulcheckin.app.comment.vo;
 
-public class CommentVO {
+public class KCommentVO {
 	private int kCommentNumber;
 	private String kCommentArticle;
 	private String kCommentDate;
-	private String kCommentPhoto;
 	private int kBoardNumber;
+	private int memberNumber;
 	
-	public CommentVO() {;}
+	public KCommentVO() {;}
 
 	public int getkCommentNumber() {
 		return kCommentNumber;
@@ -33,14 +33,6 @@ public class CommentVO {
 		this.kCommentDate = kCommentDate;
 	}
 
-	public String getkCommentPhoto() {
-		return kCommentPhoto;
-	}
-
-	public void setkCommentPhoto(String kCommentPhoto) {
-		this.kCommentPhoto = kCommentPhoto;
-	}
-
 	public int getkBoardNumber() {
 		return kBoardNumber;
 	}
@@ -49,10 +41,18 @@ public class CommentVO {
 		this.kBoardNumber = kBoardNumber;
 	}
 
+	public int getMemberNumber() {
+		return memberNumber;
+	}
+
+	public void setMemberNumber(int memberNumber) {
+		this.memberNumber = memberNumber;
+	}
+
 	@Override
 	public String toString() {
-		return "K_CommentVO [kCommentNumber=" + kCommentNumber + ", kCommentArticle=" + kCommentArticle
-				+ ", kCommentDate=" + kCommentDate + ", kCommentPhoto=" + kCommentPhoto + ", kBoardNumber="
-				+ kBoardNumber + "]";
+		return "KCommentVO [kCommentNumber=" + kCommentNumber + ", kCommentArticle=" + kCommentArticle
+				+ ", kCommentDate=" + kCommentDate + ", kBoardNumber=" + kBoardNumber + ", memberNumber=" + memberNumber
+				+ "]";
 	}
 }
