@@ -281,6 +281,7 @@
 					비밀번호
 					<div id="password_body">
 						<input type="password" placeholder="비밀번호" id="password-text-field">
+						<p data-testid="Typography" color="red" class="css-1u2lazp">비밀번호가 일치하지 않습니다.</p>
 					</div>
 				</div>
 				<button type="button" class="loginBtn">로그인</button>

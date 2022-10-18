@@ -43,6 +43,11 @@ public class MemberFrontController extends HttpServlet {
 		}else if(request.equals("/member/loginOk.me")) {
 			new LoginOkController().execute(req, resp);
 		
+		// 로그아웃
+		}else if(request.equals("member/logout.me")) {
+			System.out.println("if문");
+			new LogoutController().execute(req, resp);
+			
 		// 마이페이지 페이지 요청
 		}else if(request.equals("/member/mypage.me")) {
 		
