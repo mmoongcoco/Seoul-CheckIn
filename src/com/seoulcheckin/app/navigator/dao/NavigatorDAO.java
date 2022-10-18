@@ -12,4 +12,5 @@ public class NavigatorDAO {
 	public NavigatorDAO() {
 		sqlSession = sqlSessionFactory.openSession(true);
 	}
+
 }
