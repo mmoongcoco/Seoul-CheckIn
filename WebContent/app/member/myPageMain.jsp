@@ -66,25 +66,25 @@
                 <div class="Summary_Summary__Jp6V9">
                     <h2 class="Summary_Summary_title__qesUo">지원 현황</h2>
                     <ul class="Summary_Summary_status__0BYum" data-cy="mywanted-summary">
-                        <li><a href="/status/applications?status=accept" class="" aria-label="" data-attribute-id="myWanted__applicationStatus" data-status-kind="applyDone">
+                        <li><a href="/status/applications?status=accept" class="myClassCount" aria-label="" data-attribute-id="myWanted__applicationStatus" data-status-kind="applyDone">
                             <em class="">0</em>
                             <span>강의</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/status/applications?status=pass" class="" aria-label="" data-attribute-id="myWanted__applicationStatus" data-status-kind="pass">
+                        <a href="/status/applications?status=pass" class="myBoardCount" aria-label="" data-attribute-id="myWanted__applicationStatus" data-status-kind="pass">
                             <em class="">0</em>
                             <span>내가 쓴 글</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/status/applications?status=hire" class="" aria-label="" data-attribute-id="myWanted__applicationStatus" data-status-kind="hire">
+                        <a href="/status/applications?status=hire" class="myCommentCount" aria-label="" data-attribute-id="myWanted__applicationStatus" data-status-kind="hire">
                             <em class="">0</em>
                             <span>내가 쓴 댓글</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/status/applications?status=reject" class="" aria-label="" data-attribute-id="myWanted__applicationStatus" data-status-kind="rejected">
+                        <a href="/status/applications?status=reject" class="myMessageCount" aria-label="" data-attribute-id="myWanted__applicationStatus" data-status-kind="rejected">
                             <em class="">0</em>
                             <span>쪽지</span>
                         </a>
@@ -151,6 +151,8 @@
     </div> 
 </body>
 <script>
+	
+	myClass();
 
     const file = document.querySelector("input[type='file']");
     const camera = document.querySelector(".cameraIcon");
@@ -175,6 +177,22 @@
     camera.addEventListener("click", function(){           
             file.onclick();
      });
+    
+    function myClass(){
+    	$.ajax({
+    		url: "/member/mypage.me",
+    		data: {memberNumber: 1},
+    		dataType: "json",
+    		success: function(myCount){
+    			console.log(myCount)
+    			console.log(myCount.get('myClassCount'))
+    			$(".myClassCount").html(myCount.get('myClassCount'));
+    			$(".myBoardCount").html(myCount.get("myBoardCount"));
+    			$(".myCommentCount").html(myCount.get("myCommentCount"));
+    			$(".myMessageCount").html(myCount.get("myMessageCount"));
+    		}
+    	});
+    }
 
 
 </script>

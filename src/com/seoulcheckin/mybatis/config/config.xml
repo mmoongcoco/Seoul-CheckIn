@@ -11,45 +11,59 @@
 	
 	<!-- member Alias -->
 		<typeAlias type="com.seoulcheckin.app.member.vo.MemberVO" alias="memberVO"/>
+		<typeAlias type="com.seoulcheckin.app.member.dao.MemberDAO" alias="memberDAO"/>
 	<!-- member Alias -->
 	
 	<!-- school Alias -->
 		<typeAlias type="com.seoulcheckin.app.school.vo.SchoolDTO" alias="schoolDTO"/>
 		<typeAlias type="com.seoulcheckin.app.school.vo.SchoolVO" alias="schoolVO"/>
+		<typeAlias type="com.seoulcheckin.app.school.dao.SchoolDAO" alias="schoolDAO"/>
 	<!-- school Alias -->
 	
 	<!-- banner Alias -->
 		<typeAlias type="com.seoulcheckin.app.banner.vo.BannerVO" alias="bannerVO"/>
+		<typeAlias type="com.seoulcheckin.app.banner.dao.BannerDAO" alias="bannerDAO"/>
 	<!-- banner Alias -->
 	
 	<!-- faq Alias -->
+		<typeAlias type="com.seoulcheckin.app.faq.vo.FaqVO" alias="faqVO"/>
+		<typeAlias type="com.seoulcheckin.app.faq.dao.FaqDAO" alias="faqDAO"/>
 	<!-- faq Alias -->
 	
 	<!-- file Alias -->	
+		<typeAlias type="com.seoulcheckin.app.file.vo.FileVO" alias="fileVO"/>
+		<typeAlias type="com.seoulcheckin.app.file.dao.FileDAO" alias="fileDAO"/>
 	<!-- file Alias -->
 	
 	<!-- map Alias -->
+		<typeAlias type="com.seoulcheckin.app.map.vo.MapVO" alias="mapVO"/>
+		<typeAlias type="com.seoulcheckin.app.map.dao.MapDAO" alias="mapDAO"/>
 	<!-- map Alias -->
 	
 	<!-- message Alias -->
+		<typeAlias type="com.seoulcheckin.app.message.vo.MessageVO" alias="messsageVO"/>
+		<typeAlias type="com.seoulcheckin.app.message.dao.MessageDAO" alias="messageDAO"/>
 	<!-- message Alias -->
 	
 	<!-- myprogram Alias -->
+		<typeAlias type="com.seoulcheckin.app.myprogram.vo.MyProgramVO" alias="myProgramVO"/>	
+		<typeAlias type="com.seoulcheckin.app.myprogram.dao.MyProgramDAO" alias="myProgramDAO"/>	
 	<!-- myprogram Alias -->
 
 	<!-- navigator Alias -->	
 		<typeAlias type="com.seoulcheckin.app.navigator.vo.NavigatorVO" alias="navigatorVO"/>
+		<typeAlias type="com.seoulcheckin.app.navigator.dao.NavigatorDAO" alias="navigatorDAO"/>
 	<!-- navigator Alias -->	
 	
 	<!-- visa Alias -->
 		<typeAlias type="com.seoulcheckin.app.visa.vo.VisaVO" alias="visaVO"/>
+		<typeAlias type="com.seoulcheckin.app.visa.dao.VisaDAO" alias="visaDAO"/>
 	<!-- visa Alias -->
 	
 	<!-- notice Alias -->
+		<typeAlias type="com.seoulcheckin.app.notice.vo.NoticeVO" alias="noticeVO"/>	
+		<typeAlias type="com.seoulcheckin.app.notice.dao.NoticeDAO" alias="noticeDAO"/>	
 	<!-- notice Alias -->
-	
-	
-
 	
 	</typeAliases>
 	
@@ -68,13 +82,16 @@
 	<mappers>
 		<mapper resource="com/seoulcheckin/mybatis/mapper/MemberMapper.xml"/>
 		<mapper resource="com/seoulcheckin/mybatis/mapper/FaqMapper.xml"/>
-		<mapper resource="com/seoulcheckin/mybatis/mapper/BoardMapper.xml"/>
-		<mapper resource="com/seoulcheckin/mybatis/mapper/CommentMapper.xml"/>
+		<mapper resource="com/seoulcheckin/mybatis/mapper/KBoardMapper.xml"/>
+		<mapper resource="com/seoulcheckin/mybatis/mapper/EBoardMapper.xml"/>
+		<mapper resource="com/seoulcheckin/mybatis/mapper/KCommentMapper.xml"/>
+		<mapper resource="com/seoulcheckin/mybatis/mapper/ECommentMapper.xml"/>
 		<mapper resource="com/seoulcheckin/mybatis/mapper/MapMapper.xml"/>
 		<mapper resource="com/seoulcheckin/mybatis/mapper/MessageMapper.xml"/>
 		<mapper resource="com/seoulcheckin/mybatis/mapper/NoticeMapper.xml"/>
 		<mapper resource="com/seoulcheckin/mybatis/mapper/SchoolMapper.xml"/>
 		<mapper resource="com/seoulcheckin/mybatis/mapper/VisaMapper.xml"/>
+		<mapper resource="com/seoulcheckin/mybatis/mapper/NavigatorMapper.xml"/>
 		<mapper resource="com/seoulcheckin/mybatis/mapper/BannerMapper.xml"/>
 		<mapper resource="com/seoulcheckin/mybatis/mapper/FileMapper.xml"/>
 		<mapper resource="com/seoulcheckin/mybatis/mapper/MyProgramMapper.xml"/>

@@ -103,7 +103,7 @@
 </body>
 <script>
 
-    const file = document.querySelector("input[type='file']");
+	const file = document.querySelector("input[type='file']");
     const camera = document.querySelector(".cameraIcon");
     const thumbnail = document.querySelector("label[for='attach'] div");
 
@@ -126,7 +126,6 @@
     camera.addEventListener("click", function(){           
             file.onclick();
      });
-
 
 </script>
 </html>
