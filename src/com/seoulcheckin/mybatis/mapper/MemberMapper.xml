@@ -5,6 +5,16 @@
 	<select id="checkId" parameterType="string" resultType="_int">
 		select count(member_email) from tbl_member where member_email = #{memberEmail}
 	</select>
+	
+	<insert id="join" parameterType="memberVO">
+		insert into tbl_member(member_classification, member_email, member_name, member_phone, member_password)
+		values(#{memberClassification}, #{memberEmail}, #{memberName}, #{memberPhone}, #{memberPassword})
+	</insert>
+	
+	<select id="login" parameterType="memberVO" resultType="_int">
+		select member_number from tbl_member
+		where member_email = #{memberEmail} and member_password = #{memberPassword}
+	</select>
 </mapper>
 
 

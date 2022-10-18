@@ -30,12 +30,18 @@ public class MemberFrontController extends HttpServlet {
 		// 아이디 조회
 		if(request.equals("/member/checkId.me")) {
 			new CheckIdController().execute(req, resp);
-			
-		// 회원가입 submit
+		
+		// 인증번호 확인
+		}else if(request.equals("/member/verification.me")){
+			new VerificationController().execute(req, resp);
+		
+		// 회원가입 완료
 		}else if(request.equals("/member/joinOk.me")) {
+			new JoinOkController().execute(req, resp);
 
-		// 로그인 submit
+		// 로그인 완료
 		}else if(request.equals("/member/loginOk.me")) {
+			new LoginOkController().execute(req, resp);
 		
 		// 마이페이지 페이지 요청
 		}else if(request.equals("/member/mypage.me")) {

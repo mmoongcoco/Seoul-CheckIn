@@ -1,8 +1,42 @@
-/* header js strat*/
+/* 선언부 */
 
+/* header*/
 var $ul = $(".divdiv").next();
 var $div = $(".ulul").prev();
 var checkHeader = -1;
+
+
+/* join */
+var $memberType;
+var $emailInput = $("input#email");
+var $nameInput = $("input[name='userName']");
+var $phoneNumberInput = $("input[name='userPhoneNumber']");
+var $codeInput = $("input[name='code']");
+var $passwordInput = $("input[name='userPassword']");
+var $passwordCheckInput = $("input[name='userPasswordRepeat']");
+var $verificationInput = $("input[name='code']");
+var $checkboxInput = $("input[name='allAgreement']");
+
+var $all = $("input[name='allAgreement']");
+var $checkboxes = $(".style_label__CZv3V > input[type='checkbox']");
+
+//8자리 이상, 대문자/소문자/숫자/특수문자 모두 포함되어 있는 지 검사
+var pwCheck = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+//한글이 포함되었는 지 검사
+var hangleCheck = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+//같은 문자 4번 이상
+var wordCheck = /(\w)\1\1\1/;
+//공백검사
+var spaceCheck = /\s/;
+
+
+/* login */
+$loginpasswordInput = $("input#password-text-field");
+
+
+
+/* header js strat*/
+
 
 $(".divdiv").click(function() {
 	checkHeader *= -1;
@@ -18,18 +52,6 @@ $(".divdiv").click(function() {
 
 
 /* modal js start */
-
-var $memberType;
-var $emailInput = $("input#email");
-var $nameInput = $("input[name='userName']");
-var $phoneNumberInput = $("input[name='userPhoneNumber']");
-var $codeInput = $("input[name='code']");
-var $passwordInput = $("input[name='userPassword']");
-var $passwordCheckInput = $("input[name='userPasswordRepeat']");
-var $checkboxInput = $("input[name='allAgreement']");
-
-var $all = $("input[name='allAgreement']");
-var $checkboxes = $(".style_label__CZv3V > input[type='checkbox']");
 
 
 /* 로그인 모달창 켜기 */
@@ -67,6 +89,13 @@ $("#join_closeButton").on('click', function() {
 });
 
 
+/* modal js start */
+
+
+
+
+/* join js start */
+
 /* login 유효성 검사 및 아이디 가입 여부 검사*/
 $(".style_wrapper__IgK7U.email-login-button").on('click', function() {
 	if (!$emailInput.val()) {
@@ -92,15 +121,15 @@ $(".style_wrapper__IgK7U.email-login-button").on('click', function() {
 
 
 /* 인증번호 받기 버튼 활성화*/
-$("input[name='userPhoneNumber']").on('keyup', function(){
-	if($phoneNumberInput.eq(0).val().length == 11){
-		console.log("true")
+$("input[name='userPhoneNumber']").on('keyup', function() {
+	var $phone = $phoneNumberInput.val();
+	
+	if ($phone != "" && $phone.length == 11 && !isNaN($phone)) {
 		$(".BtnGetCode_BtnGetCode__wR5FL.join.isKR").removeClass('isKR');
 		$(".BtnGetCode_BtnGetCode__wR5FL.join").prop("disabled", false);
 		$(".css-1u2lazp").css('display', 'none');
 		return;
-	}else {
-		console.log("false")
+	} else {
 		$(".BtnGetCode_BtnGetCode__wR5FL.join").addClass('isKR');
 		$(".BtnGetCode_BtnGetCode__wR5FL.join").attr("disabled", true);
 		$(".css-1u2lazp").css('display', 'block');
@@ -108,92 +137,192 @@ $("input[name='userPhoneNumber']").on('keyup', function(){
 });
 
 
-/* 인증번호 받기 */
-$(".BtnGetCode_BtnGetCode__wR5FL.join").on('click', function(){
+/* 인증번호 보내기 및 확인 */
+$(".BtnGetCode_BtnGetCode__wR5FL.join").on('click', function() {
 	$(".InputCode_InputCode_input__X4opi").removeClass('disabled');
 	$(".InputCode_InputCode_input__X4opi").prop("disabled", false);
-	
-	setTimeout(function(){
-		$(".css-1teuqrm").css('display', 'block');
-		$(".css-1lnssh6").css('display', 'block');
-        
-    }
-    , 30000);
-	
+	$(".css-1teuqrm").css('display', 'block');
+	$(".css-1lnssh6").css('display', 'block');
+	$(".BtnGetCode_BtnGetCode__wR5FL.join").addClass('isKR');
+	$(".BtnGetCode_BtnGetCode__wR5FL.join").attr("disabled", true);
+	$(".BtnGetCode_BtnGetCode__wR5FL.join").html('인증번호 재전송');
+	$codeInput.prop("disabled", false);
+
+	let seconds = 60;
+	var inter = setInterval(function() {
+		seconds--;
+		if (seconds < 10) {
+			$(".css-1lnssh6").html("유효시간 00:0" + seconds);
+		} else {
+			$(".css-1lnssh6").html("유효시간 00:" + seconds);
+		}
+	}, 1000);
+
+	setTimeout(function() {
+		$(".BtnGetCode_BtnGetCode__wR5FL.join.isKR").removeClass('isKR');
+		$(".BtnGetCode_BtnGetCode__wR5FL.join").prop("disabled", false);
+		$(".BtnGetCode_BtnGetCode__wR5FL.join").html('인증번호 받기');
+		$codeInput.prop("disabled", true);
+		clearInterval(inter);
+	}, 60000);
+
 	$.ajax({
-		url: "",
-		data: {memberPhoneNumber: $phoneNumberInput.eq(0).val()},
-		success: function(){}
+		url: "/member/verification.me",
+		data: { memberPhoneNumber: $phoneNumberInput.eq(0).val() },
+		success: function(verificationNumber) {
+			$verificationInput.on('blur', function(){
+				if (verificationNumber == $verificationInput.val()) {
+					$(".css-1teuqrm").html('인증되었습니다.');
+					$(".css-1lnssh6").css('display', 'none');
+					$(".BtnGetCode_BtnGetCode__wR5FL.join").attr("disabled", true);
+					$codeInput.attr("disabled", true);
+				}				
+			});
+		}
 	});
 });
 
 
+/* 비밀번호 유효성 검사 */
+$passwordInput.on('blur', function(){
+	if(!pwCheck.test($passwordInput.val())){
+		$(".css-1u2lazp.password").css('display', 'block');
+		return;
+	}
+
+	if(hangleCheck.test($passwordInput.val())){
+		$(".css-1u2lazp.password").css('display', 'block');
+		return;
+	}
+	
+	if(wordCheck.test($passwordInput.val())){
+		$(".css-1u2lazp.password").css('display', 'block');
+		return;
+	}
+
+	if(spaceCheck.test($passwordInput.val())){
+		$(".css-1u2lazp.password").css('display', 'block');
+		return;
+	}
+	
+	$(".css-1u2lazp.password").css('display', 'none');
+});
+
+
+/* 비밀번호 확인 유효성 검사 */
+$passwordCheckInput.on('blur', function(){
+	if(!$passwordInput.val()){
+		$passwordInput.focus();
+		return;
+	}
+	if($passwordInput.val() != $passwordCheckInput.val()){
+		$(".css-1u2lazp.passwordCheck").css('display', 'block');
+		$(".css-1d2ssup.passwordCheck").css('display', 'none');
+		return;
+	}
+	if(!pwCheck.test($passwordCheckInput.val())){
+		$(".css-1d2ssup.passwordCheck").css('display', 'block');
+		$(".css-1u2lazp.passwordCheck").css('display', 'none');
+		return;
+	}
+	$(".passwordCheck").css('display', 'none');
+
+});
+
+
 /* 전체 동의 */
-$all.on('click', function(){
-	console.log("들어옴")
+$all.on('click', function() {
 	$checkboxes.prop('checked', $(this).is(':checked'));
 });
 
 
 /* 각각 약관 동의 */
-$checkboxes.on('click', function(){
-	console.log("들어옴2")
+$checkboxes.on('click', function() {
 	$all.prop('checked', $checkboxes.filter(":checked").length == $checkboxes.length);
 });
 
 
 /* 회원 가입 유효성 검사*/
 $(".style_wrapper__IgK7U.join").on('click', function() {
-	console.log("이름"+$nameInput.val());
-	console.log("인증코드"+$codeInput.attr('value'));
-	console.log("비밀번호"+$passwordInput.val());
-	console.log("비번확인"+$passwordCheckInput.val());
-	console.log("체크박스"+$checkboxInput.prop('checked'));
-	console.log("멤버타입"+$memberType);
-
 	if (!$nameInput.val()) {
 		$nameInput.focus();
 		return;
 	}
+	
+	if (!isNaN($nameInput.val())) {
+		$nameInput.focus();
+		return;
+	}
 
-	if ($codeInput.attr('value') != 'readonly') {
+	if (!$codeInput.attr('disabled')) {
 		$phoneNumberInput.focus();
 		return;
 	}
 
-	if (!$passwordInput.val()) {
+	if (!$passwordInput.val() || $(".css-1u2lazp.password").css('display') == 'block') {
 		$passwordInput.focus();
 		return;
 	}
 
-	if (!$passwordCheckInput.val() || $passwordInput.val() != $passwordCheckInput.val()) {
+	if (!$passwordCheckInput.val() ||$(".css-1u2lazp.passwordCheck").css('display') == 'block') {
 		$passwordCheckInput.focus();
 		return;
 	}
 
-	if ($checkboxInput.prop('checked')) {
+	if (!$checkboxInput.prop('checked')) {
 		$checkboxInput.focus();
 		return;
 	}
+	
+	console.log("회원가입")
+	console.log($memberType);
+	console.log($emailInput.val());
+	console.log($nameInput.val());
+	console.log($phoneNumberInput.val());
+	console.log($passwordInput.val());
+	
+	$.ajax({
+		url: "/member/joinOk.me",
+		type: "post",
+		data: {memberClassification: $memberType, memberEmail: $emailInput.val(), memberName: $nameInput.val(), memberPhone: $phoneNumberInput.val(), memberPassword: $passwordInput.val()},
+		success: function() {
+			$(".Modal_root__aEM8D.join").css('display', 'none');
+		}
+	});
 
 });
 
 
-$.ajax({
-	url: "",
-	data: {},
-	success: function() {
+/* join js end */
 
-	}
+
+
+/* login js start */
+
+/* 로그인 비밀번호 확인 */
+$(".loginBtn").on('click', function(){
+	$.ajax({
+		url: "/member/loginOk.me",
+		type: "post",
+		data: {memberEmail: $emailInput.val(), memberPassword: $loginpasswordInput.val()},
+		success: function(){
+			$(".modal_background.pw").css('display', 'none');
+			$("#join_login_button").html("로그아웃");
+		}
+	});
 });
 
 
-
-/* modal js end */
-
+/* login js end */
 
 
 
+/* logout js start */
+
+/* 로그아웃 */
+
+
+/* logout js end */
 
 
 

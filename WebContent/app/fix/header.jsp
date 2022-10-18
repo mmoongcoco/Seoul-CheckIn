@@ -568,7 +568,7 @@
 											class="InputCode_InputCode_input__X4opi disabled"
 											placeholder="인증번호를 입력해 주세요." disabled>
 										<p style="color: #36f" class="css-1teuqrm">인증번호가 요청되었습니다.</p>
-										<p style="color: #36f" class="css-1lnssh6">유효시간 00:00</p>
+										<p style="color: #36f" class="css-1lnssh6">유효시간 00:60</p>
 										<p></p>
 									</div>
 								</div>
@@ -582,7 +582,11 @@
 							<input type="password" name="userPassword"
 								autocomplete="new-password" maxlength="16"
 								placeholder="비밀번호를 입력해 주세요." id="userPassword" value="">
+							<p data-testid="Typography" color="red"
+								class="css-1u2lazp password">올바르지 않은 비밀번호입니다.</p>
 						</div>
+						<div class="style_guidance__FT8Qs input-group-guidance">영문
+							대소문자, 숫자, 특수문자를 조합하여 8자 이상 입력해 주세요.</div>
 					</div>
 					<div class="style_wrapper__6RiUK">
 						<label for="userPasswordRepeat" class="style_label__BKYHB">비밀번호
@@ -592,9 +596,9 @@
 								autocomplete="new-password" maxlength="16"
 								placeholder="비밀번호를 다시 한번 입력해 주세요." id="userPasswordRepeat"
 								value="">
+							<p data-testid="Typography" color="red" class="css-1u2lazp passwordCheck">비밀번호가 서로 일치하지 않습니다.</p>
+							<p data-testid="Typography" color="red" class="css-1d2ssup passwordCheck">영문 대소문자, 숫자, 특수문자를 3가지 이상으로 조합해 8자 이상 16자 이하로 입력해주세요.</p>
 						</div>
-						<div class="style_guidance__FT8Qs input-group-guidance">영문
-							대소문자, 숫자, 특수문자를 3가지 이상으로 조합하여 8자 이상 입력해 주세요.</div>
 						<div class="style_guidance__FT8Qs input-group-guidance"></div>
 					</div>
 					<div class="Agreement_wrapper__1RTfh">
@@ -646,8 +650,7 @@
 				</form>
 				<div class="SetPassword_SetPassword_footer_btn__UrVb_">
 					<div class="SetPassword_SetPassword_footer_btn_wrapper__SRH1U">
-						<button type="button"
-							class="style_wrapper__IgK7U join"
+						<button type="button" class="style_wrapper__IgK7U join"
 							form="setpassword-form" data-attribute-id="signup__click">회원가입하기</button>
 					</div>
 				</div>
