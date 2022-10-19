@@ -21,6 +21,9 @@ import com.seoulcheckin.app.visa.vo.VisaVO;
 public class VisaResultController implements Execute{
 	@Override
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setContentType("text/html;charset=utf-8");
+		req.setCharacterEncoding("UTF-8");
+		
 		PrintWriter out = resp.getWriter();
 		//필드 4개 받기 
 		//대륙 / 국가.지역 / 입국목적 / 체류기간
@@ -33,9 +36,7 @@ public class VisaResultController implements Execute{
 		NavigatorVO navigatorVO = new NavigatorVO();
 		NavigatorDAO navigatorDAO = new NavigatorDAO();
 		VisaDAO visaDAO = new VisaDAO();
-		VisaVO visaVO = null;
-		List<VisaVO> visaList = null;
-		JSONArray jsonarr = null;
+		JSONArray jsonarr = new JSONArray();
 		
 		navigatorVO.setNavigatorContinent(navigatorContinent);
 		navigatorVO.setNavigatorNation(navigatorNation);
@@ -43,11 +44,9 @@ public class VisaResultController implements Execute{
 		navigatorVO.setNavigatorPeriod(navigatorPeriod);
 		
 		int navigatorNumber = navigatorDAO.selectNaviNumber(navigatorVO);
-		visaList = navigatorDAO.selectVisaNameCon(navigatorNumber);
+		navigatorDAO.selectVisaNameCon(navigatorNumber).forEach(visaVO -> {JSONObject visa = new JSONObject(visaVO); jsonarr.put(visa);});
 		
-		jsonarr = new JSONArray(visaList);
-		
-		out.print(jsonarr);
+		out.print(jsonarr.toString());
 		out.close();
 		
 		return null;

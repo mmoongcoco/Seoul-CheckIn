@@ -1,9 +1,12 @@
 package com.seoulcheckin.app.visa.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.seoulcheckin.app.navigator.vo.NavigatorVO;
+import com.seoulcheckin.app.visa.vo.VisaVO;
 import com.seoulcheckin.mybatis.config.MyBatisConfig;
 
 
@@ -16,7 +19,7 @@ public class VisaDAO {
 	}
 	
 	//
-	public NavigatorVO select(NavigatorVO navigatorVO) {
-		return sqlSession.selectOne("Visa.select", navigatorVO);
+	public List<VisaVO> select(NavigatorVO navigatorVO) {
+		return sqlSession.selectList("Visa.select", navigatorVO);
 	}
 }
