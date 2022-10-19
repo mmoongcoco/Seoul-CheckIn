@@ -27,7 +27,6 @@ public class MemberFrontController extends HttpServlet {
 		String request = requestURI.substring(contextPath.length());
 		Result result = null;
 			
-		System.out.println("프론트");
 		// 아이디 조회
 		if(request.equals("/member/checkId.me")) {
 			new CheckIdController().execute(req, resp);
@@ -44,6 +43,13 @@ public class MemberFrontController extends HttpServlet {
 		}else if(request.equals("/member/loginOk.me")) {
 			new LoginOkController().execute(req, resp);
 		
+		// 구글 로그인(OAuth)
+		}else if(request.equals("/member/loginGoogle.me")) {
+			new LoginGoogleController().execute(req, resp);
+			
+		}else if(request.equals("/member/loginNaver.me")) {
+			new LoginNaverController().execute(req, resp);
+			
 		// 로그아웃
 		}else if(request.equals("member/logout.me")) {
 			new LogoutController().execute(req, resp);

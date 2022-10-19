@@ -28,5 +28,9 @@ public class MemberDAO {
 
 	public void update(MemberVO memberVO) {
 		   sqlSession.update("Member.update", memberVO);
-	   }
+	}
+	
+	public int loginGoogle(MemberVO memberVO) {
+		return sqlSession.selectOne("Member.loginGoogle", memberVO);
+	}
 }
