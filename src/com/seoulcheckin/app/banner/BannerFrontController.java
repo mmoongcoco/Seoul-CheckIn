@@ -28,8 +28,9 @@ public class BannerFrontController extends HttpServlet {
 		Result result = null;
 		
 		// 메인 페이지 요청
-		if(request.equals("/banner.main")) {
-			
+		if(request.equals("/banner/select.bn")) {
+			System.out.println("프론트 컨트롤러 들어옴");
+			result = new SelectController().execute(req, resp);
 		}
 		
 		if(result != null) {
