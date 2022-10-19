@@ -1,4 +1,4 @@
-package com.seoulcheckin.app.banner;
+package com.seoulcheckin.app.main;
 
 import java.io.IOException;
 
@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.seoulcheckin.app.Result;
 
-public class BannerFrontController extends HttpServlet {
+public class MainFrontController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doProcess(req, resp);
@@ -27,10 +27,10 @@ public class BannerFrontController extends HttpServlet {
 		String request = requestURI.substring(contextPath.length());
 		Result result = null;
 		
-		// 메인 페이지 배너
-		if(request.equals("/banner/select.bn")) {
-			System.out.println("프론트 컨트롤러 들어옴");
-			result = new SelectController().execute(req, resp);
+		// 메인 페이지 요청
+		if(request.equals("/Seoul-CheckIn.kr")) {
+			result = new Result();
+			result.setPath("/app/main/main.jsp");
 		}
 		
 		if(result != null) {
