@@ -12,7 +12,6 @@ import com.seoulcheckin.app.Result;
 public class UpdateInfoController implements Execute{
 	@Override
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }
