@@ -356,4 +356,79 @@ arrow.addEventListener("click", function(){
 
 /* subside banner end */
 
+/*  배너수정 ajax */
+
+/*let bannerNumber = ${banner.getBoardNumber()};
+let bannerName = "${banner.getBoardName()}";*/
+
+
+console.log("js들어옴1");
+
+
+
+console.log("js들어옴2");
+show();
+console.log("js들어옴3");
+
+function show(){
+	console.log("show 들어옴");
+	
+	$.ajax({
+		url: "/banner/select.bn",
+		dataType: "json",
+		success: function change(banners){
+			console.log("ajax들어옴");
+			console.log(banners);
+		
+		/* jsp 에 있는 images들  변경*/
+		const images = $(".images");
+		images.each((i)=>{
+			images.eq(i).attr("src",banners[i].bannerName);
+			
+		});
+		
+		/* js 에 있는 images들 변경 */
+		 
+		console.log(banners[0].bannerName);
+		
+		const firstBanner = banners[0].bannerName;
+		const lastBanner = banners[5].bannerName;
+		
+		console.log(firstBanner);
+	
+			firstDiv.innerHTML = `<img src=` + firstBanner + `>`;
+		
+			lastDiv.innerHTML = `<img src=` + lastBanner + `>`;
+			
+			
+		/*
+		firstDiv.innerHTML = '<img src="/assets/images/main/capture1.png">';
+		
+		lastDiv.innerHTML = '<img src="/assets/images/main/capture1.png">';
+		*/
+		
+		
+	//	images.eq(i).attr("src",banners.bannerName)
+	
+	
+		
+			
+			
+		}
+		/*error: function(a, b, c){
+			console.log(a, b, c);
+		}*/
+	});
+}
+		
+
+
+
+/*   */
+
+
+
+
+
+
 
