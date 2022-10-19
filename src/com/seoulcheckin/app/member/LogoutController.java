@@ -15,7 +15,6 @@ public class LogoutController implements Execute {
 	@Override
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
-		System.out.println("Logout " + session.getAttribute("memberNumber"));
 		session.invalidate();
 	
 		return null;	

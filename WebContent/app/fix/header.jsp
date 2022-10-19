@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,6 +8,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name ="google-signin-client_id" content="991196669475-dpc033jgo41gidvac293s8pmkv1uo192.apps.googleusercontent.com">
 <title>Document</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/css/fix/header.css">
@@ -19,11 +21,8 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/css/fix/password.css">
 </head>
-
 <body>
-
 	<!-- header -->
-
 	<header id="header">
 		<div id="head">
 			<div id="margin">
@@ -38,7 +37,6 @@
 						src="${pageContext.request.contextPath}/assets/images/fix/seoul-chckin(text).jpg"
 						style="height: 14px; width: 74px;">
 					</a>
-
 				</div>
 				<dir id="navigationdiv">
 
@@ -96,7 +94,7 @@
 
 						<ul id="ul-3">
 
-							<li><a href="javascript:void(0);" id="join_login_button"
+							<li><a href="javascript:void(0)" id="join_login_button"
 								style="position: relative; left: 50px; top: -2px;"> 회원가입/로그인
 							</a></li>
 
@@ -104,7 +102,6 @@
 								style="position: relative; left: -145px; top: -2px;"><a
 								href="" id="comservice">관리자 페이지</a></li>
 							<li></li>
-
 
 
 						</ul>
@@ -662,6 +659,16 @@
 
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/fix/header.js"></script>
-
+<script>
+	
+	if(sessionStorage.getItem("memberNumber") == null){
+		$("#join_login_button").html("회원가입/로그인");
+	}else {
+		$("#join_login_button").html("로그아웃");
+	}
+</script>
 </html>

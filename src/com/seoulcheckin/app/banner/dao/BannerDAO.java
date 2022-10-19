@@ -14,7 +14,6 @@ public class BannerDAO {
 	
 	public BannerDAO() {
 		sqlSession = sqlSessionFactory.openSession(true);
-		System.out.println("dao1");
 	}
 	
 	

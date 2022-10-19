@@ -1,6 +1,7 @@
 package com.seoulcheckin.app.member;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Base64;
 
 import javax.servlet.ServletException;
@@ -19,6 +20,7 @@ public class LoginOkController implements Execute{
 		MemberDAO memberDAO = new MemberDAO();
 		MemberVO memberVO = new MemberVO();
 		HttpSession session = req.getSession();
+		PrintWriter out = resp.getWriter();
 		int memberNumber = 0;
 		
 		String memberEmail = req.getParameter("memberEmail");
@@ -37,7 +39,8 @@ public class LoginOkController implements Execute{
 			session.setAttribute("memberNumber", memberNumber);
 			session.setAttribute("memberEmail", memberEmail);
 		
-			System.out.println(session.getAttribute("memberNumber"));
+			out.print(memberNumber);
+			out.close();
 		
 		} catch (Exception e) {
 			e.printStackTrace();
