@@ -277,13 +277,6 @@ $(".style_wrapper__IgK7U.join").on('click', function() {
 		return;
 	}
 
-	console.log("회원가입")
-	console.log($memberType);
-	console.log($emailInput.val());
-	console.log($nameInput.val());
-	console.log($phoneNumberInput.val());
-	console.log($passwordInput.val());
-
 	$.ajax({
 		url: "/member/joinOk.me",
 		type: "post",
@@ -304,8 +297,6 @@ $(".style_wrapper__IgK7U.join").on('click', function() {
 
 /* 로그인 비밀번호 확인 */
 $(".loginBtn").on('click', function() {
-	console.log($emailInput.val())
-	console.log($loginpasswordInput.val())
 	$.ajax({
 		url: "/member/loginOk.me",
 		type: "post",
@@ -330,11 +321,11 @@ $(".loginBtn").on('click', function() {
 
 /* 로그아웃 */
 $("#join_login_button").on('click', function() {
-/*	if ($("#join_login_button").text() != '로그아웃') { return; }*/
+	/*	if ($("#join_login_button").text() != '로그아웃') { return; }*/
 	console.log(sessionStorage.getItem('memberNumber'))
-	if(sessionStorage.getItem('memberNumber') == null){
+	if (sessionStorage.getItem('memberNumber') == null) {
 		$(".Modal_root__aEM8D.login").css('display', 'block');
-	}else {
+	} else {
 		$.ajax({
 			url: "member/logout.me",
 			success: function() {
@@ -343,7 +334,7 @@ $("#join_login_button").on('click', function() {
 				console.log("로그아웃 성공")
 				console.log(sessionStorage.getItem('memberNumber'));
 			}
-		});		
+		});
 	}
 });
 
@@ -364,16 +355,21 @@ function handleCredentialResponse(response) {
 	console.log("Image URL: " + responsePayload.picture);
 	console.log("Email: " + responsePayload.email);
 	$.ajax({
-		url: contextPath + "/user/loginGoogle.us", // 컨트롤러
+		url: "/member/loginGoogle.me", // 컨트롤러
 		type: "post",
 		data: {
-			id: responsePayload.sub,
-			userName: responsePayload.name
+			memberEmail: responsePayload.email,
+			memberName: responsePayload.name,
+			memberPhoto: responsePayload.picture
 		},
-		contentType: "application/x-www-form-urlencoded"
+		contentType: "application/x-www-form-urlencoded",
+		success: function(memberNumber){
+			sessionStorage.setItem('memberNumber', memberNumber);
+			$(".Modal_root__aEM8D.login").css('display', 'none');
+			$("#join_login_button").html("로그아웃");
+		}
 	})
 
-	frm_login_google.submit();
 }
 
 function parseJwt(token) {
@@ -392,13 +388,97 @@ window.onload = function() {
 		callback: handleCredentialResponse
 	});
 	google.accounts.id.renderButton(
-		document.getElementsByClassName("style_wrapper__IgK7U.social-login-button.google-login"),
-		{ theme: "outline", size: "large", width: 368, type: "icon"}  // 로고 커스터마이징
+		document.getElementById("buttonDiv"),
+		{ theme: "outline", size: "large", width: 368 }  // 로고 커스터마이징
 	);
+
 	google.accounts.id.prompt(); // 원탭 화면으로 출력
 }
 
 
 
 
+/* Naver OAuth*/
 
+/*var naver_id_login = new naver_id_login("vMW_1ZPa5SG3P5MabJCm", "http://localhost:8085/member/loginNaver.me");
+        var state = naver_id_login.getUniqState();
+        naver_id_login.setButton("white", 2,40);
+        naver_id_login.setDomain("http://localhost:8085");
+        naver_id_login.setState(state);
+        naver_id_login.setPopup();
+        naver_id_login.init_naver_id_login();
+
+
+ var naver_id_login = new naver_id_login("vMW_1ZPa5SG3P5MabJCm", "http://localhost:8085/member/loginNaver.me");
+  // 접근 토큰 값 출력
+  alert(naver_id_login.oauthParams.access_token);
+  // 네이버 사용자 프로필 조회
+  naver_id_login.get_naver_userprofile("naverSignInCallback()");
+  // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
+  function naverSignInCallback() {
+    alert(naver_id_login.getProfileData('email'));
+    alert(naver_id_login.getProfileData('nickname'));
+    alert(naver_id_login.getProfileData('age'));
+  }*/
+
+
+
+var naverLogin = new naver.LoginWithNaverId(
+		{
+			clientId: "vMW_1ZPa5SG3P5MabJCm", //내 애플리케이션 정보에 cliendId를 입력해줍니다.
+			callbackUrl: "http://localhost:8085", // 내 애플리케이션 API설정의 Callback URL 을 입력해줍니다.
+			isPopup: false,
+			callbackHandle: naverSignInCallback()
+		}
+	);	
+
+naverLogin.init();
+
+window.addEventListener('load', function () {
+	naverLogin.getLoginStatus(function (status) {
+		if (status) {
+			var email = naverLogin.user.getEmail(); // 필수로 설정할것을 받아와 아래처럼 조건문을 줍니다. 			
+
+			console.log(naverLogin.user); 
+    		
+            if( email == undefined || email == null) {
+				alert("이메일은 필수정보입니다. 정보제공을 동의해주세요.");
+				naverLogin.reprompt();
+				return;
+			}
+		} else {
+			console.log("callback 처리에 실패하였습니다.");
+		}
+	});
+});
+
+var naver_id_login = new naver_id_login("vMW_1ZPa5SG3P5MabJCm", "http://localhost:8085");
+  // 접근 토큰 값 출력
+  alert(naver_id_login.oauthParams.access_token);
+  // 네이버 사용자 프로필 조회
+  naver_id_login.get_naver_userprofile("naverSignInCallback()");
+  // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
+  function naverSignInCallback() {
+	console.log(naver_id_login.getProfileData('email'));
+    alert(naver_id_login.getProfileData('email'));
+    alert(naver_id_login.getProfileData('age'));
+    alert(naver_id_login.getProfileData('name'));
+  }
+
+
+var testPopUp;
+function openPopUp() {
+    testPopUp= window.open("https://nid.naver.com/nidlogin.logout", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,width=1,height=1");
+}
+function closePopUp(){
+    testPopUp.close();
+}
+
+function naverLogout() {
+	openPopUp();
+	setTimeout(function() {
+		closePopUp();
+		}, 1000);
+	
+	
+}

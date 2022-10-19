@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="java.net.URLEncoder"%>
+<%@ page import="java.net.URL"%>
+<%@ page import="java.net.HttpURLConnection"%>
+<%@ page import="java.io.BufferedReader"%>
+<%@ page import="java.io.InputStreamReader"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +13,8 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name ="google-signin-client_id" content="991196669475-dpc033jgo41gidvac293s8pmkv1uo192.apps.googleusercontent.com">
+<meta name="google-signin-client_id"
+	content="991196669475-dpc033jgo41gidvac293s8pmkv1uo192.apps.googleusercontent.com">
 <title>Document</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/css/fix/header.css">
@@ -22,6 +28,13 @@
 	href="${pageContext.request.contextPath}/assets/css/fix/password.css">
 </head>
 <body>
+	<script async defer crossorigin="anonymous"
+		src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v15.0&appId=655451066159766&autoLogAppEvents=1"
+		nonce="6OuGzZIJ"></script>
+	<script
+		src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js"
+		charset="utf-8"></script>
+
 	<!-- header -->
 	<header id="header">
 		<div id="head">
@@ -178,56 +191,64 @@
 						<div class="InputPanel_socialLogins__j0wq7">다음 계정으로 계속하기</div>
 						<div class="InputPanel_socialWrapper__Dhaxo isKR">
 							<div class="InputPanel_socialButton__Hggw2 isKR">
-								<button type="button"
-									class="style_wrapper__IgK7U social-login-button kakao-login">
-									<svg xmlns="http://www.w3.org/2000/svg" width="22" height="21"
-										viewBox="0 0 22 21">
+								<label>
+									<button type="button"
+										class="style_wrapper__IgK7U social-login-button kakao-login">
+										<svg xmlns="http://www.w3.org/2000/svg" width="22" height="21"
+											viewBox="0 0 22 21">
                                         <path fill="#000"
-											fill-rule="nonzero"
-											d="M11 0C5.242 0 0 3.823 0 8.539c0 2.932 1.904 5.519 4.804 7.056l-1.22 4.479c-.107.397.343.712.69.483l5.348-3.548c.452.044.91.069 1.377.069 6.076 0 11-3.823 11-8.54 0-4.715-4.924-8.538-11-8.538">
+												fill-rule="nonzero"
+												d="M11 0C5.242 0 0 3.823 0 8.539c0 2.932 1.904 5.519 4.804 7.056l-1.22 4.479c-.107.397.343.712.69.483l5.348-3.548c.452.044.91.069 1.377.069 6.076 0 11-3.823 11-8.54 0-4.715-4.924-8.538-11-8.538">
                                         </path>
                                     </svg>
-									<div class="InputPanel_socialTitle__77isU isKR">Kakao</div>
-								</button>
+										<div class="InputPanel_socialTitle__77isU isKR">Kakao</div>
+									</button>
+									<div class="kakaoButton">
+										<button class="kakaoButton_button__1pfrz"></button>
+										<p class="kakaoButton_loginDescription__P1TjV">Kakao 로그인</p>
+									</div>
+								</label>
 							</div>
 							<div class="InputPanel_socialButton__Hggw2 isKR">
-								<button type="button"
-									class="style_wrapper__IgK7U social-login-button facebook-login">
-									<svg xmlns="http://www.w3.org/2000/svg" width="12" height="23"
-										viewBox="0 0 12 23">
-                                        <path fill="#fff"
-											fill-rule="nonzero"
-											d="M11.214 12.603l.622-4.055h-3.89V5.917c0-1.11.543-2.191 2.285-2.191H12V.274S10.395 0 8.86 0C5.656 0 3.562 1.942 3.562 5.458v3.09H0v4.055h3.562v9.802c.714.112 1.446.17 2.191.17.746 0 1.478-.058 2.192-.17v-9.802h3.269">
-                                        </path>
-                                    </svg>
-									<div class="InputPanel_socialTitle__77isU isKR">Facebook</div>
-								</button>
+								<ul>
+									<li>
+										<!-- 아래와같이 아이디를 꼭 써준다. --> <a id="naverIdLogin_loginButton"
+										href="javascript:void(0)"> <span>네이버 로그인</span>
+									</a>
+									</li>
+									<li onclick="naverLogout(); return false;"><a
+										href="javascript:void(0)"> <span>네이버 로그아웃</span>
+									</a></li>
+								</ul>
 							</div>
 							<div class="InputPanel_socialButton__Hggw2 isKR">
-								<button type="button"
-									class="style_wrapper__IgK7U social-login-button google-login">
-									<svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
-										viewBox="0 0 23 23">
+								<label>
+									<button type="button"
+										class="style_wrapper__IgK7U social-login-button google-login">
+										<svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
+											viewBox="0 0 23 23">
                                         <g fill="none"
-											fill-rule="nonzero">
+												fill-rule="nonzero">
                                             <path fill="#EA4335"
-											d="M11.5 4.574c1.688 0 3.204.58 4.396 1.72l3.299-3.299C17.203 1.14 14.6 0 11.5 0 7.005 0 3.115 2.577 1.223 6.335l3.842 2.98c.905-2.718 3.44-4.741 6.435-4.741z">
+												d="M11.5 4.574c1.688 0 3.204.58 4.396 1.72l3.299-3.299C17.203 1.14 14.6 0 11.5 0 7.005 0 3.115 2.577 1.223 6.335l3.842 2.98c.905-2.718 3.44-4.741 6.435-4.741z">
                                             </path>
                                             <path fill="#4285F4"
-											d="M22.54 11.761c0-.815-.073-1.6-.21-2.352H11.5v4.448h6.19c-.268 1.438-1.078 2.656-2.296 3.471v2.886h3.717c2.174-2.002 3.429-4.95 3.429-8.453z">
+												d="M22.54 11.761c0-.815-.073-1.6-.21-2.352H11.5v4.448h6.19c-.268 1.438-1.078 2.656-2.296 3.471v2.886h3.717c2.174-2.002 3.429-4.95 3.429-8.453z">
                                             </path>
                                             <path fill="#FBBC05"
-											d="M5.065 13.685c-.23-.69-.36-1.427-.36-2.185s.13-1.495.36-2.185v-2.98H1.223C.444 7.888 0 9.645 0 11.5c0 1.856.444 3.612 1.223 5.165l3.842-2.98z">
+												d="M5.065 13.685c-.23-.69-.36-1.427-.36-2.185s.13-1.495.36-2.185v-2.98H1.223C.444 7.888 0 9.645 0 11.5c0 1.856.444 3.612 1.223 5.165l3.842-2.98z">
                                             </path>
                                             <path fill="#34A853"
-											d="M11.5 23c3.105 0 5.708-1.03 7.61-2.786l-3.716-2.886c-1.03.69-2.347 1.098-3.894 1.098-2.995 0-5.53-2.023-6.435-4.741H1.223v2.98C3.115 20.423 7.005 23 11.5 23z">
+												d="M11.5 23c3.105 0 5.708-1.03 7.61-2.786l-3.716-2.886c-1.03.69-2.347 1.098-3.894 1.098-2.995 0-5.53-2.023-6.435-4.741H1.223v2.98C3.115 20.423 7.005 23 11.5 23z">
                                             </path>
                                             <path
-											d="M0 0L23 0 23 23 0 23z"></path>
+												d="M0 0L23 0 23 23 0 23z"></path>
                                         </g>
                                     </svg>
-									<div class="InputPanel_socialTitle__77isU isKR">Google</div>
-								</button>
+										<div class="InputPanel_socialTitle__77isU isKR">Google</div>
+										<div id="buttonDiv" style="margin-top: 15px;"></div>
+									</button>
+								</label>
 							</div>
 							<div class="InputPanel_socialButton__Hggw2 isKR">
 								<button type="button"
@@ -278,7 +299,8 @@
 					비밀번호
 					<div id="password_body">
 						<input type="password" placeholder="비밀번호" id="password-text-field">
-						<p data-testid="Typography" color="red" class="css-1u2lazp">비밀번호가 일치하지 않습니다.</p>
+						<p data-testid="Typography" color="red" class="css-1u2lazp">비밀번호가
+							일치하지 않습니다.</p>
 					</div>
 				</div>
 				<button type="button" class="loginBtn">로그인</button>
@@ -594,8 +616,11 @@
 								autocomplete="new-password" maxlength="16"
 								placeholder="비밀번호를 다시 한번 입력해 주세요." id="userPasswordRepeat"
 								value="">
-							<p data-testid="Typography" color="red" class="css-1u2lazp passwordCheck">비밀번호가 서로 일치하지 않습니다.</p>
-							<p data-testid="Typography" color="red" class="css-1d2ssup passwordCheck">영문 대소문자, 숫자, 특수문자를 3가지 이상으로 조합해 8자 이상 16자 이하로 입력해주세요.</p>
+							<p data-testid="Typography" color="red"
+								class="css-1u2lazp passwordCheck">비밀번호가 서로 일치하지 않습니다.</p>
+							<p data-testid="Typography" color="red"
+								class="css-1d2ssup passwordCheck">영문 대소문자, 숫자, 특수문자를 3가지
+								이상으로 조합해 8자 이상 16자 이하로 입력해주세요.</p>
 						</div>
 						<div class="style_guidance__FT8Qs input-group-guidance"></div>
 					</div>
@@ -656,18 +681,23 @@
 		</div>
 		<div role="presentation" class="Modal_modalOverlay__1sCXi false"></div>
 	</div>
-
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/fix/header.js"></script>
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/fix/header.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script>
-	
-	if(sessionStorage.getItem("memberNumber") == null){
+	Kakao.init('f5a2b23f21fc35cd16b50c77a62b5d1f')
+</script>
+<script>
+	console.log(sessionStorage.getItem("memberNumber"));
+
+	if (sessionStorage.getItem("memberNumber") == null) {
 		$("#join_login_button").html("회원가입/로그인");
-	}else {
+	} else {
 		$("#join_login_button").html("로그아웃");
 	}
 </script>

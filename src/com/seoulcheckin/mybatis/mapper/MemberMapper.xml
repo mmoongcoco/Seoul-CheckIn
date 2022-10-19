@@ -20,9 +20,12 @@
 		update tbl_member
 		set member_name = #{memberName}, member_email = #{memberEmail}, member_password = #{memberPassword}, member_phone = #{memberPhone}
 		where member_number = #{memberNumber}
-		
 	</update>
 	
+	<select id="loginGoogle" parameterType="memberVO" resultType="_int">
+		select member_number from tbl_member
+		where member_email = #{memberEmail} and member_classification = 5;
+	</select>
 </mapper>
 
 
