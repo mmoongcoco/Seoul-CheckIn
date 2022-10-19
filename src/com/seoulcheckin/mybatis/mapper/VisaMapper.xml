@@ -3,17 +3,11 @@
 
 <mapper namespace="Visa">
 
-	
 	<!-- 네비게이터 넘버로 체류자격 / 신청대상 또는 활동범위 리턴 -->
 	<select id="selectVisaNameCon" parameterType="_int" resultType="visaVO">
 		select visa_Name, visa_Content
 		from tbl_visa
 		where navigator_number = #{navigatorNumber}
-
 	</select>
-
-
-
-
-
+	
 </mapper>

@@ -30,10 +30,11 @@ public class VisaFrontController extends HttpServlet {
 		// 비자네비게이터 페이지 요청(정적)
 		if(request.equals("/visa/visanavigator.vs")) {
 			result = new VisaResultController().execute(req,resp);
-		// 비자네비게이터 검색 결과
-		}else if(request.equals("/visa/visaresult.vs")) {
-			
 		}
+//		// 비자네비게이터 검색 결과
+//		}else if(request.equals("/visa/visaresult.vs")) {
+//			
+//		}
 		
 		if(result != null) {
 			if(result.isRedirect()) {

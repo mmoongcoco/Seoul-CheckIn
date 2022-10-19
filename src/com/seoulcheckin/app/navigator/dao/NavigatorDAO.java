@@ -18,13 +18,12 @@ public class NavigatorDAO {
 	}
 	
 	/*
-	 * <!-- 4개의 네비게이터를 입력했을 때 경우의 수 1개 리턴 --> 
-	 * <!-- 대륙 국가.지역 입국목적 체류기간 일치시 해당 네비게이터넘버
-	 * 리턴 -->
+	 * 4개의 네비게이터를 입력했을 때 경우의 수 1개 리턴
+	 * 대륙 국가.지역 입국목적 체류기간 일치시 해당 네비게이터넘버 리턴
 	 */
 	
 	public int selectNaviNumber(NavigatorVO navigatorVO) {
-		return sqlSession.selectOne("Visa.selectNaviNumber", navigatorVO);
+		return sqlSession.selectOne("Navigator.selectNaviNumber", navigatorVO);
 	}
 	
 	public List<VisaVO> selectVisaNameCon(int navigatorNumber) {

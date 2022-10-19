@@ -22,6 +22,7 @@ public class NavigatorFrontController extends HttpServlet {
 	}
 
 	protected void doProcess(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		String requestURI = req.getRequestURI();
 		String contextPath = req.getContextPath();
 		String request = requestURI.substring(contextPath.length());

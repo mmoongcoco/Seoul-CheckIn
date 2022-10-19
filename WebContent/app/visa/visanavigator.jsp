@@ -75,11 +75,6 @@
 											<option value="309">BOSNIA-HERCEGOVINA</option>
 											<option value="506">BOTSWANA</option>
 											<option value="209">BRAZIL</option>
-											<!--                                             <option value="317">BRITISH DEPENDENT TERRITORIES CITIZEN</option> -->
-											<!--                                             <option value="318">BRITISH NATIONAL OVERSEAS</option>
-                                            <option value="319">BRITISH OVERSEAS CITIZEN</option>
-                                            <option value="314">BRITISH PROTECTED PERSON</option>
- -->
 											<option value="315">BRITISH SUBJECT</option>
 											<option value="107">BRUNEI</option>
 											<option value="307">BULGARIA</option>
@@ -353,21 +348,8 @@
 							<th scope="col" class="non_bg">신청대상 또는 활동범위</th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr>
-							<td class="resonName"><a href="#this" name="sojQualNm"
-								class="che_tit"> <span class="nameBox">일반무사증 B-2-1</span>
-							</a></td>
-							<td class="resonDetail"><input type="hidden"
-								id="SOJ_QUAL_GRP_ROW" name="SOJ_QUAL_GRP_ROW" value="B-2-1">
-								<input type="hidden" id="SOJ_QUAL_NM_ROW" name="SOJ_QUAL_NM_ROW"
-								value="일반무사증"> <input type="hidden" id="MAIN_TARGET_ROW"
-								name="MAIN_TARGET_ROW"
-								value="관광, 방문 또는 상용 활동을 목적으로 한국을 방문하는 자는 비자를 받지 않고 입국할 수 있으며, 입국시 90일의 체류기간이 부여됩니다. <br/>※ 영리활동 또는 취업활동을 하고자 할 때에는 해당 비자를 소지하고 입국하여야 합니다.">
-								관광, 방문 또는 상용 활동을 목적으로 한국을 방문하는 자는 비자를 받지 않고 입국할 수 있으며, 입국시 90일의
-								체류기간이 부여됩니다. <br> ※ 영리활동 또는 취업활동을 하고자 할 때에는 해당 비자를 소지하고
-								입국하여야 합니다.</td>
-						</tr>
+					<tbody id="visaResultTable">
+					<!-- 내용 추가 부분 -->
 					</tbody>
 				</table>
 			</div>
@@ -383,7 +365,11 @@
 	$('.NotificationManager_NotificationManager__X1DXD').on('click',
 			function(e) {
 				e.preventDefault();
-				console.log("들어옴")
+				console.log("들어옴1");
+				console.log($('#IN_CONT_CD').val()); // 대륙 
+				console.log($('#IN_NAT_CD').val()); // 국가
+				console.log($('#IN_REP_ENTRY_PURP_CD').val()); //목적
+				console.log($('#IN_SOJ_DUR').val()); //체류기간
 
 				let IN_CONT_CD = $('#IN_CONT_CD').val();
 				let IN_NAT_CD = $('#IN_NAT_CD').val();
@@ -393,18 +379,22 @@
 				if (!IN_CONT_CD) {
 					alert("선택된 항목이 없습니다.");
 					$('#IN_CONT_CD').focus();
+					return;
 				}
 				if (!IN_NAT_CD) {
 					alert("선택된 항목이 없습니다.");
 					$('#IN_NAT_CD').focus();
+					return;
 				}
 				if (!IN_REP_ENTRY_PURP_CD) {
 					alert("선택된 항목이 없습니다.");
 					$('#IN_REP_ENTRY_PURP_CD').focus();
+					return;
 				}
 				if (!IN_SOJ_DUR) {
 					alert("선택된 항목이 없습니다.");
 					$('#IN_SOJ_DUR').focus();
+					return;
 				}
 
 				$.ajax({
@@ -415,71 +405,27 @@
 						navigatorPurpose : IN_REP_ENTRY_PURP_CD,
 						navigatorPeriod : IN_SOJ_DUR
 					},
-					success : function() {
-						console.log("들어옴")
-
-						/*         			
-						 let count = 1;
-						 let check = 1;
+					dataType: "json",
+					success : function(visas) {
 						
-						 show();
+						let text = "";
 						
-						 function show(){
-						 $.ajax({
-						 url: "${pageContext.request.contextPath}/list.prod",
-						 dataType: "json",
-						 success: function(products){
-						 let text = "";
-						
-						 text += `<thead>`;
-						 text += `<tr>`
-						 text += `<th scope="col">체류자격</th>`;
-						 text += `<th scope="col" class="non_bg">신청대상 또는 활동범위</th>`;
-						 text += `</tr>`
-						 text += `</thead>`
-						
-						 products.forEach(product => {
-						 text += `<tr>`
-						 text += `<td class="resonName">`
-						 text += `<a href="#this" name="sojQualNm" class="che_tit">`
-						 <span class="nameBox">일반무사증 B-2-1</span>
-						 </a>
-						 </td>
-						 <td class="resonDetail">	
-						 <input type="text" id="SOJ_QUAL_GRP_ROW" name="SOJ_QUAL_GRP_ROW" value="B-2-1">	
-						 <input type="text" id="SOJ_QUAL_NM_ROW" name="SOJ_QUAL_NM_ROW" value="일반무사증">	
-						 <input type="text" id="MAIN_TARGET_ROW" name="MAIN_TARGET_ROW" value="관광, 방문 또는 상용 활동을 목적으로 한국을 방문하는 자는 비자를 받지 않고 입국할 수 있으며, 입국시 90일의 체류기간이 부여됩니다. <br/>※ 영리활동 또는 취업활동을 하고자 할 때에는 해당 비자를 소지하고 입국하여야 합니다.">
-						 관광, 방문 또는 상용 활동을 목적으로 한국을 방문하는 자는 비자를 받지 않고 입국할 수 있으며, 입국시 90일의 체류기간이 부여됩니다. <br>
-						 ※ 영리활동 또는 취업활동을 하고자 할 때에는 해당 비자를 소지하고 입국하여야 합니다.
-						 </td>
-						 });
-						 */
-
+							visas.forEach(visa => {
+								
+							 	text += `<tr>`;
+								text += `<td class="resonName">`;
+								text += `<a href="#this" name="sojQualNm" class="che_tit">`;
+								text += `<span class="nameBox">`+ visa.visaName +`</span>`;
+								text += `</a>`;
+								text += `</td>`;
+								text += `<td class="resonDetail">`;
+								text += visa.visaContent + `</td>`;
+							 	text += `</tr>`;
+							});
+						text += `</thead>`;
+						$("#visaResultTable").html(text);
 					}
-				});
+				}); 
 			});
-
-	/* $(function () {
-	 $("#IN_CONT").click(function() {
-	
-	 if($("#IN_CONT").val() == "") {
-	 alert('번호 앞자리를 선택해주세요.')
-	 return false
-	 }
-	 if($("#IN_NAT_CD").val() == 0) {
-	 alert('번호 앞자리를 선택해주세요.')
-	 return false
-	 }
-	 if($("#IN_REP_ENTRY_PURP_CD").val() == 0) {
-	 alert('번호 앞자리를 선택해주세요.')
-	 return false
-	 }
-	 if($("#IN_SOJ_DUR").val() == 0) {
-	 alert('번호 앞자리를 선택해주세요.')
-	 return false
-	 }
-	 });
-
-	 }); */
 </script>
 </html>
