@@ -85,28 +85,29 @@
                     </div>
                     <div class="form">
                         <div class="formContent">
-                            <form action="">
+                            <form action="${pageContext.request.contextPath}/member/updateinfoOk.me" name="updateForm" method="post" enctype="multipart/form-data">
                                 <label for="name" class="input">
                                     <h6>이름</h6>
-                                    <input type="text" id="name">
+                                    <input type="text" id="name" <%-- value = "${member.getMemberName()}" --%>>
                                 </label>
                                 <label for="email" class="input">
                                     <h6>이메일</h6>
-                                    <input type="email" id="email">
+                                    <input type="email" id="email" <%-- value = "${member.getMemberEmail()}" --%>>
                                 </label>
-                                <label for="password" class="input">
+                                <label for="password" class="input" >
                                     <h6>비밀번호</h6>
-                                    <input type="text" id="password">
+                                    <input type="text" id="password" <%-- value = "${member.getMemberPassword()}" --%>>
                                 </label>
                                 <label for="mobile" class="input">
                                     <h6>휴대폰 번호</h6>
-                                    <input type="text" id="mobile">
+                                    <input type="text" id="mobile" <%-- value = "${member.getMemberPassword()}" --%>>
                                 </label>
                             </form>
                         </div>
                     </div>
                     <div class="allBtn">
-                        <button type="button" class="btnSubmit" onclick="alert('수정되었습니다')">
+                        <button type="button" class="btnSubmit" onclick="send()">
+                       <!--  <button type="button" class="btnSubmit" onclick="alert('수정되었습니다')"> -->
                             완료
                         </button>
                     </div>
@@ -115,6 +116,8 @@
             </section>
     
 </body>
+
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script>
 
     const file = document.querySelector("input[type='file']");
@@ -140,6 +143,15 @@
     camera.addEventListener("click", function(){           
             file.onclick();
      });
+    
+    
+	function send(){
+		let form = document.updateForm;
+		
+		
+		form.submit();
+	}
+
 
 
 </script>
