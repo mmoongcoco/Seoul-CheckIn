@@ -26,7 +26,7 @@ public class MemberFrontController extends HttpServlet {
 		String contextPath = req.getContextPath();
 		String request = requestURI.substring(contextPath.length());
 		Result result = null;
-				
+			
 		System.out.println("프론트");
 		// 아이디 조회
 		if(request.equals("/member/checkId.me")) {
@@ -50,7 +50,6 @@ public class MemberFrontController extends HttpServlet {
 			
 		// 마이페이지 페이지 요청
 		}else if(request.equals("/member/mypage.me")) {
-			System.out.println("if문");
 			new MyPageController().execute(req, resp);
 		
 		// 마이페이지 프로필 변경

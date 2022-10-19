@@ -55,10 +55,10 @@ $(".divdiv").click(function() {
 
 
 /* 로그인 모달창 켜기 */
-$("#join_login_button").on('click', function() {
-	if($("#join_login_button").text() == '로그아웃'){ return; }
+/*$("#join_login_button").on('click', function() {
+	if (sessionStorage.getItem('memberNumber') != null) { return; }
 	$(".Modal_root__aEM8D.login").css('display', 'block');
-});
+});*/
 
 /* 로그인 모달창 x버튼 */
 $("#login_closeButton").on('click', function() {
@@ -310,9 +310,13 @@ $(".loginBtn").on('click', function() {
 		url: "/member/loginOk.me",
 		type: "post",
 		data: { memberEmail: $emailInput.val(), memberPassword: $loginpasswordInput.val() },
-		success: function() {
+		success: function(memberNumber) {
+			sessionStorage.setItem('memberNumber', memberNumber);
+			console.log("로그인 성공")
+			console.log(sessionStorage.getItem('memberNumber'));
 			$(".modal_background.pw").css('display', 'none');
 			$("#join_login_button").html("로그아웃");
+
 		}
 	});
 });
@@ -325,15 +329,22 @@ $(".loginBtn").on('click', function() {
 /* logout js start */
 
 /* 로그아웃 */
-$("#join_login_button").on('click', function(){
-	if($("#join_login_button").text() == '회원가입/로그인'){ return; }
-	
-	$.ajax({
-		url: "member/logout.me",
-		success: function(){
-			$("#join_login_button").html("회원가입/로그인");
-		}
-	});
+$("#join_login_button").on('click', function() {
+/*	if ($("#join_login_button").text() != '로그아웃') { return; }*/
+	console.log(sessionStorage.getItem('memberNumber'))
+	if(sessionStorage.getItem('memberNumber') == null){
+		$(".Modal_root__aEM8D.login").css('display', 'block');
+	}else {
+		$.ajax({
+			url: "member/logout.me",
+			success: function() {
+				sessionStorage.clear();
+				$("#join_login_button").html("회원가입/로그인");
+				console.log("로그아웃 성공")
+				console.log(sessionStorage.getItem('memberNumber'));
+			}
+		});		
+	}
 });
 
 
@@ -341,6 +352,51 @@ $("#join_login_button").on('click', function(){
 
 
 
+/* Google OAuth */
+
+// callback
+function handleCredentialResponse(response) {
+	const responsePayload = parseJwt(response.credential);
+	console.log("ID: " + responsePayload.sub);
+	console.log('Full Name: ' + responsePayload.name);
+	console.log('Given Name: ' + responsePayload.given_name);
+	console.log('Family Name: ' + responsePayload.family_name);
+	console.log("Image URL: " + responsePayload.picture);
+	console.log("Email: " + responsePayload.email);
+	$.ajax({
+		url: contextPath + "/user/loginGoogle.us", // 컨트롤러
+		type: "post",
+		data: {
+			id: responsePayload.sub,
+			userName: responsePayload.name
+		},
+		contentType: "application/x-www-form-urlencoded"
+	})
+
+	frm_login_google.submit();
+}
+
+function parseJwt(token) {
+	var base64Url = token.split('.')[1];
+	var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+	var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+		return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+	}).join(''));
+
+	return JSON.parse(jsonPayload);
+};
+
+window.onload = function() {
+	google.accounts.id.initialize({
+		client_id: "991196669475-dpc033jgo41gidvac293s8pmkv1uo192.apps.googleusercontent.com",
+		callback: handleCredentialResponse
+	});
+	google.accounts.id.renderButton(
+		document.getElementsByClassName("style_wrapper__IgK7U.social-login-button.google-login"),
+		{ theme: "outline", size: "large", width: 368, type: "icon"}  // 로고 커스터마이징
+	);
+	google.accounts.id.prompt(); // 원탭 화면으로 출력
+}
 
 
 
