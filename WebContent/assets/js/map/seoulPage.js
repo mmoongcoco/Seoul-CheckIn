@@ -17,7 +17,6 @@ banner.style.transform = "translate(-405px)";
 
 // 이전 버튼, 다음 버튼 구현
 const arrows = document.querySelectorAll("div.arrow");
-console.log(arrows)
 var arrowButtonCheck = true;
 let current = document.querySelector(".swiper-pagination-current");
 arrows.forEach(arrow => {
@@ -166,7 +165,7 @@ $(".map_menu .tab.t2 li a").on('click', function(){
     }
 });
 
-$("#conlistul li").on('click', function(){
+$("#conlistul").on('click', 'li',function(){
     $(".pc_depth2.view").css('display','block');
     $("#close_btn_fold").css('left', '810px');
     $("#closeButton1").css('display', 'block');
