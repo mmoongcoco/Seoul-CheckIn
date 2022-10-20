@@ -40,24 +40,24 @@
                         </div>
                     </div>
                 </div>
-                <div class="list">
-                    <a href="myPageClass.html">
+               <div class="list">
+                    <a href="/member/myclass.me">
                         <span style="margin-top: 23px;" >강의</span>
                         <strong style="margin-top: 23px;">0</strong>
                     </a>
-                    <a href="myPageCommunity.html">
+                    <a href="/member/mycommunity.me">
                         <span style="margin-top: 23px;">커뮤니티</span>
                         <strong style="margin-top: 23px;">0</strong>
                     </a>
-                    <a href="myPageMessage.html">
+                    <a href="/member/mymsg.me">
                         <span style="margin-top: 23px;">쪽지</span>
                         <strong style="margin-top: 23px;">0</strong>
                     </a>
-                    <a href="myPagePassword.html" class="myPagelist_end">
+                    <a href="/member/updateinfo.me" class="myPagelist_end">
                         <span style="margin-top: 23px;">정보 수정</span>
                         <strong style="margin-top: 23px;">0</strong>
                     </a>
-                    <a href="myPageDelete.html">
+                    <a href="/member/dropinfo.me">
                         <span style="margin-top: 23px;">회원 탈퇴</span>
                     </a>
                 </div>
