@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/member/myPageChange.css">
 </head>
 <body>
-<jsp:include page="${pageContext.request.contextPath}/app/fix/header.jsp"/>
+ <jsp:include page="${pageContext.request.contextPath}/app/fix/header.jsp"/>
     <div class="container">
         <nav role="presentation">
             <h2 class="profile">
@@ -39,23 +39,23 @@
                     </div>
                 </div>
                 <div class="list">
-                    <a href="myPageClass.html">
+                    <a href="/member/myclass.me">
                         <span style="margin-top: 23px;" >강의</span>
                         <strong style="margin-top: 23px;">0</strong>
                     </a>
-                    <a href="myPageCommunity.html">
+                    <a href="/member/mycommunity.me">
                         <span style="margin-top: 23px;">커뮤니티</span>
                         <strong style="margin-top: 23px;">0</strong>
                     </a>
-                    <a href="myPageMessage.html">
+                    <a href="/member/mymsg.me">
                         <span style="margin-top: 23px;">쪽지</span>
                         <strong style="margin-top: 23px;">0</strong>
                     </a>
-                    <a href="myPagePassword.html" class="myPagelist_end">
+                    <a href="/member/updateinfo.me" class="myPagelist_end">
                         <span style="margin-top: 23px;">정보 수정</span>
                         <strong style="margin-top: 23px;">0</strong>
                     </a>
-                    <a href="myPageDelete.html">
+                    <a href="/member/dropinfo.me">
                         <span style="margin-top: 23px;">회원 탈퇴</span>
                     </a>
                 </div>
@@ -85,22 +85,22 @@
                     </div>
                     <div class="form">
                         <div class="formContent">
-                            <form action="${pageContext.request.contextPath}/member/updateinfoOk.me" name="updateForm" method="post" enctype="multipart/form-data">
+                            <form action="${pageContext.request.contextPath}/member/updateinfoOk.me" name="updateForm" method="post">
                                 <label for="name" class="input">
                                     <h6>이름</h6>
-                                    <input type="text" id="name" <%-- value = "${member.getMemberName()}" --%>>
+                                    <input type="text" id="name" name ="name"  placeholder="">
                                 </label>
                                 <label for="email" class="input">
                                     <h6>이메일</h6>
-                                    <input type="email" id="email" <%-- value = "${member.getMemberEmail()}" --%>>
+                                    <input type="email" id="email" name ="email" placeholder="">
                                 </label>
                                 <label for="password" class="input" >
                                     <h6>비밀번호</h6>
-                                    <input type="text" id="password" <%-- value = "${member.getMemberPassword()}" --%>>
+                                    <input type="text" id="password" name ="password"  placeholder="">
                                 </label>
-                                <label for="mobile" class="input">
+                                <label for="phone" class="input">
                                     <h6>휴대폰 번호</h6>
-                                    <input type="text" id="mobile" <%-- value = "${member.getMemberPassword()}" --%>>
+                                    <input type="text" id="phone" name ="phone"  placeholder="">
                                 </label>
                             </form>
                         </div>
@@ -145,14 +145,40 @@
      });
     
     
+    
+    /* 회원정보 수정 */
+    
+    
+    
+    
+    
 	function send(){
-		let form = document.updateForm;
+		/*let form = document.updateForm;*/
 		
-		
-		form.submit();
+		alert('수정되었습니다');
+		updateForm.submit();
 	}
-
+ 
 
 
 </script>
+<!-- 회원정보를 뿌릴 AJAX -->
+<script>
+showList()
+function showList(){
+	$.ajax({
+		url: "/member/updatelist.me",
+		type: "get",
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		success: function(result){
+			console.log(result);
+			console.log(result.memberName);
+		}
+		
+	})
+}
+
+</script>
+
 </html>

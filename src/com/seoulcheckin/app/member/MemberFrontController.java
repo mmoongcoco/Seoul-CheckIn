@@ -48,7 +48,7 @@ public class MemberFrontController extends HttpServlet {
 			new LoginGoogleController().execute(req, resp);
 			
 		}else if(request.equals("/member/loginNaver.me")) {
-			new LoginNaverController().execute(req, resp);
+			/* new LoginNaverController().execute(req, resp); */
 			
 		// 로그아웃
 		}else if(request.equals("member/logout.me")) {
@@ -56,8 +56,8 @@ public class MemberFrontController extends HttpServlet {
 			
 		// 마이페이지 페이지 요청
 		}else if(request.equals("/member/mypage.me")) {
-			new MyPageController().execute(req, resp);
-		
+			result = new Result();
+			result.setPath("/app/member/myPageMain.jsp");
 		// 마이페이지 프로필 변경
 		}else if(request.equals("/member/profile.me")) {
 		
@@ -69,10 +69,16 @@ public class MemberFrontController extends HttpServlet {
 		
 		// 마이페이지 강의내역 페이지 요청
 		}else if(request.equals("/member/myclass.me")) {
-		
+			result = new Result();
+			result.setPath("/app/member/myPageClass.jsp");
+		// 커뮤니티 페이지 요청
+		}else if(request.equals("/member/mycommunity.me")) {	
+			result = new Result();
+			result.setPath("/app/member/myPageCommunity.jsp");	
 		// 마이페이지 쪽지함 페이지 요청
 		}else if(request.equals("/member/mymsg.me")) {
-			
+			result = new Result();
+			result.setPath("/app/member/myPageMessage.jsp");
 		// 쪽지함에서 쪽지 보기
 		}else if(request.equals("/member/msgview.me")) {
 		
@@ -81,12 +87,20 @@ public class MemberFrontController extends HttpServlet {
 		
 		// 비밀번호 확인 후 정보수정 페이지 요청
 		}else if(request.equals("/member/updateinfo.me")) {
-		
+			result = new Result();
+			result.setPath("/app/member/myPageChange.jsp");
 		// 마이페이지 정보수정 submit
 		}else if(request.equals("/member/updateinfoOk.me")) {
-			
+			new UpdateInfoOkController().execute(req, resp);
+			result = new Result();
+			result.setPath("/app/member/myPageMain.jsp");
+		// 정보 수정페이지에 들어와서 AJAX로 정보 뿌리기 
+		}else if(request.equals("/member/updatelist.me")) {
+			new UpdateInfoController().execute(req, resp);
 		// 비밀번호 확인 후 회원탈퇴 페이지 요청
 		}else if(request.equals("/member/dropinfo.me")) {
+			result = new Result();
+			result.setPath("/app/member/myPageDelete.jsp");
 		
 		// 마이페이지 회원탈퇴 submit, 관리자페이지 회원 삭제
 		}else if(request.equals("/member/dropinfoOk.me")) {

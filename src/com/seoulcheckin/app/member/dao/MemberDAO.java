@@ -26,11 +26,17 @@ public class MemberDAO {
 		return sqlSession.selectOne("Member.login", memberVO);
 	}
 
+	public int loginGoogle(MemberVO memberVO) {
+		return sqlSession.selectOne("Member.loginGoogle", memberVO);
+	}
+	
 	public void update(MemberVO memberVO) {
 		   sqlSession.update("Member.update", memberVO);
 	}
 	
-	public int loginGoogle(MemberVO memberVO) {
-		return sqlSession.selectOne("Member.loginGoogle", memberVO);
+	public MemberVO info(int memberNumber){
+		return sqlSession.selectOne("Member.info",memberNumber);
 	}
+	
+	
 }
