@@ -14,12 +14,16 @@
 	<!-- header -->
 	<jsp:include page="${pageContext.request.contextPath}/app/fix/header.jsp"/>
 	
-	<main style="width:100%; height:100%;">
+	<main style="width:100%; height:100%;z-index:0">
 		<!-- map 표현 API 구현부분 -->
-		<div class="MAP-API">
-			<img
+		<div class="MAP-API" style="z-index:0">
+			<%-- <img
 				src="${pageContext.request.contextPath}/assets/images/map/api-Map.png"
-				alt="API대신표현IMG">
+				alt="API대신표현IMG"> --%>
+				
+				<div id="map" style="width:100%;height:100%;"></div>
+				
+				
 		</div>
 
 		<div class="map_cont_wrap">
@@ -33,25 +37,25 @@
 
 						<ul class="tab t1">
 							<li label="tour" class=" "><a href="javascript:;"
-								onclick="CategoryChange(this,7);" class="icon1-1">즐길거리</a></li>
+								onclick="clickEnjoy()" id="theOne" class="icon1-1">즐길거리</a></li>
 							<li label="tour" class=" "><a href="javascript:;"
-								onclick="CategoryChange(this,4);" class="icon1-2">부동산</a></li>
+								onclick="clickBuilding()" id="theTwo" class="icon1-2">부동산</a></li>
 							<li label="tour" class=" "><a href="javascript:;"
-								onclick="CategoryChange(this,9);" class="icon1-3">일자리</a></li>
+								onclick="clickWork()" id="theThree" class="icon1-3">일자리</a></li>
 							<li label="tour" class=" "><a href="javascript:;"
-								onclick="CategoryChange(this,1);" class="icon1-4">관광지</a></li>
+								onclick="clickLandmark()" class="icon1-4">관광지</a></li>
 						</ul>
 						<ul class="tab t2">
 							<li label="tour" class=" "><a href="javascript:;"
-								onclick="CategoryChange(this,6);" class="icon2-1 beforeIcon">체육시설</a></li>
+								onclick="clickExercise()" class="icon2-1 beforeIcon">체육시설</a></li>
 							<li label="tour" class=" "><a href="javascript:;"
-								onclick="CategoryChange(this,3);" class="icon2-2">카페</a></li>
+								onclick="clickCafe()" class="icon2-2">카페</a></li>
 							<li label="tour" class=" "><a href="javascript:;"
-								onclick="CategoryChange(this,2);" class="icon2-3">맛집</a></li>
+								onclick="clickResturant()" class="icon2-3">맛집</a></li>
 							<li label="tour" class=" "><a href="javascript:;"
-								onclick="CategoryChange(this,5);" class="icon2-4">노래방</a></li>
+								onclick="clickSong()" class="icon2-4">노래방</a></li>
 							<li label="tour" class=" "><a href="javascript:;"
-								onclick="CategoryChange(this,8);" class="icon2-5">영화관</a></li>
+								onclick="clickMovie()" class="icon2-5">영화관</a></li>
 						</ul>
 
 					</div>
@@ -59,205 +63,7 @@
 					<div class="menu_cont">
 						<div class="list_type1">
 							<ul id="conlistul">
-
-								<!-- ==== 콘텐츠 _1 ====-->
-								<li>
-									<!-- 이스탄불 문화원 이미지 --> <a href="javascript:;"
-									onclick="openDetail"
-									('cfeb494f-64a0-40bc-b05d-00f1e19d70f3','');"
-                                        style="background-image: url(https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=1ceb891b-05fc-4fc3-ae33-815789754f45)"
-									;" class="img"> </a> <!-- 리스트 제목부분 -->
-									<div class="info">
-										<div class="tit">
-											<a href="javascript:;"
-												onclick="openDetail('cfeb494f-64a0-40bc-b05d-00f1e19d70f3','');">이스탄불문화원
-											</a> <span>관광지</span>
-										</div>
-										<em>주소입력_부분입니다*주소입력_부분입니다</em>
-										<!-- 즐겨찾기 버튼 -->
-										<!-- <div class="btn">
-                                            <button type="button"
-                                                onclick="setFavoContent('cfeb494f-64a0-40bc-b05d-00f1e19d70f3',this);">즐겨찾기
-                                            </button>
-                                        </div> -->
-									</div>
-								</li>
-
-								<!-- ==== 콘텐츠 _2 ====-->
-								<li class="parking"><a href="javascript:;"
-									onclick="openDetail('f55643ec-c213-11ec-9275-0242ac110005','')"
-									style="background-image: url(https://korean.visitkorea.or.kr/resources/images/location/img_parking.gif)"
-									class="img"> </a>
-									<div class="info">
-										<div class="tit">
-											<a href="javascript:;"
-												onclick="openDetail('f55643ec-c213-11ec-9275-0242ac110005','');">테헤란로26길
-											</a> <span>부동산</span>
-										</div>
-										<em>주소입력_부분입니다*주소입력_부분입니다</em>
-									</div></li>
-
-								<!-- ==== 콘텐츠 _3 ====-->
-								<li><a href="javascript:;"
-									onclick="openDetail('f7dba3b2-09f3-42d4-806a-7fb0d55c4554','');"
-									style="background-image: url(https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=38cbcace-02df-473c-aea1-784bf397225d);"
-									class="img"></a>
-									<div class="info">
-										<div class="tit">
-											<a href="javascript:;"
-												onclick="openDetail('f7dba3b2-09f3-42d4-806a-7fb0d55c4554','');">빌즈
-												강남</a><span>일자리</span>
-										</div>
-										<em>주소입력_부분입니다*주소입력_부분입니다</em>
-									</div></li>
-								<!-- ==== 콘텐츠 _4 ====-->
-								<li><a href="javascript:;"
-									onclick="openDetail('9931ce24-5c98-49b3-b450-f608491c4035','');"
-									style="background-image: url(https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=ce4df630-bfcd-4d1b-a2db-ab9bd63029d3);"
-									class="img"></a>
-									<div class="info">
-										<div class="tit">
-											<a href="javascript:;"
-												onclick="openDetail('9931ce24-5c98-49b3-b450-f608491c4035','');">최수사
-												대게마을</a><span>맛집</span>
-										</div>
-										<em>주소입력_부분입니다*주소입력_부분입니다</em>
-									</div></li>
-								<!-- ==== 콘텐츠 _5 ====-->
-								<li><a href="javascript:;"
-									onclick="openDetail('b9cc3769-6e22-4bac-aea6-d514cd9f441c','');"
-									style="background-image: url(https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=7409cedb-6d39-4a98-8cce-9addf0c557ff);"
-									class="img"></a>
-									<div class="info">
-										<div class="tit">
-											<a href="javascript:;"
-												onclick="openDetail('b9cc3769-6e22-4bac-aea6-d514cd9f441c','');">돝고기506</a><span>음식점</span>
-										</div>
-										<em>주소입력_부분입니다*주소입력_부분입니다</em>
-									</div></li>
-								<!-- ==== 콘텐츠 _6 ====-->
-								<li><a href="javascript:;"
-									onclick="openDetail('4efc952e-eb10-4954-b8c2-5d73c38d097a','');"
-									style="background-image: url(https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=598f35e2-3ddf-44bc-b9f7-db92e6996acb);"
-									class="img"></a>
-									<div class="info">
-										<div class="tit">
-											<a href="javascript:;"
-												onclick="openDetail('4efc952e-eb10-4954-b8c2-5d73c38d097a','');">역삼개나리공원</a><span>관광지</span>
-										</div>
-										<em>주소입력_부분입니다*주소입력_부분입니다</em>
-									</div></li>
-								<!-- ==== 콘텐츠 _7 ====-->
-								<li><a href="javascript:;"
-									onclick="openDetail('221faa1d-9988-41e0-847f-51d1786f87cb','');"
-									style="background-image: url(https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=416ed64c-1db8-43a2-8eb9-5457b988a63e);"
-									class="img"></a>
-									<div class="info">
-										<div class="tit">
-											<a href="javascript:;"
-												onclick="openDetail('221faa1d-9988-41e0-847f-51d1786f87cb','');">청수횟집</a><span>관광지</span>
-										</div>
-										<em>주소입력_부분입니다*주소입력_부분입니다</em>
-									</div></li>
-								<!-- ==== 콘텐츠 _8 ====-->
-								<li><a href="javascript:;"
-									onclick="openDetail('5ca2221f-e011-448c-902c-10323125dc88','');"
-									style="background-image: url(https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=33f44e7e-3776-421f-830a-23b92ae68ba3);"
-									class="img"></a>
-									<div class="info">
-										<div class="tit">
-											<a href="javascript:;"
-												onclick="openDetail('5ca2221f-e011-448c-902c-10323125dc88','');">을밀대
-												역삼점</a><span>관광지</span>
-										</div>
-										<em>주소입력_부분입니다*주소입력_부분입니다</em>
-									</div></li>
-								<!-- ==== 콘텐츠 _9 ====-->
-								<li><a href="javascript:;"
-									onclick="openDetail('35009ad2-7a94-4c06-b3c2-705282a9910d','');"
-									style="background-image: url(https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=0f11049e-0742-4684-a567-ff9120cb41e3);"
-									class="img"></a>
-									<div class="info">
-										<div class="tit">
-											<a href="javascript:;"
-												onclick="openDetail('35009ad2-7a94-4c06-b3c2-705282a9910d','');">지식재산전문도서관</a><span>관광지</span>
-										</div>
-										<em>주소입력_부분입니다*주소입력_부분입니다</em>
-									</div></li>
-								<!-- ==== 콘텐츠 _10 ====-->
-								<li><a href="javascript:;"
-									onclick="openDetail('59853d6f-85d0-4888-ad06-e23c4cf64af8','');"
-									style="background-image: url(https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=9bea9a05-8a6a-4fd0-a02d-f87fa7f1d293);"
-									class="img"></a>
-									<div class="info">
-										<div class="tit">
-											<a href="javascript:;"
-												onclick="openDetail('59853d6f-85d0-4888-ad06-e23c4cf64af8','');">LG아트센터</a><span>관광지</span>
-										</div>
-										<em>주소입력_부분입니다*주소입력_부분입니다</em>
-									</div></li>
-								<!-- ==== 콘텐츠 _11 ====-->
-								<li><a href="javascript:;"
-									onclick="openDetail('03d34553-f64e-4dc4-ae66-9b7e407b7ada','');"
-									style="background-image: url(https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=651c66d1-1412-4227-b73d-23fb14892948);"
-									class="img"></a>
-									<div class="info">
-										<div class="tit">
-											<a href="javascript:;"
-												onclick="openDetail('03d34553-f64e-4dc4-ae66-9b7e407b7ada','');">아드리게호텔</a><span>관광지</span>
-										</div>
-										<em>주소입력_부분입니다*주소입력_부분입니다</em>
-									</div></li>
-								<!-- ==== 콘텐츠 _12 ====-->
-								<li><a href="javascript:;"
-									onclick="openDetail('597f284d-7fe7-42e5-86b2-59033f24178e','');"
-									style="background-image: url(https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=74ca3a48-1fc3-4d89-b821-11971e9f4cc1);"
-									class="img"></a>
-									<div class="info">
-										<div class="tit">
-											<a href="javascript:;"
-												onclick="openDetail('597f284d-7fe7-42e5-86b2-59033f24178e','');">램브란트
-												강남N점</a><span>관광지</span>
-										</div>
-										<em>주소입력_부분입니다*주소입력_부분입니다</em>
-									</div></li>
-								<!-- ==== 콘텐츠 _13 ====-->
-								<li><a href="javascript:;"
-									onclick="openDetail('3b5477e5-0f10-41fe-9dc6-e05268629f44','');"
-									style="background-image: url(https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=a148c30f-b819-473b-b574-6c51b4d536fb);"
-									class="img"></a>
-									<div class="info">
-										<div class="tit">
-											<a href="javascript:;"
-												onclick="openDetail('3b5477e5-0f10-41fe-9dc6-e05268629f44','');">카페413프로젝트</a><span>관광지</span>
-										</div>
-										<em>주소입력_부분입니다*주소입력_부분입니다</em>
-									</div></li>
-								<!-- ==== 콘텐츠 _14 ====-->
-								<li><a href="javascript:;"
-									onclick="openDetail('09663658-aa41-48cb-858f-09b0c7dc75e9','');"
-									style="background-image: url(https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=22ab9653-a4a7-48a7-a445-d827223ec828);"
-									class="img"></a>
-									<div class="info">
-										<div class="tit">
-											<a href="javascript:;"
-												onclick="openDetail('09663658-aa41-48cb-858f-09b0c7dc75e9','');">해담채
-												강남점</a><span>관광지</span>
-										</div>
-										<em>주소입력_부분입니다*주소입력_부분입니다</em>
-									</div></li>
-								<!-- ==== 콘텐츠 _15 ====-->
-								<li><a href="javascript:;"
-									onclick="openDetail('37f1a0cf-4b8f-41b4-ba30-96bdd564e95b','');"
-									style="background-image: url(https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=f005cec9-c57f-4aeb-9f8e-0706c464aad9);"
-									class="img"></a>
-									<div class="info">
-										<div class="tit">
-											<a href="javascript:;"
-												onclick="openDetail('37f1a0cf-4b8f-41b4-ba30-96bdd564e95b','');">대우부대찌개</a><span>관광지</span>
-										</div>
-										<em>주소입력_부분입니다*주소입력_부분입니다</em>
-									</div></li>
+								
 							</ul>
 						</div>
 					</div>
@@ -337,7 +143,7 @@
 									<div class="profile">
 										<p>회사명</p>
 									</div>
-									<div class="comment">
+									<div class="comment" id="detailName">
 										<p>호텔 카푸치노</p>
 									</div>
 									<div class="r_btn"></div>
@@ -348,7 +154,7 @@
 									<div class="profile">
 										<p>주소지</p>
 									</div>
-									<div class="comment">
+									<div class="comment" id="detailAddress">
 										<p>주소입력_부분입니다 주소입력_부분입니다 주소입력_부분입니다 주소입력_부분입니다 주소입력_부분입니다
 											주소입력_부분입니다 주소입력_부분입니다 주소입력_부분입니다 주소입력_부분입니다 주소입력_부분입니다
 											주소입력_부분입니다 주소입력_부분입니다 주소입력_부분입니다 주소입력_부분입니다 주소입력_부분입니다
@@ -369,7 +175,7 @@
 									<div class="profile">
 										<p>전화번호</p>
 									</div>
-									<div class="comment">
+									<div class="comment" id="detailPhone">
 										<p>02-1234-4567</p>
 									</div>
 									<div class="r_btn"></div>
@@ -380,7 +186,7 @@
 									<div class="profile">
 										<p>급여</p>
 									</div>
-									<div class="comment">
+									<div class="comment" id="detailPay">
 										<p>연봉</p>
 										<p>3500만원</p>
 									</div>
@@ -392,7 +198,7 @@
 									<div class="profile">
 										<p>회사소개</p>
 									</div>
-									<div class="comment">
+									<div class="comment" id="detailIntroduce">
 										<p>회사소개부분입니다 회사소개 부분입니다</p>
 									</div>
 									<div class="r_btn"></div>
@@ -403,7 +209,7 @@
 									<div class="profile">
 										<p>마감일</p>
 									</div>
-									<div class="comment">
+									<div class="comment" id="detailClosingDate">
 										<p>2022년 10월 30일</p>
 									</div>
 									<div class="r_btn"></div>
@@ -435,14 +241,767 @@
 
 		<!-- =========  /depth2  ========= -->
 		<div class="map_btn">
-			<button type="button" class="location" onclick="myLocation();">현재위치이동</button>
+			<!-- <button type="button" class="location" onclick="myLocation();" style="z-index:1">현재위치이동</button> -->
 			<button type="button" class="setup" style="display: none;"
-				onclick="CategoryChange(this,10);">여행지도 설정을 바꿀 수 있어요.</button>
-			<button type="button" class="refresh" onclick="changeCenter();">현재
+				onclick="">여행지도 설정을 바꿀 수 있어요.</button>
+			<button type="button" class="refresh" onclick="panTo();" style="z-index:1">현재
 				지도에서 검색</button>
 		</div>
 	</main>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/map/seoulPage.js"></script>
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3116cba29c96217e8947d5b51e07ce81"></script>
+<script>
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
+    mapOption = { 
+        center: new kakao.maps.LatLng(37.498004414546934, 127.02770621963765), // 지도의 중심좌표 
+        level: 3 // 지도의 확대 레벨 
+    }; 
+
+var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+// 즐길거리 마커가 표시될 좌표 배열입니다
+
+let enjoyOne = new kakao.maps.LatLng(37.499590490909185, 127.0263723554437);
+let enjoyTwo = new kakao.maps.LatLng(37.499427948430814, 127.02794423197847);
+let enjoyThree = new kakao.maps.LatLng(37.498553760499505, 127.02882598822454);
+let enjoyFour = new kakao.maps.LatLng(37.497625593121384, 127.02935713582038);
+let enjoyFive = new kakao.maps.LatLng(37.49646391248451, 127.02675574250912);
+let enjoySix = new kakao.maps.LatLng(37.49629291770947, 127.02587362608637);
+let enjoySeven = new kakao.maps.LatLng(37.49754540521486, 127.02546694890695);
+
+var enjoyPositions = [ 
+	enjoyOne,
+	enjoyTwo,
+	enjoyThree,
+	enjoyFour,
+	enjoyFive,
+	enjoySix,
+	enjoySeven 
+];
+
+// 부동산 마커가 표시될 좌표 배열입니다
+
+    let buildingOne = new kakao.maps.LatLng(37.497535461505684, 127.02948149502778);
+    let buildingTwo = new kakao.maps.LatLng(37.49671536281186, 127.03020491448352);
+    let buildingThree = new kakao.maps.LatLng(37.496201943633714, 127.02959405469642);
+    let buildingFour = new kakao.maps.LatLng(37.49640072567703, 127.02726459882308);
+    let buildingFive = new kakao.maps.LatLng(37.49640098874988, 127.02609983175294);
+    let buildingSix = new kakao.maps.LatLng(37.49932849491523, 127.02935780247945);
+    let buildingSeven = new kakao.maps.LatLng(37.49996818951873, 127.02943721562295);
+
+var buildingPositions = [
+	buildingOne,
+	buildingTwo,
+	buildingThree,
+	buildingFour,
+	buildingFive,
+	buildingSix,
+	buildingSeven
+];
+
+// 일거리 마커가 표시될 좌표 배열입니다
+
+    let workOne = new kakao.maps.LatLng(37.49966168796031, 127.03007039430118);
+    let workTwo = new kakao.maps.LatLng(37.499463762912974, 127.0288828824399);
+    let workThree = new kakao.maps.LatLng(37.49896834100913, 127.02833986892401);
+    let workFour = new kakao.maps.LatLng(37.49893267508434, 127.02673400572665);
+    let workFive = new kakao.maps.LatLng(37.49872543597439, 127.02676785815386);
+    let workSix = new kakao.maps.LatLng(37.49813096097184, 127.02591949495914);
+    let workSeven = new kakao.maps.LatLng(37.497680616783086, 127.02518427952202);     
+
+var workPositions = [
+	workOne,
+	workTwo,
+	workThree,
+	workFour,
+	workFive,
+	workSix,
+	workSeven
+];
+
+//관광지
+	let landmarkOne = new kakao.maps.LatLng(37.49976168796031, 127.03007039430118);
+	let landmarkTwo = new kakao.maps.LatLng(37.499563762912974, 127.0288828824399);
+	let landmarkThree = new kakao.maps.LatLng(37.49906834100913, 127.02833986892401);
+	let landmarkFour = new kakao.maps.LatLng(37.49903267508434, 127.02673400572665);
+	let landmarkFive = new kakao.maps.LatLng(37.49882543597439, 127.02676785815386);
+	let landmarkSix = new kakao.maps.LatLng(37.49823096097184, 127.02591949495914);
+	let landmarkSeven = new kakao.maps.LatLng(37.497780616783086, 127.02518427952202);     
+	
+	var landmarkPositions = [
+		landmarkOne,
+		landmarkTwo,
+		landmarkThree,
+		landmarkFour,
+		landmarkFive,
+		landmarkSix,
+		landmarkSeven
+	];    
+
+	//체육시설
+	let exerciseOne = new kakao.maps.LatLng(37.498908028716286, 127.0261473530882);
+	    let exerciseTwo = new kakao.maps.LatLng(37.49771536281186, 127.03120491448352);
+	    let exerciseThree = new kakao.maps.LatLng(37.49829961073887, 127.02720450490041);
+	    let exerciseFour = new kakao.maps.LatLng(37.497776644986615, 127.02881579446058);
+	    let exerciseFive = new kakao.maps.LatLng(37.49824928523252, 127.03036526766343);
+	    let exerciseSix = new kakao.maps.LatLng(37.499015318654024, 127.029664431431);
+	    let exerciseSeven = new kakao.maps.LatLng(37.49945002066573, 127.02979748272041);
+
+	var exercisePositions = [
+		exerciseOne,
+		exerciseTwo,
+		exerciseThree,
+		exerciseFour,
+		exerciseFive,
+		exerciseSix,
+		exerciseSeven
+	];
+
+	//카페
+	let cafeOne = new kakao.maps.LatLng(37.50009709876457, 127.02728856070887);
+    let cafeTwo = new kakao.maps.LatLng(37.5001488297349, 127.02761936732382);
+    let cafeThree = new kakao.maps.LatLng(37.499418937032075, 127.02794988305743);
+    let cafeFour = new kakao.maps.LatLng(37.49833797889445, 127.02687515260668);
+    let cafeFive = new kakao.maps.LatLng(37.49635578593004, 127.02678114786119);
+    let cafeSix = new kakao.maps.LatLng(37.49767537323036, 127.02843833064796);
+    let cafeSeven = new kakao.maps.LatLng(37.497528788134666, 127.02914223473188);
+
+var cafePositions = [
+	cafeOne,
+	cafeTwo,
+	cafeThree,
+	cafeFour,
+	cafeFive,
+	cafeSix,
+	cafeSeven
+];
+	
+	
+	//맛집
+	let resturantOne = new kakao.maps.LatLng(37.49664129817143, 127.02913623563269);
+    let resturantTwo = new kakao.maps.LatLng(37.497041944337724, 127.03033509394818);
+    let resturantThree = new kakao.maps.LatLng(37.49831581479236, 127.0252382092029);
+    let resturantFour = new kakao.maps.LatLng(37.49801638083544, 127.02452283551182);
+    let resturantFive = new kakao.maps.LatLng(37.498462127732665, 127.02570474355424);
+    let resturantSix = new kakao.maps.LatLng(37.5019689865967, 127.02708002066397);
+    let resturantSeven = new kakao.maps.LatLng(37.501841102584464, 127.0247587530673);
+
+var resturantPositions = [
+	resturantOne,
+	resturantTwo,
+	resturantThree,
+	resturantFour,
+	resturantFive,
+	resturantSix,
+	resturantSeven
+];
+	
+	//노래방
+	let songOne = new kakao.maps.LatLng(37.500910700258096, 127.02529562806772);
+    let songTwo = new kakao.maps.LatLng(37.50114229886268, 127.02714474962464);
+    let songThree = new kakao.maps.LatLng(37.50024390781838, 127.02551875585276);
+    let songFour = new kakao.maps.LatLng(37.4998107878223, 127.02831474220929);
+    let songFive = new kakao.maps.LatLng(37.49589834099178, 127.02758104979603);
+    let songSix = new kakao.maps.LatLng(37.49612516511881, 127.03035451278005);
+    let songSeven = new kakao.maps.LatLng(37.49680530796288, 127.03080712726737);
+
+var songPositions = [
+	songOne,
+	songTwo,
+	songThree,
+	songFour,
+	songFive,
+	songSix,
+	songSeven
+];
+	
+	//영화관
+	
+	let movieOne = new kakao.maps.LatLng(37.497948396337506, 127.02641983972916);
+    let movieTwo = new kakao.maps.LatLng(37.50037199443015, 127.02690132688514);
+    let movieThree = new kakao.maps.LatLng(37.501642530665606, 127.02637873177035);
+    let movieFour = new kakao.maps.LatLng(37.49575377733632, 127.02925462820627);
+    let movieFive = new kakao.maps.LatLng(37.49790700355562, 127.02999074003548);
+    let movieSix = new kakao.maps.LatLng(37.499272198876014, 127.02932385740363);
+    let movieSeven = new kakao.maps.LatLng(37.49944882163737, 127.02527817160433);
+
+var moviePositions = [
+	movieOne,
+	movieTwo,
+	movieThree,
+	movieFour,
+	movieFive,
+	movieSix,
+	movieSeven
+];
+	
+	
+	
+	
+var markerImageSrc = '${pageContext.request.contextPath}/assets/images/map/newAfter.png';  // 마커이미지의 주소입니다. 스프라이트 이미지 입니다
+	enjoyMarkers = [], // 커피숍 마커 객체를 가지고 있을 배열입니다
+    buildingMarkers = [], // 편의점 마커 객체를 가지고 있을 배열입니다
+    workMarkers = [], // 주차장 마커 객체를 가지고 있을 배열입니다
+    landmarkMarkers = [],
+    exerciseMarkers = [],
+    cafeMarkers = [],
+    resturantMarkers = [],
+    songMarkers = [],
+    movieMarkers = [];
+
+    
+createEnjoyMarkers(); // 커피숍 마커를 생성하고 커피숍 마커 배열에 추가합니다
+createBuildingMarkers(); // 편의점 마커를 생성하고 편의점 마커 배열에 추가합니다
+createWorkMarkers(); // 주차장 마커를 생성하고 주차장 마커 배열에 추가합니다
+createLandmarkMarkers();
+createExerciseMarkers();
+createCafeMarkers();
+createResturantMarkers();
+createSongMarkers();
+createMovieMarkers();
+
+
+
+// 마커이미지의 주소와, 크기, 옵션으로 마커 이미지를 생성하여 리턴하는 함수입니다
+function createMarkerImage(src, size, options) {
+    var markerImage = new kakao.maps.MarkerImage(src, size, options);
+    return markerImage;            
+}
+
+// 좌표와 마커이미지를 받아 마커를 생성하여 리턴하는 함수입니다
+function createMarker(position, image) {
+    var marker = new kakao.maps.Marker({
+        position: position,
+        image: image
+    });
+    
+    return marker;  
+}   
+   
+// 즐길거리 마커를 생성하고 즐길거리 마커 배열에 추가하는 함수입니다
+function createEnjoyMarkers() {
+    
+    for (var i = 0; i < enjoyPositions.length; i++) {  
+        
+        var imageSize = new kakao.maps.Size(99, 30),
+            imageOptions = {  
+                spriteOrigin: new kakao.maps.Point(0, 180),    
+                spriteSize: new kakao.maps.Size(40, 300)  
+            };     
+        
+        // 마커이미지와 마커를 생성합니다
+        var markerImage = createMarkerImage(markerImageSrc, imageSize, imageOptions),    
+            marker = createMarker(enjoyPositions[i], markerImage);  
+       
+        //마커 이미지를 a 태그로 감싼다
+        var contentimgTag = marker.a.innerHTML;
+
+        marker.a.innerHTML = `<a href="javascript:void(0);` + (i+1) + `" class="enjoy" onclick="send(this)">` + contentimgTag + `</a>`;
+        
+        // 생성된 마커를 즐길거리 마커 배열에 추가합니다
+        enjoyMarkers.push(marker);
+    }     
+}
+
+// 즐길거리 마커들의 지도 표시 여부를 설정하는 함수입니다
+function setEnjoyMarkers(map) {        
+    for (var i = 0; i < enjoyMarkers.length; i++) {  
+    	enjoyMarkers[i].setMap(map);
+    }        
+}
+
+// 부동산 마커를 생성하고 부동산 마커 배열에 추가하는 함수입니다
+function createBuildingMarkers() {
+    for (var i = 0; i < buildingPositions.length; i++) {
+        
+    	var imageSize = new kakao.maps.Size(99, 30),
+        imageOptions = {  
+            spriteOrigin: new kakao.maps.Point(0, 90),    
+            spriteSize: new kakao.maps.Size(40, 300)  
+        };           
+     
+        // 마커이미지와 마커를 생성합니다
+        var markerImage = createMarkerImage(markerImageSrc, imageSize, imageOptions),    
+            marker = createMarker(buildingPositions[i], markerImage);  
+
+      //마커 이미지를 a 태그로 감싼다
+        var contentimgTag = marker.a.innerHTML;
+
+        marker.a.innerHTML = `<a href="javascript:void(0);` + (i+8) + `" class="building" onclick="send(this)">` + contentimgTag + `</a>`;
+        // 생성된 마커를 부동산 마커 배열에 추가합니다
+       buildingMarkers.push(marker);    
+    }        
+}
+
+// 부동산 마커들의 지도 표시 여부를 설정하는 함수입니다
+function setBuildingMarkers(map) {        
+    for (var i = 0; i < buildingMarkers.length; i++) {  
+        buildingMarkers[i].setMap(map);
+    }        
+}
+
+// 일거리 마커를 생성하고 일거리 마커 배열에 추가하는 함수입니다
+function createWorkMarkers() {
+    for (var i = 0; i < workPositions.length; i++) {
+        
+    	var imageSize = new kakao.maps.Size(99, 30),
+        imageOptions = {  
+            spriteOrigin: new kakao.maps.Point(0, 240),    
+            spriteSize: new kakao.maps.Size(40, 300)  
+        };           
+     
+        // 마커이미지와 마커를 생성합니다
+        var markerImage = createMarkerImage(markerImageSrc, imageSize, imageOptions),    
+            marker = createMarker(workPositions[i], markerImage);  
+
+      //마커 이미지를 a 태그로 감싼다
+        var contentimgTag = marker.a.innerHTML;
+
+        marker.a.innerHTML = `<a href="javascript:void(0);` + (i+15) + `" class="work" onclick="send(this)">` + contentimgTag + `</a>`;
+        
+        // 생성된 마커를 일거리 마커 배열에 추가합니다
+        workMarkers.push(marker);        
+    }                
+}
+
+// 일거리 마커들의 지도 표시 여부를 설정하는 함수입니다
+function setWorkMarkers(map) {        
+    for (var i = 0; i < workMarkers.length; i++) {  
+        workMarkers[i].setMap(map);
+    }        
+}
+
+//관광지 마커를 생성하고 관광지 마커 배열에 추가하는 함수입니다
+function createLandmarkMarkers() {
+    
+    for (var i = 0; i < landmarkPositions.length; i++) {  
+        
+    	var imageSize = new kakao.maps.Size(99, 30),
+        imageOptions = {  
+            spriteOrigin: new kakao.maps.Point(0, 0),    
+            spriteSize: new kakao.maps.Size(40, 300)  
+        };      
+        
+        // 마커이미지와 마커를 생성합니다
+        var markerImage = createMarkerImage(markerImageSrc, imageSize, imageOptions),    
+            marker = createMarker(landmarkPositions[i], markerImage);  
+        
+      //마커 이미지를 a 태그로 감싼다
+        var contentimgTag = marker.a.innerHTML;
+
+        marker.a.innerHTML = `<a href="javascript:void(0);` + (i+22) + `" class="landmark" onclick="send(this)">` + contentimgTag + `</a>`;
+        // 생성된 마커를 관광지 마커 배열에 추가합니다
+        landmarkMarkers.push(marker);
+    }     
+}
+// 관광지 마커들의 지도 표시 여부를 설정하는 함수입니다
+function setLandmarkMarkers(map) {        
+    for (var i = 0; i < landmarkMarkers.length; i++) {  
+    	landmarkMarkers[i].setMap(map);
+    }        
+}
+
+//체육시설
+function createExerciseMarkers() {
+    
+    for (var i = 0; i < exercisePositions.length; i++) {  
+        
+    	var imageSize = new kakao.maps.Size(99, 30),
+        imageOptions = {  
+            spriteOrigin: new kakao.maps.Point(0, 150),    
+            spriteSize: new kakao.maps.Size(40, 300)  
+        };          
+        
+        // 마커이미지와 마커를 생성합니다
+        var markerImage = createMarkerImage(markerImageSrc, imageSize, imageOptions),    
+            marker = createMarker(exercisePositions[i], markerImage);  
+        
+      //마커 이미지를 a 태그로 감싼다
+        var contentimgTag = marker.a.innerHTML;
+
+        marker.a.innerHTML = `<a href="javascript:void(0);` + (i+29) + `" class="exercise" onclick="send(this)">` + contentimgTag + `</a>`;
+        
+        exerciseMarkers.push(marker);
+    }     
+}
+function setExerciseMarkers(map) {        
+    for (var i = 0; i < exerciseMarkers.length; i++) {  
+    	exerciseMarkers[i].setMap(map);
+    }        
+}
+
+//카페
+function createCafeMarkers() {
+    
+    for (var i = 0; i < cafePositions.length; i++) {  
+        
+    	var imageSize = new kakao.maps.Size(99, 30),
+        imageOptions = {  
+            spriteOrigin: new kakao.maps.Point(0, 60),    
+            spriteSize: new kakao.maps.Size(40, 300)  
+        };         
+        
+        // 마커이미지와 마커를 생성합니다
+        var markerImage = createMarkerImage(markerImageSrc, imageSize, imageOptions),    
+            marker = createMarker(cafePositions[i], markerImage);  
+        
+      //마커 이미지를 a 태그로 감싼다
+        var contentimgTag = marker.a.innerHTML;
+
+        marker.a.innerHTML = `<a href="javascript:void(0);` + (i+36) + `" class="cafe" onclick="send(this)">` + contentimgTag + `</a>`;
+        
+        cafeMarkers.push(marker);
+    }     
+}
+function setCafeMarkers(map) {        
+    for (var i = 0; i < cafeMarkers.length; i++) {  
+    	cafeMarkers[i].setMap(map);
+    }        
+}
+//맛집
+function createResturantMarkers() {
+    
+    for (var i = 0; i < resturantPositions.length; i++) {  
+        
+    	var imageSize = new kakao.maps.Size(99, 30),
+        imageOptions = {  
+            spriteOrigin: new kakao.maps.Point(0, 30),    
+            spriteSize: new kakao.maps.Size(40, 300)  
+        };          
+        
+        // 마커이미지와 마커를 생성합니다
+        var markerImage = createMarkerImage(markerImageSrc, imageSize, imageOptions),    
+            marker = createMarker(resturantPositions[i], markerImage);  
+        
+      //마커 이미지를 a 태그로 감싼다
+        var contentimgTag = marker.a.innerHTML;
+
+        marker.a.innerHTML = `<a href="javascript:void(0);` + (i+43) + `" class="resturant" onclick="send(this)">` + contentimgTag + `</a>`;
+        
+        resturantMarkers.push(marker);
+    }     
+}
+function setResturantMarkers(map) {        
+    for (var i = 0; i < resturantMarkers.length; i++) {  
+    	resturantMarkers[i].setMap(map);
+    }        
+}
+//노래방
+function createSongMarkers() {
+    
+    for (var i = 0; i < songPositions.length; i++) {  
+        
+    	var imageSize = new kakao.maps.Size(99, 30),
+        imageOptions = {  
+            spriteOrigin: new kakao.maps.Point(0, 120),    
+            spriteSize: new kakao.maps.Size(40, 300)  
+        };         
+        
+        // 마커이미지와 마커를 생성합니다
+        var markerImage = createMarkerImage(markerImageSrc, imageSize, imageOptions),    
+            marker = createMarker(songPositions[i], markerImage);  
+        
+      //마커 이미지를 a 태그로 감싼다
+        var contentimgTag = marker.a.innerHTML;
+
+        marker.a.innerHTML = `<a href="javascript:void(0);` + (i+50) + `" class="song" onclick="send(this)">` + contentimgTag + `</a>`;
+        
+        songMarkers.push(marker);
+    }     
+}
+function setSongMarkers(map) {        
+    for (var i = 0; i < songMarkers.length; i++) {  
+    	songMarkers[i].setMap(map);
+    }        
+}
+//영화관
+function createMovieMarkers() {
+    
+    for (var i = 0; i < moviePositions.length; i++) {  
+        
+    	var imageSize = new kakao.maps.Size(99, 30),
+        imageOptions = {  
+            spriteOrigin: new kakao.maps.Point(0, 210),    
+            spriteSize: new kakao.maps.Size(40, 300)  
+        };        
+        
+        // 마커이미지와 마커를 생성합니다
+        var markerImage = createMarkerImage(markerImageSrc, imageSize, imageOptions),    
+            marker = createMarker(moviePositions[i], markerImage);  
+        
+      //마커 이미지를 a 태그로 감싼다
+        var contentimgTag = marker.a.innerHTML;
+
+        marker.a.innerHTML = `<a href="javascript:void(0);` + (i+57) + `" class="movie" onclick="send(this)">` + contentimgTag + `</a>`;
+        
+        movieMarkers.push(marker);
+    }     
+}
+function setMovieMarkers(map) {        
+    for (var i = 0; i < movieMarkers.length; i++) {  
+    	movieMarkers[i].setMap(map);
+    }        
+}
+
+//지도 핀 안보이게 설정
+setEnjoyMarkers(null);
+setBuildingMarkers(null);
+setWorkMarkers(null);
+setLandmarkMarkers(null);
+setExerciseMarkers(null);
+setCafeMarkers(null);
+setResturantMarkers(null);
+setSongMarkers(null);
+setMovieMarkers(null);
+
+//카테고리 클릭 여부를 저장할 flag
+let enjoyCheck = false;
+let buildingCheck = false;
+let workCheck = false;
+let landmarkCheck = false;
+let exerciseCheck = false;
+let cafeCheck = false;
+let resturantCheck = false;
+let songCheck = false;
+let movieCheck = false;
+
+//즐길거리 카테고리 클릭 시 핀 나타나고, 왼쪽 탭1에 해당 카테고리 전체 리스트 나오는게 하는 함수
+function clickEnjoy(){
+	enjoyCheck = !enjoyCheck;
+	if(enjoyCheck){
+	setEnjoyMarkers(map);
+	
+	let mapClassification = $(".enjoy").attr("class");
+	 
+	 $.ajax({
+		 url:"/map/mapfilter.mp",
+		 data:{mapClassification: mapClassification},
+		 dataType: "json",
+		 success: showList
+	 })
+	}else{
+		setEnjoyMarkers(null);
+		$("#conlistul").find(".enjoy").remove();
+		
+	}
+}
+//부동산 카테고리 클릭 시 핀 나타나고, 왼쪽 탭1에 해당 카테고리 전체 리스트 나오는게 하는 함수
+function clickBuilding(){
+	buildingCheck = !buildingCheck;
+	if(buildingCheck){
+		setBuildingMarkers(map);
+		let mapClassification = $(".building").attr("class");
+		 
+		 $.ajax({
+			 url:"/map/mapfilter.mp",
+			 data:{mapClassification: mapClassification},
+			 dataType: "json",
+			 success: showList
+		 })
+		
+	}else{
+		setBuildingMarkers(null);
+		$("#conlistul").find(".building").remove();
+	}
+}
+//일자리 카테고리 클릭 시 핀 나타나고, 왼쪽 탭1에 해당 카테고리 전체 리스트 나오는게 하는 함수
+function clickWork(){
+	workCheck = !workCheck;
+	if(workCheck){
+		setWorkMarkers(map);
+		let mapClassification = $(".work").attr("class");
+		 
+		 $.ajax({
+			 url:"/map/mapfilter.mp",
+			 data:{mapClassification: mapClassification},
+			 dataType: "json",
+			 success: showList
+		 })
+	}else{
+		setWorkMarkers(null);
+		$("#conlistul").find(".work").remove();
+	}
+}
+//관광지 카테고리 클릭 시 핀 나타나고, 왼쪽 탭1에 해당 카테고리 전체 리스트 나오는게 하는 함수
+ function clickLandmark(){
+	landmarkCheck = !landmarkCheck;
+	if(landmarkCheck){
+		setLandmarkMarkers(map);
+		let mapClassification = $(".landmark").attr("class");
+		 
+		 $.ajax({
+			 url:"/map/mapfilter.mp",
+			 data:{mapClassification: mapClassification},
+			 dataType: "json",
+			 success: showList
+		 })
+	}else{
+		setLandmarkMarkers(null);
+		$("#conlistul").find(".landmark").remove();
+	}
+}
+//체육시설 카테고리 클릭 시 핀 나타나고, 왼쪽 탭1에 해당 카테고리 전체 리스트 나오는게 하는 함수
+ function clickExercise(){
+	 exerciseCheck = !exerciseCheck;
+	if(exerciseCheck){
+		setExerciseMarkers(map);
+		let mapClassification = $(".exercise").attr("class");
+		 
+		 $.ajax({
+			 url:"/map/mapfilter.mp",
+			 data:{mapClassification: mapClassification},
+			 dataType: "json",
+			 success: showList
+		 })
+	}else{
+		setExerciseMarkers(null);
+		$("#conlistul").find(".exercise").remove();
+	}
+}
+//카페 카테고리 클릭 시 핀 나타나고, 왼쪽 탭1에 해당 카테고리 전체 리스트 나오는게 하는 함수
+ function clickCafe(){
+	 cafeCheck = !cafeCheck;
+	if(cafeCheck){
+		setCafeMarkers(map);
+		let mapClassification = $(".cafe").attr("class");
+		 
+		 $.ajax({
+			 url:"/map/mapfilter.mp",
+			 data:{mapClassification: mapClassification},
+			 dataType: "json",
+			 success: showList
+		 })
+	}else{
+		setCafeMarkers(null);
+		$("#conlistul").find(".cafe").remove();
+	}
+}
+//맛집 카테고리 클릭 시 핀 나타나고, 왼쪽 탭1에 해당 카테고리 전체 리스트 나오는게 하는 함수
+ function clickResturant(){
+	 resturantCheck = !resturantCheck;
+	if(resturantCheck){
+		setResturantMarkers(map);
+		let mapClassification = $(".resturant").attr("class");
+		 
+		 $.ajax({
+			 url:"/map/mapfilter.mp",
+			 data:{mapClassification: mapClassification},
+			 dataType: "json",
+			 success: showList
+		 })
+	}else{
+		setResturantMarkers(null);
+		$("#conlistul").find(".resturant").remove();
+	}
+}
+//노래방 카테고리 클릭 시 핀 나타나고, 왼쪽 탭1에 해당 카테고리 전체 리스트 나오는게 하는 함수
+ function clickSong(){
+	 songCheck = !songCheck;
+	if(songCheck){
+		setSongMarkers(map);
+		let mapClassification = $(".song").attr("class");
+		 
+		 $.ajax({
+			 url:"/map/mapfilter.mp",
+			 data:{mapClassification: mapClassification},
+			 dataType: "json",
+			 success: showList
+		 })
+	}else{
+		setSongMarkers(null);
+		$("#conlistul").find(".song").remove();
+	}
+}
+//영화관 카테고리 클릭 시 핀 나타나고, 왼쪽 탭1에 해당 카테고리 전체 리스트 나오는게 하는 함수
+ function clickMovie(){
+	 movieCheck = !movieCheck;
+	if(movieCheck){
+		setMovieMarkers(map);
+		let mapClassification = $(".movie").attr("class");
+		 
+		 $.ajax({
+			 url:"/map/mapfilter.mp",
+			 data:{mapClassification: mapClassification},
+			 dataType: "json",
+			 success: showList
+		 })
+	}else{
+		setMovieMarkers(null);
+		$("#conlistul").find(".movie").remove();
+	}
+}
+ 
+ /* html말고 각 세트를 array로 담아서 append. 없앨 때는 remove */
+ //각 카테고리 클릭 시 전체 리스트 조회해서 뿌리는 showList 함수
+ function showList(enjoys) {
+	 console.log(enjoys)
+ 	var arText = [];
+	if(enjoys.length > 0){
+		let text = "";
+		enjoys.forEach(enjoy=>{
+			text += `<li class=` + enjoy.mapClassification + `>`;
+			text += `<a href="javascript:;" style="background-image: url(https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=1ceb891b-05fc-4fc3-ae33-815789754f45)"></a>`;
+			text += `<div class="info">`;
+			text += `<div class="tit">`;
+			text += `<a href="javascript:;" id=` +  enjoy.mapNumber  +  `>`+ enjoy.mapName +`</a>`
+			text += `<span>`+ enjoy.mapClassification  + `</span>`
+			text += `</div>`;
+			text += `<em>`+ enjoy.mapAddress +`</em>`;
+			text += `</div>`;
+			text += `</li>`;
+		});
+			arText.push(text);
+		$("#conlistul").prepend(arText);
+	}
+}
+ //전체 리스트 중 특정 정보 클릭 시 우측에 탭2 나오면서(seoulPage.js에 있음) 일치하는 정보 뿌리는 클릭 이벤트
+ $("#conlistul").on('click', 'li',function(){
+	 $.ajax({
+		 url: "/map/mapdetail.mp",
+		 data: {mapNumber: $($(this).find("a")[1]).attr("id")},
+		 dataType: "json",
+		 success: function (lists) {
+			let text = "";
+			lists.forEach(list=>{
+				text += `<div class="mark"></div>`;
+				text += `<em>` + list.mapClassification + `</em>`;
+				text += `<strong class="stit">`
+				text += `<a href ="javascript:void(0)">` + list.mapName + `</a>`
+				text += `</strong>`
+				text += `<strong class="address">` + list.mapAddress + `</strong>`
+			})
+			$(".detail_data").html(text);
+			
+			$("#detailName").html(`<p>` + lists[0].mapName + `</p>`)
+			$("#detailAddress").html(`<p>` + lists[0].mapAddress + `</p>`)
+			$("#detailPhone").html(`<p>` + lists[0].mapPhone + `</p>`)
+			$("#detailPay").html(`<p>` + lists[0].mapJobPayType + `</p><p>` + lists[0].mapPrice +`</p>`)
+			$("#detailIntroduce").html(`<p>` + lists[0].mapIntroduce + `</p>`)
+			$("#detailClosingDate").html(`<p>` + lists[0].mapJobClosingDate + `</p>`)
+		}
+	 })
+	});
+ 
+ //지도에 나타난 핀 클릭 시 일치하는 정보를 탭2에 뿌리는 함수. 핀에 onclick 속성에서 실행됨
+function send(category) {
+	$("#conlistul").find(`#` + $(category).attr("href").substring(19))[0].click();
+}
+//현재 좌표로 이동하는 함수
+function panTo() {
+    // 이동할 위도 경도 위치를 생성합니다 
+    var moveLatLon = new kakao.maps.LatLng(37.498004414546934, 127.02770621963765);
+    
+    // 지도 중심을 부드럽게 이동시킵니다
+    // 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다
+    map.panTo(moveLatLon);            
+}        
+var mapTypeControl = new kakao.maps.MapTypeControl();
+
+//지도에 컨트롤을 추가해야 지도위에 표시됩니다
+//kakao.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
+map.addControl(mapTypeControl, kakao.maps.ControlPosition.BOTTOMRIGHT);
+</script>
 </html>
