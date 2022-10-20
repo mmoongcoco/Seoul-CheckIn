@@ -8,7 +8,7 @@
 	</settings>
 
 	<typeAliases>
-		<typeAlias type="com.seoulcheckin.app.member.vo.MemberVo" alias="memberVO"/>
+		<typeAlias type="com.seoulcheckin.app.map.vo.MapVO" alias="mapVO"/>
 	</typeAliases>
 	
 	<environments default="mysql">

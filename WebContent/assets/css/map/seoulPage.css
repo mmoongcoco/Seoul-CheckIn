@@ -176,7 +176,9 @@ html {
 
 body {
     font-family: 'Pretendard-Regular' !important;
+    overflow-y: hidden !important;
 }
+
 
 p {
     font-family: 'Pretendard-Regular' !important;

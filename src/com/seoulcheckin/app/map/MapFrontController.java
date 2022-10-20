@@ -32,10 +32,10 @@ public class MapFrontController extends HttpServlet {
 			
 		// 카테고리 누를 때마다 하위목록 변경
 		}else if(request.equals("/map/mapfilter.mp")) {
-			
+			new MapFilterController().execute(req, resp);
 		// 목록을 누르면 상세정보 요청
 		}else if(request.equals("/map/mapdetail.mp")) {
-			
+			new MapDetailController().execute(req, resp);
 		// 부동산 등록 페이지 요청(정적)
 		}else if(request.equals("/map/registerhouse.mp")) {
 		
