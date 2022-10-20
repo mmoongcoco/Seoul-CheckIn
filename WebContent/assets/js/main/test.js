@@ -324,23 +324,15 @@ arrow.addEventListener("click", function(){
 let bannerName = "${banner.getBoardName()}";*/
 
 
-console.log("js들어옴1");
-
-
-
-console.log("js들어옴2");
 show();
-console.log("js들어옴3");
+
 
 function show(){
-	console.log("show 들어옴");
 	
 	$.ajax({
 		url: "/banner/select.bn",
 		dataType: "json",
 		success: function change(banners){
-			console.log("ajax들어옴");
-			console.log(banners);
 		
 		/* jsp 에 있는 images들  변경*/
 		const images = $(".images");
@@ -350,13 +342,9 @@ function show(){
 		});
 		
 		/* js 에 있는 images들 변경 */
-		 
-		console.log(banners[0].bannerName);
 		
 		const firstBanner = banners[0].bannerName;
 		const lastBanner = banners[5].bannerName;
-		
-		console.log(firstBanner);
 	
 			firstDiv.innerHTML = `<img src=` + firstBanner + `>`;
 		
