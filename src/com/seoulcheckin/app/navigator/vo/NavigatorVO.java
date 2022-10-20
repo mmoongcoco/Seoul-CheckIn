@@ -1,6 +1,14 @@
 package com.seoulcheckin.app.navigator.vo;
 
 public class NavigatorVO {
+	/*
+	 * 네비게이터 넘버(PK)	navigator_number int unsigned auto_increment primary key,
+	 * 대륙				navigator_continent varchar(500),
+	 * 국가/지역 			navigator_nation varchar(500),
+	 * 입국목적			navigator_purpose varchar(500), 
+	 * 체류기간			navigator_period varchar(500)
+	 */
+	
 	private int navigatorNumber;
 	private String navigatorContinent;
 	private String navigatorNation;
