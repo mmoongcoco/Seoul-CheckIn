@@ -1,6 +1,13 @@
 package com.seoulcheckin.app.visa.vo;
 
 public class VisaVO {
+	/*
+	 * 비자넘버(PK)		visa_number int unsigned auto_increment primary key,
+	 * 체류자격			visa_name varchar(500),
+	 * 신청대상또는활동범위	visa_content varchar(1000),
+	 * 네비게이터 넘버(FK)	navigator_number
+	 */
+	
 	private int visaNumber;
 	private String visaName;
 	private String visaContent;
