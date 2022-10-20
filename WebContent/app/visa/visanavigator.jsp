@@ -349,7 +349,7 @@
 						</tr>
 					</thead>
 					<tbody id="visaResultTable">
-					<!-- 내용 추가 부분 -->
+						<!-- 내용 추가 부분 -->
 					</tbody>
 				</table>
 			</div>
@@ -407,11 +407,9 @@
 					},
 					dataType: "json",
 					success : function(visas) {
-						
+						console.log(visas)
 						let text = "";
-						
 							visas.forEach(visa => {
-								
 							 	text += `<tr>`;
 								text += `<td class="resonName">`;
 								text += `<a href="#this" name="sojQualNm" class="che_tit">`;
@@ -424,6 +422,25 @@
 							});
 						text += `</thead>`;
 						$("#visaResultTable").html(text);
+							
+						/* if(visas.length>0){
+						}else{
+							console.log("들어올까말까?????????");
+							visas.forEach(visa => {
+								
+							 	text += `<tr>`;
+								text += `<td class="resonName">`;
+								text += `<a href="#this" name="sojQualNm" class="che_tit">`;
+								text += `<span class="nameBox" style="display:none">`+ visa.visaName +`</span>`;
+								text += `</a>`;
+								text += `</td>`;
+								text += `<td class="resonDetail">`;
+								text += `"조회된 데이터가 없습니다"` + `</td>`;
+							 	text += `</tr>`;
+							});
+						text += `</thead>`;
+						$("#visaResultTable").html(text);
+						} */
 					}
 				}); 
 			});

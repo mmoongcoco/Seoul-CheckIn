@@ -164,8 +164,8 @@ svg:not(:root) {
 .navTable {
 	margin: 95px 0 40px;
 	padding: 55px;
-	height: 500px;
-	background: #fff;
+    height: fit-content;
+    background: #fff;
 }
 
 .navTitle {
