@@ -45,7 +45,7 @@
 
 	<servlet>
 		<servlet-name>BoardFrontController</servlet-name>
-		<servlet-class>com.seoulcheckin.app.k_board.K_BoardFrontController</servlet-class>
+		<servlet-class>com.seoulcheckin.app.board.BoardFrontController</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
@@ -55,7 +55,7 @@
 
 	<servlet>
 		<servlet-name>CommentFrontController</servlet-name>
-		<servlet-class>com.seoulcheckin.app.k_comment.K_CommentFrontController</servlet-class>
+		<servlet-class>com.seoulcheckin.app.comment.CommentFrontController</servlet-class>
 	</servlet>
 
 	<servlet-mapping>

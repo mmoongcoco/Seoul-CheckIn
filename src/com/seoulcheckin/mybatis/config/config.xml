@@ -65,6 +65,15 @@
 		<typeAlias type="com.seoulcheckin.app.notice.dao.NoticeDAO" alias="noticeDAO"/>	
 	<!-- notice Alias -->
 	
+	<!-- board Alias -->
+		<typeAlias type="com.seoulcheckin.app.board.vo.KBoardVO" alias="KboardVO"/>
+		<typeAlias type="com.seoulcheckin.app.board.vo.EBoardVO" alias="EboardVO"/>
+		<typeAlias type="com.seoulcheckin.app.board.dao.KBoardDAO" alias="KboardDAO"/>
+		<typeAlias type="com.seoulcheckin.app.board.dao.EBoardDAO" alias="EboardDAO"/>
+		<typeAlias type="com.seoulcheckin.app.board.vo.KBoardDTO" alias="KboardDTO"/>
+		<typeAlias type="com.seoulcheckin.app.board.vo.EBoardDTO" alias="EboardDTO"/>
+	<!-- board Alias -->
+	
 	</typeAliases>
 	
 	<environments default="mysql">
