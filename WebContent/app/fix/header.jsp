@@ -28,9 +28,6 @@
 	href="${pageContext.request.contextPath}/assets/css/fix/password.css">
 </head>
 <body>
-	<script async defer crossorigin="anonymous"
-		src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v15.0&appId=655451066159766&autoLogAppEvents=1"
-		nonce="6OuGzZIJ"></script>
 	<script
 		src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js"
 		charset="utf-8"></script>
@@ -39,7 +36,6 @@
 	<header id="header">
 		<div id="head">
 			<div id="margin">
-
 				<div id="categoryandimg">
 					<button type="button" class="category">
 						<img
@@ -52,87 +48,51 @@
 					</a>
 				</div>
 				<dir id="navigationdiv">
-
 					<nav id="navigation">
 						<ul>
 							<li class="1">
-
 								<div style="cursor: pointer;" class="divdiv">서울은 처음이지</div>
 								<ul class="ulul">
-
 									<li><br></li>
-
 									<li><a href=""> 맵 한눈에 보기 </a></li>
 									<li><a href=""> 일자리 등록 </a></li>
 									<li><a href=""> 부동산 등록 </a></li>
-
 								</ul>
 							</li>
-
 							<li>
 								<div style="cursor: pointer;" class="divdiv">서울을 즐겨볼래</div>
 								<ul class="ulul" id="ulul-2">
-
 									<li><br></li>
-
 									<li><a href=""> 강좌 / 프로그램 </a></li>
 									<li><a href=""> 게시판 이동 </a></li>
-
-
 								</ul>
-
 							</li>
 						</ul>
-
 						<ul id="ul-2">
-
 							<li>
 								<div style="cursor: pointer;" class="divdiv">비자/환율</div>
 								<ul class="ulul" id="ulul-2">
-
 									<li><br></li>
-
 									<li><a href=""> 비자 네비게이터 </a></li>
-
-
 								</ul>
-
 							</li>
-
 							<li><a href="" style="position: relative; top: -1px;">
 									고객센터 </a></li>
-
 						</ul>
-
-
 						<ul id="ul-3">
-
 							<li><a href="javascript:void(0)" id="join_login_button"
-								style="position: relative; left: 50px; top: -2px;"> 회원가입/로그인
-							</a></li>
-
+								style="position: relative; left: 50px; top: -2px;"> </a></li>
 							<li class="vertical" id="vertical"
 								style="position: relative; left: -145px; top: -2px;"><a
 								href="" id="comservice">관리자 페이지</a></li>
 							<li></li>
-
-
 						</ul>
-
 					</nav>
-
-
-
-
 					</nav>
 				</dir>
-
 			</div>
 		</div>
-
 	</header>
-
-
 
 	<!-- header -->
 
@@ -191,9 +151,8 @@
 						<div class="InputPanel_socialLogins__j0wq7">다음 계정으로 계속하기</div>
 						<div class="InputPanel_socialWrapper__Dhaxo isKR">
 							<div class="InputPanel_socialButton__Hggw2 isKR">
-								<label>
-									<button type="button"
-										class="style_wrapper__IgK7U social-login-button kakao-login">
+								<button type="button"
+										class="kakaoButton_button__1pfrz style_wrapper__IgK7U social-login-button kakao-login">
 										<svg xmlns="http://www.w3.org/2000/svg" width="22" height="21"
 											viewBox="0 0 22 21">
                                         <path fill="#000"
@@ -203,23 +162,14 @@
                                     </svg>
 										<div class="InputPanel_socialTitle__77isU isKR">Kakao</div>
 									</button>
+									 <a href="javascript:kakaoLogin();"><img src="./kakao_login.png" alt="카카오계정 로그인" style="height: 100px;"/></a>
 									<div class="kakaoButton">
-										<button class="kakaoButton_button__1pfrz"></button>
+										<button class="kakaoButton_button__1pfrz">ㅇㅇㅇㅇ</button>
 										<p class="kakaoButton_loginDescription__P1TjV">Kakao 로그인</p>
 									</div>
-								</label>
 							</div>
 							<div class="InputPanel_socialButton__Hggw2 isKR">
-								<ul>
-									<li>
-										<!-- 아래와같이 아이디를 꼭 써준다. --> <a id="naverIdLogin_loginButton"
-										href="javascript:void(0)"> <span>네이버 로그인</span>
-									</a>
-									</li>
-									<li onclick="naverLogout(); return false;"><a
-										href="javascript:void(0)"> <span>네이버 로그아웃</span>
-									</a></li>
-								</ul>
+								<div id="naver_id_login"></div>
 							</div>
 							<div class="InputPanel_socialButton__Hggw2 isKR">
 								<label>
@@ -250,19 +200,7 @@
 									</button>
 								</label>
 							</div>
-							<div class="InputPanel_socialButton__Hggw2 isKR">
-								<button type="button"
-									class="style_wrapper__IgK7U social-login-button apple-login">
-									<svg xmlns="http://www.w3.org/2000/svg" width="19" height="24"
-										viewBox="0 0 19 24">
-                                        <path fill="#fff"
-											fill-rule="nonzero"
-											d="M15.868 12.55c.033 3.574 3.098 4.764 3.132 4.779-.026.084-.49 1.695-1.615 3.36-.972 1.439-1.982 2.872-3.572 2.902-1.562.03-2.065-.938-3.851-.938s-2.344.908-3.823.967c-1.535.059-2.704-1.556-3.684-2.99C.45 17.698-1.08 12.343.975 8.73c1.022-1.795 2.848-2.932 4.83-2.96 1.506-.03 2.929 1.026 3.85 1.026.921 0 2.65-1.27 4.467-1.083.761.032 2.897.31 4.268 2.343-.11.07-2.548 1.506-2.522 4.494m-2.936-8.777c.815-.999 1.363-2.389 1.213-3.772-1.174.048-2.594.792-3.437 1.79-.755.884-1.416 2.298-1.238 3.654 1.31.103 2.647-.673 3.462-1.672">
-                                        </path>
-                                    </svg>
-									<div class="InputPanel_socialTitle__77isU isKR">Apple</div>
-								</button>
-							</div>
+							<div class="InputPanel_socialButton__Hggw2 isKR"></div>
 						</div>
 					</div>
 					<p class="style_wrapper__MbwMv">
@@ -326,9 +264,7 @@
                         </path>
                     </svg>
 				</button>
-
 			</div>
-
 			<div class="modal_body">
 				<div class="peopleWrapper">
 					<div class="Korean">
@@ -339,7 +275,6 @@
 								alt="" id="image1">
 						</div>
 						<button type="button" class="orange 1">개인회원가입</button>
-
 					</div>
 					<div class="foreigner">
 						<p class="title2">FOREIGNERS</p>
@@ -686,12 +621,9 @@
 <script src="${pageContext.request.contextPath}/assets/js/fix/header.js"></script>
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-<script>
-	Kakao.init('f5a2b23f21fc35cd16b50c77a62b5d1f')
-</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script>
 	console.log(sessionStorage.getItem("memberNumber"));
 
@@ -701,4 +633,76 @@
 		$("#join_login_button").html("로그아웃");
 	}
 </script>
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script> window.Kakao.init('f5a2b23f21fc35cd16b50c77a62b5d1f'); </script>
+<script>
+
+function kakaoLogin() {
+	window.Kakao.Auth.login({
+		scope: 'account_email', //동의항목 페이지에 있는 개인정보 보호 테이블의 활성화된 ID값을 넣습니다.
+		success: function(response) {
+			console.log(response) // 로그인 성공하면 받아오는 데이터
+			window.Kakao.API.request({ // 사용자 정보 가져오기 
+				url: '/v2/user/me',
+				success: (res) => {
+					const kakao_account = res.kakao_account;
+					console.log(kakao_account)
+					console.log("성공")
+
+					$.ajax({
+						url: "/member/loginKakao.me",
+						data: {memberEmail: email},
+						success: function() {
+							console.log("ajax 성공")
+						},
+						error: function(e){
+							console.log(e)
+						}
+					});
+				}
+			});
+			// window.location.href='http://localhost:8085' //리다이렉트 되는 코드
+		},
+		fail: function(error) {
+			console.log(error);
+		}
+	});
+}
+</script>
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+   var naver_id_login = new naver_id_login("vMW_1ZPa5SG3P5MabJCm",
+         "http://localhost:8085");
+   var state = naver_id_login.getUniqState();
+   naver_id_login.setButton("white", 3, 40);
+   naver_id_login.setDomain("http://localhost:8085");
+   naver_id_login.setState(state);
+   naver_id_login.init_naver_id_login();
+</script>
+<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js"></script>
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<!-- <script type="text/javascript">
+   var naver_id_login = new naver_id_login("vMW_1ZPa5SG3P5MabJCm",
+         "http://localhost:8085/");
+   //    var naver_id_login = new window.naver_id_login("_VjlH3jAE2LhRMAaID_g",
+   //          "http://localhost:8081/milestone/login/join.indi");
+   // 접근 토큰 값 출력
+   //    alert(naver_id_login.oauthParams.access_token);
+   // 네이버 사용자 프로필 조회
+   naver_id_login.get_naver_userprofile("naverSignInCallback()");
+   // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
+   function naverSignInCallback() {
+      let name = naver_id_login.getProfileData('name');
+      let email = naver_id_login.getProfileData('email');
+      let nickname = naver_id_login.getProfileData('nickname');
+      let mobile = naver_id_login.getProfileData('mobile');
+	  console.log("네이버")
+      console.log(name);
+      console.log(email);
+      console.log(nickname);
+      console.log(mobile);
+   }
+</script> -->
 </html>
