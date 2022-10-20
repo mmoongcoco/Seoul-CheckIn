@@ -1,8 +1,11 @@
 package com.seoulcheckin.app.map.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
+import com.seoulcheckin.app.map.vo.MapVO;
 import com.seoulcheckin.mybatis.config.MyBatisConfig;
 
 public class MapDAO {
@@ -11,5 +14,14 @@ public class MapDAO {
 	
 	public MapDAO() {
 		sqlSession = sqlSessionFactory.openSession(true);
+	}
+	
+	
+	public List<MapVO> selectAll(String mapClassification){
+		return sqlSession.selectList("Map.selectAll", mapClassification);
+	}
+	
+	public List<MapVO> selectOne(int mapNumber){
+		return sqlSession.selectList("Map.selectOne",mapNumber);
 	}
 }
