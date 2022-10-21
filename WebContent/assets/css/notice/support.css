@@ -370,6 +370,7 @@ ul.article-list > li, .article-sidebar section > ul > li, .searchbox-suggestions
 #ser_inc_div {
     padding-left: 10px;
     margin-right: 0px;
+    margin-top: 20px;
 }
 @media (min-width: 1200px){
     .col-lg-3 {

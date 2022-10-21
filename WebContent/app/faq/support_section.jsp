@@ -217,7 +217,7 @@
             <section class="article-wrapper">
                 <div class="row" style="margin-right: 0px;">
                     <div class="col-md-9 col-sm-9 col-xs-12" id="article-content-div">
-                        <div id="mobile_related_articles_DIV">
+                        <!-- <div id="mobile_related_articles_DIV">
                             <p style="text-align: center;">
                                 <button type="button" class="btn btn-light" data-toggle="collapse"
                                     data-target="#related_articles_div_collapse_div"
@@ -233,8 +233,7 @@
                                             <ul>
                                                 <li>
                                                     <a href=""
-                                                        class="sidenav-item current-article">서비스 가입, 이용 절차가
-                                                        궁금합니다.</a>
+                                                        class="sidenav-item current-article">소카테고리의 제목</a>
                                                 </li>
                                                 <li>
                                                     <a href=""
@@ -245,11 +244,12 @@
                                     </aside>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="article__bg">
-                            <h3 class="article-head">서비스 가입, 이용 절차가 궁금합니다.</h3>
+                            <h3 class="article-head"> 제목이 들어가야할 부분입니다 </h3>
                             <div class="article-body">
-                                <p class="StyledIntroSection__IntroTitle-sc-1ukzju0-0 fsCLzq">
+                            	<p> 내용이 들어가야할 부분입니다 <br>내용이 들어가야할 부분입니다 <br>내용이 들어가야할 부분입니다 <br></p>
+                                <!-- <p class="StyledIntroSection__IntroTitle-sc-1ukzju0-0 fsCLzq">
                                     <span class="wysiwyg-font-size-large">
                                         <strong>딱 맞는 주거부터</strong>
                                     </span>
@@ -296,7 +296,7 @@
                                     <strong>
                                         <a href="" target="_self">회원가입&로그인 바로가기</a>
                                     </strong>
-                                </p>
+                                </p> -->
                             </div>
                             <div class="article-attachments">
                                 <ul class="attachments">
@@ -312,17 +312,16 @@
                             <aside class="article-sidebar side-column" style="font-size:12px;"
                                 id="PCRealatedArticlesDIV">
                                 <section class="section-articles collapsible-sidebar">
-                                    <h3 class="collapsible-sidebar-title sidenav-title" style="padding-left: 15px;">이
-                                        섹션의 문서</h3>
+                                    <h3 class="collapsible-sidebar-title sidenav-title" style="padding-left: 15px;">이 섹션의 문서</h3>
                                     <ul>
-                                        <li style="padding-left: 15px;padding-right: 15px;background-color:#f2f4f7;">
+                                        <li style="padding-left: 15px;padding-right: 15px;/* background-color:#f2f4f7; */">
                                             <a href=""
-                                                class="sidenav-item" style="color:#3366FF;">서비스 가입, 이용 절차가 궁금합니다.</a>
+                                                class="sidenav-item"> <!-- style="color:#3366FF;" -->소카테고리 문서 제목</a>
                                         </li>
-                                        <li style="padding-left: 15px;padding-right: 15px;">
+                                         <!--<li style="padding-left: 15px;padding-right: 15px;">
                                             <a href=""
                                                 class="sidenav-item">서비스를 영어로 이용하고 싶어요.</a>
-                                        </li>
+                                        </li> -->
                                     </ul>
                                 </section>
                             </aside>
@@ -333,7 +332,7 @@
         </div>
         <div class="container" id="new_request_container">
             <span id="article_new_request_label">또 다른 질문이 있으십니까?&nbsp;&nbsp;&nbsp;
-                <a href="" id="article_new_request_button">다른 질문 보러가기 &gt;
+                <a href="" id="article_new_request_button">고객센터로 돌아가기 &gt;
 
                 </a>
             </span>
