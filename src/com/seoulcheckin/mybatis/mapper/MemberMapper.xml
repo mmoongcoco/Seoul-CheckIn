@@ -36,18 +36,6 @@
 		delete from tbl_member where member_number = #{member_number}
 	</delete>
 	
-	<select id="selectProgramCount" parameterType="_int" resultType="_int">
-		select count(school_number) from tbl_myprogram where member_number = #{memberNumber}
-	</select>
-	
-	<select id="selectMessageCount" parameterType="_int" resultType="_int" >
-		select count(message_recive_email) from tbl_message m join tbl_member tm on member_number = #{memberNumber}
-	</select>
-	
-	<select id="selectBoardCount" parameterType="_int" resultType="_int">
-		select count(K_board_number) from tbl_K_board where member_number = #{member_number}
-	</select>
-	
 	<select id="myMessage"  parameterType="_int" resultType="memberDTO">
 		select ms.message_title, ms.message_article, ms.message_send_date, member_name from tbl_message ms join tbl_member m on message_send_email = member_number and message_recive_email = #{messageReciveEmail};
 	</select> 
