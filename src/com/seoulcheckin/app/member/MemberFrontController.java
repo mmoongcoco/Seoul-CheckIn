@@ -59,11 +59,25 @@ public class MemberFrontController extends HttpServlet {
 			// 로그아웃
 		} else if (request.equals("member/logout.me")) {
 			new LogoutController().execute(req, resp);
+			
+			
+			// my page start
 
 			// 마이페이지 페이지 요청
 		} else if (request.equals("/member/mypage.me")) {
-			result = new Result();
-			result.setPath("/app/member/myPageMain.jsp");
+			result = new MyPageController().execute(req, resp);
+			
+			// 마이페이지 ajax 
+		}else if(request.equals("/member/mypagelist.me")) {
+			result = new SelectProgramCountController().execute(req, resp);
+					
+			// 마이페이지 ajax2
+		}else if(request.equals("/member/mypagelist2.me")) {
+			result = new SelectMessageCountController().execute(req, resp);
+						
+			// 마이페이지 ajax3
+		}else if(request.equals("/member/mypagelist3.me")) {
+			result = new SelectBoardCountController().execute(req, resp);
 			
 			// 마이페이지 프로필 변경
 		} else if (request.equals("/member/profile.me")) {
@@ -91,14 +105,16 @@ public class MemberFrontController extends HttpServlet {
 			
 			// 쪽지함에서 쪽지 보기
 		} else if (request.equals("/member/msgview.me")) {
-
+			result = new MyMsgController().execute(req, resp);
+			
 			// 마이페이지 정보수정, 회원탈퇴(비밀번호 확인 페이지 요청, 정적)
 		} else if (request.equals("/member/checkpw.me")) {
-
-			// 비밀번호 확인 후 정보수정 페이지 요청
+			
+			// 정보수정 페이지 요청
 		} else if (request.equals("/member/updateinfo.me")) {
 			result = new Result();
 			result.setPath("/app/member/myPageChange.jsp");
+
 			
 			// 마이페이지 정보수정 submit
 		} else if (request.equals("/member/updateinfoOk.me")) {
@@ -117,6 +133,9 @@ public class MemberFrontController extends HttpServlet {
 
 			// 마이페이지 회원탈퇴 submit, 관리자페이지 회원 삭제
 		} else if (request.equals("/member/dropinfoOk.me")) {
+			result = new DropInfoOkController().execute(req, resp);
+			
+		// myPage end	
 
 			// 관리자페이지 회원관리 페이지 요청
 		} else if (request.equals("/member/memberlist.me")) {
