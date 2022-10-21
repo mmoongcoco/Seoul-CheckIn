@@ -43,8 +43,8 @@ public static String nmtReturnRseult(String original_str){
 		String clientSecret = "0YOYGAS229";
 		
 		String resultString ="";
-		String englishCheck =  "^([a-zA-z#?!@$%^&*-.,'\s]*)$";
-		String hangleCheck = "^([가-힣#?!@$%^&*-.,'\s]*)$";
+		String englishCheck =  "^([a-zA-z0-9#?!@$%^&*-.,'\s]*)$";
+		String hangleCheck = "^([가-힣0-9#?!@$%^&*-.,'\s]*)$";
 		try {
 			//original_str 값이 우리가 변환할 값         
 			String text = URLEncoder.encode(original_str, "UTF-8");
@@ -59,10 +59,10 @@ public static String nmtReturnRseult(String original_str){
 			String postParams = null;
 			if(Pattern.matches(englishCheck, original_str)) {
 				postParams = "source=en&target=ko&text=" + text;
-				System.out.println("영어를 한글로");
 			}else if(Pattern.matches(hangleCheck, original_str)) {
 				postParams = "source=ko&target=en&text=" + text;
-				System.out.println("한글을 영어로");
+			}else {
+				return original_str;
 			}
 			con.setDoOutput(true);
 			DataOutputStream wr = new DataOutputStream(con.getOutputStream());
