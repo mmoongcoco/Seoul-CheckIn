@@ -78,7 +78,7 @@
                             <li>기업 서비스에 등록되어 있는 계정일 경우, <strong>기업 서비스 접속권한도 동시에 삭제됩니다. </strong></li>
                             <li>이상의 내용에 동의하여 탈퇴를 원하실 경우, 아래의 “동의하기” 버튼을 클릭 부탁드립니다.</li>
                         </ul>
-                        <button type="button" onclick="alert('탈퇴되었습니다')">동의하기</button>
+                        <button type="button" onclick="location.href = '${pageContext.request.contextPath}/member/dropinfoOk.me'">동의하기</button>
                     </div>
                 </div>
             </section>

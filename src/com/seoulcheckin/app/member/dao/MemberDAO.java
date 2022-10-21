@@ -1,8 +1,11 @@
 package com.seoulcheckin.app.member.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
+import com.seoulcheckin.app.member.vo.MemberDTO;
 import com.seoulcheckin.app.member.vo.MemberVO;
 import com.seoulcheckin.mybatis.config.MyBatisConfig;
 
@@ -30,13 +33,39 @@ public class MemberDAO {
 		return sqlSession.selectOne("Member.loginOauth", memberVO);
 	}
 	
-	public void update(MemberVO memberVO) {
-		   sqlSession.update("Member.update", memberVO);
+	// Mypage start
+	
+		public void update(MemberVO memberVO) {
+			   sqlSession.update("Member.update", memberVO);
+		}
+		
+		public MemberVO info(int memberNumber){
+			return sqlSession.selectOne("Member.info",memberNumber);
+		}
+		
+		public void delete(int memberNumber) {
+			sqlSession.delete("Member.delete", memberNumber);
+		}
+		
+		public int selectProgramCount(int memberNumber) {
+			return sqlSession.selectOne("Member.selectProgramCount", memberNumber);
+		}
+		
+		public int selectMessageCount(int memberNumber) {
+			return sqlSession.selectOne("Member.selectMessageCount", memberNumber);
+		}
+		
+		public int selectBoardCount(int memberNumber) {
+			return sqlSession.selectOne("Member.selectBoardCount", memberNumber);
+		}
+		
+		public List<MemberDTO> myMessage(int memberNumber){
+			return sqlSession.selectList("Member.myMessage", memberNumber);
+		}
+		
+		
+		
+		// Mypage end
 	}
 	
-	public MemberVO info(int memberNumber){
-		return sqlSession.selectOne("Member.info",memberNumber);
-	}
 	
-	
-}
