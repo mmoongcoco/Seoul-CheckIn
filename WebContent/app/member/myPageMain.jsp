@@ -42,19 +42,19 @@
                 <div class="list">
                     <a href="/member/myclass.me">
                         <span style="margin-top: 23px;" >강의</span>
-                        <strong style="margin-top: 23px;">0</strong>
+                        <strong style="margin-top: 23px" class = "programCount";>0</strong>
                     </a>
                     <a href="/member/mycommunity.me">
                         <span style="margin-top: 23px;">커뮤니티</span>
-                        <strong style="margin-top: 23px;">0</strong>
+                        <strong style="margin-top: 23px" class = "boardCount"; >0</strong>
                     </a>
                     <a href="/member/mymsg.me">
                         <span style="margin-top: 23px;">쪽지</span>
-                        <strong style="margin-top: 23px;">0</strong>
+                        <strong style="margin-top: 23px" class = "messageCount"; >0</strong>
                     </a>
                     <a href="/member/updateinfo.me" class="myPagelist_end">
                         <span style="margin-top: 23px;">정보 수정</span>
-                        <strong style="margin-top: 23px;">0</strong>
+                        <strong style="margin-top: 23px;"></strong>
                     </a>
                     <a href="/member/dropinfo.me">
                         <span style="margin-top: 23px;">회원 탈퇴</span>
@@ -66,26 +66,26 @@
                 <div class="Summary_Summary__Jp6V9">
                     <h2 class="Summary_Summary_title__qesUo">지원 현황</h2>
                     <ul class="Summary_Summary_status__0BYum" data-cy="mywanted-summary">
-                        <li><a href="/status/applications?status=accept" class="myClassCount" aria-label="" data-attribute-id="myWanted__applicationStatus" data-status-kind="applyDone">
-                            <em class="">0</em>
+                        <li><a href= "/member/myclass.me" class="myClassCount" aria-label="" data-attribute-id="myWanted__applicationStatus" data-status-kind="applyDone">
+                            <em class="programCount">0</em>
                             <span>강의</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/status/applications?status=pass" class="myBoardCount" aria-label="" data-attribute-id="myWanted__applicationStatus" data-status-kind="pass">
-                            <em class="">0</em>
+                        <a href="/member/mycommunity.me" class="myBoardCount" aria-label="" data-attribute-id="myWanted__applicationStatus" data-status-kind="pass">
+                            <em class="boardCount">0</em>
                             <span>내가 쓴 글</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/status/applications?status=hire" class="myCommentCount" aria-label="" data-attribute-id="myWanted__applicationStatus" data-status-kind="hire">
-                            <em class="">0</em>
+                        <a href="/member/mycommunity.me" class="myCommentCount" aria-label="" data-attribute-id="myWanted__applicationStatus" data-status-kind="hire">
+                            <em class="commentCount">0</em>
                             <span>내가 쓴 댓글</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/status/applications?status=reject" class="myMessageCount" aria-label="" data-attribute-id="myWanted__applicationStatus" data-status-kind="rejected">
-                            <em class="">0</em>
+                        <a href="/member/mymsg.me" class="myMessageCount" aria-label="" data-attribute-id="myWanted__applicationStatus" data-status-kind="rejected">
+                            <em class="messageCount">0</em>
                             <span>쪽지</span>
                         </a>
                     </li>
@@ -150,6 +150,8 @@
         </div>   
     </div> 
 </body>
+
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script>
 	
 	myClass();
@@ -193,6 +195,64 @@
     		}
     	});
     }
+
+
+</script>
+
+<!-- 강의, 내가쓴글, 댓글, 쪽지 카운트 -->
+<script>
+console.log("들어옴");
+showList()
+function showList(){
+	console.log("ajax들어옴");
+	$.ajax({
+		url: "/member/mypagelist.me",
+		type: "get",
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		success: function(result){
+			console.log(result);
+			$(".programCount").text(result);
+			showList2();
+			console.log("ajax1들어옴");
+		}
+		
+	})
+}
+
+function showList2(){
+	$.ajax({
+		url: "/member/mypagelist2.me",
+		type: "get",
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		success: function(result){
+			console.log(result);
+			$(".messageCount").text(result);
+			showList3();
+		}
+		
+	})
+}
+
+
+function showList3(){
+	$.ajax({
+		url: "/member/mypagelist3.me",
+		type: "get",
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		success: function(result){
+			console.log(result);
+			$(".boardCount").text(result);
+		}
+		
+	})
+}
+
+
+
+
 
 
 </script>

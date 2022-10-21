@@ -43,19 +43,19 @@
                <div class="list">
                     <a href="/member/myclass.me">
                         <span style="margin-top: 23px;" >강의</span>
-                        <strong style="margin-top: 23px;">0</strong>
+                        <strong style="margin-top: 23px;">1</strong>
                     </a>
                     <a href="/member/mycommunity.me">
                         <span style="margin-top: 23px;">커뮤니티</span>
-                        <strong style="margin-top: 23px;">0</strong>
+                        <strong style="margin-top: 23px;">2</strong>
                     </a>
                     <a href="/member/mymsg.me">
                         <span style="margin-top: 23px;">쪽지</span>
-                        <strong style="margin-top: 23px;">0</strong>
+                        <strong style="margin-top: 23px;">5</strong>
                     </a>
                     <a href="/member/updateinfo.me" class="myPagelist_end">
                         <span style="margin-top: 23px;">정보 수정</span>
-                        <strong style="margin-top: 23px;">0</strong>
+                        <strong style="margin-top: 23px;"></strong>
                     </a>
                     <a href="/member/dropinfo.me">
                         <span style="margin-top: 23px;">회원 탈퇴</span>
@@ -86,7 +86,7 @@
                         
                         <div class="messageList">
                             <label><input type="checkbox" name="allCheckMail" value=""></label>
-                            <span class="sendWho">번호</span>
+                            <span class="sendWho">제목</span>
                             <span class="sendContent">내용</span>
                             <span class="sendTime">작성일</span>
                             <span class="sendDate">보낸사람</span>
@@ -99,6 +99,7 @@
 
     
 </body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script>
 
     const file = document.querySelector("input[type='file']");
@@ -127,4 +128,9 @@
 
 
 </script>
+	<!-- 쪽지함  -->
+<script>
+
+</script>
+
 </html>

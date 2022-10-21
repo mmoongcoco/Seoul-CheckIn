@@ -54,7 +54,7 @@
                     </a>
                     <a href="/member/updateinfo.me" class="myPagelist_end">
                         <span style="margin-top: 23px;">정보 수정</span>
-                        <strong style="margin-top: 23px;">0</strong>
+                        <strong style="margin-top: 23px;"></strong>
                     </a>
                     <a href="/member/dropinfo.me">
                         <span style="margin-top: 23px;">회원 탈퇴</span>

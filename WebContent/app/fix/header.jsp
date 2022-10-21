@@ -625,8 +625,6 @@
 	</div>
 </body>
 <script>
-	var memberNumber = ${sessionScope.memberNumber}
-	var session = ${sessionScope})
 </script>
 <script src="${pageContext.request.contextPath}/assets/js/fix/header.js"></script>
 <script src="https://accounts.google.com/gsi/client" async defer></script>
