@@ -5,4 +5,13 @@
 	<select id="myCommentCount" parameterType="_int" resultType="_int">
 		select count(K_comment_number) from tbl_K_comment where member_number = #{memberNumber}
 	</select>
+	
+	<select id="selectAll" parameterType="_int" resultType="kcommentDTO">
+		select K_comment_number, K_comment_article, K_comment_date, K_board_number, m.member_number, member_name 
+		from tbl_member m join tbl_K_comment c
+		on K_comment_number = #{kCommentNumber} and m.member_number = c.member_number
+		order by K_comment_date desc
+	</select>
+	
+	
 </mapper>

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,6 +13,7 @@
 </head>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/school/program.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/school/modal.css">
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <body>
 	<jsp:include page="${pageContext.request.contextPath}/app/fix/header.jsp"/>
     <div id="__next" data-reactroot="">
@@ -23,7 +26,7 @@
                         style="padding-bottom: 15%; background-image: url(&quot;https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fwanted-marketing-image.s3.ap-northeast-2.amazonaws.com%2Fcareer-biz-banner%2F220928_event_web.jpg&amp;w=2000&amp;q=100&quot;);">
                     </section>
                 </a></header>
-            <div class="EventList_EventList_body__xC2W6">
+            <div class="EventList_EventList_body__xC2W6" style ="height: 1410px;">
                 <h1 class="Header_Header__title__UL9Mp">서울 체크인에서 만날 수 있는 다양한 한국 문화 체험을 소개할게요!</h1>
                 <div class="Sticky_Sticky_edge__c8cz0"></div>
                 <div
@@ -113,110 +116,62 @@
                                             class="Button_Button__label__1Kk0v">UX/UI</span></button><button
                                         class="Button_Button__root__V1ie3 Button_Button__outlined__H2mkd undefined Button_Button__sizeMedium__k0A1w InterestCategoryItem_InterestCategoryItem__yDh0r"
                                         data-attribute-id="eventList__category__update" data-event-category-id="10085"
-                                        data-event-category="데이터" data-text="데이터"><!-- <span
-                                            class="Button_Button__label__1Kk0v">데이터</span></button><button
-                                        class="Button_Button__root__V1ie3 Button_Button__outlined__H2mkd undefined Button_Button__sizeMedium__k0A1w InterestCategoryItem_InterestCategoryItem__yDh0r"
-                                        data-attribute-id="eventList__category__update" data-event-category-id="10274"
-                                        data-event-category="프리랜서" data-text="프리랜서"><span
-                                            class="Button_Button__label__1Kk0v">프리랜서</span></button><button
-                                        class="Button_Button__root__V1ie3 Button_Button__outlined__H2mkd undefined Button_Button__sizeMedium__k0A1w InterestCategoryItem_InterestCategoryItem__yDh0r"
-                                        data-attribute-id="eventList__category__update" data-event-category-id="10243"
-                                        data-event-category="인간관계" data-text="인간관계"><span
-                                            class="Button_Button__label__1Kk0v">인간관계</span></button><button
-                                        class="Button_Button__root__V1ie3 Button_Button__outlined__H2mkd undefined Button_Button__sizeMedium__k0A1w InterestCategoryItem_InterestCategoryItem__yDh0r"
-                                        data-attribute-id="eventList__category__update" data-event-category-id="10279"
-                                        data-event-category="콘텐츠 제작" data-text="콘텐츠 제작"><span
-                                            class="Button_Button__label__1Kk0v">콘텐츠
-                                            제작</span></button><button
-                                        class="Button_Button__root__V1ie3 Button_Button__outlined__H2mkd undefined Button_Button__sizeMedium__k0A1w InterestCategoryItem_InterestCategoryItem__yDh0r"
-                                        data-attribute-id="eventList__category__update" data-event-category-id="524"
-                                        data-event-category="미디어" data-text="미디어"><span
-                                            class="Button_Button__label__1Kk0v">미디어</span></button><button
-                                        class="Button_Button__root__V1ie3 Button_Button__outlined__H2mkd undefined Button_Button__sizeMedium__k0A1w InterestCategoryItem_InterestCategoryItem__yDh0r"
-                                        data-attribute-id="eventList__category__update" data-event-category-id="10278"
-                                        data-event-category="CS/CX" data-text="CS/CX"><span
-                                            class="Button_Button__label__1Kk0v">CS/CX</span></button><button
-                                        class="Button_Button__root__V1ie3 Button_Button__outlined__H2mkd undefined Button_Button__sizeMedium__k0A1w InterestCategoryItem_InterestCategoryItem__yDh0r"
-                                        data-attribute-id="eventList__category__update" data-event-category-id="530"
-                                        data-event-category="영업" data-text="영업"><span
-                                            class="Button_Button__label__1Kk0v">영업</span></button><button
-                                        class="Button_Button__root__V1ie3 Button_Button__outlined__H2mkd undefined Button_Button__sizeMedium__k0A1w InterestCategoryItem_InterestCategoryItem__yDh0r"
-                                        data-attribute-id="eventList__category__update" data-event-category-id="10101"
-                                        data-event-category="교육" data-text="교육"><span
-                                            class="Button_Button__label__1Kk0v">교육</span></button><button
-                                        class="Button_Button__root__V1ie3 Button_Button__outlined__H2mkd undefined Button_Button__sizeMedium__k0A1w InterestCategoryItem_InterestCategoryItem__yDh0r"
-                                        data-attribute-id="eventList__category__update" data-event-category-id="508"
-                                        data-event-category="금융" data-text="금융"><span
-                                            class="Button_Button__label__1Kk0v">금융</span></button><button
-                                        class="Button_Button__root__V1ie3 Button_Button__outlined__H2mkd undefined Button_Button__sizeMedium__k0A1w InterestCategoryItem_InterestCategoryItem__yDh0r"
-                                        data-attribute-id="eventList__category__update" data-event-category-id="513"
-                                        data-event-category="엔지니어링·설계" data-text="엔지니어링·설계"><span
-                                            class="Button_Button__label__1Kk0v">엔지니어링·설계</span></button> -->
+                                        data-event-category="데이터" data-text="데이터">
                                 </div>
                                 <div class="TagSlide_TagSlide__arrow__DQk2_ TagSlide_TagSlide__leftArrow__HznBp">
-                                    <button type="button"><span class="SvgIcon_SvgIcon__root__8vwon"><svg
-                                                class="SvgIcon_SvgIcon__root__svg__DKYBi" viewBox="0 0 18 18">
-                                                <path
-                                                    d="m6.045 9 5.978-5.977a.563.563 0 1 0-.796-.796L4.852 8.602a.562.562 0 0 0 0 .796l6.375 6.375a.563.563 0 0 0 .796-.796L6.045 9z">
+                                    <button type="button">
+                                    <span class="SvgIcon_SvgIcon__root__8vwon">
+                                    	<svg class="SvgIcon_SvgIcon__root__svg__DKYBi" viewBox="0 0 18 18">
+                                               <path>
+                                               		d="m6.045 9 5.978-5.977a.563.563 0 1 0-.796-.796L4.852 8.602a.562.562 0 0 0 0 .796l6.375 6.375a.563.563 0 0 0 .796-.796L6.045 9z">
                                                 </path>
-                                            </svg></span></button>
+                                         </svg>
+                                    </span>
+                                    </button>
                                 </div>
-                                <!-- <div
-                                    class="TagSlide_TagSlide__arrow__DQk2_ TagSlide_TagSlide__rightArrow__Sod00 TagSlide_TagSlide__arrow__visible__kNax4">
-                                    <button type="button"><span class="SvgIcon_SvgIcon__root__8vwon"><svg
-                                                class="SvgIcon_SvgIcon__root__svg__DKYBi" viewBox="0 0 18 18">
-                                                <path
-                                                    d="m11.955 9-5.978 5.977a.563.563 0 0 0 .796.796l6.375-6.375a.563.563 0 0 0 0-.796L6.773 2.227a.562.562 0 1 0-.796.796L11.955 9z">
-                                                </path>
-                                            </svg></span></button>
-                                </div> -->
-                            </div><!-- <button type="button" class="InterestTagSlide_InterestTagSlide__more__v2_Y1"><svg
-                                    width="16" height="3" viewBox="0 0 16 3">
-                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                        d="M2 0C2.828 0 3.5 0.672 3.5 1.5C3.5 2.328 2.828 3 2 3C1.172 3 0.5 2.328 0.5 1.5C0.5 0.672 1.172 0 2 0ZM8 0C8.828 0 9.5 0.672 9.5 1.5C9.5 2.328 8.828 3 8 3C7.172 3 6.5 2.328 6.5 1.5C6.5 0.672 7.172 0 8 0ZM14 0C14.828 0 15.5 0.672 15.5 1.5C15.5 2.328 14.828 3 14 3C13.172 3 12.5 2.328 12.5 1.5C12.5 0.672 13.172 0 14 0Z"
-                                        fill="currentColor"></path>
-                                </svg></button> -->
+                            </div>
                         </div>
                         <hr class="Divider_Divider__root__f2LD0 Header_Header__divider__fmABs">
                     </div>
                 </div>
+                <!-- 강의 프로그램 소개  -->
+                <div class="classAll"></div>
                 <div class="EventList_EventList_container__mcoes EventList_EventList_items__NeJxX">
                     <div>
-                        <div class="EventItems_EventItems_list__1d36q">
-                            <div class="EventItem_EventItem__1Rj6D" data-attribute-id="event__click"
-                                data-event-id="2388" data-event-title="Dev-Draw | PYCON KOREA 2022 후원기념 이벤트"
-                                data-event-category="IT,Tech,Work Productivity" data-event-label="event"
-                                style="--base-font-size:10;"><a
-                                    href="javascript:void(0)"
-                                    class="EventItem_EventItem_link__gWsoH" aria-label="">
-                                    <header class="EventItem_EventItem_media__T_Pm2"
-                                        style="background-image: url(&quot;https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fevents%2F2388%2Fa96336c6.jpg&amp;w=1200&amp;q=75&quot;);">
-                                    </header>
-                                    <div class="EventItem_EventItem_body__ix_9a">
-                                        <div class="EventKinds EventKinds_EventKinds__YhUSb"><span
-                                                class="EventKind EventKinds_EventKind__eWUu8 is-online"><svg
-                                                    xmlns="http://www.w3.org/2000/svg" width="11" height="12"
-                                                    viewBox="0 0 11 12">
-                                                    <path fill="currentColor"
-                                                        d="M5.98.9A5.09 5.09 0 00.32 6.54l1.03-.1a4.07 4.07 0 014.52-4.53L5.98.89zm4.57 4.56l-1.03.1A4.07 4.07 0 015 10.1l-.11 1.03a5.1 5.1 0 005.66-5.66zM5.76 2.94c-.9-.1-1.84.18-2.53.86a3.06 3.06 0 00-.86 2.54l1.02-.11c-.07-.6.12-1.24.57-1.7a2.05 2.05 0 011.7-.57l.1-1.02zM8.5 5.68l-1.04.12a2 2 0 01-2.24 2.24L5.1 9.06a3.06 3.06 0 003.4-3.4zm-2.53-.22c-.3-.3-.8-.3-1.1 0-.3.3-.29.78.02 1.08.3.3.79.3 1.09 0 .3-.3.3-.78 0-1.08z">
-                                                    </path>
-                                                </svg><span
-                                                    class="EventKinds_EventKind__text__sYu5A">온라인</span></span><span
-                                                class="EventKind EventKinds_EventKind__eWUu8 is-event"><span
-                                                    class="EventKinds_EventKind__text__sYu5A">이벤트</span></span>
-                                        </div>
-                                        <h2
-                                            class="EventItem_EventItem_title__Xjepj EventItem_EventItem_maintitle__lC0yT">
-                                            Dev-Draw | PYCON KOREA 2022 후원기념 이벤트</h2>
-                                        <h3
-                                            class="EventItem_EventItem_title__Xjepj EventItem_EventItem_subtitle__p_ZPR">
-                                            2022.09.13 (화) ~ 2022.10.02 (일)</h3>
-                                        <div class="EventCategories_EventCategories__GN0Wa"><span
-                                                class="EventCategories_EventCategories_categoriesTag__C83cl">#개발
-                                                #IT/기술 #회사생활</span></div>
-                                    </div>
-                                </a></div>
-                            <div class="EventItem_EventItem__1Rj6D" data-attribute-id="event__click"
+                        <!-- <div class="EventItems_EventItems_list__1d36q"> -->
+                        <!-- 수강 첫번째 소개 -->
+                            <!-- <div class="EventItem_EventItem__1Rj6D" style="--base-font-size:10;">
+	                            <a href="javascript:void(0)" class="EventItem_EventItem_link__gWsoH" aria-label="">
+	                            		 수강 이미지
+	                                    <header class="EventItem_EventItem_media__T_Pm2" style="background-image: url(&quot;https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fevents%2F2388%2Fa96336c6.jpg&amp;w=1200&amp;q=75&quot;);">
+	                                    </header>
+	                                    <div class="EventItem_EventItem_body__ix_9a">
+	                                        <div class="EventKinds EventKinds_EventKinds__YhUSb">
+	                                        <span class="EventKind EventKinds_EventKind__eWUu8 is-online">
+		                                        <svg xmlns="http://www.w3.org/2000/svg" width="11" height="12" viewBox="0 0 11 12">
+		                                        	<path fill="currentColor" d="M5.98.9A5.09 5.09 0 00.32 6.54l1.03-.1a4.07 4.07 0 014.52-4.53L5.98.89zm4.57 4.56l-1.03.1A4.07 4.07 0 015 10.1l-.11 1.03a5.1 5.1 0 005.66-5.66zM5.76 2.94c-.9-.1-1.84.18-2.53.86a3.06 3.06 0 00-.86 2.54l1.02-.11c-.07-.6.12-1.24.57-1.7a2.05 2.05 0 011.7-.57l.1-1.02zM8.5 5.68l-1.04.12a2 2 0 01-2.24 2.24L5.1 9.06a3.06 3.06 0 003.4-3.4zm-2.53-.22c-.3-.3-.8-.3-1.1 0-.3.3-.29.78.02 1.08.3.3.79.3 1.09 0 .3-.3.3-.78 0-1.08z"></path>
+		                                        </svg>
+		                                        <span class="EventKinds_EventKind__text__sYu5A">온라인</span>
+	                                        </span>
+	                                        <span class="EventKind EventKinds_EventKind__eWUu8 is-event">
+	                                        	<span class="EventKinds_EventKind__text__sYu5A">이벤트</span>
+	                                        </span>
+	                                   	</div>
+	                                   	<h2 class="EventItem_EventItem_title__Xjepj EventItem_EventItem_maintitle__lC0yT">
+	                                   		Dev-Draw | PYCON KOREA 2022 후원기념 이벤트
+	                                   	</h2>
+	                                   	<h3 class="EventItem_EventItem_title__Xjepj EventItem_EventItem_subtitle__p_ZPR">
+	                                   		2022.09.13 (화) ~ 2022.10.02 (일)
+	                                   	</h3>
+	                                   	<div class="EventCategories_EventCategories__GN0Wa">
+	                                   		<span class="EventCategories_EventCategories_categoriesTag__C83cl">#개발 #IT/기술 #회사생활</span>
+	                                   	</div>
+	                                    </div>
+                                </a>
+                            </div> -->
+                            
+                            <!-- 두번째 수강 신청  -->
+                            <!-- <div class="EventItem_EventItem__1Rj6D" data-attribute-id="event__click"
                                 data-event-id="2362" data-event-title="이직을 Wanted | 이직 지원 프로젝트"
                                 data-event-category="Career Advice,Career Search,Work Productivity"
                                 data-event-label="event" style="--base-font-size:10;"><a
@@ -248,8 +203,10 @@
                                                 class="EventCategories_EventCategories_categoriesTag__C83cl">#커리어고민
                                                 #취업/이직 #회사생활</span></div>
                                     </div>
-                                </a></div>
-                            <div class="EventItem_EventItem__1Rj6D" data-attribute-id="event__click"
+                                </a></div> -->
+                                
+                                
+                            <!-- <div class="EventItem_EventItem__1Rj6D" data-attribute-id="event__click"
                                 data-event-id="2398" data-event-title="원티드 x 스위프트 코딩클럽 2기 모집"
                                 data-event-category="IT,Tech" data-event-label="event" style="--base-font-size:10;">
                                 <a href="/events?sort=deadline&amp;label=event&amp;payable=all&amp;keywords=&amp;eventIdOrKey=swiftCodingClub2"
@@ -276,8 +233,8 @@
                                             class="EventStatus_EventStatus__BUEwL">정원마감</span>
                                     </div>
                                 </a>
-                            </div>
-                            <div class="EventItem_EventItem__1Rj6D" data-attribute-id="event__click"
+                            </div> -->
+                            <%-- <div class="EventItem_EventItem__1Rj6D" data-attribute-id="event__click"
                                 data-event-id="2394" data-event-title="원티드긱스 <개발자의 달>" data-event-category="IT"
                                 data-event-label="event" style="--base-font-size:10;"><a
                                     href="/events?sort=deadline&amp;label=event&amp;payable=all&amp;keywords=&amp;eventIdOrKey=wantedgigs_find"
@@ -308,8 +265,8 @@
                                                 class="EventCategories_EventCategories_categoriesTag__C83cl">#개발</span>
                                         </div>
                                     </div>
-                                </a></div>
-                            <div class="EventItem_EventItem__1Rj6D" data-attribute-id="event__click"
+                                </a></div> --%>
+                            <!-- <div class="EventItem_EventItem__1Rj6D" data-attribute-id="event__click"
                                 data-event-id="2397" data-event-title="Close-業 : 브랜디" data-event-category="Branding"
                                 data-event-label="event" style="--base-font-size:10;"><a
                                     href="/events?sort=deadline&amp;label=event&amp;payable=all&amp;keywords=&amp;eventIdOrKey=brandi2022"
@@ -340,8 +297,8 @@
                                                 class="EventCategories_EventCategories_categoriesTag__C83cl">#Close-業
                                                 #브랜딩</span></div>
                                     </div>
-                                </a></div>
-                            <div class="EventItem_EventItem__1Rj6D" data-attribute-id="event__click"
+                                </a></div> -->
+                           <!--  <div class="EventItem_EventItem__1Rj6D" data-attribute-id="event__click"
                                 data-event-id="2373" data-event-title="원티드 투자 제안 접수"
                                 data-event-category="Tech,Finance,Business/Strategy" data-event-label="event"
                                 style="--base-font-size:10;"><a
@@ -365,8 +322,8 @@
                                                 class="EventCategories_EventCategories_categoriesTag__C83cl">#IT/기술
                                                 #금융 #경영/전략</span></div>
                                     </div>
-                                </a></div>
-                            <div class="EventItem_EventItem__1Rj6D" data-attribute-id="event__click"
+                                </a></div> -->
+                         <!--    <div class="EventItem_EventItem__1Rj6D" data-attribute-id="event__click"
                                 data-event-id="2342" data-event-title="우리 회사를 소개합니다" data-event-category="Branding"
                                 data-event-label="event" style="--base-font-size:10;"><a
                                     href="/events?sort=deadline&amp;label=event&amp;payable=all&amp;keywords=&amp;eventIdOrKey=employeebranding"
@@ -397,8 +354,8 @@
                                                 class="EventCategories_EventCategories_categoriesTag__C83cl">#브랜딩
                                                 #채용이벤트</span></div>
                                     </div>
-                                </a></div>
-                            <div class="EventItem_EventItem__1Rj6D" data-attribute-id="event__click"
+                                </a></div> -->
+                           <!--  <div class="EventItem_EventItem__1Rj6D" data-attribute-id="event__click"
                                 data-event-id="2294" data-event-title="Close-業 : 원더피플" data-event-category="Branding"
                                 data-event-label="event" style="--base-font-size:10;"><a
                                     href="/events?sort=deadline&amp;label=event&amp;payable=all&amp;keywords=&amp;eventIdOrKey=wonderpeople"
@@ -429,8 +386,8 @@
                                                 class="EventCategories_EventCategories_categoriesTag__C83cl">#Close-業
                                                 #브랜딩</span></div>
                                     </div>
-                                </a></div>
-                            <div class="EventItem_EventItem__1Rj6D" data-attribute-id="event__click"
+                                </a></div> -->
+                          <!--   <div class="EventItem_EventItem__1Rj6D" data-attribute-id="event__click"
                                 data-event-id="2288" data-event-title="Close-業 : 원티드랩"
                                 data-event-category="Branding,Work Productivity" data-event-label="event"
                                 style="--base-font-size:10;"><a
@@ -462,8 +419,8 @@
                                                 class="EventCategories_EventCategories_categoriesTag__C83cl">#브랜딩
                                                 #Close-業 #회사생활</span></div>
                                     </div>
-                                </a></div>
-                            <div class="EventItem_EventItem__1Rj6D" data-attribute-id="event__click"
+                                </a></div> -->
+                           <!--  <div class="EventItem_EventItem__1Rj6D" data-attribute-id="event__click"
                                 data-event-id="2191" data-event-title="원티드 개발자 커뮤니티 : Wanted Dev Crew"
                                 data-event-category="IT" data-event-label="event" style="--base-font-size:10;"><a
                                     href="/events?sort=deadline&amp;label=event&amp;payable=all&amp;keywords=&amp;eventIdOrKey=wanteddevcrew"
@@ -494,8 +451,8 @@
                                                 class="EventCategories_EventCategories_categoriesTag__C83cl">#개발</span>
                                         </div>
                                     </div>
-                                </a></div>
-                            <div class="EventItem_EventItem__1Rj6D" data-attribute-id="event__click"
+                                </a></div> -->
+                          <!--   <div class="EventItem_EventItem__1Rj6D" data-attribute-id="event__click"
                                 data-event-id="1965" data-event-title="원티드 데이터 리포트"
                                 data-event-category="Career Search,Career Advice,IT" data-event-label="event"
                                 style="--base-font-size:10;"><a
@@ -527,8 +484,8 @@
                                                 class="EventCategories_EventCategories_categoriesTag__C83cl">#취업/이직
                                                 #커리어고민 #개발</span></div>
                                     </div>
-                                </a></div>
-                            <div class="EventItem_EventItem__1Rj6D" data-attribute-id="event__click"
+                                </a></div> -->
+                           <!--  <div class="EventItem_EventItem__1Rj6D" data-attribute-id="event__click"
                                 data-event-id="1958" data-event-title="Close-業 : 위대한상상 '요기요'"
                                 data-event-category="Branding" data-event-label="event" style="--base-font-size:10;"><a
                                     href="/events?sort=deadline&amp;label=event&amp;payable=all&amp;keywords=&amp;eventIdOrKey=yogiyo"
@@ -559,7 +516,7 @@
                                                 class="EventCategories_EventCategories_categoriesTag__C83cl">#브랜딩
                                                 #Close-業</span></div>
                                     </div>
-                                </a></div>
+                                </a></div> -->
                         </div>
                     </div>
                 </div>
@@ -570,174 +527,52 @@
 
 
     <!-- 강의 클릭 시 모달 창  -->
-
     <div scrolly="200">
+	<%-- <c:choose>
+    <c:when test="${not empty sessionScope.memberNumber}"> --%>
         <div class="Modal_Modal__root__lNnQN EventDetailModal_EventDetailModal_root__aLcki undefined">
             <div class="Modal_Modal__root__backdrop__ENcJl"></div>
             <div class="EventDetailModal_EventDetailModal_close__BDMtG">
                 <button type="button" class="EventDetailModal_EventDetailModal_close_button__Gq2TM">
                     <span class="SvgIcon_SvgIcon__root__8vwon">
-                        <svg class="SvgIcon_SvgIcon__root__svg__DKYBi EventDetailModal_EventDetailModal_close_icon__0mueS"
-                            viewBox="0 0 24 24">
-                            <path
-                                d="M17.97 19.03a.749.749 0 1 0 1.06-1.06l-6.5-6.5a.749.749 0 0 0-1.06 0l-6.5 6.5a.749.749 0 1 0 1.06 1.06L12 13.06l5.97 5.97zM12 10.94 6.03 4.97a.749.749 0 1 0-1.06 1.06l6.5 6.5a.749.749 0 0 0 1.06 0l6.5-6.5a.749.749 0 1 0-1.06-1.06L12 10.94z">
-                            </path>
-                        </svg>
+	                    <svg class="SvgIcon_SvgIcon__root__svg__DKYBi EventDetailModal_EventDetailModal_close_icon__0mueS" style="padding-top: 10px; padding-left: 11px;">
+	                    	<path d="M17.97 19.03a.749.749 0 1 0 1.06-1.06l-6.5-6.5a.749.749 0 0 0-1.06 0l-6.5 6.5a.749.749 0 1 0 1.06 1.06L12 13.06l5.97 5.97zM12 10.94 6.03 4.97a.749.749 0 1 0-1.06 1.06l6.5 6.5a.749.749 0 0 0 1.06 0l6.5-6.5a.749.749 0 1 0-1.06-1.06L12 10.94z"></path>
+	                    </svg>
                     </span>
                 </button>
             </div>
+            
             <div class="Modal_Modal__root__body__1_X6A Modal_Modal__root__body__scrollContent__ro_P_ EventDetailModal_EventDetailModal__2a_lm">
-                <div class="EventDetail_EventDetail_root__o8Yri EventDetail_EventDetail_root_scroll__WvmmF">
-                    <div class="EventDetail_EventDetail_wrapper__Sl_BY">
-                        <div class="SectionsBar_SectionsBar__root__h0MJc">
-                            <div class="SectionsBar_SectionsBar__root__container__Yk3Eb">
-                                <div class="SectionsBar_SectionsBar__root__container__section__PiYRL"><button type="button"
-                                        class="">What is Swift Coding Club?</button><button type="button" class="">우리 같이
-                                        코딩할래요?</button><button type="button" class="">NOTICE</button>
-                                </div>
-                                <div class="SectionsBar_SectionsBar__root__container__buttons__j4hzV"></div>
-                            </div>
-                        </div>
-                        <section class="EditorTypeEvent_className__S6F1v">
-                            <header class="Header_className__JXuO9">
-                                <section class="Header_titleImage__ojHco"
-                                    style="background-image: url(&quot;https://static.wanted.co.kr/images/events/2398/e3555f68.jpeg&quot;);">
-                                </section>
-                                <section class="Header_eventInfo__nSsD3">
-                                    <h2 class="Header_titleClass__O1zQh">원티드 x 스위프트 코딩클럽 2기 모집</h2>
-                                    <h4 class="Header_subTitleClass__I8QrA">일자</h4>
-                                    <h5 class="Header_subContentClass__jSQTM">2022.09.19 (월) ~ 2022.10.04 (화)</h5>
-                                    <h4 class="Header_subTitleClass__I8QrA">장소</h4>
-                                    <h5 class="Header_subContentClass__jSQTM">게더타운</h5>
-                                    <h4 class="Header_subTitleClass__I8QrA">잔여</h4>
-                                    <h5 class="Header_subContentClass__jSQTM"> 0개</h5>
-                                    <h4 class="Header_subTitleClass__I8QrA">주최자</h4>
-                                    <h5 class="Header_subContentClass__jSQTM">스위프트 코딩클럽</h5>
-                                </section>
-                                <div class="Buttons_Buttons__bSq1p Header_buttonsClasses__HF4zs notFixedPos">
-                                    <div class="Buttons_Buttons__item__yfnts"><button class="ButtonItem_className__kRZYN"
-                                            disabled="" type="button"
-                                            style="background: rgb(204, 204, 204); border: 1px solid rgb(204, 204, 204); color: rgb(255, 255, 255);">신청마감</button>
-                                    </div>
-                                    <div class="Buttons_Buttons__item__yfnts">
-                                        <a href="javascript:void(0)" class="btnModalTwo">
-                                            <button class="ButtonItem_className__kRZYN applyBtn" type="button" style="background: rgb(255, 255, 255); border: 1px solid rgb(51, 102, 255); color: rgb(51, 102, 255);">대기자 신청</button>
-                                        </a>
-                                    </div>
-                                </div>
-                            </header>
-                            <div class="EventTags_className__L15ut">
-                                <div class="EventTags_divider__62l__"></div>
-                                <div class="EventTags_kindsTags__zmCPr">
-                                    <div class="EventTags_title__SqRlJ">유형</div>
-                                    <div class="EventKinds EventKinds_EventKinds__YhUSb"><span
-                                            class="EventKind EventKinds_EventKind__eWUu8 is-online"><svg
-                                                xmlns="http://www.w3.org/2000/svg" width="11" height="12"
-                                                viewBox="0 0 11 12">
-                                                <path fill="currentColor"
-                                                    d="M5.98.9A5.09 5.09 0 00.32 6.54l1.03-.1a4.07 4.07 0 014.52-4.53L5.98.89zm4.57 4.56l-1.03.1A4.07 4.07 0 015 10.1l-.11 1.03a5.1 5.1 0 005.66-5.66zM5.76 2.94c-.9-.1-1.84.18-2.53.86a3.06 3.06 0 00-.86 2.54l1.02-.11c-.07-.6.12-1.24.57-1.7a2.05 2.05 0 011.7-.57l.1-1.02zM8.5 5.68l-1.04.12a2 2 0 01-2.24 2.24L5.1 9.06a3.06 3.06 0 003.4-3.4zm-2.53-.22c-.3-.3-.8-.3-1.1 0-.3.3-.29.78.02 1.08.3.3.79.3 1.09 0 .3-.3.3-.78 0-1.08z">
-                                                </path>
-                                            </svg><span class="EventKinds_EventKind__text__sYu5A">온라인</span></span><span
-                                            class="EventKind EventKinds_EventKind__eWUu8 is-event"><span
-                                                class="EventKinds_EventKind__text__sYu5A">이벤트</span></span></div>
-                                    <div class="EventTags_kindDivider__GKGAN"></div>
-                                </div>
-                                <div class="EventTags_categoriesTags__M6zvJ">
-                                    <div class="EventTags_title__SqRlJ">태그</div>
-                                    <ul class="categories--tags">
-                                        <li><button type="button"><span
-                                                    class="EventTags_category__I6zCM">#개발</span></button></li>
-                                        <li><button type="button"><span
-                                                    class="EventTags_category__I6zCM">#IT/기술</span></button></li>
-                                    </ul>
-                                    <div class="EventTags_itemGradient__o2S_I left none"></div>
-                                    <div class="EventTags_itemGradient__o2S_I right"></div>
-                                </div>
-                            </div>
-                            <div class="EditorTypeEvent_htmlContainer__IdzGB">
-                                <div class="EditorTypeEvent_sectionContainer__xpj2h">
-                                    <h2>What is Swift Coding Club?</h2>
-                                    <div>안녕하세요! 스위프티 여러분,<br><b>리이오</b>가 스위프트 코딩 클럽을 열게된 이유를 간략하게 소개해 드리려고
-                                        합니다.<br><br>iOS 개발, Swift 배우기는 힘들다, 장벽이 높다는 오해가 있습니다.<br><b>이 오해를 해소하기 위해</b> 평소
-                                        Swift 문법을 배워보고 싶으셨던 분들, iOS 개발을 시작해보고 싶으셨던 분들을 대상으로 기획하게 되었습니다.<br><br>기본적으로
-                                        <b>아무것도 모르시는 분</b>들을 <b>대상</b>으로 교육자료를 제공해드립니다. 그렇기 때문에, 이미 공부하고 오신 분들보다는 아무것도
-                                        모르시는 분들이 오시는 것을 추천해 드립니다.<br><b></b><b>리소스</b>는 <b>애플에서 기본적으로 제공하는 교육 자료</b>와
-                                        리이오가 <b>직접 만든 자료</b>들이 있기 때문에, 본인에게 더 적절한 자료들을 바탕으로 학습할 수 있습니다!<br><b>학습의
-                                            방식</b>은 다음과 같습니다<br><br>
-                                        <ul>
-                                            <li><b>기본적으로 제공되는 학습 리소스를 가지고 1주일간 학습 (주중)</b></li>
-                                            <li><b>다 같이 모여서 오늘의 과제를 해결 (주말)</b></li>
-                                            <li><b>질문과 공유 시간을 가지고 복습 (주말)</b></li>
-                                            <li><b>이번 주 과제 및 다음 주에 배울 내용 공개</b></li>
-                                        </ul><br>취직을 목표로 하시는 분들의 경우에는 다소 느리게 느껴질 수 있습니다. <br>이 스위프트 코딩클럽의<b> 기본 취지</b>는
-                                        <b>나만의 취미, 새로운 도전, 지속 가능한 개발</b> 입니다.<br><br>그럼 나와 비슷한 목표와 관심을 가진 사람들과 함께 스위프트를
-                                        배우러 떠나보시죠! <br>곧 만나요!!<br>
-                                    </div>
-                                </div>
-                                <div class="EditorTypeEvent_sectionContainer__xpj2h">
-                                    <h2>우리 같이 코딩할래요?</h2>
-                                    <div><br>
-                                        <ul>
-                                            <li><b>모집 기간</b>을 놓치지 마세요.<br>: <b>2022년 9월 19일 오후 5시</b>부터 <b>2022년 10월 3일
-                                                    오후 7시</b>까지<br><br></li>
-                                            <li><b>최대 모집 인원</b>을 확인하세요.<br>: 선착순 <b>40명 </b>(대기인원 가능)<br><br></li>
-                                            <li><b>선발 발표</b>는 금방 이뤄진답니다.<br>: 2022년 10월 3일 오후 7시 5분<br><br></li>
-                                            <li><b>언제부터 언제까지</b> 하냐면요.<br>: 2022년 <b>10월 8일</b> 오후 1시 ~ 2022년 <b>11월
-                                                    26일</b> 오후 1시 (<b>8주</b>)<br><br></li>
-                                            <li><b>매주 </b>만나요! <br>: <b>매주 토요일 오후 1시부터</b> 약 2시간<br><br></li>
-                                            <li><b>책임비용</b>이 발생할 수 있어요.<br>: 결석시에만 차감되는<b> 환급형</b>이니 걱정마세요!<br></li>
-                                        </ul><br>
-                                    </div>
-                                </div>
-                                <div class="EditorTypeEvent_sectionContainer__xpj2h">
-                                    <h2>NOTICE</h2>
-                                    <div>
-                                        <ul>
-                                            <li>스위프트 코딩 클럽은 <b>원티드의 후원</b>을 받아 진행됩니다.</li>
-                                            <li>스위프트 코딩 클럽에 관련된 문의사항이 있으신 경우<b> <a target="_blank" rel="noopener noreferrer"
-                                                        href="https://mailto:leeo@kakao.com">leeo@kakao.com</a></b> 으로
-                                                메일보내주세요.</li>
-                                            <li>스위프트 코딩클럽은 게더타운에서 진행되며, 선발이 완료되신 분들께 별도로 안내드릴 예정입니다.</li>
-                                        </ul><br>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-                        <div class="RelatedEvents_RelatedEvents__HIx3_">
-                            <h2 class="RelatedEvents_RelatedEvents_title__iKr5x">함께 보면 좋은 이벤트</h2>
-                            <ul class="RelatedEvents_RelatedEvents_list__V4YAr">
-                                <div class="EventItem_EventItem__1Rj6D RelatedEvents_RelatedEvents_item__4n8Wu"
-                                    data-attribute-id="event__relatedEvent__click" data-event-id="1861"
-                                    data-event-title="[무료] 어느 개발 팀장 이야기 : Talk #70" data-event-category="IT,Career Advice"
-                                    data-event-label="video" data-related-type="sameKeyword" style="--base-font-size:10;"><a
-                                        href="/events?eventIdOrKey=talk70" class="EventItem_EventItem_link__gWsoH"
-                                        aria-label="">
-                                        <header class="EventItem_EventItem_media__T_Pm2"
-                                            style="background-image: url(&quot;https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fevents%2F1861%2F8e0a0f09.jpg&amp;w=1200&amp;q=75&quot;);">
-                                        </header>
-                                        <div class="EventItem_EventItem_body__ix_9a">
-                                            <div class="EventKinds EventKinds_EventKinds__YhUSb"><span
-                                                    class="EventKind EventKinds_EventKind__eWUu8 is-online"><svg
-                                                        xmlns="http://www.w3.org/2000/svg" width="11" height="12"
-                                                        viewBox="0 0 11 12">
-                                                        <path fill="currentColor"
-                                                            d="M5.98.9A5.09 5.09 0 00.32 6.54l1.03-.1a4.07 4.07 0 014.52-4.53L5.98.89zm4.57 4.56l-1.03.1A4.07 4.07 0 015 10.1l-.11 1.03a5.1 5.1 0 005.66-5.66zM5.76 2.94c-.9-.1-1.84.18-2.53.86a3.06 3.06 0 00-.86 2.54l1.02-.11c-.07-.6.12-1.24.57-1.7a2.05 2.05 0 011.7-.57l.1-1.02zM8.5 5.68l-1.04.12a2 2 0 01-2.24 2.24L5.1 9.06a3.06 3.06 0 003.4-3.4zm-2.53-.22c-.3-.3-.8-.3-1.1 0-.3.3-.29.78.02 1.08.3.3.79.3 1.09 0 .3-.3.3-.78 0-1.08z">
-                                                        </path>
-                                                    </svg><span
-                                                        class="EventKinds_EventKind__text__sYu5A">온라인</span></span><span
-                                                    class="EventKind EventKinds_EventKind__eWUu8 is-video"><span
-                                                        class="EventKinds_EventKind__text__sYu5A">VOD</span></span></div>
-                                            <h2
-                                                class="EventItem_EventItem_title__Xjepj EventItem_EventItem_maintitle__lC0yT">
-                                                [무료] 어느 개발 팀장 이야기 : Talk #70</h2>
-                                            <h3
-                                                class="EventItem_EventItem_title__Xjepj EventItem_EventItem_subtitle__p_ZPR">
-                                                상시</h3>
-                                            <div class="EventCategories_EventCategories__GN0Wa"><span
-                                                    class="EventCategories_EventCategories_categoriesTag__C83cl">#개발
-                                                    #커리어고민</span></div>
+            	
+                
+                	<div class="EventDetail_EventDetail_root__o8Yri EventDetail_EventDetail_root_scroll__WvmmF">
+                		<div class="RelatedEvents_RelatedEvents__HIx3_">
+                    	<h2 class="RelatedEvents_RelatedEvents_title__iKr5x">함께 보면 좋은 이벤트</h2>
+                    	<ul class="RelatedEvents_RelatedEvents_list__V4YAr">
+                    	<div class="EventItem_EventItem__1Rj6D RelatedEvents_RelatedEvents_item__4n8Wu" data-attribute-id="event__relatedEvent__click" data-event-id="1861" data-event-title="[무료] 어느 개발 팀장 이야기 : Talk #70" data-event-category="IT,Career Advice" data-event-label="video" data-related-type="sameKeyword" style="--base-font-size:10;">
+                    	<a href="/events?eventIdOrKey=talk70" class="EventItem_EventItem_link__gWsoH" aria-label="">
+                    	<header class="EventItem_EventItem_media__T_Pm2" style="background-image: url(&quot;https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fevents%2F1861%2F8e0a0f09.jpg&amp;w=1200&amp;q=75&quot;);"></header>
+                    	<div class="EventItem_EventItem_body__ix_9a">
+                                            <div class="EventKinds EventKinds_EventKinds__YhUSb">
+	                                            <span class="EventKind EventKinds_EventKind__eWUu8 is-online">
+		                                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="12" viewBox="0 0 11 12">
+		                                            	<path fill="currentColor" d="M5.98.9A5.09 5.09 0 00.32 6.54l1.03-.1a4.07 4.07 0 014.52-4.53L5.98.89zm4.57 4.56l-1.03.1A4.07 4.07 0 015 10.1l-.11 1.03a5.1 5.1 0 005.66-5.66zM5.76 2.94c-.9-.1-1.84.18-2.53.86a3.06 3.06 0 00-.86 2.54l1.02-.11c-.07-.6.12-1.24.57-1.7a2.05 2.05 0 011.7-.57l.1-1.02zM8.5 5.68l-1.04.12a2 2 0 01-2.24 2.24L5.1 9.06a3.06 3.06 0 003.4-3.4zm-2.53-.22c-.3-.3-.8-.3-1.1 0-.3.3-.29.78.02 1.08.3.3.79.3 1.09 0 .3-.3.3-.78 0-1.08z"></path>
+		                                            </svg>
+		                                            <span class="EventKinds_EventKind__text__sYu5A">온라인</span>
+	                                            </span>
+	                                            <span class="EventKind EventKinds_EventKind__eWUu8 is-video">
+	                                            	<span class="EventKinds_EventKind__text__sYu5A">VOD</span>
+	                                            </span>
+                                            </div>
+                                            <h2 class="EventItem_EventItem_title__Xjepj EventItem_EventItem_maintitle__lC0yT"> [무료] 어느 개발 팀장 이야기 : Talk #70</h2>
+                                            <h3 class="EventItem_EventItem_title__Xjepj EventItem_EventItem_subtitle__p_ZPR"> 상시</h3>
+                                            <div class="EventCategories_EventCategories__GN0Wa">
+                                            	<span class="EventCategories_EventCategories_categoriesTag__C83cl">#개발 #커리어고민</span>
+                                            </div>
                                         </div>
-                                    </a></div>
+                                    </a>
+                                </div>
+                                
                                 <div class="EventItem_EventItem__1Rj6D RelatedEvents_RelatedEvents_item__4n8Wu"
                                     data-attribute-id="event__relatedEvent__click" data-event-id="2392"
                                     data-event-title="[채용] 롯데헬스케어 웹서비스 백엔드 개발자" data-event-category="Career Search,Tech,IT"
@@ -828,14 +663,13 @@
                                     </a>
                                 </div>
                             </ul>
-                            <div class="RelatedEvents_RelatedEvents_bottom__ZiR_s"><a href="/events"
-                                    class="style_wrapper__IgK7U RelatedEvents_RelatedEvents_button__wd47j" aria-label=""
-                                    data-attribute-id="event__goToEventList">이벤트 모두 보기 <svg width="12" height="12"
-                                        viewBox="0 0 12 12">
-                                        <path fill="currentColor"
-                                            d="M4.22 9.72a.75.75 0 001.06 1.06l4.25-4.25a.75.75 0 000-1.06L5.28 1.22a.75.75 0 00-1.06 1.06L7.94 6 4.22 9.72z">
-                                        </path>
-                                    </svg></a></div>
+                            <div class="RelatedEvents_RelatedEvents_bottom__ZiR_s">
+	                            <a href="/events" class="style_wrapper__IgK7U RelatedEvents_RelatedEvents_button__wd47j" aria-label="" data-attribute-id="event__goToEventList">이벤트 모두 보기 
+	                                    <svg width="12" height="12" viewBox="0 0 12 12">
+	                                        <path fill="currentColor" d="M4.22 9.72a.75.75 0 001.06 1.06l4.25-4.25a.75.75 0 000-1.06L5.28 1.22a.75.75 0 00-1.06 1.06L7.94 6 4.22 9.72z"></path>
+	                                    </svg>
+	                            </a>
+                            </div>
                         </div>
                         <button
                             class="Button_Button__root__V1ie3 Button_Button__icon__kMj7B undefined Button_Button__sizeMedium__k0A1w ShareButton_ShareButton__shareButton__NG7V_"
@@ -853,8 +687,16 @@
                                     </g>
                                 </svg></span></button>
                     </div>
+                   <%-- </c:when>
+                   <c:otherwise>
+						<script type="text/javascript">
+							$(".Modal_root__aEM8D.login").css('display', 'block');
+						</script>
+                   </c:otherwise>
+                 </c:choose> --%>
                 </div>
-            </div>
+       
+       
             <!-- 신청하기 모달창 -->
             <div class="modal">
 
@@ -875,13 +717,13 @@
                     <div class="btnBodyTwo">
                         
                         <div class="Buttons_Buttons__item__yfnts">
-                            <a href="javascript:void(0)" class="btnModalTwo">
-                                <button class="btnItemTwo" type="button" style="background: rgb(204, 204, 204); border: 1px solid rgb(204, 204, 204); color: rgb(255, 255, 255);">네</button>
+                            <a href="javascript:void(0)" class="btnModalTwo yes">
+                                <button class="btnItemTwo yes" type="button" style="background: rgb(204, 204, 204); border: 1px solid rgb(204, 204, 204); color: rgb(255, 255, 255);">네</button>
                             </a>
                         </div>
                         <div class="Buttons_Buttons__item__yfnts">
-                            <a href="javascript:void(0)" class="btnModalTwo">
-                                <button class="btnItemTwo" type="button" style="background: rgb(204, 204, 204); border: 1px solid rgb(204, 204, 204); color: rgb(255, 255, 255);">아니요</button>
+                            <a href="javascript:void(0)" class="btnModalTwo no">
+                                <button class="btnItemTwo no" type="button" onclick="location.href='${pageContext.request.contextPath}/app/school/program.jsp'" style="background: rgb(204, 204, 204); border: 1px solid rgb(204, 204, 204); color: rgb(255, 255, 255);">아니요</button>
                             </a>
                         </div>
                     </div>
@@ -895,27 +737,160 @@
 
 
 </body>
-<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script>
 
-    $(function(){
-        $(".EventItem_EventItem_link__gWsoH").click(function(){
-            $(".Modal_Modal__root__lNnQN").fadeIn();
-        })
-        $(".EventDetailModal_EventDetailModal_close__BDMtG").click(function(){
-            $(".Modal_Modal__root__lNnQN").fadeOut();
-        })
-    });
+	var schoolNumber;
+	console.log("멤버넘버")
+	
 
-    $(function(){
-        $(".Buttons_Buttons__item__yfnts").click(function(){
-            $(".modal").fadeIn();
-        })
-        $(".EventDetailModalClose").click(function(){
-            $(".modal").fadeOut();
-        })
-    });
+	show();
 
+	function show(){
+		$.ajax({
+			url: "/school/programlist.sc",
+			dataType: "json",
+			success:  function showList(programs){
+		    		let text = "";
+		    		programs.forEach(school => {
+			    		text += `<div class="EventItems_EventItems_list__1d36q">`
+			    		text += `<div class="EventItem_EventItem__1Rj6D" data-number=` + school.schoolNumber +`>`;
+			    		text += `<div class="EventItem_EventItem_media__T_Pm2">`;
+		    			text += `<img>`;
+		    			text += `</div>`;
+		    			text += `<div class="EventItem_EventItem_body__ix_9a">`;
+		    			text += `<div class="EventKinds EventKinds_EventKinds__YhUSb">`;
+		    			text += `<span class="EventKind EventKinds_EventKind__eWUu8 is-event">`;
+		    			text += `<span class="EventKinds_EventKind__text__sYu5A">`  + ((school.schoolStatus == "1") ? "진행중" : "신청마감") + `</span>` ;
+		    			text += `<div class="status" style="display:none;" data-count = ` + school.schoolStatus + `>` + `</div>`;
+		    			text += `</span>`;
+		    			text += `</div>`;
+		    			text += `<h2 class="EventItem_EventItem_title__Xjepj EventItem_EventItem_maintitle__lC0yT">` + school.schoolName + `</h2>`;
+		    			text += `<h3 class="EventItem_EventItem_title__Xjepj EventItem_EventItem_subtitle__p_ZPR">` + school.schoolOpeningDate + " ~ " +  school.schoolClosingDate  + `</h3>`;
+		    			text += `<h3 class="EventCategories_EventCategories_categoriesTag__C83cl">` + school.schoolTime  + `</h3>`;
+			    		text += `</div>`;
+			    		text += `</div>`;
+			    		text += `</div>`;
+		    		});
+		    		text += `</div>`;
+		    		text += `</div>`;
+		    		
+		    		$(".EventList_EventList_container__mcoes").html(text);
+					}
+		});
+	}
+	
+	
+	/* 수강 상세 조회 모달 */
+	$(".EventList_EventList_container__mcoes").on("click", ".EventItem_EventItem__1Rj6D", function(){
+		/* if(memberNumber == null){
+			$(".Modal_root__aEM8D.login").css('display', 'block');			
+		}else{ */
+			schoolNumber = $(this).data("number");
+			$(".Modal_Modal__root__lNnQN").fadeIn();
+		 	$.ajax({
+				url: "/school/programdetail.sc",
+				type: "get",
+				data: {schoolNumber: $(this).data("number")},
+				dataType: "json",
+				contentType: "application/json; charset=utf-8",
+				success: showDetail
+				
+			  });
+	/* 	} */
+	});
+	
+	$(".EventDetailModal_EventDetailModal_close__BDMtG").click(function(){
+        $(".Modal_Modal__root__lNnQN").fadeOut();
+    });
+    
+			
+	function showDetail(school){
+		schoolNumber = school.schoolNumber;
+			let text = "";
+			text += `<div class="EventDetail_EventDetail_wrapper__Sl_BY">`;
+			text += `<div class="SectionsBar_SectionsBar__root__h0MJc">`;
+			text += `<div class="SectionsBar_SectionsBar__root__container__Yk3Eb">`;
+			text += `<div class="SectionsBar_SectionsBar__root__container__section__PiYRL">`;
+			text += `</div>`;
+			text += `<div class="SectionsBar_SectionsBar__root__container__buttons__j4hzV">`+ `</div>`;
+			text += `</div>`;
+			text += `</div>`;
+			text += `<section class="EditorTypeEvent_className__S6F1v">`;
+			text += `<header class="Header_className__JXuO9">`;
+			text += `<section class="Header_titleImage__ojHco" style="background-image: url(&quot;https://static.wanted.co.kr/images/events/2398/e3555f68.jpeg&quot;);">`;
+			text += `</section>`;
+			text += `<section class="Header_eventInfo__nSsD3">`;
+			text += `<h2 class="Header_titleClass__O1zQh">` + school.schoolName + `</h2>`;
+			text += `<h4 class="Header_subTitleClass__I8QrA">` + "일자" + `</h4>`;
+			text += `<h5 class="Header_subContentClass__jSQTM">`+ school.schoolOpeningDate + " ~ " + school.schoolClosingDate + `</h5>`;
+			text += `<h4 class="Header_subTitleClass__I8QrA">` + "장소" + `</h4>`;
+			text += `<h5 class="Header_subContentClass__jSQTM">` + school.schoolAddress + `</h5>`;
+			text += `<h4 class="Header_subTitleClass__I8QrA">` + "잔여" +`</h4>`;
+			text += `<h5 class="Header_subContentClass__jSQTM">` +  school.schoolLimitCount +`</h5>`;
+			text += `<h4 class="Header_subTitleClass__I8QrA">` + "강사명" + `</h4>`;
+			text += `<h5 class="Header_subContentClass__jSQTM">` + school.schoolTeacherName +`</h5>`;
+			text += `</section>`;
+			text += `<div class="Buttons_Buttons__bSq1p Header_buttonsClasses__HF4zs notFixedPos">`;
+			text += `<div class="Buttons_Buttons__item__yfnts">`;
+			text += `<div class="btnModalTwo btnSchoolNumber">`;
+			text += `<button class="ButtonItem_className__kRZYN applyBtn" type="button" style="background: rgb(255, 255, 255); border: 1px solid rgb(51, 102, 255); color: rgb(51, 102, 255);" data-number=`+ school.schoolNumber + `>` + "신청 하기" + `</button>`;
+			text += `</div>`;
+			text += `</div>`;
+			/* text += `<div class="Buttons_Buttons__item__yfnts">`;
+			text += `<a href="javascript:void(0)" class="btnModalTwo">`;
+			text += `<button class="ButtonItem_className__kRZYN" disabled="" type="button" style="background: rgb(204, 204, 204); border: 1px solid rgb(204, 204, 204); color: rgb(255, 255, 255);">` + "신청마감" + `</button>`;
+			text += `</a>`;
+			text += `</div>`; */
+			text += `</div>`; 
+			text += `<a>`;
+			text += `</header>`;
+			text += `</a>`;
+			text += `<div class="EditorTypeEvent_htmlContainer__IdzGB">`;
+			text += `<div class="EditorTypeEvent_sectionContainer__xpj2h">`;
+			text += `<h2>` + school.schoolName +`</h2>`;
+			text += `<div>` +school.schoolIntroduce + `</div>`;
+	        text += `</div>`;
+	        text += `</div>`;
+	        text += `</section>`;
+		$(".EventDetail_EventDetail_root__o8Yri").html(text);
+	};
+	
+	
+
+    /* 3번째 모달 */
+    $(".Modal_Modal__root__body__1_X6A").on("click", ".btnModalTwo.btnSchoolNumber", function(){
+    	$(".modal").fadeIn();
+	});
+    
+
+    $(".btnItemTwo.yes").on("click", function(){
+    	console.log(schoolNumber)
+    	console.log(sessionStorage.getItem('memberNumber'))
+    	  
+    	$.ajax({
+    		url: "/school/applyprogram.sc",
+ 			type: "get",
+ 			data: {schoolNumber : schoolNumber, memberNumber : sessionStorage.getItem('memberNumber')},
+ 			contentType: "application/json; charset=utf-8",
+ 			success:
+ 				function(){
+ 				$(".modal").fadeOut();
+ 				$(".Modal_Modal__root__lNnQN").fadeOut();
+ 			}
+ 		  });  
+    	
+    });
+	
+    $(".EventDetailModalClose").click(function(){
+        $(".modal").fadeOut();
+    });
+    
+    
+
+    
+    
+    
+    
     $(document).ready(function(){
         $('.btnItemTwo').mouseover(function(){
             $(this).css("backgroundColor","rgb(51, 102, 255)");
@@ -925,8 +900,6 @@
         }); 
     });
 
-
     
-
 </script>
 </html>

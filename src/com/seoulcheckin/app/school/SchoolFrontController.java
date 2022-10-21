@@ -33,16 +33,15 @@ public class SchoolFrontController extends HttpServlet {
 		
 		// 프로그램 클릭 시 상세정보(모달)
 		}else if(request.equals("/school/programdetail.sc")) {
+			result = new ProgramDetailController().execute(req, resp);
 		
 		// 프로그램 신청하기
 		}else if(request.equals("/school/applyprogram.sc")) {
-			
+			result = new ApplyProgramController().execute(req, resp);
 		// 프로그램 필터
 		}else if(request.equals("/school/programfilter.sc")) {
-		
 		// 프로그램  추가
 		}else if(request.equals("/school/addprogrma.sc")) {
-			
 		// 프로그램 수정
 		}else if(request.equals("/school/updatepro.sc")) {
 			

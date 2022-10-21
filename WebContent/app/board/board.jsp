@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -192,7 +194,7 @@
                     </section>
                     <section class="PostWriteButton_PostWriteButton__E5DAF">
                         <button type="button" class="PostWriteButton_writeButton__pWbNC"
-                            data-attribute-id="community__content__write">커리어와 라이프스타일에 대해 자유롭게 이야기 해주세요!
+                            data-attribute-id="community__content__write" onclick="location.href = '${pageContext.request.contextPath}/board/newpost.bo'">커리어와 라이프스타일에 대해 자유롭게 이야기 해주세요!
                             <svg class="PostWriteButton_writeIcon__D2d5u">
                                 <svg width="24" height="24">
                                     <path fill="currentColor"
@@ -202,13 +204,14 @@
                             </svg>
                         </button>
                     </section>
+                    
                     <section class="RecommendedPostsView_RecommendedPostsView__9d4uy">
                         <div class="RecommendedPostsTags_RecommendedPostsTags__yjgLI">
                             <h2>커뮤니티글 💘</h2>
                             <div class="RecommendedPostsTags_tag_list__Ory4H" role="button"
                                 aria-label="Open my interest tag modal popup">
                                 요즘 내 관심사는?<br>선택하고 맞춤 콘텐츠 받기!
-                                <!-- <ul>
+                               <!-- <ul>
                                     <li class="RecommendedPostsTags_tag__u_07Y">#커리어고민</li>
                                     <li class="RecommendedPostsTags_tag__u_07Y">#취업/이직</li>
                                     <li class="RecommendedPostsTags_tag__u_07Y">#회사생활</li>
@@ -225,64 +228,60 @@
                                         </path>
                                     </svg>
                                 </span> --> 
+
                             </div>
                         </div>
-                        <a class="PostItem_PostItem__txAPP" data-attribute-id="community__recommend__content__click"
-                            data-content-title="고졸 33세 국비개발" data-content-id="6802" data-like-count="0"
-                            data-comment-count="0" data-interest-tag="취업/이직" data-is-top-fixed="false"
-                            href="/community/post/6802">
-                            <article>
+                        
+                        <!-- 게시글  -->
+                      <!-- <a class="PostItem_PostItem__txAPP" data-attribute-id="community__recommend__content__click" data-content-title="고졸 33세 국비개발" data-content-id="6802" data-like-count="0" data-comment-count="0" data-interest-tag="취업/이직" data-is-top-fixed="false" href="/community/post/6802">-->
+                            <c:choose>
+                            <c:when test="${kboards != null and fn:length(kboards) > 0}">
+                            <c:forEach var="kboard" items="${kboards}">
+                            <article class ="boardAll">
                                 <div class="PostItem_PostItem__top__0qIud">
                                     <div class="AuthorBox_AuthorBox__JrXUr">
-                                        <button class="AuthorBox_AuthorBox__verticalArea__2C_q0"
-                                            data-attribute-id="community__content__profile__click"
-                                            data-content-title="고졸 33세 국비개발" data-content-id="6802" data-like-count="0"
-                                            data-comment-count="0" data-interest-tag="취업/이직" data-feed-type="recommend">
+                                        <button class="AuthorBox_AuthorBox__verticalArea__2C_q0" data-attribute-id="community__content__profile__click" data-content-title="고졸 33세 국비개발" data-content-id="6802" data-like-count="0" data-comment-count="0" data-interest-tag="취업/이직" data-feed-type="recommend">
                                             <div class="AuthorBox_AuthorBox__avatarWrapper__pUxrC avatar_wrapper">
-                                                <div
-                                                    class="UserAvatar_UserAvatar__Wi20b AuthorBox_AuthorBox__avatar__UL_vr avatar">
-                                                    <img src="https://s3.ap-northeast-2.amazonaws.com/wanted-public/profile_default.png"
-                                                        alt="">
+                                                <div class="UserAvatar_UserAvatar__Wi20b AuthorBox_AuthorBox__avatar__UL_vr avatar">
+                                                    <img src="https://s3.ap-northeast-2.amazonaws.com/wanted-public/profile_default.png" alt="">
                                                 </div>
                                             </div>
+                                            
                                             <div class="AuthorBox_AuthorBox__verticalBox__sb3aa">
                                                 <div class="AuthorBox_AuthorBox__userInfo__3dtQ9">
-                                                    <div class="AuthorBox_AuthorBox__username__94umS username">고졸무직
-                                                    </div>
+                                                    <div class="AuthorBox_AuthorBox__username__94umS username"><c:out value="${kboard.getMemberName()}"/></div>
                                                 </div>
-                                                <span class="AuthorBox_AuthorBox__createAt__iXxYT create_time">2시간
-                                                    전</span>
+                                                <span class="AuthorBox_AuthorBox__createAt__iXxYT create_time"><c:out value="${kboard.getkBoardDate()}"/></span>
                                             </div>
                                         </button>
                                     </div>
                                 </div>
                                 <div class="PostItem_PostItem__body__M5MNv">
-                                    <h3 class="PostItem_PostItem__title__BMwsW">고졸 33세 국비개발</h3>
-                                    <p class="PostItem_PostItem__content__lkI6t">취업가능합니까?</p>
-                                    <div class="PostItem_tag_list__C3_Kd">
-                                        <button type="button" class="PostItem_tag__Y_apm"
-                                            data-attribute-id="community__content__interestTag__click"
-                                            data-content-title="고졸 33세 국비개발" data-content-id="6802" data-like-count="0"
-                                            data-comment-count="0" data-interest-tag="취업/이직"
-                                            data-interest-tag-click="취업/이직" data-feed-type="recommend">취업/이직</button>
-                                    </div>
+                                    <h3 class="PostItem_PostItem__title__BMwsW"><a href='${pageContext.request.contextPath}/board/viewpost.bo?kBoardNumber=${kboard.getkBoardNumber()}'><c:out value="${kboard.getkBoardTitle()}"/></a></h3>
+                                    <p class="PostItem_PostItem__content__lkI6t"><c:out value="${kboard.getkBoardArticle()}"/></p>
+                                   
                                     <div class="PostItem_PostItem__bottom__CM_QT">
-                                        
-                                        <div aria-label="comments: 0" aria-pressed="false"
-                                            class="button_Button__lqb0B PostItem_PostItem__comments___7S6q"
-                                            data-attribute-id="community__content__commentBtn__click"
-                                            data-content-title="고졸 33세 국비개발" data-content-id="6802" data-like-count="0"
-                                            data-comment-count="0" data-interest-tag="취업/이직" data-feed-type="recommend">
-                                            <svg width="18" height="18" viewBox="0 0 18 18">
-                                                <path fill="currentColor" transform="matrix(-1 0 0 1 18 0)"
-                                                    d="M9 1c4.377 0 8 3.14 8 7s-3.623 7-8 7c-.317 0-.593-.026-.954-.088l-.395-.074-.205-.043-3.295 2.089a.75.75 0 0 1-.968-.143l-.067-.09a.75.75 0 0 1 .143-.968l.09-.067 3.55-2.25a.75.75 0 0 1 .551-.1l.652.132.301.052c.228.036.408.05.597.05 3.592 0 6.5-2.52 6.5-5.5S12.592 2.5 9 2.5C5.407 2.5 2.5 5.02 2.5 8c0 1.858 1.039 3.573 2.773 4.348a.75.75 0 1 1-.612 1.37C2.37 12.693 1 10.432 1 8c0-3.86 3.622-7 8-7z">
-                                                </path>
-                                            </svg><span class="button_Button__count__L1T_j count">0</span>
-                                        </div>
+	                                    <div aria-label="comments: 0" aria-pressed="false" class="button_Button__lqb0B PostItem_PostItem__comments___7S6q" data-attribute-id="community__content__commentBtn__click" data-content-title="고졸 33세 국비개발" data-content-id="6802" data-like-count="0" data-comment-count="0" data-interest-tag="취업/이직" data-feed-type="recommend">
+	                                    	<svg width="18" height="18" viewBox="0 0 18 18">
+	                                    		<path fill="currentColor" transform="matrix(-1 0 0 1 18 0)" d="M9 1c4.377 0 8 3.14 8 7s-3.623 7-8 7c-.317 0-.593-.026-.954-.088l-.395-.074-.205-.043-3.295 2.089a.75.75 0 0 1-.968-.143l-.067-.09a.75.75 0 0 1 .143-.968l.09-.067 3.55-2.25a.75.75 0 0 1 .551-.1l.652.132.301.052c.228.036.408.05.597.05 3.592 0 6.5-2.52 6.5-5.5S12.592 2.5 9 2.5C5.407 2.5 2.5 5.02 2.5 8c0 1.858 1.039 3.573 2.773 4.348a.75.75 0 1 1-.612 1.37C2.37 12.693 1 10.432 1 8c0-3.86 3.622-7 8-7z"></path>
+	                                        </svg>
+	                                        <span class="button_Button__count__L1T_j count">댓글 수</span>
+	                                    </div>
                                     </div>
                                 </div>
                             </article>
-                        </a><a class="PostItem_PostItem__txAPP" data-attribute-id="community__recommend__content__click"
+                                </c:forEach>
+                                </c:when>
+                                <c:otherwise>
+                                <div>
+                                	<div class="PostItem_PostItem__top__0qIud">등록된 게시물이 없습니다.</td>
+                                </div>
+                                </c:otherwise>
+                                </c:choose>
+                        </a>
+                        
+                        
+                       <%--  <a class="PostItem_PostItem__txAPP" data-attribute-id="community__recommend__content__click"
                             data-content-title="인사 직무 취업준비생입니다. 포트폴리오 피드백 부탁드립니다" data-content-id="6801"
                             data-like-count="1" data-comment-count="1" data-interest-tag="HR,취업/이직,커리어고민"
                             data-is-top-fixed="false" href="/community/post/6801">
@@ -1646,7 +1645,8 @@
                                 </div>
                             </article>
                         </a>
-                        <div class="scrollObserver"></div>
+ --%>                       
+ 					 <div class="scrollObserver"></div>
                     </section>
                 </div>
             </main>

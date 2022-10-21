@@ -62,13 +62,15 @@
                                 </div>
                             </div>
                         </div>
-                        	<p style="text-align:left; font-size:15px;">작성자 : <c:out value="${memberNumber}"/></p>
+                        	<p style="text-align:left; font-size:15px;">작성자 : <c:out value="${memberName}"/></p>
                         <!-- 제목 -->
                         <div class="AutoTextarea_AutoTextarea__odSEo Paper_CommunityWritePaper__title__0zYfC">
                             <!-- <textarea class="AutoTextarea_AutoTextarea__textarea__zScTG" name="title" placeholder="제목을 입력해주세요." required="" style="height: 38px;"></textarea> -->
                             <!-- <textarea class="AutoTextarea_AutoTextarea__textarea__zScTG AutoTextarea_AutoTextarea__hidden__ScJax" readonly="" style="height: 38px;"></textarea> -->
                         	<br>
-                        	<p><input name="boardTitle" type="text" placeholder="제목 입력"></p>
+                        	<p>
+                        		<input name="boardTitle" type="text" placeholder="제목 입력" value="${kboard.getkBoardTitle()}">
+							</p>
                         </div>
                         <!-- 글쓰기 -->
                         <div class="Paper_CommunityWritePaper__content__KM9Nk">

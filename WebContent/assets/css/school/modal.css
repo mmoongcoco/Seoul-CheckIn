@@ -664,6 +664,7 @@ svg:not(:root) {
     top:0; 
     left:0; 
     display:none;
+    z-index:1600;
 }
 
 .EventDetailModalClose {

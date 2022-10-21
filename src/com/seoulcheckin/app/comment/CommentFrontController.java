@@ -29,16 +29,19 @@ public class CommentFrontController extends HttpServlet {
 		
 		// 한국어 댓글 쓰기
 		if(request.equals("/comment/newcomment.cm")) {
+			new NewCommentController().execute(req, resp);
 		
 		// 한국어 댓글 수정
 		}else if(request.equals("/comment/updatecm.cm")) {
+			new UpdateCmController().execute(req, resp);
 		
 		// 한국어 댓글 삭제, 관리자페이지 댓글 삭제
 		}else if(request.equals("/comment/deletecm.cm")) {
-		
-		// 관리자페이지 한국어 댓글관리 페이지 요청
-		}else if(request.equals("/comment/commentlist.Scm")) {
+			new DeleteCmController().execute(req, resp);
 			
+		// 관리자페이지 한국어 댓글관리 페이지 요청
+		}else if(request.equals("/comment/commentlist.cm")) {
+			result = new CommentListController().execute(req, resp); 
 		}
 		
 		if(result != null) {
