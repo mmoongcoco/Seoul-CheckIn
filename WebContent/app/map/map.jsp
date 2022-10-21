@@ -1016,5 +1016,9 @@ function messageTranslate() {
 	});
 }
 
+setTimeout(() => {
+	console.log($("textarea#comment").val())
+	
+}, 10000);
 </script>
 </html>
