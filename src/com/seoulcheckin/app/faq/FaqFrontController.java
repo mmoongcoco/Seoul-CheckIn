@@ -27,17 +27,8 @@ public class FaqFrontController extends HttpServlet {
 		String request = requestURI.substring(contextPath.length());
 		Result result = null;
 		
-		// FAQ 페이지 요청, 관리자페이지 FAQ관리 페이지 요청
-		if(request.equals("/faq/faqlist.aq")) {
-			
-		// FAQ 상세정보 요청
-		}else if(request.equals("/faq/faqdetail.aq")) {
-			
-		// 고객센터, FAQ 통합검색
-		}else if(request.equals("/faq/search.aq")) {
-		
 		// FAQ 추가
-		}else if(request.equals("/faq/addfaq.aq")) {
+		if(request.equals("/faq/addfaq.aq")) {
 			
 		// FAQ 수정
 		}else if(request.equals("/faq/updatefaq.aq")) {

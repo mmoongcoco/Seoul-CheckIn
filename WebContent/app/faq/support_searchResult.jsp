@@ -67,20 +67,14 @@
                         </h2>
                         <ul class="search-results-list">
                             <li class="search-result">
-                                <a href=""
-                                    class="search-result-link">좋은 기업을 원티드 #쿡앱스</a>
+                                <a href="" class="search-result-link">제목을 입력하는 부분입니다</a>
     
                                 <div class="search-result-meta">
-                                    <a href="">원티드 고객센터</a>
-                                    <a
-                                        href="">원티드
-                                        소식</a>
-                                    <a
-                                        href="">좋은
-                                        기업을 원티드</a>
+                                    <a href="">서울체크인 고객센터</a>
+                                    <a href="">중 카테고리</a>
+                                    <a href="">소 카테고리</a>
                                 </div>
-                                <div class="search-result-description">“게임 제작은 상당한 두뇌 <em>에너지</em>를 사용하는 일입니다. 그렇기에 충분한
-                                    휴식을 취하고 <em>에너지</em>를 충전해야 효율적, 그리고 재미있게 게임을 만들 수 있다고 생각했죠!” 쿡앱스 반가워요</div>
+                                <div class="search-result-description">내용 한 줄을 입력하는 부분입니다 </div>
                             </li>
                         </ul>
                     </section>
