@@ -11,6 +11,7 @@
 	
 	<!-- member Alias -->
 		<typeAlias type="com.seoulcheckin.app.member.vo.MemberVO" alias="memberVO"/>
+		<typeAlias type="com.seoulcheckin.app.member.vo.MemberDTO" alias="memberDTO"/>
 		<typeAlias type="com.seoulcheckin.app.member.dao.MemberDAO" alias="memberDAO"/>
 	<!-- member Alias -->
 	
