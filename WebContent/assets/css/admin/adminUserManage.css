@@ -1056,8 +1056,6 @@ div.dataTables_wrapper div.dataTables_paginate {
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-position: center;
     background-color: #5E6278;
-    -webkit-mask-image: url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='var%28--kt-gray-700%29'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e);
-    mask-image: url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='var%28--kt-gray-700%29'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e);
 }
 
 .select2-container .select2-selection--single .select2-selection__clear {
@@ -1264,7 +1262,6 @@ div.dataTables_wrapper div.dataTables_paginate {
     align-items: center;
     justify-content: center;
     padding: calc(var(--bs-modal-padding) - var(--bs-modal-footer-gap) * 0.5);
-    background-color: ;
     border-top: 1px solid #eff2f5;
     border-bottom-right-radius: 0.475rem;
     border-bottom-left-radius: 0.475rem;
@@ -1280,4 +1277,12 @@ div.dataTables_wrapper div.dataTables_paginate {
 
 .modal-body.py-10.px-lg-17 {
     padding-bottom: 95px !important;
+}
+
+.pro_list_value {
+	font-size: 11px;
+}
+
+.web-view a {
+	font-size: 12px;
 }

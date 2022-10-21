@@ -32,9 +32,11 @@ public class LoginGoogleController implements Execute {
 		
 		try {
 			memberDAO.join(memberVO);
+
 		} catch (Exception e) {
 		}
-		memberNumber = memberDAO.loginGoogle(memberVO);
+
+		memberNumber = memberDAO.loginOauth(memberVO);
 		
 		out.print(memberNumber);
 		out.close();

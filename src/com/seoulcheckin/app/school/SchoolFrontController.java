@@ -29,6 +29,7 @@ public class SchoolFrontController extends HttpServlet {
 		
 		// 프로그램 페이지 요청, 관리자페이지 프로그램관리 페이지 요청
 		if(request.equals("/school/programlist.sc")) {
+			result = new ProgramListController().execute(req, resp);
 		
 		// 프로그램 클릭 시 상세정보(모달)
 		}else if(request.equals("/school/programdetail.sc")) {
@@ -47,7 +48,7 @@ public class SchoolFrontController extends HttpServlet {
 			
 		// 프로그램 삭제
 		}else if(request.equals("/school/deletepro.sc")) {
-			
+			result = new DeleteProController().execute(req, resp);
 		}
 		
 		if(result != null) {

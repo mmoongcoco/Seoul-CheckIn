@@ -39,11 +39,11 @@ var memberNumber = sessionStorage.getItem('memberNumber');
 
 
 $(".divdiv").click(function() {
-   checkHeader *= -1;
-   $ul.toggle(200);
+	checkHeader *= -1;
+	$ul.toggle(200);
 
-   // 삼항연산자 
-   $("#head").css('height', checkheader > 0 ? '200px' : '50px');
+	// 삼항연산자 
+	$("#head").css('height', checkheader > 0 ? '200px' : '50px');
 });
 
 /* header js end */
@@ -56,37 +56,37 @@ $(".divdiv").click(function() {
 
 /* 로그인 모달창 켜기 */
 /*$("#join_login_button").on('click', function() {
-   if (sessionStorage.getItem('memberNumber') != null) { return; }
-   $(".Modal_root__aEM8D.login").css('display', 'block');
+	if (sessionStorage.getItem('memberNumber') != null) { return; }
+	$(".Modal_root__aEM8D.login").css('display', 'block');
 });*/
 
 /* 로그인 모달창 x버튼 */
 $("#login_closeButton").on('click', function() {
-   $(".Modal_root__aEM8D.login").css('display', 'none');
+	$(".Modal_root__aEM8D.login").css('display', 'none');
 });
 
 /* 비밀번호 모달창 x버튼 */
 $("#button_pw").on('click', function() {
-   $(".modal_background.pw").css('display', 'none');
+	$(".modal_background.pw").css('display', 'none');
 });
 
 /* 회원구분 모달창 x버튼 */
 $("#membertype_closebutton").on('click', function() {
-   $(".modal_background.memberType").css('display', 'none');
+	$(".modal_background.memberType").css('display', 'none');
 });
 
 
 /* 회원구분 선택 시 회원가입 모달창 켜기 */
 $("button.orange").on('click', function() {
-   $memberType = $(this).attr('class')[7];
-   $(".modal_background.memberType").css('display', 'none');
-   $(".Modal_root__aEM8D.join").css('display', 'block');
+	$memberType = $(this).attr('class')[7];
+	$(".modal_background.memberType").css('display', 'none');
+	$(".Modal_root__aEM8D.join").css('display', 'block');
 
 });
 
 /* 회원가입 모달창 x버튼 */
 $("#join_closeButton").on('click', function() {
-   $(".Modal_root__aEM8D.join").css('display', 'none');
+	$(".Modal_root__aEM8D.join").css('display', 'none');
 });
 
 
@@ -97,198 +97,198 @@ $("#join_closeButton").on('click', function() {
 
 /* join & login js start */
 
-function getMemberNumber(){
-   memberNumber = sessionStorage.getItem('memberNumber');
+function getMemberNumber() {
+	memberNumber = sessionStorage.getItem('memberNumber');
 }
 
 /* login 유효성 검사 및 아이디 가입 여부 검사*/
 $(".style_wrapper__IgK7U.email-login-button").on('click', function() {
-   if (!$emailInput.val()) {
-      $emailInput.focus();
-      return;
-   }
+	if (!$emailInput.val()) {
+		$emailInput.focus();
+		return;
+	}
 
-   $.ajax({
-      url: "/member/checkId.me",
-      type: "get",
-      data: { memberEmail: $emailInput.val() },
-      success: function(result) {
-         if (result == 0) {
-            $(".Modal_root__aEM8D.login").css('display', 'none');
-            $(".modal_background.memberType").css('display', 'block');
-         } else {
-            $(".Modal_root__aEM8D.login").css('display', 'none');
-            $(".modal_background.pw").css('display', 'block');
-         }
-      }
-   });
+	$.ajax({
+		url: "/member/checkId.me",
+		type: "get",
+		data: { memberEmail: $emailInput.val() },
+		success: function(result) {
+			if (result == 0) {
+				$(".Modal_root__aEM8D.login").css('display', 'none');
+				$(".modal_background.memberType").css('display', 'block');
+			} else {
+				$(".Modal_root__aEM8D.login").css('display', 'none');
+				$(".modal_background.pw").css('display', 'block');
+			}
+		}
+	});
 });
 
 
 /* 인증번호 받기 버튼 활성화*/
 $("input[name='userPhoneNumber']").on('keyup', function() {
-   var $phone = $phoneNumberInput.val();
+	var $phone = $phoneNumberInput.val();
 
-   if ($phone != "" && $phone.length == 11 && !isNaN($phone)) {
-      $(".BtnGetCode_BtnGetCode__wR5FL.join.isKR").removeClass('isKR');
-      $(".BtnGetCode_BtnGetCode__wR5FL.join").prop("disabled", false);
-      $(".css-1u2lazp").css('display', 'none');
-      return;
-   } else {
-      $(".BtnGetCode_BtnGetCode__wR5FL.join").addClass('isKR');
-      $(".BtnGetCode_BtnGetCode__wR5FL.join").attr("disabled", true);
-      $(".css-1u2lazp").css('display', 'block');
-   }
+	if ($phone != "" && $phone.length == 11 && !isNaN($phone)) {
+		$(".BtnGetCode_BtnGetCode__wR5FL.join.isKR").removeClass('isKR');
+		$(".BtnGetCode_BtnGetCode__wR5FL.join").prop("disabled", false);
+		$(".css-1u2lazp").css('display', 'none');
+		return;
+	} else {
+		$(".BtnGetCode_BtnGetCode__wR5FL.join").addClass('isKR');
+		$(".BtnGetCode_BtnGetCode__wR5FL.join").attr("disabled", true);
+		$(".css-1u2lazp").css('display', 'block');
+	}
 });
 
 
 /* 인증번호 보내기 및 확인 */
 $(".BtnGetCode_BtnGetCode__wR5FL.join").on('click', function() {
-   $(".InputCode_InputCode_input__X4opi").removeClass('disabled');
-   $(".InputCode_InputCode_input__X4opi").prop("disabled", false);
-   $(".css-1teuqrm").css('display', 'block');
-   $(".css-1lnssh6").css('display', 'block');
-   $(".BtnGetCode_BtnGetCode__wR5FL.join").addClass('isKR');
-   $(".BtnGetCode_BtnGetCode__wR5FL.join").attr("disabled", true);
-   $(".BtnGetCode_BtnGetCode__wR5FL.join").html('인증번호 재전송');
-   $codeInput.prop("disabled", false);
+	$(".InputCode_InputCode_input__X4opi").removeClass('disabled');
+	$(".InputCode_InputCode_input__X4opi").prop("disabled", false);
+	$(".css-1teuqrm").css('display', 'block');
+	$(".css-1lnssh6").css('display', 'block');
+	$(".BtnGetCode_BtnGetCode__wR5FL.join").addClass('isKR');
+	$(".BtnGetCode_BtnGetCode__wR5FL.join").attr("disabled", true);
+	$(".BtnGetCode_BtnGetCode__wR5FL.join").html('인증번호 재전송');
+	$codeInput.prop("disabled", false);
 
-   let seconds = 60;
-   var inter = setInterval(function() {
-      seconds--;
-      if (seconds < 10) {
-         $(".css-1lnssh6").html("유효시간 00:0" + seconds);
-      } else {
-         $(".css-1lnssh6").html("유효시간 00:" + seconds);
-      }
-   }, 1000);
+	let seconds = 60;
+	var inter = setInterval(function() {
+		seconds--;
+		if (seconds < 10) {
+			$(".css-1lnssh6").html("유효시간 00:0" + seconds);
+		} else {
+			$(".css-1lnssh6").html("유효시간 00:" + seconds);
+		}
+	}, 1000);
 
-   setTimeout(function() {
-      if ($(".css-1teuqrm").text() != '인증되었습니다.') {
-         $(".BtnGetCode_BtnGetCode__wR5FL.join.isKR").removeClass('isKR');
-         $(".BtnGetCode_BtnGetCode__wR5FL.join").prop("disabled", false);
-         $(".BtnGetCode_BtnGetCode__wR5FL.join").html('인증번호 받기');
-         $codeInput.prop("disabled", true);
-         clearInterval(inter);
-      }
-   }, 60000);
+	setTimeout(function() {
+		if ($(".css-1teuqrm").text() != '인증되었습니다.') {
+			$(".BtnGetCode_BtnGetCode__wR5FL.join.isKR").removeClass('isKR');
+			$(".BtnGetCode_BtnGetCode__wR5FL.join").prop("disabled", false);
+			$(".BtnGetCode_BtnGetCode__wR5FL.join").html('인증번호 받기');
+			$codeInput.prop("disabled", true);
+			clearInterval(inter);
+		}
+	}, 60000);
 
-   $.ajax({
-      url: "/member/verification.me",
-      data: { memberPhoneNumber: $phoneNumberInput.eq(0).val() },
-      success: function(verificationNumber) {
-         $verificationInput.on('blur', function() {
-            if (verificationNumber == $verificationInput.val()) {
-               $(".css-1teuqrm").html('인증되었습니다.');
-               $(".css-1lnssh6").css('display', 'none');
-               $(".BtnGetCode_BtnGetCode__wR5FL.join").attr("disabled", true);
-               $codeInput.attr("disabled", true);
-            }
-         });
-      }
-   });
+	$.ajax({
+		url: "/member/verification.me",
+		data: { memberPhoneNumber: $phoneNumberInput.eq(0).val() },
+		success: function(verificationNumber) {
+			$verificationInput.on('blur', function() {
+				if (verificationNumber == $verificationInput.val()) {
+					$(".css-1teuqrm").html('인증되었습니다.');
+					$(".css-1lnssh6").css('display', 'none');
+					$(".BtnGetCode_BtnGetCode__wR5FL.join").attr("disabled", true);
+					$codeInput.attr("disabled", true);
+				}
+			});
+		}
+	});
 });
 
 
 /* 비밀번호 유효성 검사 */
 $passwordInput.on('blur', function() {
-   if (!pwCheck.test($passwordInput.val())) {
-      $(".css-1u2lazp.password").css('display', 'block');
-      return;
-   }
+	if (!pwCheck.test($passwordInput.val())) {
+		$(".css-1u2lazp.password").css('display', 'block');
+		return;
+	}
 
-   if (hangleCheck.test($passwordInput.val())) {
-      $(".css-1u2lazp.password").css('display', 'block');
-      return;
-   }
+	if (hangleCheck.test($passwordInput.val())) {
+		$(".css-1u2lazp.password").css('display', 'block');
+		return;
+	}
 
-   if (wordCheck.test($passwordInput.val())) {
-      $(".css-1u2lazp.password").css('display', 'block');
-      return;
-   }
+	if (wordCheck.test($passwordInput.val())) {
+		$(".css-1u2lazp.password").css('display', 'block');
+		return;
+	}
 
-   if (spaceCheck.test($passwordInput.val())) {
-      $(".css-1u2lazp.password").css('display', 'block');
-      return;
-   }
+	if (spaceCheck.test($passwordInput.val())) {
+		$(".css-1u2lazp.password").css('display', 'block');
+		return;
+	}
 
-   $(".css-1u2lazp.password").css('display', 'none');
+	$(".css-1u2lazp.password").css('display', 'none');
 });
 
 
 /* 비밀번호 확인 유효성 검사 */
 $passwordCheckInput.on('blur', function() {
-   if (!$passwordInput.val()) {
-      $passwordInput.focus();
-      return;
-   }
-   if ($passwordInput.val() != $passwordCheckInput.val()) {
-      $(".css-1u2lazp.passwordCheck").css('display', 'block');
-      $(".css-1d2ssup.passwordCheck").css('display', 'none');
-      return;
-   }
-   if (!pwCheck.test($passwordCheckInput.val())) {
-      $(".css-1d2ssup.passwordCheck").css('display', 'block');
-      $(".css-1u2lazp.passwordCheck").css('display', 'none');
-      return;
-   }
-   $(".passwordCheck").css('display', 'none');
+	if (!$passwordInput.val()) {
+		$passwordInput.focus();
+		return;
+	}
+	if ($passwordInput.val() != $passwordCheckInput.val()) {
+		$(".css-1u2lazp.passwordCheck").css('display', 'block');
+		$(".css-1d2ssup.passwordCheck").css('display', 'none');
+		return;
+	}
+	if (!pwCheck.test($passwordCheckInput.val())) {
+		$(".css-1d2ssup.passwordCheck").css('display', 'block');
+		$(".css-1u2lazp.passwordCheck").css('display', 'none');
+		return;
+	}
+	$(".passwordCheck").css('display', 'none');
 
 });
 
 
 /* 전체 동의 */
 $all.on('click', function() {
-   $checkboxes.prop('checked', $(this).is(':checked'));
+	$checkboxes.prop('checked', $(this).is(':checked'));
 });
 
 
 /* 각각 약관 동의 */
 $checkboxes.on('click', function() {
-   $all.prop('checked', $checkboxes.filter(":checked").length == $checkboxes.length);
+	$all.prop('checked', $checkboxes.filter(":checked").length == $checkboxes.length);
 });
 
 
 /* 회원 가입 유효성 검사*/
 $(".style_wrapper__IgK7U.join").on('click', function() {
-   if (!$nameInput.val()) {
-      $nameInput.focus();
-      return;
-   }
+	if (!$nameInput.val()) {
+		$nameInput.focus();
+		return;
+	}
 
-   if (!isNaN($nameInput.val())) {
-      $nameInput.focus();
-      return;
-   }
+	if (!isNaN($nameInput.val())) {
+		$nameInput.focus();
+		return;
+	}
 
-   if (!$codeInput.attr('disabled')) {
-      $phoneNumberInput.focus();
-      return;
-   }
+	if (!$codeInput.attr('disabled')) {
+		$phoneNumberInput.focus();
+		return;
+	}
 
-   if (!$passwordInput.val() || $(".css-1u2lazp.password").css('display') == 'block') {
-      $passwordInput.focus();
-      return;
-   }
+	if (!$passwordInput.val() || $(".css-1u2lazp.password").css('display') == 'block') {
+		$passwordInput.focus();
+		return;
+	}
 
-   if (!$passwordCheckInput.val() || $(".css-1u2lazp.passwordCheck").css('display') == 'block') {
-      $passwordCheckInput.focus();
-      return;
-   }
+	if (!$passwordCheckInput.val() || $(".css-1u2lazp.passwordCheck").css('display') == 'block') {
+		$passwordCheckInput.focus();
+		return;
+	}
 
-   if (!$checkboxInput.prop('checked')) {
-      $checkboxInput.focus();
-      return;
-   }
+	if (!$checkboxInput.prop('checked')) {
+		$checkboxInput.focus();
+		return;
+	}
 
-   $.ajax({
-      url: "/member/joinOk.me",
-      type: "post",
-      data: { memberClassification: $memberType, memberEmail: $emailInput.val(), memberName: $nameInput.val(), memberPhone: $phoneNumberInput.val(), memberPassword: $passwordInput.val() },
-      success: function() {
-         $(".Modal_root__aEM8D.join").css('display', 'none');
-      }
-   });
+	$.ajax({
+		url: "/member/joinOk.me",
+		type: "post",
+		data: { memberClassification: $memberType, memberEmail: $emailInput.val(), memberName: $nameInput.val(), memberPhone: $phoneNumberInput.val(), memberPassword: $passwordInput.val() },
+		success: function() {
+			$(".Modal_root__aEM8D.join").css('display', 'none');
+		}
+	});
 
 });
 
@@ -301,20 +301,20 @@ $(".style_wrapper__IgK7U.join").on('click', function() {
 
 /* 로그인 비밀번호 확인 */
 $(".loginBtn").on('click', function() {
-   $.ajax({
-      url: "/member/loginOk.me",
-      type: "post",
-      data: { memberEmail: $emailInput.val(), memberPassword: $loginpasswordInput.val() },
-      success: function(memberNumber) {
-         sessionStorage.setItem('memberNumber', memberNumber);
-         console.log("로그인 성공")
-         console.log(sessionStorage.getItem('memberNumber'));
-         $(".modal_background.pw").css('display', 'none');
-         $("#join_login_button").html("로그아웃");
-         getMemberNumber();
+	$.ajax({
+		url: "/member/loginOk.me",
+		type: "post",
+		data: { memberEmail: $emailInput.val(), memberPassword: $loginpasswordInput.val() },
+		success: function(memberNumber) {
+			sessionStorage.setItem('memberNumber', memberNumber);
+			console.log("로그인 성공")
+			console.log(sessionStorage.getItem('memberNumber'));
+			$(".modal_background.pw").css('display', 'none');
+			$("#join_login_button").html("로그아웃");
+			getMemberNumber();
 
-      }
-   });
+		}
+	});
 });
 
 
@@ -326,21 +326,22 @@ $(".loginBtn").on('click', function() {
 
 /* 로그아웃 */
 $("#join_login_button").on('click', function() {
-   /*   if ($("#join_login_button").text() != '로그아웃') { return; }*/
-   console.log(sessionStorage.getItem('memberNumber'))
-   if (sessionStorage.getItem('memberNumber') == null) {
-      $(".Modal_root__aEM8D.login").css('display', 'block');
-   } else {
-      $.ajax({
-         url: "member/logout.me",
-         success: function() {
-            sessionStorage.clear();
-            $("#join_login_button").html("회원가입/로그인");
-            console.log("로그아웃 성공")
-            console.log(sessionStorage.getItem('memberNumber'));
-         }
-      });
-   }
+	/*	if ($("#join_login_button").text() != '로그아웃') { return; }*/
+	console.log(sessionStorage.getItem('memberNumber'))
+	if (sessionStorage.getItem('memberNumber') == null){
+		$(".Modal_root__aEM8D.login").css('display', 'block');
+	} else {
+		$.ajax({
+			url: "member/logout.me",
+			success: function() {
+				sessionStorage.removeItem('memberNumber');
+				sessionStorage.clear();
+				$("#join_login_button").html("회원가입/로그인");
+				console.log("로그아웃 성공")
+				console.log(sessionStorage.getItem('memberNumber'));
+			}
+		});
+	}
 });
 
 
@@ -352,138 +353,51 @@ $("#join_login_button").on('click', function() {
 
 // callback
 function handleCredentialResponse(response) {
-   const responsePayload = parseJwt(response.credential);
-   console.log("ID: " + responsePayload.sub);
-   console.log('Full Name: ' + responsePayload.name);
-   console.log('Given Name: ' + responsePayload.given_name);
-   console.log('Family Name: ' + responsePayload.family_name);
-   console.log("Image URL: " + responsePayload.picture);
-   console.log("Email: " + responsePayload.email);
-   $.ajax({
-      url: "/member/loginGoogle.me", // 컨트롤러
-      type: "post",
-      data: {
-         memberEmail: responsePayload.email,
-         memberName: responsePayload.name,
-         memberPhoto: responsePayload.picture
-      },
-      contentType: "application/x-www-form-urlencoded",
-      success: function(memberNumber){
-         sessionStorage.setItem('memberNumber', memberNumber);
-         $(".Modal_root__aEM8D.login").css('display', 'none');
-         $("#join_login_button").html("로그아웃");
-      }
-   })
+	const responsePayload = parseJwt(response.credential);
+	console.log("ID: " + responsePayload.sub);
+	console.log('Full Name: ' + responsePayload.name);
+	console.log('Given Name: ' + responsePayload.given_name);
+	console.log('Family Name: ' + responsePayload.family_name);
+	console.log("Image URL: " + responsePayload.picture);
+	console.log("Email: " + responsePayload.email);
+	$.ajax({
+		url: "/member/loginGoogle.me", // 컨트롤러
+		type: "post",
+		data: {
+			memberEmail: responsePayload.email,
+			memberName: responsePayload.name,
+			memberPhoto: responsePayload.picture
+		},
+		contentType: "application/x-www-form-urlencoded",
+		success: function(memberNumber) {
+			sessionStorage.setItem('memberNumber', memberNumber);
+			$(".Modal_root__aEM8D.login").css('display', 'none');
+			$("#join_login_button").html("로그아웃");
+		}
+	})
 
 }
 
 function parseJwt(token) {
-   var base64Url = token.split('.')[1];
-   var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-   var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
-      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-   }).join(''));
+	var base64Url = token.split('.')[1];
+	var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+	var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+		return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+	}).join(''));
 
-   return JSON.parse(jsonPayload);
+	return JSON.parse(jsonPayload);
 };
 
 window.onload = function() {
-   google.accounts.id.initialize({
-      client_id: "991196669475-dpc033jgo41gidvac293s8pmkv1uo192.apps.googleusercontent.com",
-      callback: handleCredentialResponse
-   });
-   google.accounts.id.renderButton(
-      document.getElementById("buttonDiv"),
-      { theme: "outline", size: "large", width: 368 }  // 로고 커스터마이징
-   );
+	google.accounts.id.initialize({
+		client_id: "991196669475-dpc033jgo41gidvac293s8pmkv1uo192.apps.googleusercontent.com",
+		callback: handleCredentialResponse
+	});
+	google.accounts.id.renderButton(
+		document.getElementById("buttonDiv"),
+		{ theme: "outline", size: "middle", width: 300 }  // 로고 커스터마이징
+	);
 
-   google.accounts.id.prompt(); // 원탭 화면으로 출력
+	google.accounts.id.prompt(); // 원탭 화면으로 출력
 }
 
-
-
-
-/* Naver OAuth*/
-
-/*var naver_id_login = new naver_id_login("vMW_1ZPa5SG3P5MabJCm", "http://localhost:8085/member/loginNaver.me");
-        var state = naver_id_login.getUniqState();
-        naver_id_login.setButton("white", 2,40);
-        naver_id_login.setDomain("http://localhost:8085");
-        naver_id_login.setState(state);
-        naver_id_login.setPopup();
-        naver_id_login.init_naver_id_login();
-
-
- var naver_id_login = new naver_id_login("vMW_1ZPa5SG3P5MabJCm", "http://localhost:8085/member/loginNaver.me");
-  // 접근 토큰 값 출력
-  alert(naver_id_login.oauthParams.access_token);
-  // 네이버 사용자 프로필 조회
-  naver_id_login.get_naver_userprofile("naverSignInCallback()");
-  // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
-  function naverSignInCallback() {
-    alert(naver_id_login.getProfileData('email'));
-    alert(naver_id_login.getProfileData('nickname'));
-    alert(naver_id_login.getProfileData('age'));
-  }*/
-
-
-
-var naverLogin = new naver.LoginWithNaverId(
-      {
-         clientId: "vMW_1ZPa5SG3P5MabJCm", //내 애플리케이션 정보에 cliendId를 입력해줍니다.
-         callbackUrl: "http://localhost:8085", // 내 애플리케이션 API설정의 Callback URL 을 입력해줍니다.
-         isPopup: false,
-         callbackHandle: naverSignInCallback()
-      }
-   );   
-
-naverLogin.init();
-
-window.addEventListener('load', function () {
-   naverLogin.getLoginStatus(function (status) {
-      if (status) {
-         var email = naverLogin.user.getEmail(); // 필수로 설정할것을 받아와 아래처럼 조건문을 줍니다.          
-
-         console.log(naverLogin.user); 
-          
-            if( email == undefined || email == null) {
-            alert("이메일은 필수정보입니다. 정보제공을 동의해주세요.");
-            naverLogin.reprompt();
-            return;
-         }
-      } else {
-         console.log("callback 처리에 실패하였습니다.");
-      }
-   });
-});
-
-var naver_id_login = new naver_id_login("vMW_1ZPa5SG3P5MabJCm", "http://localhost:8085");
-  // 접근 토큰 값 출력
-  alert(naver_id_login.oauthParams.access_token);
-  // 네이버 사용자 프로필 조회
-  naver_id_login.get_naver_userprofile("naverSignInCallback()");
-  // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
-  function naverSignInCallback() {
- /*  console.log(naver_id_login.getProfileData('email'));*/
-    alert(naver_id_login.getProfileData('email'));
-    alert(naver_id_login.getProfileData('age'));
-    alert(naver_id_login.getProfileData('name'));
-  }
-
-
-var testPopUp;
-function openPopUp() {
-    testPopUp= window.open("https://nid.naver.com/nidlogin.logout", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,width=1,height=1");
-}
-function closePopUp(){
-    testPopUp.close();
-}
-
-function naverLogout() {
-   openPopUp();
-   setTimeout(function() {
-      closePopUp();
-      }, 1000);
-   
-   
-}

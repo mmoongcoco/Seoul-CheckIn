@@ -26,8 +26,8 @@ public class MemberDAO {
 		return sqlSession.selectOne("Member.login", memberVO);
 	}
 
-	public int loginGoogle(MemberVO memberVO) {
-		return sqlSession.selectOne("Member.loginGoogle", memberVO);
+	public int loginOauth(MemberVO memberVO) {
+		return sqlSession.selectOne("Member.loginOauth", memberVO);
 	}
 	
 	public void update(MemberVO memberVO) {

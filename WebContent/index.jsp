@@ -7,6 +7,5 @@
 <title></title>
 </head>
 <body>
-</body>
 <script>location.href="/Seoul-CheckIn.kr"</script>
 </html>
