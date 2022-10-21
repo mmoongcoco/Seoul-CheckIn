@@ -8,7 +8,6 @@
 <%@ page import="java.io.InputStreamReader"%>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,10 +27,19 @@
 	href="${pageContext.request.contextPath}/assets/css/fix/password.css">
 </head>
 <body>
-	<script
-		src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js"
-		charset="utf-8"></script>
-
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
+	
+	 <c:remove var = "memberNumber"></c:remove>
+	<%-- <c:choose>
+		<c:when test="${empty sessionScope.memberNumber}">
+			<script>$("#join_login_button").html("회원가입/로그인");</script>
+		</c:when>
+		<c:otherwise>
+			<script>$("#join_login_button").html("로그아웃");</script>		
+		</c:otherwise>
+	</c:choose> --%>
+	
 	<!-- header -->
 	<header id="header">
 		<div id="head">
@@ -97,7 +105,6 @@
 	<!-- header -->
 
 	<!-- modal login -->
-
 	<div class="Modal_root__aEM8D login">
 		<div
 			class="Modal_modalContent__0zuTn style_wrapper__SO1vd border-none"
@@ -128,8 +135,8 @@
 					<div class="style_wrapper__6RiUK InputPanel_email__aEAmZ">
 						<label for="email" class="style_label__BKYHB">이메일</label>
 						<div class="style_body__A6XnO">
-							<input type="email" placeholder="이메일을 입력해 주세요." id="email"
-								value="">
+							<input type="email" name="memberEmail"
+								placeholder="이메일을 입력해 주세요." id="email" value="">
 						</div>
 						<div class="style_guidance__FT8Qs input-group-guidance"></div>
 					</div>
@@ -151,29 +158,29 @@
 						<div class="InputPanel_socialLogins__j0wq7">다음 계정으로 계속하기</div>
 						<div class="InputPanel_socialWrapper__Dhaxo isKR">
 							<div class="InputPanel_socialButton__Hggw2 isKR">
-								<button type="button"
-										class="kakaoButton_button__1pfrz style_wrapper__IgK7U social-login-button kakao-login">
-										<svg xmlns="http://www.w3.org/2000/svg" width="22" height="21"
-											viewBox="0 0 22 21">
+								<!-- <button type="button"
+									class="kakaoButton_button__1pfrz style_wrapper__IgK7U social-login-button kakao-login">
+									<svg xmlns="http://www.w3.org/2000/svg" width="22" height="21"
+										viewBox="0 0 22 21">
                                         <path fill="#000"
-												fill-rule="nonzero"
-												d="M11 0C5.242 0 0 3.823 0 8.539c0 2.932 1.904 5.519 4.804 7.056l-1.22 4.479c-.107.397.343.712.69.483l5.348-3.548c.452.044.91.069 1.377.069 6.076 0 11-3.823 11-8.54 0-4.715-4.924-8.538-11-8.538">
+											fill-rule="nonzero"
+											d="M11 0C5.242 0 0 3.823 0 8.539c0 2.932 1.904 5.519 4.804 7.056l-1.22 4.479c-.107.397.343.712.69.483l5.348-3.548c.452.044.91.069 1.377.069 6.076 0 11-3.823 11-8.54 0-4.715-4.924-8.538-11-8.538">
                                         </path>
                                     </svg>
-										<div class="InputPanel_socialTitle__77isU isKR">Kakao</div>
-									</button>
-									 <a href="javascript:kakaoLogin();"><img src="./kakao_login.png" alt="카카오계정 로그인" style="height: 100px;"/></a>
-									<div class="kakaoButton">
-										<button class="kakaoButton_button__1pfrz">ㅇㅇㅇㅇ</button>
-										<p class="kakaoButton_loginDescription__P1TjV">Kakao 로그인</p>
-									</div>
+									<div class="InputPanel_socialTitle__77isU isKR">Kakao</div>
+								</button>
+								<a href="javascript:kakaoLogin();"><img
+									src="./kakao_login.png" alt="카카오계정 로그인" style="height: 100px;" /></a>
+								<div class="kakaoButton">
+									<button class="kakaoButton_button__1pfrz">ㅇㅇㅇㅇ</button>
+									<p class="kakaoButton_loginDescription__P1TjV">Kakao 로그인</p>
+								</div> -->
 							</div>
 							<div class="InputPanel_socialButton__Hggw2 isKR">
 								<div id="naver_id_login"></div>
 							</div>
 							<div class="InputPanel_socialButton__Hggw2 isKR">
-								<label>
-									<button type="button"
+<!-- 									<button type="button"
 										class="style_wrapper__IgK7U social-login-button google-login">
 										<svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
 											viewBox="0 0 23 23">
@@ -195,10 +202,9 @@
 												d="M0 0L23 0 23 23 0 23z"></path>
                                         </g>
                                     </svg>
-										<div class="InputPanel_socialTitle__77isU isKR">Google</div>
-										<div id="buttonDiv" style="margin-top: 15px;"></div>
 									</button>
-								</label>
+									<div class="InputPanel_socialTitle__77isU isKR">Google</div>
+ -->								<div id="buttonDiv" style="margin-top: 15px;"></div>
 							</div>
 							<div class="InputPanel_socialButton__Hggw2 isKR"></div>
 						</div>
@@ -236,7 +242,8 @@
 				<div class="password_wrapper">
 					비밀번호
 					<div id="password_body">
-						<input type="password" placeholder="비밀번호" id="password-text-field">
+						<input name="memberPassword" type="password" placeholder="비밀번호"
+							id="password-text-field">
 						<p data-testid="Typography" color="red" class="css-1u2lazp">비밀번호가
 							일치하지 않습니다.</p>
 					</div>
@@ -617,92 +624,43 @@
 		<div role="presentation" class="Modal_modalOverlay__1sCXi false"></div>
 	</div>
 </body>
-<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script>
+	var memberNumber = ${sessionScope.memberNumber}
+	var session = ${sessionScope})
+</script>
 <script src="${pageContext.request.contextPath}/assets/js/fix/header.js"></script>
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script>
-	console.log(sessionStorage.getItem("memberNumber"));
-
-	if (sessionStorage.getItem("memberNumber") == null) {
-		$("#join_login_button").html("회원가입/로그인");
-	} else {
-		$("#join_login_button").html("로그아웃");
-	}
-</script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-<script> window.Kakao.init('f5a2b23f21fc35cd16b50c77a62b5d1f'); </script>
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2-nopolyfill.js"></script>
 <script>
-
-function kakaoLogin() {
-	window.Kakao.Auth.login({
-		scope: 'account_email', //동의항목 페이지에 있는 개인정보 보호 테이블의 활성화된 ID값을 넣습니다.
-		success: function(response) {
-			console.log(response) // 로그인 성공하면 받아오는 데이터
-			window.Kakao.API.request({ // 사용자 정보 가져오기 
-				url: '/v2/user/me',
-				success: (res) => {
-					const kakao_account = res.kakao_account;
-					console.log(kakao_account)
-					console.log("성공")
-
-					$.ajax({
-						url: "/member/loginKakao.me",
-						data: {memberEmail: email},
-						success: function() {
-							console.log("ajax 성공")
-						},
-						error: function(e){
-							console.log(e)
-						}
-					});
-				}
-			});
-			// window.location.href='http://localhost:8085' //리다이렉트 되는 코드
-		},
-		fail: function(error) {
-			console.log(error);
+	console.log("메인");
+	console.log("${sessionScope.memberNumber}")
+	console.log(sessionStorage.getItem("memberNumber"));
+	
+	getMemberNumber();
+	
+	function getMemberNumber(){		
+		if(sessionStorage.getItem("memberNumber") == null){
+			$("#join_login_button").html("회원가입/로그인");			
+		}else {
+			$("#join_login_button").html("로그아웃");			
 		}
-	});
-}
+	}
+	
 </script>
-<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script type="text/javascript">
-   var naver_id_login = new naver_id_login("vMW_1ZPa5SG3P5MabJCm",
-         "http://localhost:8085");
-   var state = naver_id_login.getUniqState();
-   naver_id_login.setButton("white", 3, 40);
-   naver_id_login.setDomain("http://localhost:8085");
-   naver_id_login.setState(state);
-   naver_id_login.init_naver_id_login();
-</script>
-<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js"></script>
-<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <!-- <script type="text/javascript">
    var naver_id_login = new naver_id_login("vMW_1ZPa5SG3P5MabJCm",
-         "http://localhost:8085/");
-   //    var naver_id_login = new window.naver_id_login("_VjlH3jAE2LhRMAaID_g",
-   //          "http://localhost:8081/milestone/login/join.indi");
-   // 접근 토큰 값 출력
-   //    alert(naver_id_login.oauthParams.access_token);
-   // 네이버 사용자 프로필 조회
-   naver_id_login.get_naver_userprofile("naverSignInCallback()");
-   // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
-   function naverSignInCallback() {
-      let name = naver_id_login.getProfileData('name');
-      let email = naver_id_login.getProfileData('email');
-      let nickname = naver_id_login.getProfileData('nickname');
-      let mobile = naver_id_login.getProfileData('mobile');
-	  console.log("네이버")
-      console.log(name);
-      console.log(email);
-      console.log(nickname);
-      console.log(mobile);
-   }
+		   "http://localhost:8085/app/fix/naverCallback.jsp");
+   var state = naver_id_login.getUniqState();
+   naver_id_login.setButton("white", 1, 40);
+   naver_id_login.setDomain("http://localhost:8085/app/fix/header.jsp");
+   naver_id_login.setState(state);
+   naver_id_login.init_naver_id_login();
 </script> -->
 </html>

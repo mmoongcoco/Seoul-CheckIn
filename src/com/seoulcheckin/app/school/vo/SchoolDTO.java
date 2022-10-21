@@ -15,6 +15,7 @@ public class SchoolDTO {
 	private String schoolStatus;
 	private int memberNumber;
 	private String memberId;
+	
 	public int getSchoolNumber() {
 		return schoolNumber;
 	}

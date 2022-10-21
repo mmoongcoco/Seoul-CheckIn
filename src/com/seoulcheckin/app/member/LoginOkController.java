@@ -17,10 +17,14 @@ import com.seoulcheckin.app.member.vo.MemberVO;
 public class LoginOkController implements Execute{
 	@Override
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
+		resp.setCharacterEncoding("UTF-8");
 		MemberDAO memberDAO = new MemberDAO();
 		MemberVO memberVO = new MemberVO();
 		HttpSession session = req.getSession();
 		PrintWriter out = resp.getWriter();
+
+		System.out.println(req.getRequestURI());
 		int memberNumber = 0;
 		
 		String memberEmail = req.getParameter("memberEmail");
@@ -32,9 +36,6 @@ public class LoginOkController implements Execute{
 		try {
 			memberNumber = memberDAO.login(memberVO);
 			
-			System.out.println("LoginOk " + memberNumber);
-			System.out.println("LoginOk " + memberEmail);
-
 			session.removeAttribute("logout");
 			session.setAttribute("memberNumber", memberNumber);
 			session.setAttribute("memberEmail", memberEmail);

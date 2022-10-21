@@ -16,4 +16,8 @@ public class MyProgramDAO {
 	public int myClassCount(int memberNumber) {
 		return sqlSession.selectOne("MyProgram.myClassCount", memberNumber);
 	}
+	
+	public int classLimitCount(int schoolNumber) {
+		return sqlSession.selectOne("MyProgram.classLimitCount", schoolNumber);
+	}
 }

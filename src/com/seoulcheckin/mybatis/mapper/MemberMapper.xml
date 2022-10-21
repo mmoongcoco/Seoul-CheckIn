@@ -16,9 +16,8 @@
 		where member_email = #{memberEmail} and member_password = #{memberPassword}
 	</select>
 	
-	<select id="loginGoogle" parameterType="memberVO" resultType="_int">
-		select member_number from tbl_member
-		where member_email = #{memberEmail} and member_classification = 5;
+	<select id="loginOauth" parameterType="memberVO" resultType="_int">
+		select member_number from tbl_member where member_email = #{memberEmail}
 	</select>
 	
 	<update id="update" parameterType="memberVO">
