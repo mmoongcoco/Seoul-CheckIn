@@ -1005,7 +1005,6 @@ map.addControl(mapTypeControl, kakao.maps.ControlPosition.BOTTOMRIGHT);
 
 
 function messageTranslate() {
-	setTimeout(() => {
 	let $message = $("textarea#comment").val();
 	
 	$.ajax({
@@ -1015,7 +1014,6 @@ function messageTranslate() {
 			$("textarea#comment").val(content)
 		}
 	});
-	}, 2000);
 }
 
 </script>
