@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.seoulcheckin.app.Result;
+import com.seoulcheckin.app.message.MapMsgController;
 
 public class MapFrontController extends HttpServlet {
 	@Override
@@ -69,6 +70,8 @@ public class MapFrontController extends HttpServlet {
 		// 관리자페이지 관광지, 즐길거리 삭제
 		}else if(request.equals("/map/deletemap.mp")) {
 					
+		}else if(request.equals("/map/messagetranslate.mp")) {
+			new MapMsgController().execute(req, resp);
 		}
 		
 		if(result != null) {

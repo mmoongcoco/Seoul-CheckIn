@@ -63,205 +63,6 @@
 					<div class="menu_cont">
 						<div class="list_type1">
 							<ul id="conlistul">
-
-								<!-- ==== 콘텐츠 _1 ====-->
-								<!-- <li>
-									이스탄불 문화원 이미지 <a href="javascript:;"
-									onclick="openDetail"
-									('cfeb494f-64a0-40bc-b05d-00f1e19d70f3','');"
-                                        style="background-image: url(https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=1ceb891b-05fc-4fc3-ae33-815789754f45)"
-									;" class="img"> </a> 리스트 제목부분
-									<div class="info">
-										<div class="tit">
-											<a href="javascript:;"
-												onclick="openDetail('cfeb494f-64a0-40bc-b05d-00f1e19d70f3','');">이스탄불문화원
-											</a> <span>관광지</span>
-										</div>
-										<em>주소입력_부분입니다*주소입력_부분입니다</em>
-										즐겨찾기 버튼
-										<div class="btn">
-                                            <button type="button"
-                                                onclick="setFavoContent('cfeb494f-64a0-40bc-b05d-00f1e19d70f3',this);">즐겨찾기
-                                            </button>
-                                        </div>
-									</div>
-								</li>
-
-								==== 콘텐츠 _2 ====
-								<li class="parking"><a href="javascript:;"
-									onclick="openDetail('f55643ec-c213-11ec-9275-0242ac110005','')"
-									style="background-image: url(https://korean.visitkorea.or.kr/resources/images/location/img_parking.gif)"
-									class="img"> </a>
-									<div class="info">
-										<div class="tit">
-											<a href="javascript:;"
-												onclick="openDetail('f55643ec-c213-11ec-9275-0242ac110005','');">테헤란로26길
-											</a> <span>부동산</span>
-										</div>
-										<em>주소입력_부분입니다*주소입력_부분입니다</em>
-									</div></li>
-
-								==== 콘텐츠 _3 ====
-								<li><a href="javascript:;"
-									onclick="openDetail('f7dba3b2-09f3-42d4-806a-7fb0d55c4554','');"
-									style="background-image: url(https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=38cbcace-02df-473c-aea1-784bf397225d);"
-									class="img"></a>
-									<div class="info">
-										<div class="tit">
-											<a href="javascript:;"
-												onclick="openDetail('f7dba3b2-09f3-42d4-806a-7fb0d55c4554','');">빌즈
-												강남</a><span>일자리</span>
-										</div>
-										<em>주소입력_부분입니다*주소입력_부분입니다</em>
-									</div></li>
-								==== 콘텐츠 _4 ====
-								<li><a href="javascript:;"
-									onclick="openDetail('9931ce24-5c98-49b3-b450-f608491c4035','');"
-									style="background-image: url(https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=ce4df630-bfcd-4d1b-a2db-ab9bd63029d3);"
-									class="img"></a>
-									<div class="info">
-										<div class="tit">
-											<a href="javascript:;"
-												onclick="openDetail('9931ce24-5c98-49b3-b450-f608491c4035','');">최수사
-												대게마을</a><span>맛집</span>
-										</div>
-										<em>주소입력_부분입니다*주소입력_부분입니다</em>
-									</div></li>
-								==== 콘텐츠 _5 ====
-								<li><a href="javascript:;"
-									onclick="openDetail('b9cc3769-6e22-4bac-aea6-d514cd9f441c','');"
-									style="background-image: url(https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=7409cedb-6d39-4a98-8cce-9addf0c557ff);"
-									class="img"></a>
-									<div class="info">
-										<div class="tit">
-											<a href="javascript:;"
-												onclick="openDetail('b9cc3769-6e22-4bac-aea6-d514cd9f441c','');">돝고기506</a><span>음식점</span>
-										</div>
-										<em>주소입력_부분입니다*주소입력_부분입니다</em>
-									</div></li>
-								==== 콘텐츠 _6 ====
-								<li><a href="javascript:;"
-									onclick="openDetail('4efc952e-eb10-4954-b8c2-5d73c38d097a','');"
-									style="background-image: url(https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=598f35e2-3ddf-44bc-b9f7-db92e6996acb);"
-									class="img"></a>
-									<div class="info">
-										<div class="tit">
-											<a href="javascript:;"
-												onclick="openDetail('4efc952e-eb10-4954-b8c2-5d73c38d097a','');">역삼개나리공원</a><span>관광지</span>
-										</div>
-										<em>주소입력_부분입니다*주소입력_부분입니다</em>
-									</div></li>
-								==== 콘텐츠 _7 ====
-								<li><a href="javascript:;"
-									onclick="openDetail('221faa1d-9988-41e0-847f-51d1786f87cb','');"
-									style="background-image: url(https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=416ed64c-1db8-43a2-8eb9-5457b988a63e);"
-									class="img"></a>
-									<div class="info">
-										<div class="tit">
-											<a href="javascript:;"
-												onclick="openDetail('221faa1d-9988-41e0-847f-51d1786f87cb','');">청수횟집</a><span>관광지</span>
-										</div>
-										<em>주소입력_부분입니다*주소입력_부분입니다</em>
-									</div></li>
-								==== 콘텐츠 _8 ====
-								<li><a href="javascript:;"
-									onclick="openDetail('5ca2221f-e011-448c-902c-10323125dc88','');"
-									style="background-image: url(https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=33f44e7e-3776-421f-830a-23b92ae68ba3);"
-									class="img"></a>
-									<div class="info">
-										<div class="tit">
-											<a href="javascript:;"
-												onclick="openDetail('5ca2221f-e011-448c-902c-10323125dc88','');">을밀대
-												역삼점</a><span>관광지</span>
-										</div>
-										<em>주소입력_부분입니다*주소입력_부분입니다</em>
-									</div></li>
-								==== 콘텐츠 _9 ====
-								<li><a href="javascript:;"
-									onclick="openDetail('35009ad2-7a94-4c06-b3c2-705282a9910d','');"
-									style="background-image: url(https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=0f11049e-0742-4684-a567-ff9120cb41e3);"
-									class="img"></a>
-									<div class="info">
-										<div class="tit">
-											<a href="javascript:;"
-												onclick="openDetail('35009ad2-7a94-4c06-b3c2-705282a9910d','');">지식재산전문도서관</a><span>관광지</span>
-										</div>
-										<em>주소입력_부분입니다*주소입력_부분입니다</em>
-									</div></li>
-								==== 콘텐츠 _10 ====
-								<li><a href="javascript:;"
-									onclick="openDetail('59853d6f-85d0-4888-ad06-e23c4cf64af8','');"
-									style="background-image: url(https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=9bea9a05-8a6a-4fd0-a02d-f87fa7f1d293);"
-									class="img"></a>
-									<div class="info">
-										<div class="tit">
-											<a href="javascript:;"
-												onclick="openDetail('59853d6f-85d0-4888-ad06-e23c4cf64af8','');">LG아트센터</a><span>관광지</span>
-										</div>
-										<em>주소입력_부분입니다*주소입력_부분입니다</em>
-									</div></li>
-								==== 콘텐츠 _11 ====
-								<li><a href="javascript:;"
-									onclick="openDetail('03d34553-f64e-4dc4-ae66-9b7e407b7ada','');"
-									style="background-image: url(https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=651c66d1-1412-4227-b73d-23fb14892948);"
-									class="img"></a>
-									<div class="info">
-										<div class="tit">
-											<a href="javascript:;"
-												onclick="openDetail('03d34553-f64e-4dc4-ae66-9b7e407b7ada','');">아드리게호텔</a><span>관광지</span>
-										</div>
-										<em>주소입력_부분입니다*주소입력_부분입니다</em>
-									</div></li>
-								==== 콘텐츠 _12 ====
-								<li><a href="javascript:;"
-									onclick="openDetail('597f284d-7fe7-42e5-86b2-59033f24178e','');"
-									style="background-image: url(https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=74ca3a48-1fc3-4d89-b821-11971e9f4cc1);"
-									class="img"></a>
-									<div class="info">
-										<div class="tit">
-											<a href="javascript:;"
-												onclick="openDetail('597f284d-7fe7-42e5-86b2-59033f24178e','');">램브란트
-												강남N점</a><span>관광지</span>
-										</div>
-										<em>주소입력_부분입니다*주소입력_부분입니다</em>
-									</div></li>
-								==== 콘텐츠 _13 ====
-								<li><a href="javascript:;"
-									onclick="openDetail('3b5477e5-0f10-41fe-9dc6-e05268629f44','');"
-									style="background-image: url(https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=a148c30f-b819-473b-b574-6c51b4d536fb);"
-									class="img"></a>
-									<div class="info">
-										<div class="tit">
-											<a href="javascript:;"
-												onclick="openDetail('3b5477e5-0f10-41fe-9dc6-e05268629f44','');">카페413프로젝트</a><span>관광지</span>
-										</div>
-										<em>주소입력_부분입니다*주소입력_부분입니다</em>
-									</div></li>
-								==== 콘텐츠 _14 ====
-								<li><a href="javascript:;"
-									onclick="openDetail('09663658-aa41-48cb-858f-09b0c7dc75e9','');"
-									style="background-image: url(https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=22ab9653-a4a7-48a7-a445-d827223ec828);"
-									class="img"></a>
-									<div class="info">
-										<div class="tit">
-											<a href="javascript:;"
-												onclick="openDetail('09663658-aa41-48cb-858f-09b0c7dc75e9','');">해담채
-												강남점</a><span>관광지</span>
-										</div>
-										<em>주소입력_부분입니다*주소입력_부분입니다</em>
-									</div></li>
-								==== 콘텐츠 _15 ====
-								<li><a href="javascript:;"
-									onclick="openDetail('37f1a0cf-4b8f-41b4-ba30-96bdd564e95b','');"
-									style="background-image: url(https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=f005cec9-c57f-4aeb-9f8e-0706c464aad9);"
-									class="img"></a>
-									<div class="info">
-										<div class="tit">
-											<a href="javascript:;"
-												onclick="openDetail('37f1a0cf-4b8f-41b4-ba30-96bdd564e95b','');">대우부대찌개</a><span>관광지</span>
-										</div>
-										<em>주소입력_부분입니다*주소입력_부분입니다</em>
-									</div></li> -->
 							</ul>
 						</div>
 					</div>
@@ -423,7 +224,7 @@
 									<label class="blind" for="comment">궁금하신 사항을 보내주세요.</label>
 									<textarea name="" id="comment" rows=""
 										placeholder="궁금하신 사항을 보내주세요." cols=""></textarea>
-									</label><a href="javascript:;" class="btn_apply ContentComment on">번역</a>
+									</label><a href="javascript:;" class="btn_apply ContentComment on" onclick="messageTranslate()">번역</a>
 									</label><a href="javascript:;" class="btn_apply ContentComment on">보내기</a>
 							</div>
 							</form>
@@ -1201,5 +1002,21 @@ var mapTypeControl = new kakao.maps.MapTypeControl();
 //지도에 컨트롤을 추가해야 지도위에 표시됩니다
 //kakao.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
 map.addControl(mapTypeControl, kakao.maps.ControlPosition.BOTTOMRIGHT);
+
+
+function messageTranslate() {
+	setTimeout(() => {
+	let $message = $("textarea#comment").val();
+	
+	$.ajax({
+		url: "/map/messagetranslate.mp",
+		data:{messageContent: $message},
+		success: function(content){
+			$("textarea#comment").val(content)
+		}
+	});
+	}, 2000);
+}
+
 </script>
 </html>
