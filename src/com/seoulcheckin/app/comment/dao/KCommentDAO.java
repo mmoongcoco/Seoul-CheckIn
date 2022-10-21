@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.seoulcheckin.app.comment.vo.KCommentDTO;
+import com.seoulcheckin.app.comment.vo.KCommentVO;
 import com.seoulcheckin.mybatis.config.MyBatisConfig;
 
 public class KCommentDAO {
@@ -22,5 +23,17 @@ public class KCommentDAO {
 	
 	public List<KCommentDTO> selectAll(int kBoardNumber) {
 		return sqlSession.selectList("KComment.selectAll", kBoardNumber);
+	}
+	
+	public void insert(KCommentVO KCommentVO) {
+		sqlSession.insert("Kcomment.insert", KCommentVO);
+	}
+	
+	public void delete(int kCommentNumber) {
+		sqlSession.delete("Kcomment.delete", kCommentNumber);
+	}
+	
+	public void update(KCommentVO KCommentVO) {
+		sqlSession.update("Kcomment.update", KCommentVO);
 	}
 }

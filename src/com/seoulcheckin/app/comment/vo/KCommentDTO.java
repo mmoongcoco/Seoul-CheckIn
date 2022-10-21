@@ -6,7 +6,7 @@ public class KCommentDTO {
 	private String kCommentDate;
 	private int kBoardNumber;
 	private int memberNumber;
-	private String memberEmail;
+	private String memberName;
 	
 	public KCommentDTO() {;}
 
@@ -50,19 +50,19 @@ public class KCommentDTO {
 		this.memberNumber = memberNumber;
 	}
 
-	public String getMemberEmail() {
-		return memberEmail;
+	public String getMemberName() {
+		return memberName;
 	}
 
-	public void setMemberEmail(String memberEmail) {
-		this.memberEmail = memberEmail;
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
 	}
 
 	@Override
 	public String toString() {
 		return "KCommentDTO [kCommentNumber=" + kCommentNumber + ", kCommentArticle=" + kCommentArticle
 				+ ", kCommentDate=" + kCommentDate + ", kBoardNumber=" + kBoardNumber + ", memberNumber=" + memberNumber
-				+ ", memberEmail=" + memberEmail + "]";
+				+ ", memberName=" + memberName + "]";
 	}
 
 	

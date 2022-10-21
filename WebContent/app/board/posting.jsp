@@ -117,8 +117,8 @@
 
                             <div class="MenuPopup_MenuPopup__kcJI1 MenuPopup_MenuPopup__paddingBottom__SUQod">
                                 <ul>
-                                 <c:if test="${memberEmail eq kboard.getmemberEmail()}">
-                                    <!-- <li class="MenuPopup_MenuPopup__menu_item__p_vG7">
+                                <!-- <c:if test="${memberEmail eq kboard.getmemberEmail()}">
+                                     <li class="MenuPopup_MenuPopup__menu_item__p_vG7">
                                     	<button type="button" class="MenuPopup_MenuPopup__menu_link___Rsar MenuPopup_MenuPopup__menu_link__red__k5iWj"
                                             data-attribute-id="community__contentDetail__more__report"
                                             data-content-title="취업이 너무 안되네요...ㅠㅠ" data-content-id="6857"
@@ -129,8 +129,8 @@
                                             data-attribute-id="community__contentDetail__user__more__report"
                                             data-content-title="취업이 너무 안되네요...ㅠㅠ" data-content-id="6857"
                                             data-like-count="1" data-comment-count="0">게시글 삭제하기</button>
-                                    </li> -->
-								</c:if>  
+                                    </li> 
+								</c:if> --> 
 								<c:if test="${memberEmail eq kboard.getmemberEmail()}">
 	                              <li class="MenuPopup_MenuPopup__menu_item__p_vG7">
 	                              	<input type="button" value="수정" onclick="location.href = '${pageContext.request.contextPath}/board/updatepost.bo?boardNumber=${board.getBoardNumber()}'"/>
@@ -170,35 +170,30 @@
                                 </svg></button>
                         </div>
                     </article>
-                    <div class="CommunityPostDetail_commentsView__sIMie">
+                    <!-- <div class="CommunityPostDetail_commentsView__sIMie">
                         <div class="CommentItem_CommentItem__xtW4O">
                             <div class="CommentItem_CommentItem__header__5CEoM">
-                                <div
-                                    class="AuthorBox_AuthorBox__JrXUr AuthorBox_AuthorBox__xlarge__UeqLy CommentItem_CommentItem__author__ubFrt">
+                                <div class="AuthorBox_AuthorBox__JrXUr AuthorBox_AuthorBox__xlarge__UeqLy CommentItem_CommentItem__author__ubFrt">
                                     <div class="AuthorBox_AuthorBox__verticalArea__2C_q0">
                                         <div class="AuthorBox_AuthorBox__avatarWrapper__pUxrC avatar_wrapper">
-                                            <div
-                                                class="UserAvatar_UserAvatar__Wi20b AuthorBox_AuthorBox__avatar__UL_vr avatar">
-                                                <img src="https://static.wanted.co.kr/images/avatars/2729223/6e768cfc.jpg"
-                                                    alt="">
+                                            <div class="UserAvatar_UserAvatar__Wi20b AuthorBox_AuthorBox__avatar__UL_vr avatar">
+                                                <img src="https://static.wanted.co.kr/images/avatars/2729223/6e768cfc.jpg" alt="">
                                             </div>
                                         </div>
                                         <div class="AuthorBox_AuthorBox__verticalBox__sb3aa">
                                             <div class="AuthorBox_AuthorBox__userInfo__3dtQ9">
                                                 <div class="AuthorBox_AuthorBox__username__94umS username">구보경</div>
-                                            </div><span class="AuthorBox_AuthorBox__createAt__iXxYT create_time">3시간전</span>
+                                            </div>
+                                            <span class="AuthorBox_AuthorBox__createAt__iXxYT create_time">3시간전</span>
                                         </div>
                                     </div>
-                                </div><button type="button" aria-label="popup menu"
-                                    class="CommentItem_CommentItem__menu__1yY_N"
-                                    data-attribute-id="community__contentDetail__comment__more__click"
-                                    data-content-title="취업이 너무 안되네요...ㅠㅠ" data-content-id="6803" data-like-count="1"
-                                    data-comment-count="1" data-is-like="true"><svg width="18" height="18"
-                                        viewBox="0 0 24 24">
-                                        <path fill="currentColor"
-                                            d="M12 10a2 2 0 1 1-.001 4.001A2 2 0 0 1 12 10zm7 0a2 2 0 1 1-.001 4.001A2 2 0 0 1 19 10zM5 10a2 2 0 1 1-.001 4.001A2 2 0 0 1 5 10z">
+                                </div>
+                                <button type="button" aria-label="popup menu" class="CommentItem_CommentItem__menu__1yY_N" data-attribute-id="community__contentDetail__comment__more__click" data-content-title="취업이 너무 안되네요...ㅠㅠ" data-content-id="6803" data-like-count="1" data-comment-count="1" data-is-like="true">
+                                	<svg width="18" height="18" viewBox="0 0 24 24">
+                                        <path fill="currentColor"d="M12 10a2 2 0 1 1-.001 4.001A2 2 0 0 1 12 10zm7 0a2 2 0 1 1-.001 4.001A2 2 0 0 1 19 10zM5 10a2 2 0 1 1-.001 4.001A2 2 0 0 1 5 10z">
                                         </path>
-                                    </svg></button>
+                                    </svg>
+                               	</button>
 
                                 <div
                                     class="MenuPopup_MenuPopup__kcJI1 MenuPopup_MenuPopup__paddingTop__VUYHS CommentItem_CommentItem__menuPopup__I6dGz">
@@ -225,9 +220,11 @@
                                 저도 오늘도 이력서를 쓰러 카페 갑니다
                                 시간제약없이 제 자신에게 집중할수있다는 것도 좋은기회 인것같아요.
                                 글쓴이님께서도 꼭 원하시는 곳에 좋은결과 있으셨으면 좋겠어요.</div>
-                        </div>
+                        </div> -->
                         
                         <!-- 댓글 작성하는 곳 -->
+                                <form action="#" id="comments" class="combined" style="flex-direction:column; margin:0; display:contents;">
+                        		</form>
                         <div class="CommentWrite_CommentWrite__juAYI">
 	                        <header class="major" style="text-align:left;">
 	                           <h2>댓글</h2>
