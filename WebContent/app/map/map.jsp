@@ -958,6 +958,8 @@ function clickWork(){
 }
  //전체 리스트 중 특정 정보 클릭 시 우측에 탭2 나오면서(seoulPage.js에 있음) 일치하는 정보 뿌리는 클릭 이벤트
  $("#conlistul").on('click', 'li',function(){
+	 var $left = $("#close_btn_fold").css('margin-left');
+	 
 	 $.ajax({
 		 url: "/map/mapdetail.mp",
 		 data: {mapNumber: $($(this).find("a")[1]).attr("id")},
@@ -982,6 +984,20 @@ function clickWork(){
 			$("#detailClosingDate").html(`<p>` + lists[0].mapJobClosingDate + `</p>`)
 		}
 	 })
+	 	check1 *= -1;
+	 	check2 *= -1;
+	 	foldDetail();
+	 	
+	 	if($left == "-810px") {
+            $(".pc_depth1").animate({marginLeft: '0px'}, 500);
+            $("#close_btn_fold").animate({marginLeft: '0px'}, 500);
+            $(".pc_depth2").animate({marginLeft: '0px'}, 500);
+            $(".layer_close").animate({marginLeft: '0px'}, 500);
+            $("#close_btn_fold").css('background-position-y', '0px');
+            check1 *= -1;
+            check2 *= -1;
+	 	}
+	 	
 	});
  
  //지도에 나타난 핀 클릭 시 일치하는 정보를 탭2에 뿌리는 함수. 핀에 onclick 속성에서 실행됨
