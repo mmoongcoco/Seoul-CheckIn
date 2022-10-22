@@ -21,4 +21,12 @@ public class NoticeDAO {
 		return sqlSession.selectList("Notice.selectNoticeTitle");
 	}
 	
+//	공지사항 제목 클릭시 상세페이지 
+	
+	public NoticeVO selectNoticeDetail(int noticeNumber) {
+		return sqlSession.selectOne("Notice.selectNoticeDetail",noticeNumber);
+	}
+	
+	
+	
 }

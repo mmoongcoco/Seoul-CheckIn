@@ -3,14 +3,26 @@
 
 <mapper namespace="Faq">
 
-	<!-- 외국인 회원 자주 묻는 질문 -->
+	<!-- 외국인 회원 자주 묻는 질문 Title List-->
 	<select id="selectForTitle" resultType="faqVO">
-		select faq_title from tbl_faq where faq_mcategory=20
+		select faq_title, faq_number from tbl_faq where faq_mcategory=20
 	</select>
 
-	<!-- 내국인 회원 자주 묻는 질문 -->
+	<!-- 내국인 회원 자주 묻는 질문 Title List-->
 	<select id="selectLocTitle" resultType="faqVO">
-		select faq_title from tbl_faq where faq_mcategory=10
+		select faq_title, faq_number from tbl_faq where faq_mcategory=10
 	</select>
+	
+	<!-- 외국인 제목 클릭시 상세페이지 이동 -->
+	<select id="selectForDetail" parameterType="_int" resultType="faqVO">
+		select faq_title, faq_article, faq_number from tbl_faq where faq_number=#{faqNumber}
+	</select>
+
+	<!-- 내국인 제목 클릭시 상세페이지 이동 -->
+	<select id="selectLocDetail" parameterType="_int" resultType="faqVO">
+		select faq_title, faq_article, faq_number from tbl_faq where faq_number=#{faqNumber}
+	</select>
+
+
 
 </mapper>

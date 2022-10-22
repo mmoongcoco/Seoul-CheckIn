@@ -73,7 +73,7 @@
 				<div class="category_view">
 					<div class="col-sm-6">
 						<section class="articles">
-							<h3>외국인 회원 자주 묻는 질문</h3>
+							<h3>서울체크인 - 외국인 회원 질문</h3>
 							<ul class="article-list">
 								<c:choose>
 									<c:when
@@ -82,7 +82,7 @@
 											<!-- 자주묻는 질문 리스트 공간 : 제목만 다 보여주는 곳 -->
  											<li class="promoted-articles-item"
 												style="list-style: none; margin-left: 15px;">
-												<a href=""><font> 
+												<a href="${pageContext.request.contextPath}/notice/fordetail.nt?faqNumber=${forTitle.getFaqNumber()}"><font> 
 												<c:out value="${forTitle.getFaqTitle()}" /></font> 
 												<font style="float: right;"></font>
 												</a>
@@ -106,7 +106,7 @@
 					</div>
 					<div class="col-sm-6">
 						<section class="articles">
-							<h3>내국인 회원 자주 묻는 질문</h3>
+							<h3>서울체크인 - 내국인 회원 질문</h3>
 							<ul class="article-list">
 								<c:choose>
 									<c:when
@@ -115,7 +115,7 @@
 											<!-- 자주묻는 질문 리스트 공간 : 제목만 다 보여주는 곳 -->
  											<li class="promoted-articles-item"
 												style="list-style: none; margin-left: 15px;">
-												<a href=""><font> 
+												<a href="${pageContext.request.contextPath}/notice/locdetail.nt?faqNumber=${locTitle.getFaqNumber()}"><font> 
 												<c:out value="${locTitle.getFaqTitle()}" /></font> 
 												<font style="float: right;"></font>
 												</a>
@@ -165,7 +165,7 @@
 												<c:forEach var="title" items="${titles}">
 													<li class="promoted-articles-item"
 														style="padding-left: 22px; padding-right: 22px; padding-top: 10px; padding-bottom: 10px;">
-														<a href=""><font> <c:out
+														<a href="${pageContext.request.contextPath}/notice/noticedetail.nt?noticeNumber=${title.getNoticeNumber()}"><font> <c:out
 																	value="${title.getNoticeTitle()}" /></font> <font
 															style="float: right;"></font> </a>
 													</li>

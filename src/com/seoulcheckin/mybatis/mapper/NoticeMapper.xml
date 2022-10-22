@@ -4,9 +4,14 @@
 <mapper namespace="Notice">
 
 	<!-- 공지사항 title 가져오기 -->
-	<select id="selectNoticeTitle" resultType ="noticeVO">
-		select notice_title from tbl_notice
+	<select id="selectNoticeTitle" resultType="noticeVO">
+		select notice_title,
+		notice_number from tbl_notice
 	</select>
-	
-	
+
+	<!-- 공지사항 제목 클릭시 상세페이지 이동 -->
+	<select id="selectNoticeDetail" parameterType="_int" resultType="noticeVO">
+		select notice_title, notice_article from tbl_notice where notice_number=#{noticeNumber}
+	</select>
+
 </mapper>

@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
-<!-- 서울체크인 - 공지사항 세부 페이지  -->
+<!-- 서울체크인 - 외국인 결과 페이지  -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -200,7 +200,8 @@ ol.breadcrumbs {
 				style="float: left;">
 				<ol class="breadcrumbs">
 					<li title="원티드 고객센터"><a href="${pageContext.request.contextPath}/notice/noticelist.nt">서울체크인 고객센터</a></li>
-					<li title="공지사항"><a>공지사항</a></li>
+					<li title="외국인 회원"><a>외국인 회원</a></li>
+					<!-- <li title="이용방법"><a href="">이용방법</a></li> -->
 				</ol>
 			</div>
 			<div class="col-md-3 col-sm-3 col-xs-12 breadcrumb-container-search"
@@ -221,12 +222,12 @@ ol.breadcrumbs {
 						<div class="article__bg">
 							<h3 class="article-head">
 							<!-- 제목 -->
-								<c:out value="${noticeDetail.getNoticeTitle()}" />
+								<c:out value="${faqForDetail.getFaqTitle()}" />
 							</h3>
 							<div class="article-body">
 							<!-- 내용 -->
 								<p>
-									<c:out value="${noticeDetail.getNoticeArticle()}" />
+									<c:out value="${faqForDetail.getFaqArticle()}" />
 								</p>
 							</div>
 						</div>
@@ -242,11 +243,11 @@ ol.breadcrumbs {
 										style="padding-left: 15px;">이 섹션의 문서</h3>
 									<ul>
 										<c:choose>
-											<c:when test="${titles != null and fn:length(titles) > 0}">
-												<c:forEach var="title" items="${titles}">
+											<c:when test="${selForTitles != null and fn:length(selForTitles) > 0}">
+												<c:forEach var="selForTitle" items="${selForTitles}">
 													<li style="padding-left: 15px; padding-right: 15px;"><a
-														href="${pageContext.request.contextPath}/notice/noticedetail.nt?noticeNumber=${title.getNoticeNumber()}" class="sidenav-item"><c:out
-																value="${title.getNoticeTitle()}" /> </a></li>
+														href="${pageContext.request.contextPath}/notice/fordetail.nt?faqNumber=${selForTitle.getFaqNumber()}" class="sidenav-item"><c:out
+																value="${selForTitle.getFaqTitle()}" /> </a></li>
 												</c:forEach>
 											</c:when>
 											<c:otherwise>
