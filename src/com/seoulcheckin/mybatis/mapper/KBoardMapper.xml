@@ -6,4 +6,6 @@
 		select count(K_board_number) from tbl_K_board where member_number = #{memberNumber}
 	</select>
 	
+	
+
 </mapper>

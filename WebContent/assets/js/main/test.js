@@ -324,7 +324,7 @@ arrow.addEventListener("click", function(){
 let bannerName = "${banner.getBoardName()}";*/
 
 
-show();
+//show();
 
 
 function show(){

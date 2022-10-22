@@ -9,4 +9,6 @@
 	<select id="classLimitCount" parameterType="_int" resultType="_int">
 		select count(member_number) from tbl_myprogram tm where school_number = #{schoolNumber};
 	</select>
+	
+
 </mapper>
