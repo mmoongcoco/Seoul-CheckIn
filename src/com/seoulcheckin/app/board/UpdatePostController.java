@@ -13,11 +13,14 @@ import com.seoulcheckin.app.board.dao.KBoardDAO;
 public class UpdatePostController implements Execute{
 	@Override
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("수정");
+		System.out.println(req.getParameter("kBoardNumber"));
+		
 		Result result = new Result();
 		KBoardDAO KboardDAO = new KBoardDAO();
-		int boardNumber = Integer.valueOf(req.getParameter("kBoardNumber"));
+		int kBoardNumber = Integer.valueOf(req.getParameter("kBoardNumber"));
 		
-		req.setAttribute("kBoard", KboardDAO.select(boardNumber));
+		req.setAttribute("kBoard", KboardDAO.select(kBoardNumber));
 		result.setPath("/app/board/update.jsp");
 		return result;
 	}

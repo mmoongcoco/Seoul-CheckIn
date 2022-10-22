@@ -14,18 +14,20 @@ import com.seoulcheckin.app.board.dao.KBoardDAO;
 public class DeletePostController implements Execute{
 	@Override
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println(req.getParameter("kBoardNumber"));
 
 		KBoardDAO KboardDAO = new KBoardDAO();
 //		FileDAO fileDAO = new FileDAO();
 		Result result = new Result();
-		int boardNumber = Integer.valueOf(req.getParameter("kBoardNumber"));
+		int kBoardNumber = Integer.valueOf(req.getParameter("kBoardNumber"));
+		System.out.println("삭제");
 		
 //		KboardDAO.select(boardNumber).stream().map(file -> req.getSession().getServletContext().getRealPath("/") + "upload/" + file.getFileSystemName())
 //		.map(path -> new File(path)).forEach(f -> f.delete());
 		
-		KboardDAO.delete(boardNumber);
+		KboardDAO.delete(kBoardNumber);
 		
-		result.setRedirect(true);
+//		result.setRedirect(true);
 		result.setPath(req.getContextPath() + "/board/board.bo");
 		return result;
 		

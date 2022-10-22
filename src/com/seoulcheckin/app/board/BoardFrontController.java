@@ -36,9 +36,13 @@ public class BoardFrontController extends HttpServlet {
 			result = new ViewPostController().execute(req, resp);
 			
 		// 한국어 게시글 쓰기
-		}else if(request.equals("/board/write.bo")) {
-			result = new Result();
-			result.setPath("/app/board/write.jsp?memberName=" + req.getSession().getAttribute("memberName"));
+		/*
+		 * }else if(request.equals("/board/write.bo")) { result = new Result();
+		 */
+			/*
+			 * result.setPath("/app/board/write.jsp?memberName=" +
+			 * req.getSession().getAttribute("memberName"));
+			 */
 			
 		}else if(request.equals("/board/newpost.bo")) {
 			result = new NewPostController().execute(req, resp);

@@ -22,7 +22,7 @@ public class BoardController implements Execute{
 		
 		req.setAttribute("kboards", kBoardDAO.selectAll(pageMap));
 		
-//		System.out.println("컨트롤러");
+		System.out.println("컨트롤러");
 		System.out.println(kBoardDAO.selectAll(pageMap));
 //		System.out.println("들어옴");
 		

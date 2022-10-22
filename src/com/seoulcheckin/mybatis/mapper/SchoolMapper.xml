@@ -12,22 +12,21 @@
 		select count(school_number) from tbl_school
 	</select>
 	
-	<select id="selectAll" resultType="SchoolVO">
+	<select id="selectAll" resultType="schoolVO">
 		select school_number, school_name, school_teacher_name, school_phone, school_address, school_time, school_introduce, 
 		school_opening_date, school_closing_date, school_photo, school_limit_count, school_status, member_number
 		from tbl_school;
 	</select>
 	
-	<select id="selectDetail" resultType="SchoolVO">
+	<select id="selectDetail" resultType="schoolVO">
 		select school_number, school_name, school_teacher_name, school_phone, school_address, school_time, school_introduce, 
 		school_opening_date, school_closing_date, school_photo, school_limit_count, school_status, member_number
 		from tbl_school
 		where school_number = #{schoolNumber};
 	</select>
 	
-	<insert id="insert" parameterType="SchoolVO">
+	<insert id="insert" parameterType="schoolVO">
 		insert into tbl_myprogram (school_number, member_number)
 		values(#{schoolNumber}, #{memberNumber})
-		
 	</insert>
 </mapper>

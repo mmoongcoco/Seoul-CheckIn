@@ -114,36 +114,22 @@
                                     </button>
                                     </div>
 
-
-                            <div class="MenuPopup_MenuPopup__kcJI1 MenuPopup_MenuPopup__paddingBottom__SUQod">
+							<!--  댓글 수정 & 삭제 버튼 -->
+							<div class="MenuPopup_MenuPopup__kcJI1 MenuPopup_MenuPopup__paddingBottom__SUQod">
                                 <ul>
-                                <!-- <c:if test="${memberEmail eq kboard.getmemberEmail()}">
-                                     <li class="MenuPopup_MenuPopup__menu_item__p_vG7">
-                                    	<button type="button" class="MenuPopup_MenuPopup__menu_link___Rsar MenuPopup_MenuPopup__menu_link__red__k5iWj"
-                                            data-attribute-id="community__contentDetail__more__report"
-                                            data-content-title="취업이 너무 안되네요...ㅠㅠ" data-content-id="6857"
-                                            data-like-count="1" data-comment-count="0">게시글 수정하기</button>
+                                    <li class="MenuPopup_MenuPopup__menu_item__p_vG7">
+                                    	<button type="button" onclick="location.href = '${pageContext.request.contextPath}/board/updatepost.bo?kBoardNumber=${kboard.getkBoardNumber()}'"
+                                            class="MenuPopup_MenuPopup__menu_link___Rsar MenuPopup_MenuPopup__menu_link__red__k5iWj">게시글 수정하기</button>
                                     </li>
-                                    <li class="MenuPopup_MenuPopup__menu_item__p_vG7"><button type="button"
-                                            class="MenuPopup_MenuPopup__menu_link___Rsar MenuPopup_MenuPopup__menu_link__red__k5iWj"
-                                            data-attribute-id="community__contentDetail__user__more__report"
-                                            data-content-title="취업이 너무 안되네요...ㅠㅠ" data-content-id="6857"
-                                            data-like-count="1" data-comment-count="0">게시글 삭제하기</button>
-                                    </li> 
-								</c:if> --> 
-								<c:if test="${memberEmail eq kboard.getmemberEmail()}">
-	                              <li class="MenuPopup_MenuPopup__menu_item__p_vG7">
-	                              	<input type="button" value="수정" onclick="location.href = '${pageContext.request.contextPath}/board/updatepost.bo?boardNumber=${board.getBoardNumber()}'"/>
-	                              </li>
-	                              <li class="MenuPopup_MenuPopup__menu_item__p_vG7"><input type="button" value="삭제" onclick="location.href = '${pageContext.request.contextPath}/board/deletepost.bo?boardNumber=${board.getBoardNumber()}'"/></li>
-	                          </c:if>                                      
+                                    <li class="MenuPopup_MenuPopup__menu_item__p_vG7">
+                                    	<button type="button" onclick="location.href = '${pageContext.request.contextPath}/board/deletepost.bo?kBoardNumber=${kboard.getkBoardNumber()}'"
+                                    	  class="MenuPopup_MenuPopup__menu_link___Rsar MenuPopup_MenuPopup__menu_link__red__k5iWj" >게시글 삭제하기</button>
+                                    </li>
                                 </ul>
                                 <div
                                     class="MenuPopup_MenuPopup__bubblePoint__j2qkU MenuPopup_MenuPopup__bubblePoint_bottom__EqWcp">
                                 </div>
                             </div>
-
-
 
                             <button type="button" class="PostContents_PostContents__menu_link_button__3VxlO"
                                 data-attribute-id="community__contentDetail__more__copyLink"
@@ -223,8 +209,8 @@
                         </div> -->
                         
                         <!-- 댓글 작성하는 곳 -->
-                                <form action="#" id="comments" class="combined" style="flex-direction:column; margin:0; display:contents;">
-                        		</form>
+                	    <form action="#" id="comments" class="combined" style="flex-direction:column; margin:0; display:contents;">
+                        </form>
                         <div class="CommentWrite_CommentWrite__juAYI">
 	                        <header class="major" style="text-align:left;">
 	                           <h2>댓글</h2>
@@ -233,7 +219,7 @@
                             <div class="CommentWrite_CommentWrite__bottom__TTaoc">
                                 <form method="post" action="#" class="combined" style="width:auto;" name="replyForm">
 	                                <textarea class="CommentWrite_CommentWrite__textarea__3lpfm" placeholder="로그인 후 댓글 남기기" disabled=""></textarea>
-	                                <button class="Button_Button__root__V1ie3 Button_Button__contained__toUI5 undefined Button_Button__sizeMedium__k0A1w CommentWrite_CommentWrite__saveButton__Ao_V8" type="submit" disabled="">
+	                                <button class="Button_Button__root__V1ie3 Button_Button__contained__toUI5 undefined Button_Button__sizeMedium__k0A1w CommentWrite_CommentWrite__saveButton__Ao_V8" type="submit" onclick>
 	                                	<span class="Button_Button__label__1Kk0v">등록</span>
 	                                </button>
                                 </form>
@@ -593,8 +579,17 @@
 </body>
 <script>
 let kBoardNumber = "${kboard.getkBoardNumber()}";
-let memberNumber = "${sessionScope.memberNumber}";
-let memberEmail = "${sessionScope.memberEmail}";
+console.log("게시글 넘버")
+console.log(kBoardNumber)
+let kBoardEmail = "${kboard.getMemberEmail()}";
+console.log("게시글이메일")
+console.log(kBoardEmail)
+let kMemberNumber = "${kboard.getMemberNumber()}";
+console.log("게시글 멤버넘버")
+console.log(kMemberNumber)
+let memberNumbers = sessionStorage.getItem("memberNumber");
+console.log("로그인 한 멤버")
+console.log(memberNumbers)
 </script>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/board/community.js"></script>
@@ -658,6 +653,34 @@ let memberEmail = "${sessionScope.memberEmail}";
                 $(this).css("backgroundColor", "rgb(204, 204, 204)");
             });
         });
+        
+        // 로그인 안하면 게시글 수정 불가
+        
+        let selectCheck = false;
+		let replyCheck = false;
+		
+		$(".PostContents_PostContents__menu_button__fCW0J").on('click',function(){
+		    let $modifyBtn = $(".MenuPopup_MenuPopup__kcJI1.MenuPopup_MenuPopup__paddingBottom__SUQod");
+			if(memberNumbers == kMemberNumber){
+			    selectCheck = !selectCheck;
+				}
+			    if(selectCheck){
+			        $modifyBtn.css('display','block');
+			    }else{
+			        $modifyBtn.css('display','none');
+			    }
+		})
+		
+		
+		$(".CommentItem_CommentItem__menu__1yY_N").on('click',function(){
+		    let $replymodifyBtn = $(".MenuPopup_MenuPopup__kcJI1.MenuPopup_MenuPopup__paddingTop__VUYHS.CommentItem_CommentItem__menuPopup__I6dGz");
+		    replyCheck = !replyCheck;
+		    if(replyCheck){
+		        $replymodifyBtn.css('display','block');
+		    }else{
+		        $replymodifyBtn.css('display','none');
+		    }
+		})
         
 </script>
 </html>

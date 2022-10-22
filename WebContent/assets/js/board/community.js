@@ -53,7 +53,7 @@ $(".PhotoButton_PhotoButton__uSl7I").on('mouseout', function(){
     $(".Tooltip_Tooltip__O0gp_").css('visibility', 'hidden');
 });
 
-$(document).ready(function() {
+/*$(document).ready(function() {
     $('#summernote').summernote({
         // airMode : true
         callbacks: {
@@ -64,9 +64,7 @@ $(document).ready(function() {
         }
     });
 });
-
-
-
+*/
 
 var count = 0;
 

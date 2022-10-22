@@ -23,13 +23,14 @@
                 <div class="CommunityWrite_CommunityWriteMobileHeader__text__7LaJt"></div>
             </header>
             <!-- form 시작  -->
-            <form action="${pageContext.request.contextPath}/board/newpost.bo" name="writeForm" method="post" enctype="multipart/form-data">
+            <form action="${pageContext.request.contextPath}/board/updateOkpost.bo" name="updateForm" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="kboardNumber" value="${kboard.getkBoardNumber()}">
                 <div class="Header_CommunityWriteHeader__yoM82">
                     <div class="Header_CommunityWriteHeader__content__o8Uvu">
                         <div class="Header_CommunityWriteHeader__button__Js48X">
 	                        <input type="button" class="Button_Button__root__V1ie3 Button_Button__contained__toUI5 undefined Button_Button__sizeMedium__k0A1w Button_Button__fullWidth__RU4tf" value="등록" onclick="send()" style="margin-left: 12px; font-size: 13px;"/>
 	                        <input type="button" class="Button_Button__root__V1ie3 Button_Button__contained__toUI5 undefined Button_Button__sizeMedium__k0A1w Button_Button__fullWidth__RU4tf" 
-	                        value="취소" onclick="location.href='${pageContext.request.contextPath}/board/board.bo'" style="margin-left: 12px; font-size: 13px;"/>
+	                        value="취소" onclick="history.back()" style="margin-left: 12px; font-size: 13px;"/>
                         </div>
                     </div>
                 </div>
@@ -62,7 +63,8 @@
                                 </div>
                             </div>
                         </div>
-                        	<p style="text-align:left; font-size:15px;">작성자 : <c:out value="${memberName}"/></p>
+                        
+                        	<p style="text-align:left; font-size:15px;">${kboard.getmemberName()}</p>
                         <!-- 제목 -->
                         <div class="AutoTextarea_AutoTextarea__odSEo Paper_CommunityWritePaper__title__0zYfC">
                             <!-- <textarea class="AutoTextarea_AutoTextarea__textarea__zScTG" name="title" placeholder="제목을 입력해주세요." required="" style="height: 38px;"></textarea> -->
@@ -75,7 +77,7 @@
                         <!-- 글쓰기 -->
                         <div class="Paper_CommunityWritePaper__content__KM9Nk">
                             <div class="AutoTextarea_AutoTextarea__odSEo">
-                              <textarea class="AutoTextarea_AutoTextarea__textarea__zScTG content" name="boardContent" placeholder="내용을 작성해주세요." style="resize:none; height: 28px; overflow: auto;" rows="30"></textarea>
+                              <textarea class="AutoTextarea_AutoTextarea__textarea__zScTG content" name="boardContent" placeholder="내용을 작성해주세요." style="resize:none; height: 28px; overflow: auto;" rows="30">${kboard.getkBoardArticle()}</textarea>
                         	</div>
 
                             <!-- 이미지 추가하는 버튼 클릭 시 이미지 올라감 -->
@@ -220,18 +222,18 @@
 <script>
 
 function send(){
-    if(!writeForm.kBoardTitle){
-       alert("제목을 작성해주세요.");
-       return;
-    }
-    
-    if(!writeForm.kBoardArticle){
-       alert("내용을 작성해주세요.");
-       return;
-    }
-    
-    writeForm.submit();
- }
+	let form = document.updateForm;
+	if(!form.boardTitle.value){
+		form.boardTitle.focus();
+		return;
+	}
+	if(!form.boardContent.value){
+		form.boardTitle.focus();
+		return;
+	}
+	
+	form.submit();
+}
 
 </script>
 </html>
