@@ -28,19 +28,29 @@ public class NoticeFrontController extends HttpServlet {
 		String request = requestURI.substring(contextPath.length());
 		Result result = null;
 
-		/* =========== 관리자페이지에서 사용예정 ===========*/	
+		/* =========== 고객센터에서 사용예정 ===========*/	
 		
 		// 고객센터 메인 페이지 
 		if(request.equals("/notice/noticelist.nt")) {
 			result = new NoticeListController().execute(req, resp);
+			
 		// 고객센터 검색 페이지
-		}else if(request.equals("/notice/noticesearch.nt")) {	
-		
-		// 고객센터 공지사항,검색, FAQ 결과 페이지
+		}else if(request.equals("/notice/searchresult.nt")) {	
+			result = new SearchResultController().execute(req, resp);
+			
+		// 고객센터 공지사항 결과 페이지
 		}else if(request.equals("/notice/noticedetail.nt")) {
+			result = new NoticeDetailController().execute(req, resp);
 		
+		// 고객센터 외국인 결과 페이지
+		}else if(request.equals("/notice/fordetail.nt")) {
+			result = new ForDetailController().execute(req, resp);	
 			
+		// 고객센터 내국인 결과 페이지
+		}else if(request.equals("/notice/locdetail.nt")) {
+			result = new LocDetailController().execute(req, resp);
 			
+		// 고객센터 검색 결과 페이지 - 필요! 
 			
 		/* =========== 관리자페이지에서 사용예정 ===========*/	
 		// 공지사항 추가

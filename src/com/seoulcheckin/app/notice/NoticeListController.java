@@ -28,6 +28,7 @@ public class NoticeListController implements Execute{
 		
 		// 공지사항 제목
 		noticeTitles = noticeDAO.selectNoticeTitle();
+		
 		// 외국인 전체 title
 		selectForTitles = faqDAO.selectForTitle();
 		

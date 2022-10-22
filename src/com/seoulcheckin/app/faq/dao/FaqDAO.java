@@ -25,4 +25,17 @@ public class FaqDAO {
 	public List<FaqVO> selectLocTitle(){
 		return sqlSession.selectList("Faq.selectLocTitle");
 	}
+	
+	// 외국인 제목 클릭시 상세페이지
+	public FaqVO selectForDetail(int faqNumber) {
+		return sqlSession.selectOne("Faq.selectForDetail", faqNumber);
+	}
+
+	// 내국인 제목 클릭시 상세페이지
+	public FaqVO selectLocDetail(int faqNumber) {
+		return sqlSession.selectOne("Faq.selectLocDetail", faqNumber);
+	}
+	
+	
+	
 }
