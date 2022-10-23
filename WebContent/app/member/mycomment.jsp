@@ -44,15 +44,15 @@
               <div class="list">
                     <a href="/member/myclass.me">
                         <span style="margin-top: 23px;" >강의</span>
-                        <strong style="margin-top: 23px;">0</strong>
+                        <strong style="margin-top: 23px;" class = "programCount";>0</strong>
                     </a>
                     <a href="/member/mycommunity.me">
                         <span style="margin-top: 23px;">커뮤니티</span>
-                        <strong style="margin-top: 23px;">0</strong>
+                        <strong style="margin-top: 23px;" class = "boardCount";>0</strong>
                     </a>
                     <a href="/member/mymsg.me">
                         <span style="margin-top: 23px;">쪽지</span>
-                        <strong style="margin-top: 23px;">0</strong>
+                        <strong style="margin-top: 23px;" class = "messageCount";>0</strong>
                     </a>
                     <a href="/member/updateinfo.me" class="myPagelist_end">
                         <span style="margin-top: 23px;">정보 수정</span>
@@ -69,10 +69,10 @@
                     <p>커뮤니티에서 작성한 글과 댓글입니다. 확인해주세요.</p>
                     <ul class="myCommunityList">
                         <li data-attribute-id="community__myCommunity__myAction__tab__click" data-tab-kind="posts" class="write">
-                            <a href="myPageCommunity.html" class="btnOne">작성글</a>
+                            <a href="${pageContext.request.contextPath}/member/mycommunity.me" class="btnOne">작성글</a>
                         </li>
                         <li data-attribute-id="community__myCommunity__myAction__tab__click" data-tab-kind="comments" class="comment">
-                            <a href="myComment.html" class="btnTwo">작성댓글</a>
+                            <a href="'javascript:void(0);" class="btnTwo">작성댓글</a>
                         </li>
                     </ul>
                 </div>
@@ -96,6 +96,7 @@
     </div>
         
 </body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script>
 
     const file = document.querySelector("input[type='file']");
@@ -122,6 +123,78 @@
             file.onclick();
      });
 
+
+</script>
+<script>
+showList()
+showList2()
+showList3()
+showList4()
+function showList(){
+	console.log("ajax들어옴");
+	$.ajax({
+		url: "/member/mypagelist.me",
+		type: "get",
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		success: function(result){
+			console.log(result);
+			$(".programCount").text(result);
+			console.log("ajax1들어옴");
+		}
+		
+	})
+}
+
+function showList2(){
+	$.ajax({
+		url: "/member/mypagelist2.me",
+		type: "get",
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		success: function(result){
+			console.log(result);
+			$(".messageCount").text(result);
+		}
+		
+	})
+}
+
+
+function showList3(){
+	$.ajax({
+		url: "/member/mypagelist3.me",
+		type: "get",
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		success: function(result){
+			console.log(result);
+			$(".boardCount").text(result);
+		}
+		
+	})
+}
+
+function showList4(){
+	console.log("ajax4 들어옴");
+	$.ajax({
+		url: "/member/updatelist.me",
+		type: "get",
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		success: function(members){
+			console.log("ajax4 들어옴");
+			console.log(members);
+			
+			$(".asideMeName").text(members[0].memberName);
+			$(".asideMeEmail").text(members[0].memberEmail);
+			$(".asideMeTel").text(members[0].memberPhone);
+			
+		}
+		
+	})
+	
+}
 
 </script>
 </html>

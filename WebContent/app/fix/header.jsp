@@ -78,20 +78,26 @@
 						</ul>
 						<ul id="ul-2">
 							<li>
-								<div style="cursor: pointer;" class="divdiv">비자/환율</div>
+								<div style="cursor: pointer;" class="divdiv">비자</div>
 								<ul class="ulul" id="ulul-2">
 									<li><br></li>
 									<li><a href=""> 비자 네비게이터 </a></li>
 								</ul>
 							</li>
-							<li><a href="" style="position: relative; top: -1px;">
+							<li><a href="" style="position: relative; top: -2px;">
 									고객센터 </a></li>
 						</ul>
 						<ul id="ul-3">
 							<li><a href="javascript:void(0)" id="join_login_button"
-								style="position: relative; left: 50px; top: -2px;"> </a></li>
+								style="position: relative; left: 50px; top: -2px;"> </a>
+								<!-- 마이페이지 이동 -->
+								<button id="profilebutton" onclick="location.href='test.html'" style="display: block;">
+                           		</button>
+								
+                           		<!-- 마이페이지 -->
+								</li>
 							<li class="vertical" id="vertical"
-								style="position: relative; left: -145px; top: -2px;"><a
+								style="position: relative; left: -145px;"><a
 								href="" id="comservice">관리자 페이지</a></li>
 							<li></li>
 						</ul>
@@ -647,7 +653,8 @@
 		if(sessionStorage.getItem("memberNumber") == null){
 			$("#join_login_button").html("회원가입/로그인");			
 		}else {
-			$("#join_login_button").html("로그아웃");			
+			$("#join_login_button").html("로그아웃");	
+			
 		}
 	}
 	

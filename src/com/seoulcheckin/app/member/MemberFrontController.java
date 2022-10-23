@@ -79,6 +79,10 @@ public class MemberFrontController extends HttpServlet {
 		}else if(request.equals("/member/mypagelist3.me")) {
 			result = new SelectBoardCountController().execute(req, resp);
 			
+			// 마에페이지 ajax4
+		} else if (request.equals("/member/updatelist.me")) {
+			result = new ProfileController().execute(req, resp);
+			
 			// 마이페이지 프로필 변경
 		} else if (request.equals("/member/profile.me")) {
 
@@ -87,11 +91,11 @@ public class MemberFrontController extends HttpServlet {
 
 			// 내가 쓴 댓글로 탭 이동
 		} else if (request.equals("/member/mycomment.me")) {
-
+			result = new MyCommentController().execute(req, resp);
+			
 			// 마이페이지 강의내역 페이지 요청
 		} else if (request.equals("/member/myclass.me")) {
-			result = new Result();
-			result.setPath("/app/member/myPageClass.jsp");
+			result = new MyClassController().execute(req, resp);
 			
 			// 커뮤니티 페이지 요청
 		} else if (request.equals("/member/mycommunity.me")) {
@@ -111,24 +115,16 @@ public class MemberFrontController extends HttpServlet {
 			
 			// 정보수정 페이지 요청
 		} else if (request.equals("/member/updateinfo.me")) {
-			result = new Result();
-			result.setPath("/app/member/myPageChange.jsp");
+			result = new UpdateInfoController().execute(req, resp);
 
 			
 			// 마이페이지 정보수정 submit
 		} else if (request.equals("/member/updateinfoOk.me")) {
-			new UpdateInfoOkController().execute(req, resp);
-			result = new Result();
-			result.setPath("/app/member/myPageMain.jsp");
-			
-			// 정보 수정페이지에 들어와서 AJAX로 정보 뿌리기
-		} else if (request.equals("/member/updatelist.me")) {
-			new UpdateInfoController().execute(req, resp);
+			result = new UpdateInfoOkController().execute(req, resp);
 			
 			// 비밀번호 확인 후 회원탈퇴 페이지 요청
 		} else if (request.equals("/member/dropinfo.me")) {
-			result = new Result();
-			result.setPath("/app/member/myPageDelete.jsp");
+			result = new DropInfoController().execute(req, resp);
 
 			// 마이페이지 회원탈퇴 submit, 관리자페이지 회원 삭제
 		} else if (request.equals("/member/dropinfoOk.me")) {

@@ -20,6 +20,7 @@ public class MyPostController implements Execute{
 		KBoardDAO kBoardDAO = new KBoardDAO();
 		KBoardVO kBoardVO = new KBoardVO();
 		KBoardDTO kBoardDTO = new KBoardDTO();
+		MemberDAO memberDAO = new MemberDAO();
 		
 //		HttpSession session = req.getSession();
 		
@@ -31,8 +32,11 @@ public class MyPostController implements Execute{
 //		 */
 		 int memberNumber = 1;
 		
-		MemberDAO.myBoard(memberNumber);
+		 kBoardDAO.myBoard(memberNumber);
+		 
+		 req.setAttribute("myBoards",  kBoardDAO.myBoard(memberNumber));
 		
+		 System.out.println(kBoardDAO.myBoard(memberNumber));
 		
 		result.setPath("/app/member/myPageCommunity.jsp");
 		
