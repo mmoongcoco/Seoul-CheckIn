@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.seoulcheckin.app.faq.vo.FaqVO;
+import com.seoulcheckin.app.notice.vo.NoticeVO;
 import com.seoulcheckin.mybatis.config.MyBatisConfig;
 
 public class FaqDAO {
@@ -36,6 +37,15 @@ public class FaqDAO {
 		return sqlSession.selectOne("Faq.selectLocDetail", faqNumber);
 	}
 	
+	// 내국인 검색결과
+	public List<FaqVO> locSearchSubmitResult(String searchContent) {
+		return sqlSession.selectList("Faq.locSearchSubmitResult", searchContent);
+	}
+
+	// 외국인 검색결과
+	public List<FaqVO> forSearchSubmitResult(String searchContent) {
+		return sqlSession.selectList("Faq.forSearchSubmitResult", searchContent);
+	}
 	
 	
 }

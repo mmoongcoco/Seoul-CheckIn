@@ -50,8 +50,6 @@ public class NoticeFrontController extends HttpServlet {
 		}else if(request.equals("/notice/locdetail.nt")) {
 			result = new LocDetailController().execute(req, resp);
 			
-		// 고객센터 검색 결과 페이지 - 필요! 
-			
 		/* =========== 관리자페이지에서 사용예정 ===========*/	
 		// 공지사항 추가
 		}else if(request.equals("/notice/addnotice.nt")) {
