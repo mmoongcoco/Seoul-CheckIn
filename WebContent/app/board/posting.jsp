@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,23 +32,22 @@
                                     </div>
                                 </div>
                                 <div class="AuthorBox_AuthorBox__verticalBox__sb3aa">
-                                    <div class="AuthorBox_AuthorBox__username__94umS username">내일까지해주세요</div>
+                                    <div class="AuthorBox_AuthorBox__username__94umS username">${kboard.getMemberName()}</div>
                                 </div>
                             </div>
 
                         </div>
                         <div class="PostLeftSide_PostLeftSide__bottom__DQAGW">
                             <div>
-                                <button type="button" aria-label="comments: 1" aria-pressed="false"
-                                    class="button_Button__lqb0B"
-                                    data-attribute-id="community__contentDetail__commentBtn__click"
+                                <button type="button" aria-label="comments: 1" aria-pressed="false" class="button_Button__lqb0B" data-attribute-id="community__contentDetail__commentBtn__click"
                                     data-content-title="취업이 너무 안되네요...ㅠㅠ" data-content-id="6803" data-like-count="1"
-                                    data-comment-count="1" data-interest-tag="취업/이직,콘텐츠 제작"><svg width="20" height="20"
-                                        viewBox="0 0 18 18">
+                                    data-comment-count="1" data-interest-tag="취업/이직,콘텐츠 제작">
+                                    <svg width="20" height="20" viewBox="0 0 18 18">
                                         <path fill="currentColor" transform="matrix(-1 0 0 1 18 0)"
                                             d="M9 1c4.377 0 8 3.14 8 7s-3.623 7-8 7c-.317 0-.593-.026-.954-.088l-.395-.074-.205-.043-3.295 2.089a.75.75 0 0 1-.968-.143l-.067-.09a.75.75 0 0 1 .143-.968l.09-.067 3.55-2.25a.75.75 0 0 1 .551-.1l.652.132.301.052c.228.036.408.05.597.05 3.592 0 6.5-2.52 6.5-5.5S12.592 2.5 9 2.5C5.407 2.5 2.5 5.02 2.5 8c0 1.858 1.039 3.573 2.773 4.348a.75.75 0 1 1-.612 1.37C2.37 12.693 1 10.432 1 8c0-3.86 3.622-7 8-7z">
                                         </path>
-                                    </svg><span class="button_Button__count__L1T_j count">1</span>
+                                    </svg>
+                                    <span class="button_Button__count__L1T_j count">1</span>
                                 </button>
                             </div>
                             <div>
@@ -72,30 +73,20 @@
                                         </div>
                                         <div class="AuthorBox_AuthorBox__verticalBox__sb3aa">
                                             <div class="AuthorBox_AuthorBox__userInfo__3dtQ9">
-                                                <div class="AuthorBox_AuthorBox__username__94umS username">내일까지해주세요
+                                                <div class="AuthorBox_AuthorBox__username__94umS username">${kboard.getMemberName()}
                                                 </div>
-                                            </div><span class="AuthorBox_AuthorBox__createAt__iXxYT create_time">8시간
-                                                전</span>
+                                            </div><span class="AuthorBox_AuthorBox__createAt__iXxYT create_time">${kboard.getkBoardDate()}</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <h1 itemprop="headline" class="PostContents_PostContents__title__GuxvZ">취업이 너무 안되네요...ㅠㅠ
-                            </h1>
+                            <h1 itemprop="headline" class="PostContents_PostContents__title__GuxvZ">${kboard.getkBoardTitle()}</h1>
                         </div>
                         <div class="PostContents_PostContents__body__UUx5p">
-                            어느덧 34세가 되어갔는데요
-                            프리랜서와 개인사업, 회사도 계약직으로도 근무하며 경험해왔어요
-                            사업이 어려워져 재취업을 알아보지만
-                            정말 매일 낙방과 탈락에 지쳐가네요
-                            애정을 가지고 지원서를 쓰고 포폴도 정리해서 지원하자마자 당일 탈락시키는 회사도 있더라고요ㅎㅎ (화사 이미지 망치는 행동인건데 아쉬움만 남는 경험이네요)
-                            어쨋든 지원경험이 많아지다보니
-                            탈락한만큼 자존감도 자신감도 하락해가고 났어요
-                            알바도 중간중간하기도하고 프리랜서업무도 받아가지만 모든게 지쳐가는 일상이네요ㅠㅠ
-                            무엇보다 지칠수록 포기하지않고 지속적으로 지원하는게 맞겠죠? ㅠㅠ
-                            에휴 ㅠㅠ
-                            다른분들도 원하시는 직무로 원하는 목표들 꼭 이루셨으면 좋겠어요~!
-                            <div class="PostContents_PostContents__images__Cse1G"></div>
+                        	<pre>${kboard.getkBoardArticle()}</pre>
+                        	<div class="PostContents_PostContents__images__Cse1G">
+                        		${kboard.getkBoardPhoto()}
+                        	</div>
                         </div>
                         <div class="PostContents_tags__haYwT"><a class="PostContents_tag_button___4SNm"
                                 data-attribute-id="community__contentDetail__interestTag__click"
@@ -107,7 +98,8 @@
                                 data-comment-count="1" data-interest-tag="콘텐츠 제작" href="/community/10279/results">콘텐츠
                                 제작</a></div>
                         <div class="PostContents_bottomActions__EgEWh">
-                            <div class="PostContents_bottomActions__comment__KLiD3"><button type="button"
+                            <div class="PostContents_bottomActions__comment__KLiD3">
+                            <button type="button"
                                     aria-label="comments: 1" aria-pressed="false" class="button_Button__lqb0B"
                                     data-attribute-id="community__contentDetail__commentBtn__click"
                                     data-content-title="취업이 너무 안되네요...ㅠㅠ" data-content-id="6803" data-like-count="1"
@@ -116,28 +108,28 @@
                                         <path fill="currentColor" transform="matrix(-1 0 0 1 24 0)"
                                             d="M9.826 19.561c.71.125 1.438.189 2.174.189 5.912 0 10.75-4.112 10.75-9.25S17.912 1.25 12 1.25c-5.913 0-10.75 4.112-10.75 9.25 0 3.273 1.841 6.389 4.882 7.747a.75.75 0 0 0 .611-1.37C4.267 15.772 2.75 13.205 2.75 10.5c0-4.251 4.116-7.75 9.25-7.75 5.133 0 9.25 3.5 9.25 7.75s-4.117 7.75-9.25 7.75c-.747 0-1.482-.074-2.194-.22a.75.75 0 0 0-.578.12l-4.656 3.234a.75.75 0 0 0 .856 1.232l4.398-3.055z">
                                         </path>
-                                    </svg><span class="button_Button__count__L1T_j count">1</span></button></div>
+                                    </svg>
+                                    <!-- 댓글 수 -->
+                                    <span class="button_Button__count__L1T_j count">1</span>
+                                    </button>
+                                    </div>
 
-
-                            <div class="MenuPopup_MenuPopup__kcJI1 MenuPopup_MenuPopup__paddingBottom__SUQod">
+							<!--  댓글 수정 & 삭제 버튼 -->
+							<div class="MenuPopup_MenuPopup__kcJI1 MenuPopup_MenuPopup__paddingBottom__SUQod">
                                 <ul>
-                                    <li class="MenuPopup_MenuPopup__menu_item__p_vG7"><button type="button"
-                                            class="MenuPopup_MenuPopup__menu_link___Rsar MenuPopup_MenuPopup__menu_link__red__k5iWj"
-                                            data-attribute-id="community__contentDetail__more__report"
-                                            data-content-title="취업이 너무 안되네요...ㅠㅠ" data-content-id="6857"
-                                            data-like-count="1" data-comment-count="0">게시글 수정하기</button></li>
-                                    <li class="MenuPopup_MenuPopup__menu_item__p_vG7"><button type="button"
-                                            class="MenuPopup_MenuPopup__menu_link___Rsar MenuPopup_MenuPopup__menu_link__red__k5iWj"
-                                            data-attribute-id="community__contentDetail__user__more__report"
-                                            data-content-title="취업이 너무 안되네요...ㅠㅠ" data-content-id="6857"
-                                            data-like-count="1" data-comment-count="0">게시글 삭제하기</button></li>
+                                    <li class="MenuPopup_MenuPopup__menu_item__p_vG7">
+                                    	<button type="button" onclick="location.href = '${pageContext.request.contextPath}/board/updatepost.bo?kBoardNumber=${kboard.getkBoardNumber()}'"
+                                            class="MenuPopup_MenuPopup__menu_link___Rsar MenuPopup_MenuPopup__menu_link__red__k5iWj">게시글 수정하기</button>
+                                    </li>
+                                    <li class="MenuPopup_MenuPopup__menu_item__p_vG7">
+                                    	<button type="button" onclick="location.href = '${pageContext.request.contextPath}/board/deletepost.bo?kBoardNumber=${kboard.getkBoardNumber()}'"
+                                    	  class="MenuPopup_MenuPopup__menu_link___Rsar MenuPopup_MenuPopup__menu_link__red__k5iWj" >게시글 삭제하기</button>
+                                    </li>
                                 </ul>
                                 <div
                                     class="MenuPopup_MenuPopup__bubblePoint__j2qkU MenuPopup_MenuPopup__bubblePoint_bottom__EqWcp">
                                 </div>
                             </div>
-
-
 
                             <button type="button" class="PostContents_PostContents__menu_link_button__3VxlO"
                                 data-attribute-id="community__contentDetail__more__copyLink"
@@ -164,36 +156,30 @@
                                 </svg></button>
                         </div>
                     </article>
-                    <div class="CommunityPostDetail_commentsView__sIMie">
+                    <!-- <div class="CommunityPostDetail_commentsView__sIMie">
                         <div class="CommentItem_CommentItem__xtW4O">
                             <div class="CommentItem_CommentItem__header__5CEoM">
-                                <div
-                                    class="AuthorBox_AuthorBox__JrXUr AuthorBox_AuthorBox__xlarge__UeqLy CommentItem_CommentItem__author__ubFrt">
+                                <div class="AuthorBox_AuthorBox__JrXUr AuthorBox_AuthorBox__xlarge__UeqLy CommentItem_CommentItem__author__ubFrt">
                                     <div class="AuthorBox_AuthorBox__verticalArea__2C_q0">
                                         <div class="AuthorBox_AuthorBox__avatarWrapper__pUxrC avatar_wrapper">
-                                            <div
-                                                class="UserAvatar_UserAvatar__Wi20b AuthorBox_AuthorBox__avatar__UL_vr avatar">
-                                                <img src="https://static.wanted.co.kr/images/avatars/2729223/6e768cfc.jpg"
-                                                    alt="">
+                                            <div class="UserAvatar_UserAvatar__Wi20b AuthorBox_AuthorBox__avatar__UL_vr avatar">
+                                                <img src="https://static.wanted.co.kr/images/avatars/2729223/6e768cfc.jpg" alt="">
                                             </div>
                                         </div>
                                         <div class="AuthorBox_AuthorBox__verticalBox__sb3aa">
                                             <div class="AuthorBox_AuthorBox__userInfo__3dtQ9">
                                                 <div class="AuthorBox_AuthorBox__username__94umS username">구보경</div>
-                                            </div><span class="AuthorBox_AuthorBox__createAt__iXxYT create_time">3시간
-                                                전</span>
+                                            </div>
+                                            <span class="AuthorBox_AuthorBox__createAt__iXxYT create_time">3시간전</span>
                                         </div>
                                     </div>
-                                </div><button type="button" aria-label="popup menu"
-                                    class="CommentItem_CommentItem__menu__1yY_N"
-                                    data-attribute-id="community__contentDetail__comment__more__click"
-                                    data-content-title="취업이 너무 안되네요...ㅠㅠ" data-content-id="6803" data-like-count="1"
-                                    data-comment-count="1" data-is-like="true"><svg width="18" height="18"
-                                        viewBox="0 0 24 24">
-                                        <path fill="currentColor"
-                                            d="M12 10a2 2 0 1 1-.001 4.001A2 2 0 0 1 12 10zm7 0a2 2 0 1 1-.001 4.001A2 2 0 0 1 19 10zM5 10a2 2 0 1 1-.001 4.001A2 2 0 0 1 5 10z">
+                                </div>
+                                <button type="button" aria-label="popup menu" class="CommentItem_CommentItem__menu__1yY_N" data-attribute-id="community__contentDetail__comment__more__click" data-content-title="취업이 너무 안되네요...ㅠㅠ" data-content-id="6803" data-like-count="1" data-comment-count="1" data-is-like="true">
+                                	<svg width="18" height="18" viewBox="0 0 24 24">
+                                        <path fill="currentColor"d="M12 10a2 2 0 1 1-.001 4.001A2 2 0 0 1 12 10zm7 0a2 2 0 1 1-.001 4.001A2 2 0 0 1 19 10zM5 10a2 2 0 1 1-.001 4.001A2 2 0 0 1 5 10z">
                                         </path>
-                                    </svg></button>
+                                    </svg>
+                               	</button>
 
                                 <div
                                     class="MenuPopup_MenuPopup__kcJI1 MenuPopup_MenuPopup__paddingTop__VUYHS CommentItem_CommentItem__menuPopup__I6dGz">
@@ -201,11 +187,11 @@
                                         class="MenuPopup_MenuPopup__bubblePoint__j2qkU MenuPopup_MenuPopup__bubblePoint_top__Y2lWK">
                                     </div>
                                     <ul>
-                                        <li class="MenuPopup_MenuPopup__menu_item__p_vG7"><button type="button"
-                                                class="MenuPopup_MenuPopup__menu_link___Rsar MenuPopup_MenuPopup__menu_link__red__k5iWj"
-                                                data-attribute-id="community__contentDetail__comment__more__report"
+                                        <li class="MenuPopup_MenuPopup__menu_item__p_vG7">
+                                        	<button type="button" class="MenuPopup_MenuPopup__menu_link___Rsar MenuPopup_MenuPopup__menu_link__red__k5iWj" data-attribute-id="community__contentDetail__comment__more__report"
                                                 data-content-title="데이터 엔지니어를 하고싶은데" data-content-id="6854"
-                                                data-like-count="6" data-comment-count="4">댓글 수정하기</button></li>
+                                                data-like-count="6" data-comment-count="4">댓글 수정하기</button>
+                                        </li>
                                         <li class="MenuPopup_MenuPopup__menu_item__p_vG7"><button type="button"
                                                 class="MenuPopup_MenuPopup__menu_link___Rsar MenuPopup_MenuPopup__menu_link__red__k5iWj"
                                                 data-attribute-id="community__contentDetail__user__more__report"
@@ -220,16 +206,29 @@
                                 저도 오늘도 이력서를 쓰러 카페 갑니다
                                 시간제약없이 제 자신에게 집중할수있다는 것도 좋은기회 인것같아요.
                                 글쓴이님께서도 꼭 원하시는 곳에 좋은결과 있으셨으면 좋겠어요.</div>
-                        </div>
+                        </div> -->
+                        
+                        <!-- 댓글 작성하는 곳 -->
+                	    <form action="#" id="comments" class="combined" style="flex-direction:column; margin:0; display:contents;">
+                        </form>
                         <div class="CommentWrite_CommentWrite__juAYI">
+	                        <header class="major" style="text-align:left;">
+	                           <h2>댓글</h2>
+	                           <p>여러분의 소중한 댓글을 작성해주세요.</p>
+	                        </header>
                             <div class="CommentWrite_CommentWrite__bottom__TTaoc">
-                                <form><textarea class="CommentWrite_CommentWrite__textarea__3lpfm"
-                                        placeholder="로그인 후 댓글 남기기" disabled=""></textarea><button
-                                        class="Button_Button__root__V1ie3 Button_Button__contained__toUI5 undefined Button_Button__sizeMedium__k0A1w CommentWrite_CommentWrite__saveButton__Ao_V8"
-                                        type="submit" disabled=""><span
-                                            class="Button_Button__label__1Kk0v">등록</span></button></form>
+                                <form method="post" action="#" class="combined" style="width:auto;" name="replyForm">
+	                                <textarea class="CommentWrite_CommentWrite__textarea__3lpfm" placeholder="로그인 후 댓글 남기기" disabled=""></textarea>
+	                                <button class="Button_Button__root__V1ie3 Button_Button__contained__toUI5 undefined Button_Button__sizeMedium__k0A1w CommentWrite_CommentWrite__saveButton__Ao_V8" type="submit" onclick>
+	                                	<span class="Button_Button__label__1Kk0v">등록</span>
+	                                </button>
+                                </form>
                             </div>
-                        </div><button
+                        </div>
+                        
+                        
+                        <!-- 목록 버튼 -->
+                        <button onclick="location.href='${pageContext.request.contextPath}/board/board.bo'"
                             class="Button_Button__root__V1ie3 Button_Button__outlined__H2mkd undefined Button_Button__sizeMedium__k0A1w CommunityPostDetail_backToList__EpKXX"
                             type="button" data-attribute-id="community__contentDetail__goList"
                             data-content-title="취업이 너무 안되네요...ㅠㅠ" data-content-id="6803" data-like-count="1"
@@ -317,11 +316,11 @@
                 <div class="btnPart"
                     style="display: flex;  flex-direction: row-reverse; margin-right: 17px; margin-top: 6px;">
                     <div class="btnOne">
-                        <button class="btnItemTwo" type="button"
+                        <button id="sendBtn" class="btnItemTwo" type="button"
                             style="background: rgb(204, 204, 204); border: 1px solid rgb(204, 204, 204); color: rgb(255, 255, 255); border: none; border-radius: 10px; height: 30px; width: 60px;">보내기</button>
                     </div>
                     <div class="btnTwo" style="padding-right: 10px;  padding-left: 10px;">
-                        <button class="btnItemTwo" type="button"
+                        <button id="translateBtn" class="btnItemTwo" type="button"
                             style="background: rgb(204, 204, 204); border: 1px solid rgb(204, 204, 204); color: rgb(255, 255, 255); border: none; border-radius: 10px; height: 30px; width: 70px;">번역하기</button>
                     </div>
                 </div>
@@ -409,30 +408,28 @@
 
                 </div>
                 <ol class="inqueryChatList">
-                    <li class="inqueryChat">
+                    <!--<li class="inqueryChat">
                         <a href="javascript:void(0)" class="UserChatItem">
                             <div class="UserChatItemLogoWrapper">
                                 <div class="UserChatItemLogo">
-                                    <img width='15' height="15"
-                                        src="https://cf.channel.io/thumb/200x200/pub-file/4864/60cb7266a8594bb3cea9/image-from-ios.png"
-                                        alt="">
+                                    <img width='15' height="15" src="https://cf.channel.io/thumb/200x200/pub-file/4864/60cb7266a8594bb3cea9/image-from-ios.png" alt="">
                                 </div>
                             </div>
                             <div class="UserChatItemContent">
-                                <div class="UserChatItemContentTitle">
+                                 <div class="UserChatItemContentTitle">
                                     <div class="Head-ch-front">서울체크인</div>
                                     <div class="Time-ch-front">7:23PM</div>
                                 </div>
-                                <div class="UserChatItemContentList">쪽지가 도착했습니다.</div>
+                                <div class="UserChatItemContentList">쪽지가 도착했습니다.</div> -->
                             </div>
-                            <div class="UserChatItemButtons">
+                            <!-- <div class="UserChatItemButtons">
                                 <div class="UserChatItemBadge">1</div>
                                 <div class="UserChatItemPrev"></div>
-                            </div>
+                            </div> -->
 
                         </a>
                     </li>
-                    <li class="inqueryChat">
+                 <!--    <li class="inqueryChat">
                         <a href="javascript:void(0)" class="UserChatItem">
                             <div class="UserChatItemLogoWrapper">
                                 <div class="UserChatItemLogo">
@@ -476,7 +473,7 @@
                                 <div class="UserChatItemPrev"></div>
                             </div>
                         </a>
-                    </li>
+                    </li> -->
                 </ol>
             </section>
         </main>
@@ -578,8 +575,23 @@
 </div>
 
 </body>
+<script>
+let kBoardNumber = "${kboard.getkBoardNumber()}";
+console.log("게시글 넘버")
+console.log(kBoardNumber)
+let kBoardEmail = "${kboard.getMemberEmail()}";
+console.log("게시글이메일")
+console.log(kBoardEmail)
+let kMemberNumber = "${kboard.getMemberNumber()}";
+console.log("게시글 멤버넘버")
+console.log(kMemberNumber)
+let memberNumbers = sessionStorage.getItem("memberNumber");
+console.log("로그인 한 멤버")
+console.log(memberNumbers)
+</script>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/board/community.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/board/comment.js"></script>
 <script>
     
     var checkDotThree = -1;
@@ -602,14 +614,48 @@
         
         // 점 세개 버튼 누르면 쪽지 목록으로 넘어가기
         $(".PostContents_PostContents__menu_button__fCW0J_1").on('click', function () {
+        	console.log(checkDotThree)
             if(checkDotThree > 0){
                 $(".inqueryWrapper.Two").removeClass('inqueryon').addClass('inqueryoff');
                 $(".inqueryWrapper.One").removeClass('inqueryoff').addClass('inqueryon');
+            
             }else {
                 $(".inqueryWrapper.One").removeClass('inqueryon').addClass('inqueryoff');
                 $(".inqueryWrapper.Two").removeClass('inqueryoff').addClass('inqueryon');
+                
+             $.ajax({
+            	url:"/message/msglistOk.ms",
+            	data:{messageSendEmail : kMemberNumber},
+            	contentType:"application/json; charset=utf-8",
+            	dataType:"json",
+            	success: function(messages){
+            		console.log("목록부르기")
+            		let text = "";
+            		if(messages.length > 0){
+            			
+            		messages.forEach(message => {
+            			text += `<li class="inqueryChat">`;
+            			text += `<a href="javascript:void(0)" class="UserChatItem">`;
+            			text += `<div class="UserChatItemLogoWrapper">`;
+            			text += `<div class="UserChatItemLogo">`;
+            			text += `<img width='15' height="15" src="https://cf.channel.io/thumb/200x200/pub-file/4864/60cb7266a8594bb3cea9/image-from-ios.png" alt="">`;
+            			text += `</div>`;
+            			text += `</div>`;
+            			text += `<div class="UserChatItemContent">`;
+	                    text += `<div class="UserChatItemContentTitle">`;
+	                    text += `<div class="Head-ch-front">` + message.memberName +`</div>`;
+	                   	text += `<div class="Time-ch-front">` + message.messageSendDate + `</div>`;
+	                    text += `</div>`;
+	              		text += `<div class="UserChatItemContentList">` + message.messageArticle +`</div>`;
+            		});
+            		$(".inqueryChatList").html(text);
+            		}
+            	}
+            	
+            }); 
             }
             checkDotThree *= -1;
+            
         });
 
         // 쪽지 목록 누르면 쪽지 상세보기
@@ -639,6 +685,76 @@
                 $(this).css("backgroundColor", "rgb(204, 204, 204)");
             });
         });
+        
+        // 로그인 안하면 게시글 수정 불가
+        
+        let selectCheck = false;
+		let replyCheck = false;
+		
+		$(".PostContents_PostContents__menu_button__fCW0J").on('click',function(){
+		    let $modifyBtn = $(".MenuPopup_MenuPopup__kcJI1.MenuPopup_MenuPopup__paddingBottom__SUQod");
+			if(memberNumbers == kMemberNumber){
+			    selectCheck = !selectCheck;
+				}
+			    if(selectCheck){
+			        $modifyBtn.css('display','block');
+			    }else{
+			        $modifyBtn.css('display','none');
+			    }
+		})
+		
+		
+		$(".CommentItem_CommentItem__menu__1yY_N").on('click',function(){
+		    let $replymodifyBtn = $(".MenuPopup_MenuPopup__kcJI1.MenuPopup_MenuPopup__paddingTop__VUYHS.CommentItem_CommentItem__menuPopup__I6dGz");
+		    replyCheck = !replyCheck;
+		    if(replyCheck){
+		        $replymodifyBtn.css('display','block');
+		    }else{
+		        $replymodifyBtn.css('display','none');
+		    }
+		})
+		
+		
+		
+		/* 쪽지 */
+ 		//번역하기 버튼에 클릭 이벤트 추가
+        $("#translateBtn").on('click', messageTranslate);
+        
+        //게시글 쪽지 번역
+        function messageTranslate() {
+           let $message = $("textarea[name='chatContent']").val();
+           
+           $.ajax({
+              url: "/message/messagetranslate.ms",
+              data:{messageContent: $message},
+              success: function(content){
+                 $("textarea[name='chatContent']").val(content)
+              }
+           });
+        }
+        
+        //보내기 버튼에 클릭 이벤트 추가
+        $("#sendBtn").on('click', sendMessage)
+        
+        //게시글 쪽지 보내기
+	       function sendMessage() {
+	           $.ajax({
+	              url:"/message/mapmsg.ms",
+	              data:{businessMail: 1, loginedMail: 2, content: $("textarea[name='chatContent']").val()},
+	              success: function () {
+	            	  let text
+	                 text +=`<tr>`;
+	                 text +=`<td>`+ "To."+`</td>`;
+	                 text +=`<td class="chatReceiveName" style="padding-left: 14px;">`+ kBoardEmail +`</td>`;
+	                 text +=`</tr>`;
+	                 text +=`<tr>`;
+	                 text +=`<td>`+ "From." +`</td>`;
+	                 text +=`<td class="chatSendName" style="padding-left: 15px;">` + memberNumbers + `</td>`;
+	                 text +=`</tr>`; 
+	                 $("textarea[name='chatContent']").val("");
+	              }
+	           })
+  		}
         
 </script>
 </html>

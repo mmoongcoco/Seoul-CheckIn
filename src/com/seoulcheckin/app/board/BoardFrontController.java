@@ -1,5 +1,6 @@
 package com.seoulcheckin.app.board;
 
+
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -29,18 +30,35 @@ public class BoardFrontController extends HttpServlet {
 		
 		// 한국어 게시판 페이지 요청
 		if(request.equals("/board/board.bo")) {
-		
+			result = new BoardController().execute(req, resp);
+			
 		// 한국어 게시글 보기
 		}else if(request.equals("/board/viewpost.bo")) {
+			result = new ViewPostController().execute(req, resp);
 			
 		// 한국어 게시글 쓰기
-		}else if(request.equals("/board/newpost.bo")) {
+		/*
+		 * }else if(request.equals("/board/write.bo")) { result = new Result();
+		 */
+			/*
+			 * result.setPath("/app/board/write.jsp?memberNumber=" +
+			 * req.getSession().getAttribute("memberNumber")); System.out.println("front");
+			 * System.out.println(req.getSession().getAttribute("memberNumber"));
+			 */
 			
-		// 내 게시글(한) 수정
-		}else if(request.equals("/board/updatepost.bo")) {
+		}else if(request.equals("/board/newpost.bo")) {
+			result = new NewPostController().execute(req, resp);
 			
 		// 내 게시글(한) 삭제
 		}else if(request.equals("/board/deletepost.bo")) {
+			result = new DeletePostController().execute(req, resp);
+			
+		// 내 게시글(한) 수정
+		}else if(request.equals("/board/updatepost.bo")) {
+			result = new UpdatePostController().execute(req, resp);
+			
+		}else if(request.equals("/board/updateOkpost.bo")) {
+			result = new UpdateOkPostController().execute(req, resp);
 			
 		// 관리자페이지 게시글
 		}else if(request.equals("/board/adminboard.bo")) {

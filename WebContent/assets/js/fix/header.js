@@ -307,6 +307,7 @@ $(".loginBtn").on('click', function() {
 		data: { memberEmail: $emailInput.val(), memberPassword: $loginpasswordInput.val() },
 		success: function(memberNumber) {
 			sessionStorage.setItem('memberNumber', memberNumber);
+			sessionStorage.setItem('memberEmail', memberEmail);
 			console.log("로그인 성공")
 			console.log(sessionStorage.getItem('memberNumber'));
 			$(".modal_background.pw").css('display', 'none');

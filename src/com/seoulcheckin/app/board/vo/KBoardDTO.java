@@ -8,6 +8,7 @@ public class KBoardDTO {
 	private String kBoardPhoto;
 	private int memberNumber;
 	private String memberName;
+	private String memberEmail;
 	
 	public KBoardDTO() {;}
 
@@ -67,12 +68,22 @@ public class KBoardDTO {
 		this.memberName = memberName;
 	}
 
+	public String getMemberEmail() {
+		return memberEmail;
+	}
+
+	public void setMemberEmail(String memberEmail) {
+		this.memberEmail = memberEmail;
+	}
+
 	@Override
 	public String toString() {
 		return "KBoardDTO [kBoardNumber=" + kBoardNumber + ", kBoardTitle=" + kBoardTitle + ", kBoardArticle="
 				+ kBoardArticle + ", kBoardDate=" + kBoardDate + ", kBoardPhoto=" + kBoardPhoto + ", memberNumber="
-				+ memberNumber + ", memberName=" + memberName + "]";
+				+ memberNumber + ", memberName=" + memberName + ", memberEmail=" + memberEmail + "]";
 	}
+
+	
 
 	
 	

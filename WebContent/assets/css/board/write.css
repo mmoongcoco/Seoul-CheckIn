@@ -156,8 +156,8 @@ input[type=file].CommunityWrite_CommunityPhotoFile__YOQL3 {
 }
 
 .Button_Button__contained__toUI5 {
-    color: #fff;
-    background-color: #36f;
+    /* color: #fff;
+    background-color: #36f; */
     border: none;
 }
 

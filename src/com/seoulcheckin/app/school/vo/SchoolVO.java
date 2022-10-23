@@ -1,4 +1,4 @@
-package com.seoulcheckin.app.school.vo;
+   package com.seoulcheckin.app.school.vo;
 
 public class SchoolVO {
 	private int schoolNumber;
