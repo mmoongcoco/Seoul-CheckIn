@@ -31,13 +31,14 @@
 				<p class="help-center-details"></p>
 				<div class="hc_search">
 					<form role="search" class="search" data-search=""
-						data-instant="true" autocomplete="off" action=""
-						accept-charset="UTF-8" method="get">
+						data-instant="true" autocomplete="off"
+						action="${pageContext.request.contextPath}/notice/searchresult.nt"
+						accept-charset="UTF-8" method="get" name="faqSearchForm">
 						<input name="utf8" type="hidden" value="✓"> <input
 							type="search" name="query" id="query"
 							placeholder="예) 서비스 이용방법, 비밀번호 찾기 등" autocomplete="off"
-							aria-label="예) 서비스 이용방법, 비밀번호 찾기 등"> <input type="submit"
-							name="commit" value="검색">
+							aria-label="예) 서비스 이용방법, 비밀번호 찾기 등"> <input type="button"
+							name="commit" value="검색" onclick="searchSubmit()">
 					</form>
 				</div>
 			</div>
@@ -50,14 +51,14 @@
 					<div class="col-sm-12 col-xs-12 col-md-12" id="main_categorie_div">
 						<ul class="category-list navigator text-center" id="with-id">
 							<li id="360001834352" class="col-sm-6"
-								style="border-radius: 5px;"><a style="cursor: pointer-event : none;" class="main-cat-li">
-									<!-- <span class="category-icon"></span> -->
+								style="border-radius: 5px;"><a
+								style="cursor: pointer-event: none;" class="main-cat-li"> <!-- <span class="category-icon"></span> -->
 									<h3 class="mainct-inner">외국인 회원</h3>
 									<p>외국인 회원을 위한 이용 안내입니다.</p>
 							</a></li>
 							<li id="360001832811" class="col-sm-6"
-								style="border-radius: 5px;"><a style="cursor: pointer-event : none;" class="main-cat-li">
-									<!-- <span class="category-icon"></span> -->
+								style="border-radius: 5px;"><a
+								style="cursor: pointer-event: none;" class="main-cat-li"> <!-- <span class="category-icon"></span> -->
 									<h3 class="mainct-inner">내국인 회원</h3>
 									<p>내국인 회원을 위한 이용 안내입니다.</p>
 							</a></li>
@@ -80,25 +81,20 @@
 										test="${forTitles != null and fn:length(forTitles) > 0}">
 										<c:forEach var="forTitle" items="${forTitles}">
 											<!-- 자주묻는 질문 리스트 공간 : 제목만 다 보여주는 곳 -->
- 											<li class="promoted-articles-item"
-												style="list-style: none; margin-left: 15px;">
-												<a href="${pageContext.request.contextPath}/notice/fordetail.nt?faqNumber=${forTitle.getFaqNumber()}"><font> 
-												<c:out value="${forTitle.getFaqTitle()}" /></font> 
-												<font style="float: right;"></font>
-												</a>
-											</li>
+											<li class="promoted-articles-item"
+												style="list-style: none; margin-left: 15px;"><a
+												href="${pageContext.request.contextPath}/notice/fordetail.nt?faqNumber=${forTitle.getFaqNumber()}"><font>
+														<c:out value="${forTitle.getFaqTitle()}" />
+												</font> <font style="float: right;"></font> </a></li>
 										</c:forEach>
 									</c:when>
 
 									<c:otherwise>
- 											<li class="promoted-articles-item"
-												style="list-style: none; margin-left: 15px;">
-												<a href=""><font> 
-												<c:out value="등록된 사항이 없습니다" /></font> 
-												<font style="float: right;"></font>
-												</a>
-											</li>
-								</c:otherwise>
+										<li class="promoted-articles-item"
+											style="list-style: none; margin-left: 15px;"><a href=""><font>
+													<c:out value="등록된 사항이 없습니다" />
+											</font> <font style="float: right;"></font> </a></li>
+									</c:otherwise>
 								</c:choose>
 							</ul>
 							<br> <br>
@@ -113,25 +109,20 @@
 										test="${locTitles != null and fn:length(locTitles) > 0}">
 										<c:forEach var="locTitle" items="${locTitles}">
 											<!-- 자주묻는 질문 리스트 공간 : 제목만 다 보여주는 곳 -->
- 											<li class="promoted-articles-item"
-												style="list-style: none; margin-left: 15px;">
-												<a href="${pageContext.request.contextPath}/notice/locdetail.nt?faqNumber=${locTitle.getFaqNumber()}"><font> 
-												<c:out value="${locTitle.getFaqTitle()}" /></font> 
-												<font style="float: right;"></font>
-												</a>
-											</li>
+											<li class="promoted-articles-item"
+												style="list-style: none; margin-left: 15px;"><a
+												href="${pageContext.request.contextPath}/notice/locdetail.nt?faqNumber=${locTitle.getFaqNumber()}"><font>
+														<c:out value="${locTitle.getFaqTitle()}" />
+												</font> <font style="float: right;"></font> </a></li>
 										</c:forEach>
 									</c:when>
 
 									<c:otherwise>
- 											<li class="promoted-articles-item"
-												style="list-style: none; margin-left: 15px;">
-												<a href=""><font> 
-												<c:out value="등록된 사항이 없습니다" /></font> 
-												<font style="float: right;"></font>
-												</a>
-											</li>
-								</c:otherwise>
+										<li class="promoted-articles-item"
+											style="list-style: none; margin-left: 15px;"><a href=""><font>
+													<c:out value="등록된 사항이 없습니다" />
+											</font> <font style="float: right;"></font> </a></li>
+									</c:otherwise>
 								</c:choose>
 							</ul>
 							<!--<a href="" class="see-all-articles btn" style="font-size: 1.1em;">
@@ -165,9 +156,10 @@
 												<c:forEach var="title" items="${titles}">
 													<li class="promoted-articles-item"
 														style="padding-left: 22px; padding-right: 22px; padding-top: 10px; padding-bottom: 10px;">
-														<a href="${pageContext.request.contextPath}/notice/noticedetail.nt?noticeNumber=${title.getNoticeNumber()}"><font> <c:out
-																	value="${title.getNoticeTitle()}" /></font> <font
-															style="float: right;"></font> </a>
+														<a
+														href="${pageContext.request.contextPath}/notice/noticedetail.nt?noticeNumber=${title.getNoticeNumber()}"><font>
+																<c:out value="${title.getNoticeTitle()}" />
+														</font> <font style="float: right;"></font> </a>
 													</li>
 												</c:forEach>
 											</c:when>
@@ -179,7 +171,7 @@
 												</li>
 											</c:otherwise>
 										</c:choose>
-										
+
 									</ul>
 								</div>
 							</section>
@@ -232,7 +224,9 @@
 							<div class="col-lg-3 col-md-6"
 								style="padding-left: 0px; padding-right: 0px;">
 								<div class="card h-100">
-									<a href="javascript:;" onclick="OnclickServiceIntroduce(3);">
+									<a
+										href="${pageContext.request.contextPath}/app/visa/visanavigator.jsp"
+										onclick="OnclickServiceIntroduce(3);">
 										<div class="card-body"
 											style="border: transparent; padding: 0px;">
 											<img class="card-img-top"
@@ -277,5 +271,16 @@
 			scrollTop : 0
 		}, 300);
 	});
+
+	/* 검색 유효성 검사 */
+	function searchSubmit() {
+		var content = faqSearchForm.query.value;
+		if (!content) {
+			alert("검색어를 입력하세요");
+
+			return;
+		}
+		faqSearchForm.submit();
+	}
 </script>
 </html>

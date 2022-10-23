@@ -27,6 +27,9 @@ public class NoticeDAO {
 		return sqlSession.selectOne("Notice.selectNoticeDetail",noticeNumber);
 	}
 	
-	
+	// 공지사항 검색결과
+	public List<NoticeVO> NoticeSearchSubmitResult(String query) {
+		return sqlSession.selectList("Notice.NoticeSearchSubmitResult", query);
+	}
 	
 }

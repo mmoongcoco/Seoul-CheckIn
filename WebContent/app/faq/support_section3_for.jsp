@@ -159,7 +159,7 @@ ol.breadcrumbs {
 		padding-left: 15px;
 		padding-right: 15px;
 	}
-	form.search input[type="submit"] {
+	form.search input[type="button"] {
 		right: 10px;
 	}
 }
@@ -199,19 +199,23 @@ ol.breadcrumbs {
 			<div class="col-md-9 col-sm-9 col-xs-12 breadcrumb-container-path"
 				style="float: left;">
 				<ol class="breadcrumbs">
-					<li title="원티드 고객센터"><a href="${pageContext.request.contextPath}/notice/noticelist.nt">서울체크인 고객센터</a></li>
+					<li title="서울체크인 고객센터"><a
+						href="${pageContext.request.contextPath}/notice/noticelist.nt">서울체크인
+							고객센터</a></li>
 					<li title="외국인 회원"><a>외국인 회원</a></li>
-					<!-- <li title="이용방법"><a href="">이용방법</a></li> -->
 				</ol>
 			</div>
 			<div class="col-md-3 col-sm-3 col-xs-12 breadcrumb-container-search"
 				style="float: right;">
-				<form role="search" class="search" data-search="" action=""
-					accept-charset="UTF-8" method="get">
-					<input name="utf8" type="hidden" value="✓"><input
+				<form role="search" class="search" data-search="" action="${pageContext.request.contextPath}/notice/searchresult.nt"
+					accept-charset="UTF-8" method="get" name="faqSearchForm">
+					<input name="utf8" type="hidden" value="✓">
+					<input
 						type="search" name="query" id="query" placeholder="검색"
-						aria-label="검색"> <input type="submit" name="commit"
-						value="검색">
+						aria-label="검색"> 
+						<input type="button" name="commit"
+						value="검색" onclick="searchSubmit()"
+						style="border: medium none; height: 48px; overflow: hidden; position: absolute; right: 1px; top: 1px; background: #fff; padding: 0 15px; border-radius: 25px; color: #ababab; color: transparent; background: url(https://theme.zdassets.com/theme_assets/9309779/32d50e5e2e82fe3a2e1cab8abc09336bed336b0c.png); background-size: 50px; background-repeat: no-repeat; display: block; background-position: -15px 15px;">
 				</form>
 			</div>
 		</div>
@@ -221,11 +225,11 @@ ol.breadcrumbs {
 					<div class="col-md-9 col-sm-9 col-xs-12" id="article-content-div">
 						<div class="article__bg">
 							<h3 class="article-head">
-							<!-- 제목 -->
+								<!-- 제목 -->
 								<c:out value="${faqForDetail.getFaqTitle()}" />
 							</h3>
 							<div class="article-body">
-							<!-- 내용 -->
+								<!-- 내용 -->
 								<p>
 									<c:out value="${faqForDetail.getFaqArticle()}" />
 								</p>
@@ -243,10 +247,12 @@ ol.breadcrumbs {
 										style="padding-left: 15px;">이 섹션의 문서</h3>
 									<ul>
 										<c:choose>
-											<c:when test="${selForTitles != null and fn:length(selForTitles) > 0}">
+											<c:when
+												test="${selForTitles != null and fn:length(selForTitles) > 0}">
 												<c:forEach var="selForTitle" items="${selForTitles}">
 													<li style="padding-left: 15px; padding-right: 15px;"><a
-														href="${pageContext.request.contextPath}/notice/fordetail.nt?faqNumber=${selForTitle.getFaqNumber()}" class="sidenav-item"><c:out
+														href="${pageContext.request.contextPath}/notice/fordetail.nt?faqNumber=${selForTitle.getFaqNumber()}"
+														class="sidenav-item"><c:out
 																value="${selForTitle.getFaqTitle()}" /> </a></li>
 												</c:forEach>
 											</c:when>
@@ -266,8 +272,9 @@ ol.breadcrumbs {
 		</div>
 		<div class="container" id="new_request_container">
 			<span id="article_new_request_label">또 다른 질문이
-				있으십니까?&nbsp;&nbsp;&nbsp; <a href="${pageContext.request.contextPath}/notice/noticelist.nt" id="article_new_request_button">고객센터로
-					돌아가기 &gt; </a>
+				있으십니까?&nbsp;&nbsp;&nbsp; <a
+				href="${pageContext.request.contextPath}/notice/noticelist.nt"
+				id="article_new_request_button">고객센터로 돌아가기 &gt; </a>
 			</span>
 		</div>
 	</main>
@@ -279,5 +286,15 @@ ol.breadcrumbs {
 			scrollTop : 0
 		}, 300);
 	});
+	
+	/* 검색 유효성 검사 */
+	function searchSubmit() {
+		var content = faqSearchForm.query.value;
+		if(!content){
+			alert("검색어를 입력하세요");
+			return;
+		}
+		faqSearchForm.submit();
+	}
 </script>
 </html>
