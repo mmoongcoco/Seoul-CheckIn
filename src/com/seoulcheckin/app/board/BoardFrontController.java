@@ -27,7 +27,7 @@ public class BoardFrontController extends HttpServlet {
 		String request = requestURI.substring(contextPath.length());
 		Result result = null;
 		
-		// 한국어 게시판 페이지 요청, 관리자페이지 게시글관리 페이지 요청
+		// 한국어 게시판 페이지 요청
 		if(request.equals("/board/board.bo")) {
 		
 		// 한국어 게시글 보기
@@ -39,9 +39,16 @@ public class BoardFrontController extends HttpServlet {
 		// 내 게시글(한) 수정
 		}else if(request.equals("/board/updatepost.bo")) {
 			
-		// 내 게시글(한) 삭제, 관리자페이지 게시글 삭제
+		// 내 게시글(한) 삭제
 		}else if(request.equals("/board/deletepost.bo")) {
 			
+		// 관리자페이지 게시글
+		}else if(request.equals("/board/adminboard.bo")) {
+			result = new AdminBoardController().execute(req, resp);
+		
+		// 관리자페이지 게시글 삭제
+		}else if(request.equals("/board/admindeleteBoard.bo")) {
+			result = new AdminDeleteBoardController().execute(req, resp);
 		}
 		
 		if(result != null) {

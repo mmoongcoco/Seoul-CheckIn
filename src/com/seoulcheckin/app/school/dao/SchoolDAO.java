@@ -24,4 +24,16 @@ public class SchoolDAO {
 	public int selectCount() {
 		return sqlSession.selectOne("School.selectCount");
 	}
+	
+	public void deleteProgram(int schoolNumber) {
+		sqlSession.delete("School.deleteProgram", schoolNumber);
+	}
+	
+	public void insert(SchoolVO schoolVO) {
+		sqlSession.insert("School.insert", schoolVO);
+	}
+	
+	public void update(SchoolVO schoolVO) {
+		sqlSession.update("School.update", schoolVO);
+	}
 }

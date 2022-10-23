@@ -8,11 +8,19 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.seoulcheckin.app.Execute;
 import com.seoulcheckin.app.Result;
+import com.seoulcheckin.app.school.dao.SchoolDAO;
 
 public class DeleteProController implements Execute{
 	@Override
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		SchoolDAO schoolDAO = new SchoolDAO();
+
+		String[] schoolNumbers = req.getParameter("schoolNumber").split(" ");
+		
+		for (String schoolNumber : schoolNumbers) {
+			if(schoolNumber == "") {continue;}
+			schoolDAO.deleteProgram(Integer.valueOf(schoolNumber.trim()));		
+		}
 		return null;
 	}
 }
