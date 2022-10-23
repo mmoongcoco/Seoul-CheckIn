@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.seoulcheckin.app.Result;
+import com.seoulcheckin.app.message.MapMsgController;
 
 public class MapFrontController extends HttpServlet {
 	@Override
@@ -77,6 +78,9 @@ public class MapFrontController extends HttpServlet {
 		}else if(request.equals("/map/deletemap.mp")) {
 			result = new DeleteMapController().execute(req, resp);
 		}
+//		else if(request.equals("/map/messagetranslate.mp")) {
+//			new MapMsgController().execute(req, resp);
+//		}
 		
 		if(result != null) {
 			if(result.isRedirect()) {

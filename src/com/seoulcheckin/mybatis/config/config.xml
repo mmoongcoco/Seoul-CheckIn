@@ -8,6 +8,7 @@
 	</settings>
 
 	<typeAliases>
+<<<<<<< HEAD
 	
 	<!-- member Alias -->
 		<typeAlias type="com.seoulcheckin.app.member.vo.MemberVO" alias="memberVO"/>
@@ -85,6 +86,10 @@
 		<typeAlias type="com.seoulcheckin.app.comment.vo.ECommentDTO" alias="ecommentDTO"/>
 	<!-- board Alias -->
 	
+=======
+		<typeAlias type="com.seoulcheckin.app.map.vo.MapVO" alias="mapVO"/>
+		<typeAlias type="com.seoulcheckin.app.message.vo.MessageVO" alias="messageVO"/>
+>>>>>>> teamProject/persoanl
 	</typeAliases>
 	
 	<environments default="mysql">

@@ -90,7 +90,11 @@ var check1 = -1;
 var check2 = -1;
 
 $("#close_btn_fold").on("click", function () {
-    var $left = $("#close_btn_fold").css('left');
+    foldDetail();
+});
+
+function foldDetail(){
+	 var $left = $("#close_btn_fold").css('left');
     if($left === '810px'){
         if(check1 > 0) {
             $(".pc_depth1").animate({marginLeft: '0px'}, 500);
@@ -120,8 +124,8 @@ $("#close_btn_fold").on("click", function () {
         }
         check2 *= -1;
     }
-    console.log($left);
-});
+}
+
 
 $("#viewtalklist a.menutab").on('click', function(){
     $("div#first").css('display', 'block');

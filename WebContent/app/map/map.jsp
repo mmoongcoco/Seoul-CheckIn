@@ -63,7 +63,10 @@
 					<div class="menu_cont">
 						<div class="list_type1">
 							<ul id="conlistul">
+<<<<<<< HEAD
 								
+=======
+>>>>>>> teamProject/persoanl
 							</ul>
 						</div>
 					</div>
@@ -225,8 +228,8 @@
 									<label class="blind" for="comment">궁금하신 사항을 보내주세요.</label>
 									<textarea name="" id="comment" rows=""
 										placeholder="궁금하신 사항을 보내주세요." cols=""></textarea>
-									</label><a href="javascript:;" class="btn_apply ContentComment on">번역</a>
-									</label><a href="javascript:;" class="btn_apply ContentComment on">보내기</a>
+									</label><a href="javascript:;" class="btn_apply ContentComment on" onclick="messageTranslate()">번역</a>
+									</label><a href="javascript:;" class="btn_apply ContentComment on" onclick="sendMessage()">보내기</a>
 							</div>
 							</form>
 						</div>
@@ -507,7 +510,12 @@ function createEnjoyMarkers() {
 }
 
 // 즐길거리 마커들의 지도 표시 여부를 설정하는 함수입니다
+<<<<<<< HEAD
 function setEnjoyMarkers(map) {        
+=======
+function setEnjoyMarkers(map) {
+	
+>>>>>>> teamProject/persoanl
     for (var i = 0; i < enjoyMarkers.length; i++) {  
     	enjoyMarkers[i].setMap(map);
     }        
@@ -958,7 +966,14 @@ function clickWork(){
 	}
 }
  //전체 리스트 중 특정 정보 클릭 시 우측에 탭2 나오면서(seoulPage.js에 있음) 일치하는 정보 뿌리는 클릭 이벤트
+<<<<<<< HEAD
  $("#conlistul").on('click', 'li',function(){
+=======
+let businessMail = "";
+ $("#conlistul").on('click', 'li',function(){
+	 var $left = $("#close_btn_fold").css('margin-left');
+	 
+>>>>>>> teamProject/persoanl
 	 $.ajax({
 		 url: "/map/mapdetail.mp",
 		 data: {mapNumber: $($(this).find("a")[1]).attr("id")},
@@ -966,6 +981,10 @@ function clickWork(){
 		 success: function (lists) {
 			let text = "";
 			lists.forEach(list=>{
+<<<<<<< HEAD
+=======
+			 businessMail = list.memberNumber;
+>>>>>>> teamProject/persoanl
 				text += `<div class="mark"></div>`;
 				text += `<em>` + list.mapClassification + `</em>`;
 				text += `<strong class="stit">`
@@ -983,6 +1002,23 @@ function clickWork(){
 			$("#detailClosingDate").html(`<p>` + lists[0].mapJobClosingDate + `</p>`)
 		}
 	 })
+<<<<<<< HEAD
+=======
+	 	check1 *= -1;
+	 	check2 *= -1;
+	 	foldDetail();
+	 	
+	 	if($left == "-810px") {
+            $(".pc_depth1").animate({marginLeft: '0px'}, 500);
+            $("#close_btn_fold").animate({marginLeft: '0px'}, 500);
+            $(".pc_depth2").animate({marginLeft: '0px'}, 500);
+            $(".layer_close").animate({marginLeft: '0px'}, 500);
+            $("#close_btn_fold").css('background-position-y', '0px');
+            check1 *= -1;
+            check2 *= -1;
+	 	}
+	 	
+>>>>>>> teamProject/persoanl
 	});
  
  //지도에 나타난 핀 클릭 시 일치하는 정보를 탭2에 뿌리는 함수. 핀에 onclick 속성에서 실행됨
@@ -1003,5 +1039,33 @@ var mapTypeControl = new kakao.maps.MapTypeControl();
 //지도에 컨트롤을 추가해야 지도위에 표시됩니다
 //kakao.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
 map.addControl(mapTypeControl, kakao.maps.ControlPosition.BOTTOMRIGHT);
+<<<<<<< HEAD
+=======
+
+//쪽지 내용 번역하는 함수
+function messageTranslate() {
+	let $message = $("textarea#comment").val();
+	
+	$.ajax({
+		url: "/message/messagetranslate.ms",
+		data:{messageContent: $message},
+		success: function(content){
+			$("textarea#comment").val(content)
+		}
+	});
+}
+
+//쪽지 보내는 함수
+function sendMessage(){
+	$.ajax({
+		url:"/message/mapmsg.ms",
+		data:{businessMail: businessMail, loginedMail: 2, content: $("textarea#comment").val()},
+		success: function () {
+			$("textarea#comment").val("");
+		}
+	})
+}
+
+>>>>>>> teamProject/persoanl
 </script>
 </html>
