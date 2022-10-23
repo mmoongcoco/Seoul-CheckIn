@@ -2,8 +2,8 @@ package com.seoulcheckin.app.message.vo;
 
 public class MessageVO {
 	private int messageNumber;
-	private String messageReceiveEmail;
-	private String messageSendEmail;
+	private int messageReceiveEmail;
+	private int messageSendEmail;
 	private String messageTitle;
 	private String messageArticle;
 	private String messageSendDate;
@@ -18,19 +18,19 @@ public class MessageVO {
 		this.messageNumber = messageNumber;
 	}
 
-	public String getMessageReceiveEmail() {
+	public int getMessageReceiveEmail() {
 		return messageReceiveEmail;
 	}
 
-	public void setMessageReceiveEmail(String messageReceiveEmail) {
+	public void setMessageReceiveEmail(int messageReceiveEmail) {
 		this.messageReceiveEmail = messageReceiveEmail;
 	}
 
-	public String getMessageSendEmail() {
+	public int getMessageSendEmail() {
 		return messageSendEmail;
 	}
 
-	public void setMessageSendEmail(String messageSendEmail) {
+	public void setMessageSendEmail(int messageSendEmail) {
 		this.messageSendEmail = messageSendEmail;
 	}
 

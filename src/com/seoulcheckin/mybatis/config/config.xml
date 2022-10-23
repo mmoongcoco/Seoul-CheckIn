@@ -9,6 +9,7 @@
 
 	<typeAliases>
 		<typeAlias type="com.seoulcheckin.app.map.vo.MapVO" alias="mapVO"/>
+		<typeAlias type="com.seoulcheckin.app.message.vo.MessageVO" alias="messageVO"/>
 	</typeAliases>
 	
 	<environments default="mysql">

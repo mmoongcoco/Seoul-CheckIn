@@ -16,9 +16,8 @@ public class MapDAO {
 		sqlSession = sqlSessionFactory.openSession(true);
 	}
 	
-	
-	public List<MapVO> selectAll(String mapClassification){
-		return sqlSession.selectList("Map.selectAll", mapClassification);
+	public List<MapVO> selectAll(MapVO mapVO){
+		return sqlSession.selectList("Map.selectAll", mapVO);
 	}
 	
 	public List<MapVO> selectOne(int mapNumber){
