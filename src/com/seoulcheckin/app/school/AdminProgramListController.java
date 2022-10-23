@@ -1,4 +1,4 @@
-package com.seoulcheckin.app.member;
+package com.seoulcheckin.app.school;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -10,20 +10,23 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.seoulcheckin.app.Execute;
 import com.seoulcheckin.app.Result;
-import com.seoulcheckin.app.member.dao.MemberDAO;
-import com.seoulcheckin.app.member.vo.MemberVO;
+import com.seoulcheckin.app.myprogram.dao.MyProgramDAO;
+import com.seoulcheckin.app.school.dao.SchoolDAO;
+import com.seoulcheckin.app.school.vo.SchoolVO;
 
-public class MemberListController implements Execute{
+public class AdminProgramListController implements Execute {
 	@Override
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		MemberDAO memberDAO = new MemberDAO();
+		SchoolDAO schoolDAO = new SchoolDAO();
+		MyProgramDAO myProgramDAO = new MyProgramDAO();
 		Result result = new Result();
 		String temp = req.getParameter("page");
 		HashMap<String, Integer> pageMap = new HashMap<String, Integer>();
-		List<MemberVO> members = null;
+		HashMap<Integer, Integer> programMap = new HashMap<Integer, Integer>();
+		List<SchoolVO> programs = null;
 
 		int page = temp == null ? 1 : Integer.parseInt(temp);
-		int total = memberDAO.selectCount();
+		int total = schoolDAO.selectCount();
 
 		int rowCount = 10;
 		int pageCount = 10;
@@ -39,17 +42,19 @@ public class MemberListController implements Execute{
 		pageMap.put("startRow", startRow);
 		pageMap.put("rowCount", rowCount);
 		
-		members = memberDAO.selectAll(pageMap);
+		programs = schoolDAO.selectAll(pageMap);
+
+		programs.stream().forEach(program -> programMap.put(program.getSchoolNumber(), myProgramDAO.classLimitCount(program.getSchoolNumber())));
 		
-		req.setAttribute("members", members);	
+		req.setAttribute("programs", programs);
+		req.setAttribute("programMap", programMap);		
 		req.setAttribute("total", total);
 		req.setAttribute("page", page);
 		req.setAttribute("startPage", startPage);
 		req.setAttribute("endPage", endPage);
 		req.setAttribute("prev", prev);
 		req.setAttribute("next", next);
-		
-		result.setPath("/app/admin/adminUserManage.jsp");
+		result.setPath("/app/admin/adminProgram.jsp");
 		
 		return result;
 	}
