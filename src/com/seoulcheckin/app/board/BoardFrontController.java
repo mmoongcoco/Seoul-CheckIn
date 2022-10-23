@@ -1,5 +1,6 @@
 package com.seoulcheckin.app.board;
 
+
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -40,8 +41,9 @@ public class BoardFrontController extends HttpServlet {
 		 * }else if(request.equals("/board/write.bo")) { result = new Result();
 		 */
 			/*
-			 * result.setPath("/app/board/write.jsp?memberName=" +
-			 * req.getSession().getAttribute("memberName"));
+			 * result.setPath("/app/board/write.jsp?memberNumber=" +
+			 * req.getSession().getAttribute("memberNumber")); System.out.println("front");
+			 * System.out.println(req.getSession().getAttribute("memberNumber"));
 			 */
 			
 		}else if(request.equals("/board/newpost.bo")) {

@@ -19,7 +19,6 @@ public class ViewPostController implements Execute{
 		int boardNumber = Integer.valueOf(req.getParameter("kBoardNumber"));
 		
 		req.setAttribute("kboard", KboardDAO.select(boardNumber));
-//		req.setAttribute("files", fileDAO.select(boardNumber));
 		
 		System.out.println("detail 컨트롤러");
 		System.out.println(KboardDAO.select(boardNumber));

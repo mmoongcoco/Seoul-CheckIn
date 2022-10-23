@@ -2,5 +2,28 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="Message">
+
+	<!-- 쪽지 보내기 -->
+	<insert id="insert" parameterType="messageVO">
+      insert into tbl_message (message_recive_email, message_send_email, message_article) 
+      values(#{messageReceiveEmail},#{messageSendEmail},#{messageArticle})
+   	</insert>
+   	
+   	<!-- 쪽지 목록 보기 -->
+   	<!-- 보내는 사람이 게시글을 작서한 number 이고, 받는 사람이 로그인한 Number -->
+   	<select id="selectAll" parameterType="_int" resultType="messageVO">
+   		select message_number, message_recive_email, message_send_email, message_title, message_article, message_send_date
+		from tbl_message s join tbl_member m
+		on message_send_email = #{messageSendEmail} and s.message_recive_email = m.member_number 
+   	</select> 
+   	
+   	<!-- <select id="selectAll" parameterType="_int" resultType="messageDTO">
+   		select message_number, message_recive_email, message_send_email, message_title, message_article, message_send_date
+		from tbl_message where message_send_email = #{messageSendEmail} 
+   	</select> -->
+   	
+   	
+   	<!-- 쪽지 보내기 -->
+   	<!-- 쪽지 보내기 -->
 	
 </mapper>

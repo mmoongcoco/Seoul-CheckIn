@@ -316,11 +316,11 @@
                 <div class="btnPart"
                     style="display: flex;  flex-direction: row-reverse; margin-right: 17px; margin-top: 6px;">
                     <div class="btnOne">
-                        <button class="btnItemTwo" type="button"
+                        <button id="sendBtn" class="btnItemTwo" type="button"
                             style="background: rgb(204, 204, 204); border: 1px solid rgb(204, 204, 204); color: rgb(255, 255, 255); border: none; border-radius: 10px; height: 30px; width: 60px;">보내기</button>
                     </div>
                     <div class="btnTwo" style="padding-right: 10px;  padding-left: 10px;">
-                        <button class="btnItemTwo" type="button"
+                        <button id="translateBtn" class="btnItemTwo" type="button"
                             style="background: rgb(204, 204, 204); border: 1px solid rgb(204, 204, 204); color: rgb(255, 255, 255); border: none; border-radius: 10px; height: 30px; width: 70px;">번역하기</button>
                     </div>
                 </div>
@@ -408,30 +408,28 @@
 
                 </div>
                 <ol class="inqueryChatList">
-                    <li class="inqueryChat">
+                    <!--<li class="inqueryChat">
                         <a href="javascript:void(0)" class="UserChatItem">
                             <div class="UserChatItemLogoWrapper">
                                 <div class="UserChatItemLogo">
-                                    <img width='15' height="15"
-                                        src="https://cf.channel.io/thumb/200x200/pub-file/4864/60cb7266a8594bb3cea9/image-from-ios.png"
-                                        alt="">
+                                    <img width='15' height="15" src="https://cf.channel.io/thumb/200x200/pub-file/4864/60cb7266a8594bb3cea9/image-from-ios.png" alt="">
                                 </div>
                             </div>
                             <div class="UserChatItemContent">
-                                <div class="UserChatItemContentTitle">
+                                 <div class="UserChatItemContentTitle">
                                     <div class="Head-ch-front">서울체크인</div>
                                     <div class="Time-ch-front">7:23PM</div>
                                 </div>
-                                <div class="UserChatItemContentList">쪽지가 도착했습니다.</div>
+                                <div class="UserChatItemContentList">쪽지가 도착했습니다.</div> -->
                             </div>
-                            <div class="UserChatItemButtons">
+                            <!-- <div class="UserChatItemButtons">
                                 <div class="UserChatItemBadge">1</div>
                                 <div class="UserChatItemPrev"></div>
-                            </div>
+                            </div> -->
 
                         </a>
                     </li>
-                    <li class="inqueryChat">
+                 <!--    <li class="inqueryChat">
                         <a href="javascript:void(0)" class="UserChatItem">
                             <div class="UserChatItemLogoWrapper">
                                 <div class="UserChatItemLogo">
@@ -475,7 +473,7 @@
                                 <div class="UserChatItemPrev"></div>
                             </div>
                         </a>
-                    </li>
+                    </li> -->
                 </ol>
             </section>
         </main>
@@ -616,14 +614,48 @@ console.log(memberNumbers)
         
         // 점 세개 버튼 누르면 쪽지 목록으로 넘어가기
         $(".PostContents_PostContents__menu_button__fCW0J_1").on('click', function () {
+        	console.log(checkDotThree)
             if(checkDotThree > 0){
                 $(".inqueryWrapper.Two").removeClass('inqueryon').addClass('inqueryoff');
                 $(".inqueryWrapper.One").removeClass('inqueryoff').addClass('inqueryon');
+            
             }else {
                 $(".inqueryWrapper.One").removeClass('inqueryon').addClass('inqueryoff');
                 $(".inqueryWrapper.Two").removeClass('inqueryoff').addClass('inqueryon');
+                
+             $.ajax({
+            	url:"/message/msglistOk.ms",
+            	data:{messageSendEmail : kMemberNumber},
+            	contentType:"application/json; charset=utf-8",
+            	dataType:"json",
+            	success: function(messages){
+            		console.log("목록부르기")
+            		let text = "";
+            		if(messages.length > 0){
+            			
+            		messages.forEach(message => {
+            			text += `<li class="inqueryChat">`;
+            			text += `<a href="javascript:void(0)" class="UserChatItem">`;
+            			text += `<div class="UserChatItemLogoWrapper">`;
+            			text += `<div class="UserChatItemLogo">`;
+            			text += `<img width='15' height="15" src="https://cf.channel.io/thumb/200x200/pub-file/4864/60cb7266a8594bb3cea9/image-from-ios.png" alt="">`;
+            			text += `</div>`;
+            			text += `</div>`;
+            			text += `<div class="UserChatItemContent">`;
+	                    text += `<div class="UserChatItemContentTitle">`;
+	                    text += `<div class="Head-ch-front">` + message.memberName +`</div>`;
+	                   	text += `<div class="Time-ch-front">` + message.messageSendDate + `</div>`;
+	                    text += `</div>`;
+	              		text += `<div class="UserChatItemContentList">` + message.messageArticle +`</div>`;
+            		});
+            		$(".inqueryChatList").html(text);
+            		}
+            	}
+            	
+            }); 
             }
             checkDotThree *= -1;
+            
         });
 
         // 쪽지 목록 누르면 쪽지 상세보기
@@ -681,6 +713,48 @@ console.log(memberNumbers)
 		        $replymodifyBtn.css('display','none');
 		    }
 		})
+		
+		
+		
+		/* 쪽지 */
+ 		//번역하기 버튼에 클릭 이벤트 추가
+        $("#translateBtn").on('click', messageTranslate);
+        
+        //게시글 쪽지 번역
+        function messageTranslate() {
+           let $message = $("textarea[name='chatContent']").val();
+           
+           $.ajax({
+              url: "/message/messagetranslate.ms",
+              data:{messageContent: $message},
+              success: function(content){
+                 $("textarea[name='chatContent']").val(content)
+              }
+           });
+        }
+        
+        //보내기 버튼에 클릭 이벤트 추가
+        $("#sendBtn").on('click', sendMessage)
+        
+        //게시글 쪽지 보내기
+	       function sendMessage() {
+	           $.ajax({
+	              url:"/message/mapmsg.ms",
+	              data:{businessMail: 1, loginedMail: 2, content: $("textarea[name='chatContent']").val()},
+	              success: function () {
+	            	  let text
+	                 text +=`<tr>`;
+	                 text +=`<td>`+ "To."+`</td>`;
+	                 text +=`<td class="chatReceiveName" style="padding-left: 14px;">`+ kBoardEmail +`</td>`;
+	                 text +=`</tr>`;
+	                 text +=`<tr>`;
+	                 text +=`<td>`+ "From." +`</td>`;
+	                 text +=`<td class="chatSendName" style="padding-left: 15px;">` + memberNumbers + `</td>`;
+	                 text +=`</tr>`; 
+	                 $("textarea[name='chatContent']").val("");
+	              }
+	           })
+  		}
         
 </script>
 </html>

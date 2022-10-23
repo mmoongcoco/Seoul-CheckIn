@@ -1,14 +1,15 @@
 package com.seoulcheckin.app.message.vo;
 
-public class MessageVO {
+public class MessageDTO {
 	private int messageNumber;
 	private int messageReceiveEmail;
 	private int messageSendEmail;
 	private String messageTitle;
 	private String messageArticle;
 	private String messageSendDate;
+	private String memberName;
 	
-	public MessageVO() {;}
+	public MessageDTO() {;}
 
 	public int getMessageNumber() {
 		return messageNumber;
@@ -58,12 +59,22 @@ public class MessageVO {
 		this.messageSendDate = messageSendDate;
 	}
 
+	public String getMemberName() {
+		return memberName;
+	}
+
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
+	}
+
 	@Override
 	public String toString() {
-		return "MessageVO [messageNumber=" + messageNumber + ", messageReceiveEmail=" + messageReceiveEmail
+		return "MessageDTO [messageNumber=" + messageNumber + ", messageReceiveEmail=" + messageReceiveEmail
 				+ ", messageSendEmail=" + messageSendEmail + ", messageTitle=" + messageTitle + ", messageArticle="
-				+ messageArticle + ", messageSendDate=" + messageSendDate + "]";
+				+ messageArticle + ", messageSendDate=" + messageSendDate + ", memberName=" + memberName + "]";
 	}
+
+	
 
 	
 }

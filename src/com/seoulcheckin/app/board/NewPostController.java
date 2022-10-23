@@ -19,23 +19,32 @@ public class NewPostController implements Execute{
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		
+		System.out.println("write controller");
 		KBoardDAO kBoardDAO = new KBoardDAO();
 		KBoardVO kBoardVO = new KBoardVO();
-		
 		Result result = new Result();
 		
-//		String uploadPath = req.getSession().getServletContext().getRealPath("/") + "upload/";
-//		int fileSize = 1024 * 1024 * 5;
+		String uploadPath = req.getSession().getServletContext().getRealPath("/") + "upload\\";
+		int fileSize = 1024 * 1024 * 5;
 		
-//		MultipartRequest multipartRequest = new MultipartRequest(req, uploadPath, fileSize, "UTF-8", new DefaultFileRenamePolicy());
+		MultipartRequest multipartRequest = new MultipartRequest(req, uploadPath, fileSize, "UTF-8", new DefaultFileRenamePolicy());
+		System.out.println(multipartRequest);
+		Enumeration<String> fileNames = multipartRequest.getFileNames();
+		String fileName = fileNames.nextElement();
+		System.out.println(fileName);
 		
+		String kPhotoName = multipartRequest.getFilesystemName(fileName);
+		kBoardVO.setkBoardPhoto(kPhotoName);
+
+		
+		System.out.println(req.getSession().getAttribute("memberNumber"));
 		kBoardVO.setMemberNumber((Integer)req.getSession().getAttribute("memberNumber"));
-		kBoardVO.setkBoardTitle(req.getParameter("kBoardTitle"));
-		kBoardVO.setkBoardArticle(req.getParameter("kBoardArticle"));
-		
+		kBoardVO.setkBoardTitle(multipartRequest.getParameter("kBoardTitle"));
+		kBoardVO.setkBoardArticle(multipartRequest.getParameter("kBoardArticle"));
 		
 		kBoardDAO.insert(kBoardVO);
-		result.setPath("/board/listOk.bo");
-		return null;
+		result.setPath("/board/board.bo");
+		
+		return result;
 	}
 }
