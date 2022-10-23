@@ -20,15 +20,12 @@ public class MapFilterController implements Execute{
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/html;charset=utf-8");
 		req.setCharacterEncoding("UTF-8");
-		//관리자의 승인 코드
-		final String APPROVED_CODE = "1";
 		MapDAO mapDAO = new MapDAO();
 		MapVO mapVO = new MapVO();
 		PrintWriter out = resp.getWriter();
 		String mapClassification = req.getParameter("mapClassification");
 		
 		
-		mapVO.setMapApproval(APPROVED_CODE);
 		mapVO.setMapClassification(mapClassification);
 		JSONArray maps = new JSONArray();
 		mapDAO.selectAll(mapVO).forEach(maplist -> {JSONObject map = new JSONObject(maplist); maps.put(map);});
