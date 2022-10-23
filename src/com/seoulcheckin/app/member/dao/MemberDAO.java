@@ -40,8 +40,8 @@ public class MemberDAO {
 			   sqlSession.update("Member.update", memberVO);
 		}
 		
-		public MemberVO info(int memberNumber){
-			return sqlSession.selectOne("Member.info",memberNumber);
+		public List<MemberVO> info(int memberNumber){
+			return sqlSession.selectList("Member.info",memberNumber);
 		}
 		
 		public void delete(int memberNumber) {
@@ -64,9 +64,6 @@ public class MemberDAO {
 			return sqlSession.selectList("Member.myMessage", pageMap);
 		}
 		
-		public MemberDTO myBoard(int memberNumber) {
-			return sqlSession.selectOne("Member.myBoard", memberNumber);
-		}
 		
 		
 		

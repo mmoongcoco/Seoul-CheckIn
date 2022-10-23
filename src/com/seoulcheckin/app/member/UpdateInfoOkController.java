@@ -23,12 +23,12 @@ public class UpdateInfoOkController implements Execute{
 		String memberPhone = req.getParameter("phone");
 		HttpSession session = req.getSession();
 		
-		int memberNumber = (Integer)session.getAttribute("memberNumber");
-		  
-		 System.out.println(memberNumber);
-		 
+//		int memberNumber = (Integer)session.getAttribute("memberNumber");
+//		  
+//		 System.out.println(memberNumber);
+//		 
 		
-		/* int memberNumber = 1; */
+		int memberNumber = 1;
 		/*
 		 * int memberNumber; session.setAttribute("memberNumber",1); memberNumber =
 		 * (int)session.getAttribute("memberNumber");
@@ -44,9 +44,13 @@ public class UpdateInfoOkController implements Execute{
 		memberVO.setMemberEmail(memberEmail);
 		memberVO.setMemberPassword(memberPassword);
 		memberVO.setMemberPhone(memberPhone);
-
-		memberDAO.update(memberVO);	
 		
-		return null;
+		System.out.println("수정1");
+		memberDAO.update(memberVO);	
+		System.out.println("수정2");
+		
+		result.setPath(req.getContextPath() + "/member/mypage.me");
+		return result;
+		
 	}
 }

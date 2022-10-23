@@ -6,6 +6,11 @@
 		select count(K_board_number) from tbl_K_board where member_number = #{memberNumber}
 	</select>
 	
+	<select id="myBoard" parameterType="_int" resultType="kBoardDTO">
+		select tm.member_name, K_board_date, K_board_title, K_board_article
+		from tbl_K_board kb join tbl_member tm where tm.member_number = #{member_number}
+		order by K_board_number desc limit 0,5;
+	</select>
 	
 
 </mapper>

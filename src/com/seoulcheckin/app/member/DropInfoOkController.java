@@ -25,7 +25,7 @@ public class DropInfoOkController implements Execute{
 		 * System.out.println(memberNumber);
 		 */
 		 
-		int memberNumber = 2;
+		int memberNumber = 1;
 		memberDAO.delete(memberNumber);
 		
 		
