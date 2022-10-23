@@ -16,12 +16,21 @@ public class MapDAO {
 		sqlSession = sqlSessionFactory.openSession(true);
 	}
 	
+<<<<<<< HEAD
 	
 	public List<MapVO> selectAll(String mapClassification){
 		return sqlSession.selectList("Map.selectAll", mapClassification);
+=======
+	public List<MapVO> selectAll(MapVO mapVO){
+		return sqlSession.selectList("Map.selectAll", mapVO);
+>>>>>>> teamProject/persoanl
 	}
 	
 	public List<MapVO> selectOne(int mapNumber){
 		return sqlSession.selectList("Map.selectOne",mapNumber);
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> teamProject/persoanl

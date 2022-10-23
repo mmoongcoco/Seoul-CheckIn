@@ -3,4 +3,8 @@
 
 <mapper namespace="Message">
 	
+	<insert id="insert" parameterType="messageVO">
+		insert into tbl_message (message_recive_email, message_send_email, message_article) values(#{messageReceiveEmail},#{messageSendEmail},#{messageArticle})
+	</insert>
+	
 </mapper>

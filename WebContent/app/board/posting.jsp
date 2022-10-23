@@ -317,11 +317,11 @@
                 <div class="btnPart"
                     style="display: flex;  flex-direction: row-reverse; margin-right: 17px; margin-top: 6px;">
                     <div class="btnOne">
-                        <button class="btnItemTwo" type="button"
+                        <button class="btnItemTwo" type="button" id="sendBtn"
                             style="background: rgb(204, 204, 204); border: 1px solid rgb(204, 204, 204); color: rgb(255, 255, 255); border: none; border-radius: 10px; height: 30px; width: 60px;">보내기</button>
                     </div>
                     <div class="btnTwo" style="padding-right: 10px;  padding-left: 10px;">
-                        <button class="btnItemTwo" type="button"
+                        <button class="btnItemTwo" type="button" id="translateBtn"
                             style="background: rgb(204, 204, 204); border: 1px solid rgb(204, 204, 204); color: rgb(255, 255, 255); border: none; border-radius: 10px; height: 30px; width: 70px;">번역하기</button>
                     </div>
                 </div>
@@ -639,6 +639,34 @@
                 $(this).css("backgroundColor", "rgb(204, 204, 204)");
             });
         });
+        
+        //번역하기 버튼에 클릭 이벤트 추가
+        $("#translateBtn").on('click', messageTranslate);
+        
+        //게시글 쪽지 번역
+        function messageTranslate() {
+        	let $message = $("textarea[name='chatContent']").val();
+        	
+        	$.ajax({
+        		url: "/message/messagetranslate.ms",
+        		data:{messageContent: $message},
+        		success: function(content){
+        			$("textarea[name='chatContent']").val(content)
+        		}
+        	});
+        }
+        //보내기 버튼에 클릭 이벤트 추가
+        $("#sendBtn").on('click', sendMessage)
+        //게시글 쪽지 보내기
+       function sendMessage() {
+        	$.ajax({
+        		url:"/message/mapmsg.ms",
+        		data:{businessMail: 1, loginedMail: 2, content: $("textarea[name='chatContent']").val()},
+        		success: function () {
+        			$("textarea[name='chatContent']").val("");
+        		}
+        	})
+	}
         
 </script>
 </html>

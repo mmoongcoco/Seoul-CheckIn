@@ -29,10 +29,14 @@ public class MessageFrontController extends HttpServlet {
 		
 		// 지도 상세정보에서 쪽지 보내기
 		if(request.equals("/message/mapmsg.ms")) {
-		
+			new MapMsgController().execute(req, resp);
+			
 		// 게시판에서 쪽지 보내기
 		}else if(request.equals("/message/sendmsg.ms")) {
 			
+		//지도 쪽지 번역하기	
+		}else if(request.equals("/message/messagetranslate.ms")) {
+			new MessageTranslateController().execute(req, resp);
 		}
 		
 		if(result != null) {
