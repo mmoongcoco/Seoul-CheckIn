@@ -64,4 +64,6 @@ public class MessageVO {
 				+ ", messageSendEmail=" + messageSendEmail + ", messageTitle=" + messageTitle + ", messageArticle="
 				+ messageArticle + ", messageSendDate=" + messageSendDate + "]";
 	}
+
+	
 }

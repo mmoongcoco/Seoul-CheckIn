@@ -12,6 +12,7 @@ import org.json.JSONObject;
 
 import com.seoulcheckin.app.Execute;
 import com.seoulcheckin.app.Result;
+import com.seoulcheckin.app.board.dao.KBoardDAO;
 import com.seoulcheckin.app.member.dao.MemberDAO;
 
 public class SelectBoardCountController implements Execute{
@@ -27,8 +28,8 @@ public class SelectBoardCountController implements Execute{
 //		 */
 		 int memberNumber = 1;
 		 
-		 MemberDAO memberDAO = new MemberDAO();
-		 int result = memberDAO.selectBoardCount(memberNumber);
+		 KBoardDAO kBoardDAO = new KBoardDAO();
+		 int result = kBoardDAO.myBoardCount(memberNumber);
 //	     회원번호 정보 전달 
 		
 			

@@ -16,16 +16,19 @@ public class BannerDAO {
 		sqlSession = sqlSessionFactory.openSession(true);
 	}
 	
-	
-	/*
-	 * public List<BannerVO> selectAll(BannerVO bannerVO){
-	 * System.out.println("dao2"); return sqlSession.selectList("Banner.selectAll",
-	 * bannerVO); }
-	 */
-	
 	public List<BannerVO> selectAll() {
 		return sqlSession.selectList("Banner.selectAll");
 	}
 	
+	public List<BannerVO> selectList(){
+		return sqlSession.selectList("Banner.selectList");
+	}
 	
+	public void delete(int bannerNumber) {
+		sqlSession.delete("Banner.delete", bannerNumber);
+	}
+	
+	public void insert(String bannerName) {
+		sqlSession.insert("Banner.insert", bannerName);
+	}
 }

@@ -13,6 +13,8 @@ import org.json.JSONObject;
 import com.seoulcheckin.app.Execute;
 import com.seoulcheckin.app.Result;
 import com.seoulcheckin.app.member.dao.MemberDAO;
+import com.seoulcheckin.app.myprogram.dao.MyProgramDAO;
+import com.seoulcheckin.app.school.dao.SchoolDAO;
 
 public class SelectProgramCountController implements Execute{
 	@Override
@@ -27,8 +29,9 @@ public class SelectProgramCountController implements Execute{
 //		 */
 		 int memberNumber = 1;
 		 
-		 MemberDAO memberDAO = new MemberDAO();
-		 int result = memberDAO.selectProgramCount(memberNumber);
+		 
+		 MyProgramDAO myProgramDAO = new MyProgramDAO();
+		 int result = myProgramDAO.myClassCount(memberNumber);
 			out.print(result);
 			
 			/*

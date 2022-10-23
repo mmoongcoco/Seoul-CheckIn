@@ -30,6 +30,28 @@ public class BannerFrontController extends HttpServlet {
 		// 메인 페이지 배너
 		if(request.equals("/banner/select.bn")) {
 			result = new SelectController().execute(req, resp);
+		
+		// 관리자 배너 페이지 요청
+		}else if(request.equals("/banner/adminBanner.bn")) {
+			result = new AdminBannerController().execute(req, resp);
+		
+		// 관리자 배너 추가 페이지 요청
+		}else if(request.equals("/banner/addBanner.bn")) {
+			result = new Result();
+			result.setPath("/app/admin/adminBannerAdd.jsp");
+			
+		// 관리자 배너 추가
+		}else if(request.equals("/banner/addOkBanner.bn")) {
+			result = new AddOkBannerController().execute(req, resp);
+			
+		// 관리자 배너 수정
+		}else if(request.equals("/banner/updateBanner.bn")) {
+			result = new UpdateBannerController().execute(req, resp);
+			
+		// 관리자 배너 삭제
+		}else if(request.equals("/banner/deleteBanner.bn")) {
+			result = new DeleteBannerController().execute(req, resp);
+			
 		}
 		
 		if(result != null) {

@@ -282,9 +282,9 @@ input[type="file"] {
 }
 
 .className{
-    width: 788px;
-    height: 438.350px;
-    padding: 41px 0 30px;
+   width: 788px;
+    height: 510.35px;
+    padding: 38px 0 30px;
     border: 1px solid #e1e2e3;
     border-radius: 3px;
     background-color: #fff;
@@ -326,12 +326,25 @@ input[type="file"] {
     line-height: 30px;
 }
 
+.messageList2 {
+    border-bottom: 1px solid rgba(209,209,209,.4);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    flex-grow: 0;
+    width: 100%;
+    padding: 0 10px;
+    margin-top: 20px;
+    height: 30px;
+    line-height: 30px;
+}
+
 .sendWho{
     text-align: center;
     color: #333;
     font-size: 14px;
     font-weight: 400;
-    flex: 1 0 20%;
+    flex: 1 0 7%;
 }
 
 .sendContent{
@@ -339,21 +352,27 @@ input[type="file"] {
     color: #333;
     font-size: 14px;
     font-weight: 400;
-    flex: 1 0 13%;
+    flex: 0 0 19%;
 }
 .sendTime{
     text-align: center;
     color: #333;
     font-size: 14px;
     font-weight: 400;
-    flex: 1 0 12%;
+    flex: 0 0 30%;
 }
 .sendDate{
     text-align: center;
     color: #333;
     font-size: 14px;
     font-weight: 400;
-    flex: 1 0 12%;
+    flex: 1 0 14%;
+}
+
+.myMessagge{
+	border-bottom: 1px solid rgba(209,209,209,.4);
+	padding: 10px 50px;
+	font-weight: 400;
 }
 
 

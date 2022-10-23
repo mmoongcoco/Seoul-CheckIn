@@ -13,6 +13,7 @@ body {
     font-weight: 400;
     display: flex;
     background-color: #eee;
+    overflow-x: hidden;
 }
 
 #wrapper {
@@ -515,6 +516,7 @@ table {
 
 td {
     text-align: center;
+    font-size: 12px;
 }
 
 .text-end .fs-7.w-125px.py-4 {
@@ -534,6 +536,13 @@ td {
 .odd td {
     padding-top: 20px;
     padding-bottom: 20px;
+}
+
+td.pro_list_value {
+	height: 45px;
+	max-width: 100px;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .form-check-custom.form-check-solid .form-check-input {
@@ -862,6 +871,7 @@ menu-sub-dropdown {
     border-color: #f5f8fa;
     color: #5E6278;
     transition: color 0.2s ease;
+    font-size: 11px;
 }
 
 .form-select-sm {
@@ -1098,7 +1108,27 @@ div.dataTables_wrapper div.dataTables_paginate {
     left: calc(100vw - 68%);
 }
 
-#kt_modal_add_customer_close .svg-icon.svg-icon-1 {
+#kt_modal_add_landmark {
+    display: block;
+    position: fixed;
+    width: 560px;
+    height: 560px;
+    top: 30px;
+    /* left: 510px; */
+    left: calc(100vw - 68%);
+}
+
+#kt_modal_add_enjoy {
+    display: block;
+    position: fixed;
+    width: 560px;
+    height: 560px;
+    top: 30px;
+    /* left: 510px; */
+    left: calc(100vw - 68%);
+}
+
+#kt_modal_add_customer_close .svg-icon.svg-icon-1, #kt_modal_add_landmark_close .svg-icon.svg-icon-1, #kt_modal_add_enjoy_close .svg-icon.svg-icon-1 {
     cursor: pointer;
 }
 
@@ -1155,7 +1185,7 @@ div.dataTables_wrapper div.dataTables_paginate {
     box-shadow: var(--kt-modal-box-shadow);
 }
 
-#kt_modal_add_customer div .modal-content {
+#kt_modal_add_customer div .modal-content, #kt_modal_add_landmark div .modal-content, #kt_modal_add_enjoy div .modal-content {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -1170,7 +1200,7 @@ div.dataTables_wrapper div.dataTables_paginate {
     outline: 0;
 }
 
-#kt_modal_add_customer {
+#kt_modal_add_customer, #kt_modal_add_landmark, #kt_modal_add_enjoy {
     display: none;
 }
 
@@ -1241,12 +1271,11 @@ div.dataTables_wrapper div.dataTables_paginate {
     font-family: inherit;
 }
 
-.d-flex.flex-column.mb-7.fv-row.fv-plugins-icon-container {
+/* .d-flex.flex-column.mb-7.fv-row.fv-plugins-icon-container {
     margin-bottom: 20px;
-}
+} */
 
 .fw-bold.fs-3.rotate.collapsible.mb-7 {
-    margin-top: 20px;
     margin-bottom: 10px;
 }
 
@@ -1276,7 +1305,7 @@ div.dataTables_wrapper div.dataTables_paginate {
 }
 
 .modal-body.py-10.px-lg-17 {
-    padding-bottom: 95px !important;
+    padding-bottom: 95px/*  !important */;
 }
 
 .pro_list_value {

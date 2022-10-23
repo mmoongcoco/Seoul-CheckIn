@@ -34,20 +34,27 @@ public class MapFrontController extends HttpServlet {
 		// 카테고리 누를 때마다 하위목록 변경
 		}else if(request.equals("/map/mapfilter.mp")) {
 			new MapFilterController().execute(req, resp);
+			
 		// 목록을 누르면 상세정보 요청
 		}else if(request.equals("/map/mapdetail.mp")) {
 			new MapDetailController().execute(req, resp);
+			
 		// 부동산 등록 페이지 요청(정적)
 		}else if(request.equals("/map/registerhouse.mp")) {
 		
 		// 일자리 등록 페이지 요청(정적)
 		}else if(request.equals("/map/registerjob.mp")) {
 			
-		// 부동산, 일자리 등록 submit + 관리자페이지 관광지, 즐길거리 추가
+		// 부동산, 일자리 등록 submit
 		}else if(request.equals("/map/registerOk.mp")) {
 		
-		// 관리자페이지 주거지, 일자리, 관광지, 즐길거리관리 페이지 요청
-		}else if(request.equals("/map/maplist.mp")) {
+		// 관광지, 즐길거리 등록 submit
+		}else if(request.equals("/map/addMapOk.mp")) {
+			result = new AddMapOkController().execute(req, resp);
+		
+		// 관리자 map 관리페이지 요청
+		}else if(request.equals("/map/adminMaplist.mp")) {
+			result = new AdminMapListController().execute(req, resp);
 		
 		// 관리자페이지 주거지, 일자리 승인
 		}else if(request.equals("/map/mapconfirm.mp")) {
@@ -69,7 +76,7 @@ public class MapFrontController extends HttpServlet {
 			
 		// 관리자페이지 관광지, 즐길거리 삭제
 		}else if(request.equals("/map/deletemap.mp")) {
-					
+			result = new DeleteMapController().execute(req, resp);
 		}
 //		else if(request.equals("/map/messagetranslate.mp")) {
 //			new MapMsgController().execute(req, resp);

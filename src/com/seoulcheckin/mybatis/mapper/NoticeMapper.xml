@@ -13,5 +13,15 @@
 	<select id="selectNoticeDetail" parameterType="_int" resultType="noticeVO">
 		select notice_title, notice_article from tbl_notice where notice_number=#{noticeNumber}
 	</select>
+	
+	<!-- 검색 결과 - 공지사항 -->
+	<select id="NoticeSearchSubmitResult" parameterType="string" resultType="noticeVO">
+		select notice_number, notice_title, notice_article 
+		from tbl_notice 
+		where notice_title or notice_article 
+		like CONCAT ('%',#{searchContent},'%') 
+	</select>
+	
+
 
 </mapper>

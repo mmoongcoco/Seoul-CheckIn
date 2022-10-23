@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,15 +45,15 @@
                <div class="list">
                     <a href="/member/myclass.me">
                         <span style="margin-top: 23px;" >강의</span>
-                        <strong style="margin-top: 23px;">1</strong>
+                        <strong style="margin-top: 23px;" class = "programCount";>1</strong>
                     </a>
                     <a href="/member/mycommunity.me">
                         <span style="margin-top: 23px;">커뮤니티</span>
-                        <strong style="margin-top: 23px;">2</strong>
+                        <strong style="margin-top: 23px;" class = "boardCount"; >2</strong>
                     </a>
                     <a href="/member/mymsg.me">
                         <span style="margin-top: 23px;">쪽지</span>
-                        <strong style="margin-top: 23px;">5</strong>
+                        <strong style="margin-top: 23px;" class = "messageCount";></strong>
                     </a>
                     <a href="/member/updateinfo.me" class="myPagelist_end">
                         <span style="margin-top: 23px;">정보 수정</span>
@@ -85,12 +87,97 @@
                         </dl>
                         
                         <div class="messageList">
-                            <label><input type="checkbox" name="allCheckMail" value=""></label>
-                            <span class="sendWho">제목</span>
+                         <!--    <label><input type="checkbox" name="allCheckMail"  display = "none"></label> -->
+                            <span class="sendWho">쪽지 번호</span>
                             <span class="sendContent">내용</span>
+                            <span class="sendDate">보낸 사람</span>
                             <span class="sendTime">작성일</span>
-                            <span class="sendDate">보낸사람</span>
+                            
+                  
+                            
+                            
+                            
                         </div>
+                 				<table style = "margin: 10px auto;">
+										<caption style="margin-bottom:3%"></caption>
+											<tbody>
+												<c:choose>
+													<c:when test="${Members != null and fn:length(Members) > 0}">
+														<c:forEach var="member" items="${Members}">
+															<tr>
+																<td class="myMessagge"><a href='javascript:void(0)'><c:out value="${member.getMessageNumber()}"/></a></td>
+																<td class="myMessagge"><a href='javascript:void(0)'><c:out value="${member.getMessageArticle()}"/></a></td>
+																<td class="myMessagge"><a href='javascript:void(0)'><c:out value="${member.getMemberName()}"/></a></td>
+																<td class="myMessagge"><a href='javascript:void(0)'><c:out value="${member.getMessageSendDate()}"/></a></td>
+															</tr>
+														</c:forEach>
+													</c:when>
+													<c:otherwise>
+														<tr>
+															<td colspan="5" align="center">등록된 게시물이 없습니다.</td>
+														</tr>
+													</c:otherwise>
+												</c:choose>
+											</tbody>
+										</table>
+                       	
+                       	
+ 								<%-- 
+ 								<c:forEach var="member" items="${Members}">
+                        		 	<div class="messageList2">
+                         				<label><input type="checkbox" name="allCheckMail" value="" display = "none"></label>
+                            			<a class="sendWho" href='javascript:void(0);'><c:out value="${member.getMessageNumber()}"/></a>
+                            			<a class="sendContent" href='javascript:void(0);'><c:out value="${member.getMessageArticle()}"/></a>
+                           				<a class="sendDate" href='javascript:void(0);'><c:out value="${member.getMemberName()}"/></a>    
+                            			<a class="sendTime" href='javascript:void(0);'><c:out value="${member.getMessageSendDate()}"/></a>
+                        			</div>
+                       			</c:forEach>
+                       			 --%>
+                       			
+                       			
+							<!-- paging -->                       				
+                       			<table style="font-size:1.3rem;margin: 0 auto;">
+											<tr align="center" valign="middle">
+												<td class="web-view">
+													<c:if test="${prev}">
+														<a href="${pageContext.request.contextPath}/member/mymsg.me?page=${startPage - 1}">&lt;</a>
+													</c:if>
+													<c:forEach var="i" begin="${startPage}" end="${endPage}">
+														<c:choose>
+															<c:when test="${not (i eq page)}">
+																<a href="${pageContext.request.contextPath}/member/mymsg.me?page=${i}">
+																	<c:out value="${i}"/>&nbsp;&nbsp;
+																</a>
+															</c:when>
+															<c:otherwise>
+																	<c:out value="${i}"/>&nbsp;&nbsp;
+															</c:otherwise>
+														</c:choose>
+													</c:forEach>
+													<c:if test="${next}">
+														<a href="${pageContext.request.contextPath}/member/mymsg.me?page=${endPage + 1}">&gt;</a>
+													</c:if>
+												</td>
+											</tr>
+										</table>
+										
+                       	
+                       	
+                       	    <!-- paging -->
+                       	
+                       	
+                       	
+                       	<%-- <c:forEach var="member" items="${Members}">
+							<tr>
+								<td><a href='${pageContext.request.contextPath}/board/detailOk.bo?boardNumber=${board.getBoardNumber()}'><c:out value="${member.getMessageTitle()}"/></a></td>
+								<td><c:out value="${member.getMessageArticle()}"/></td>
+								<td><c:out value="${member.getMessageSendDate()}"/></td>
+								<td><c:out value="${member.getMemberName()}"/></td>
+								 <br>
+								 
+							</tr>
+					</c:forEach> --%>
+                       <%--   "${Members.getMemberName(0)}" --%>
                     </div>
                 </div>
             </section>
@@ -129,7 +216,87 @@
 
 </script>
 	<!-- 쪽지함  -->
+	
+</script>
+
+<!-- 강의, 내가쓴글, 댓글, 쪽지 카운트 -->
 <script>
+showList()
+showList2()
+showList3()
+showList4()
+function showList(){
+	console.log("ajax들어옴");
+	$.ajax({
+		url: "/member/mypagelist.me",
+		type: "get",
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		success: function(result){
+			console.log(result);
+			$(".programCount").text(result);
+			console.log("ajax1들어옴");
+		}
+		
+	})
+}
+
+function showList2(){
+	$.ajax({
+		url: "/member/mypagelist2.me",
+		type: "get",
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		success: function(result){
+			console.log(result);
+			$(".messageCount").text(result);
+		}
+		
+	})
+}
+
+
+function showList3(){
+	$.ajax({
+		url: "/member/mypagelist3.me",
+		type: "get",
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		success: function(result){
+			console.log(result);
+			$(".boardCount").text(result);
+		}
+		
+	})
+}
+
+function showList4(){
+	console.log("ajax4 들어옴");
+	$.ajax({
+		url: "/member/updatelist.me",
+		type: "get",
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		success: function(members){
+			console.log("ajax4 들어옴");
+			console.log(members);
+			
+			$(".asideMeName").text(members[0].memberName);
+			$(".asideMeEmail").text(members[0].memberEmail);
+			$(".asideMeTel").text(members[0].memberPhone);
+			
+		}
+		
+	})
+	
+}
+
+
+
+
+
+
+
 
 </script>
 

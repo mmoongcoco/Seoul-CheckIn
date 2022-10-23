@@ -43,8 +43,9 @@
 	<!-- map Alias -->
 	
 	<!-- message Alias -->
-		<typeAlias type="com.seoulcheckin.app.message.vo.MessageVO" alias="messsageVO"/>
+		<typeAlias type="com.seoulcheckin.app.message.vo.MessageVO" alias="messageVO"/>
 		<typeAlias type="com.seoulcheckin.app.message.dao.MessageDAO" alias="messageDAO"/>
+		<typeAlias type="com.seoulcheckin.app.message.vo.MessageDTO" alias="messageDTO"/>
 	<!-- message Alias -->
 	
 	<!-- myprogram Alias -->

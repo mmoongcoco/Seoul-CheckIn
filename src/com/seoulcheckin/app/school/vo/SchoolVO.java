@@ -1,4 +1,4 @@
-package com.seoulcheckin.app.school.vo;
+   package com.seoulcheckin.app.school.vo;
 
 public class SchoolVO {
 	private int schoolNumber;
@@ -11,7 +11,7 @@ public class SchoolVO {
 	private String schoolOpeningDate;
 	private String schoolClosingDate;
 	private String schoolPhoto;
-	private String schoolLimitCount;
+	private int schoolLimitCount;
 	private String schoolStatus;
 	private int memberNumber;
 	
@@ -97,11 +97,11 @@ public class SchoolVO {
 		this.schoolPhoto = schoolPhoto;
 	}
 
-	public String getSchoolLimitCount() {
+	public int getSchoolLimitCount() {
 		return schoolLimitCount;
 	}
 
-	public void setSchoolLimitCount(String schoolLimitCount) {
+	public void setSchoolLimitCount(int schoolLimitCount) {
 		this.schoolLimitCount = schoolLimitCount;
 	}
 
