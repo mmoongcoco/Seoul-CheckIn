@@ -19,6 +19,11 @@ body {
     width: 100%;
     font-family: NanumBarunPen;
     font-weight: bold;
+    overflow-y: hidden;
+}
+
+#wrapper::-webkit-scrollbar {
+	display:none;
 }
 
 a {
@@ -110,7 +115,7 @@ button{
     bottom: 0;
     background-color: rgb(54, 59, 62);
     color: rgb(255, 255, 255);
-    z-index: 999;
+    z-index: 1004;
 }
 
 .app_sidebar_logo {
@@ -519,6 +524,12 @@ td {
     text-align: center;
 }
 
+td.board_list_value {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	height: 50px;
+}
+
 .card-body.no-padding .table > tbody > tr > td:first-child, .card-body.no-padding .table > thead > tr > th:first-child, .table > thead > tr > th:first-child, .table > tbody > tr > td:first-child, .table > tbody > tr > th:first-child, .table > tfoot > tr > td:first-child {
     padding-left: 24px;
 }
@@ -703,7 +714,7 @@ section {
 }
 
 .li_table > ul > li {
-    padding: 13px 30px;
+  /*   padding: 13px 30px; */
     font-size: 14px;
     list-style: none;
     display: table-cell;
@@ -773,8 +784,8 @@ section {
     min-width: 60px;
     word-break: break-word;
     width: 14%;
-    padding-left: 30px;
-    padding-right: 30px;
+/*     padding-left: 30px;
+    padding-right: 30px; */
     vertical-align: middle;
 }
 

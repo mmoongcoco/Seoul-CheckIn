@@ -8,11 +8,21 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.seoulcheckin.app.Execute;
 import com.seoulcheckin.app.Result;
+import com.seoulcheckin.app.map.dao.MapDAO;
 
-public class DeleteMapController implements Execute{
+public class DeleteMapController implements Execute {
 	@Override
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		MapDAO mapDAO = new MapDAO();
+
+		System.out.println(req.getParameter("mapNumber"));
+
+		String[] mapNumbers = req.getParameter("mapNumber").split(" ");
+
+		for (String mapNumber : mapNumbers) {
+			if (mapNumber == "") {continue;}
+			mapDAO.delete(Integer.valueOf(mapNumber.trim()));
+		}
 		return null;
 	}
 }

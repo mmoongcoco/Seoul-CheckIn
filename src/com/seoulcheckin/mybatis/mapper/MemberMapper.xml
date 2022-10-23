@@ -50,6 +50,15 @@
 	</select>
 	
 	<!-- MyPage end   -->
+	
+	<select id="selectAll" parameterType="map" resultType="memberVO">
+		select member_number, member_classification, member_email, member_name, member_phone, member_password, member_photo
+		from tbl_member order by member_number desc limit #{startRow}, #{rowCount}
+	</select>
+	
+	<select id="selectCount" resultType="_int">
+		select count(member_number) from tbl_member
+	</select>
 </mapper>
 
 

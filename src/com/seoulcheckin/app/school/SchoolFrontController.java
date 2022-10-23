@@ -27,7 +27,7 @@ public class SchoolFrontController extends HttpServlet {
 		String request = requestURI.substring(contextPath.length());
 		Result result = null;
 		
-		// 프로그램 페이지 요청, 관리자페이지 프로그램관리 페이지 요청
+		// 프로그램 페이지 요청
 		if(request.equals("/school/programlist.sc")) {
 			result = new ProgramListController().execute(req, resp);
 		
@@ -37,14 +37,21 @@ public class SchoolFrontController extends HttpServlet {
 		// 프로그램 신청하기
 		}else if(request.equals("/school/applyprogram.sc")) {
 			
+			
+		// 관리자 프로그램 페이지 요청
+		}else if(request.equals("/school/adminprogramlist.sc")) {
+			result = new AdminProgramListController().execute(req, resp);
+		
 		// 프로그램 필터
 		}else if(request.equals("/school/programfilter.sc")) {
-		
+			
 		// 프로그램  추가
-		}else if(request.equals("/school/addprogrma.sc")) {
+		}else if(request.equals("/school/addprogram.sc")) {
+			result = new AddProgramController().execute(req, resp);
 			
 		// 프로그램 수정
 		}else if(request.equals("/school/updatepro.sc")) {
+			result = new UpdateProController().execute(req, resp);
 			
 		// 프로그램 삭제
 		}else if(request.equals("/school/deletepro.sc")) {
