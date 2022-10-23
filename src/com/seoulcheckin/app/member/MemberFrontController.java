@@ -95,13 +95,12 @@ public class MemberFrontController extends HttpServlet {
 			
 			// 커뮤니티 페이지 요청
 		} else if (request.equals("/member/mycommunity.me")) {
-			result = new Result();
-			result.setPath("/app/member/myPageCommunity.jsp");
+			result = new MyPostController().execute(req, resp);
+			
 			
 			// 마이페이지 쪽지함 페이지 요청
 		} else if (request.equals("/member/mymsg.me")) {
-			result = new Result();
-			result.setPath("/app/member/myPageMessage.jsp");
+			result = new MyMsgController().execute(req, resp);
 			
 			// 쪽지함에서 쪽지 보기
 		} else if (request.equals("/member/msgview.me")) {

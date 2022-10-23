@@ -8,11 +8,34 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.seoulcheckin.app.Execute;
 import com.seoulcheckin.app.Result;
+import com.seoulcheckin.app.board.dao.KBoardDAO;
+import com.seoulcheckin.app.board.vo.KBoardDTO;
+import com.seoulcheckin.app.board.vo.KBoardVO;
+import com.seoulcheckin.app.member.dao.MemberDAO;
 
 public class MyPostController implements Execute{
 	@Override
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		return null;
+		Result result = new Result();
+		KBoardDAO kBoardDAO = new KBoardDAO();
+		KBoardVO kBoardVO = new KBoardVO();
+		KBoardDTO kBoardDTO = new KBoardDTO();
+		
+//		HttpSession session = req.getSession();
+		
+//		put 하기 직전에 출력을 써서 맵 밸류값에 널이 들어가서 오류가 떳다 
+//		System.out.println(memberDAO.myMessage(pageMap));
+//		/*
+//		 * int memberNumber = (Integer)session.getAttribute("memberNumber");
+//		 * 
+//		 */
+		 int memberNumber = 1;
+		
+		MemberDAO.myBoard(memberNumber);
+		
+		
+		result.setPath("/app/member/myPageCommunity.jsp");
+		
+		return result;
 	}
 }

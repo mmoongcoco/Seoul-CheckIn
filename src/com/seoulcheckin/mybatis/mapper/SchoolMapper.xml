@@ -11,4 +11,6 @@
 	<select id="selectCount" resultType="_int">
 		select count(school_number) from tbl_school
 	</select>
+	
+
 </mapper>

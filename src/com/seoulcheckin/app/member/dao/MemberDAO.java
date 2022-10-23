@@ -1,6 +1,7 @@
 package com.seoulcheckin.app.member.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -59,8 +60,12 @@ public class MemberDAO {
 			return sqlSession.selectOne("Member.selectBoardCount", memberNumber);
 		}
 		
-		public List<MemberDTO> myMessage(int memberNumber){
-			return sqlSession.selectList("Member.myMessage", memberNumber);
+		public List<MemberDTO> myMessage(Map<String, Integer> pageMap){
+			return sqlSession.selectList("Member.myMessage", pageMap);
+		}
+		
+		public MemberDTO myBoard(int memberNumber) {
+			return sqlSession.selectOne("Member.myBoard", memberNumber);
 		}
 		
 		

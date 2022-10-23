@@ -12,4 +12,8 @@ public class MessageDAO {
 	public MessageDAO() {
 		sqlSession = sqlSessionFactory.openSession(true);
 	}
+	
+	public int selectMessageCount(int memberNumber) {
+		return sqlSession.selectOne("Message.selectMessageCount", memberNumber);
+	}
 }

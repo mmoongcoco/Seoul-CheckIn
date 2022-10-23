@@ -2,5 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="Message">
+
+<select id="selectMessageCount" parameterType="_int" resultType="_int" >
+		select count(message_recive_email) from tbl_message m join tbl_member tm on member_number = #{memberNumber}
+</select>
 	
+
+
 </mapper>
