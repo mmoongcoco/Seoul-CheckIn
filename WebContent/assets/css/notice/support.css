@@ -115,7 +115,7 @@ p:empty {
     padding: 10px 55px 10px 30px;
     width: 100%;
 }
-form.search input[type="submit"] {
+form.search input[type="button"] {
     border: medium none;
     height: 48px;
     overflow: hidden;

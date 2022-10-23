@@ -41,7 +41,6 @@ public class NoticeDetailController implements Execute{
 		
 		//이동할 페이지 경로
 		result.setPath("/app/faq/support_section.jsp");
-		
 		return result;
 	}
 }
