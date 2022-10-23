@@ -26,11 +26,13 @@ public class MyPageController implements Execute{
 		 * 
 		 * System.out.println(memberNumber);
 		 */
-				
-			
+		
 			/*
 			 * result.isRedirect(); result.setPath("")
 			 */
+		
+		
+		
 		
 			
 		result.setPath("/app/member/myPageMain.jsp");			

@@ -42,13 +42,6 @@
 		order by message_number desc limit #{startRow}, #{rowCount}
 	</select> 
 	
-	<select id="myBoard" parameterType="_int" resultType="memberDTO">
-		select tm.member_name, K_board_date, K_board_title, K_board_article
-		from tbl_K_board kb join tbl_member tm where tm.member_number = #{member_number}
-		order by K_board_number desc limit 0,5;
-	
-	</select>
-	
 	<!-- MyPage end   -->
 	
 	<select id="selectAll" parameterType="map" resultType="memberVO">

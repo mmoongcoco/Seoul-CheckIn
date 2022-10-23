@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,15 +46,15 @@
                <div class="list">
                     <a href="/member/myclass.me">
                         <span style="margin-top: 23px;" >강의</span>
-                        <strong style="margin-top: 23px;">0</strong>
+                        <strong style="margin-top: 23px;" class = "programCount";>0</strong>
                     </a>
                     <a href="/member/mycommunity.me">
-                        <span style="margin-top: 23px;">커뮤니티</span>
-                        <strong style="margin-top: 23px;">0</strong>
+                        <span style="margin-top: 23px;" >커뮤니티</span>
+                        <strong style="margin-top: 23px;" class = "boardCount"; >0</strong>
                     </a>
                     <a href="/member/mymsg.me">
                         <span style="margin-top: 23px;">쪽지</span>
-                        <strong style="margin-top: 23px;">0</strong>
+                        <strong style="margin-top: 23px;" class = "messageCount"; >0</strong>
                     </a>
                     <a href="/member/updateinfo.me" class="myPagelist_end">
                         <span style="margin-top: 23px;">정보 수정</span>
@@ -72,13 +74,13 @@
                             <a href="myPageCommunity.html" class="btnOne">작성글</a>
                         </li>
                         <li data-attribute-id="community__myCommunity__myAction__tab__click" data-tab-kind="comments" class="comment">
-                            <a href="myComment.html" class="btnTwo">작성댓글</a>
+                            <a href="${pageContext.request.contextPath}/member/mycomment.me" class="btnTwo">작성댓글</a>
                         </li>
                     </ul>
                 </div>
                 <div class="communityBody">
                     <a class="postAll" data-content-title="국비프로젝트">
-                        <article>
+             <!--            <article>
                             <div class="postItem">
                                 <div class="authorBox">
                                     <button data-content-title="국비프로젝트 너무 어려워요">
@@ -93,24 +95,49 @@
                             <div class="postItemBody">
                                 <h3 class="postItemTitle">국비프로젝트</h3>
                                 <p class="postItemContent">퍼블리싱</p>
-                                <div class="postItemButtom">
-                                    <div class="buttonComments">
-                                        <svg width="18" height="18" viewBox="0 0 18 18">
-                                            <path fill="currentColor" transform="matrix(-1 0 0 1 18 0)" d="M9 1c4.377 0 8 3.14 8 7s-3.623 7-8 7c-.317 0-.593-.026-.954-.088l-.395-.074-.205-.043-3.295 2.089a.75.75 0 0 1-.968-.143l-.067-.09a.75.75 0 0 1 .143-.968l.09-.067 3.55-2.25a.75.75 0 0 1 .551-.1l.652.132.301.052c.228.036.408.05.597.05 3.592 0 6.5-2.52 6.5-5.5S12.592 2.5 9 2.5C5.407 2.5 2.5 5.02 2.5 8c0 1.858 1.039 3.573 2.773 4.348a.75.75 0 1 1-.612 1.37C2.37 12.693 1 10.432 1 8c0-3.86 3.622-7 8-7z">
-
-                                            </path>
-                                        </svg>
-                                        <span class="button_Button__count__L1T_j count">0</span>
-                                    </div>
+                            </div>
+                        </article> -->
+                        
+                        <c:forEach var="myBoard" items="${myBoards}">
+                         <article>
+                            <div class="postItem">
+                                <div class="authorBox">
+                                    <button data-content-title="국비프로젝트 너무 어려워요">
+                                        <div class="avatarWrapper">
+                                            <div class="userAvatar"></div>
+                                        </div>
+                                        <span class="postName"><c:out value="${myBoard.getMemberName()}"/></span>
+                                    </button>
+                                    <span class="authorBoxtime"><c:out value="${myBoard.getkBoardDate()}"/></span>
                                 </div>
                             </div>
+                            <div class="postItemBody">
+                                <h3 class="postItemTitle"><c:out value="${myBoard.getkBoardTitle()}"/></h3>
+                                <p class="postItemContent"><c:out value="${myBoard.getkBoardArticle()}"/></p>
+                            </div>
                         </article>
+                       </c:forEach>
                     </a>
                 </div>
                 <div class="scroll"></div>
             </div>
+            
+            <%-- 
+ 								<c:forEach var="member" items="${Members}">
+                        		 	<div class="messageList2">
+                         				<label><input type="checkbox" name="allCheckMail" value="" display = "none"></label>
+                            			<a class="sendWho" href='javascript:void(0);'><c:out value="${member.getMessageNumber()}"/></a>
+                            			<a class="sendContent" href='javascript:void(0);'><c:out value="${member.getMessageArticle()}"/></a>
+                           				<a class="sendDate" href='javascript:void(0);'><c:out value="${member.getMemberName()}"/></a>    
+                            			<a class="sendTime" href='javascript:void(0);'><c:out value="${member.getMessageSendDate()}"/></a>
+                        			</div>
+                       			</c:forEach>
+                       			 --%>
+                       			
     
 </body>
+
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script>
 
     const file = document.querySelector("input[type='file']");
@@ -136,7 +163,81 @@
     camera.addEventListener("click", function(){           
             file.onclick();
      });
+    
+  
 
+
+</script>
+<script>
+showList()
+showList2()
+showList3()
+showList4()
+function showList(){
+	console.log("ajax들어옴");
+	$.ajax({
+		url: "/member/mypagelist.me",
+		type: "get",
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		success: function(result){
+			console.log(result);
+			$(".programCount").text(result);
+			console.log("ajax1들어옴");
+		}
+		
+	})
+}
+
+function showList2(){
+	$.ajax({
+		url: "/member/mypagelist2.me",
+		type: "get",
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		success: function(result){
+			console.log(result);
+			$(".messageCount").text(result);
+		}
+		
+	})
+}
+
+
+function showList3(){
+	$.ajax({
+		url: "/member/mypagelist3.me",
+		type: "get",
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		success: function(result){
+			console.log(result);
+			$(".boardCount").text(result);
+		}
+		
+	})
+}
+
+function showList4(){
+	console.log("ajax4 들어옴");
+	$.ajax({
+		url: "/member/updatelist.me",
+		type: "get",
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		success: function(members){
+			console.log("ajax4 들어옴");
+			console.log(members);
+			
+			$(".asideMeName").text(members[0].memberName);
+			$(".asideMeEmail").text(members[0].memberEmail);
+			$(".asideMeTel").text(members[0].memberPhone);
+			
+		}
+		
+	})
+	
+}
 
 </script>
 </html>

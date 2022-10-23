@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,15 +44,15 @@
                 <div class="list">
                     <a href="/member/myclass.me">
                         <span style="margin-top: 23px;" >강의</span>
-                        <strong style="margin-top: 23px;">0</strong>
+                        <strong style="margin-top: 23px;" class = "programCount";>0</strong>
                     </a>
                     <a href="/member/mycommunity.me">
                         <span style="margin-top: 23px;">커뮤니티</span>
-                        <strong style="margin-top: 23px;">0</strong>
+                        <strong style="margin-top: 23px;" class = "boardCount";>0</strong>
                     </a>
                     <a href="/member/mymsg.me">
                         <span style="margin-top: 23px;">쪽지</span>
-                        <strong style="margin-top: 23px;">0</strong>
+                        <strong style="margin-top: 23px;" class = "messageCount";>0</strong>
                     </a>
                     <a href="/member/updateinfo.me" class="myPagelist_end">
                         <span style="margin-top: 23px;">정보 수정</span>
@@ -101,6 +103,7 @@
     </div>
     <footer>푸터</footer>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script>
 
 	const file = document.querySelector("input[type='file']");
@@ -126,6 +129,81 @@
     camera.addEventListener("click", function(){           
             file.onclick();
      });
+
+</script>
+<script>
+<!-- 강의, 내가쓴글, 댓글, 쪽지 카운트 -->
+showList()
+showList2()
+showList3()
+showList4()
+function showList(){
+	console.log("ajax들어옴");
+	$.ajax({
+		url: "/member/mypagelist.me",
+		type: "get",
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		success: function(result){
+			console.log(result);
+			$(".programCount").text(result);
+			console.log("ajax1들어옴");
+		}
+		
+	})
+}
+
+function showList2(){
+	$.ajax({
+		url: "/member/mypagelist2.me",
+		type: "get",
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		success: function(result){
+			console.log(result);
+			$(".messageCount").text(result);
+		}
+		
+	})
+}
+
+
+function showList3(){
+	$.ajax({
+		url: "/member/mypagelist3.me",
+		type: "get",
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		success: function(result){
+			console.log(result);
+			$(".boardCount").text(result);
+		}
+		
+	})
+}
+
+
+function showList4(){
+	console.log("ajax4 들어옴");
+	$.ajax({
+		url: "/member/updatelist.me",
+		type: "get",
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		success: function(members){
+			console.log("ajax4 들어옴");
+			console.log(members);
+			
+			$(".asideMeName").text(members[0].memberName);
+			$(".asideMeEmail").text(members[0].memberEmail);
+			$(".asideMeTel").text(members[0].memberPhone);
+			
+		}
+		
+	})
+	
+}
+
 
 </script>
 </html>

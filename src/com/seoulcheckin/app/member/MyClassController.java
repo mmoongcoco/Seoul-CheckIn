@@ -12,7 +12,9 @@ import com.seoulcheckin.app.Result;
 public class MyClassController implements Execute{
 	@Override
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		return null;
+		Result result = new Result();
+		
+		result.setPath("/app/member/myPageClass.jsp");
+		return result;
 	}
 }
