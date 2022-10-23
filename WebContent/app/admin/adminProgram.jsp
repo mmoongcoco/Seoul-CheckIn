@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -450,7 +451,8 @@
 																			<button type="button"
 																				class="btn btn-light-primary me-3"
 																				data-bs-toggle="modal"
-																				data-bs-target="#kt_customers_export_modal">
+																				data-bs-target="#kt_customers_export_modal"
+																				id="schoolModifybutton">
 
 																				<span class="svg-icon svg-icon-2"> <svg
 																						width="24" height="24" viewBox="0 0 24 24"
@@ -475,13 +477,10 @@
 																			</button>
 
 																			<button type="button" class="btn btn-primary"
-																				data-bs-toggle="modal"
-																				data-bs-target="#kt_modal_add_customer"
-																				style="margin-right: 8px;">Add Program</button>
-																			<button type="button" class="btn btn-primary delete"
-																				data-bs-toggle="modal"
-																				data-bs-target="#kt_modal_add_customer">Delete
+																				id="addProgrambutton" style="margin-right: 8px;">Add
 																				Program</button>
+																			<button type="button" class="btn btn-primary delete"
+																				id="deleteProgrambutton">Delete Program</button>
 
 																		</div>
 																	</div>
@@ -503,8 +502,8 @@
 																							rowspan="1" colspan="1">
 																							<div
 																								class="form-check form-check-sm form-check-custom form-check-solid me-3">
-																								<input class="form-check-input" type="checkbox"
-																									data-kt-check="true"
+																								<input class="form-check-input total"
+																									type="checkbox" data-kt-check="true"
 																									data-kt-check-target="#kt_customers_table .form-check-input"
 																									value="1">
 																							</div>
@@ -536,7 +535,7 @@
 																						<th>마감 일자</th>
 																						<th>첨부사진</th>
 																						<th>수강 가능 인원</th>
-																						<th>신청 상태</th>
+																						<th>상태</th>
 																						<th>신청 인원</th>
 																					</tr>
 																					<!--end::Table row-->
@@ -548,25 +547,47 @@
 																						<c:when
 																							test="${programs != null and fn:length(programs) > 0}">
 																							<c:forEach var="program" items="${programs}">
-																								<tr>
+																								<tr class="row_program">
 																									<td>
-																										<div class="form-check form-check-sm form-check-custom form-check-solid">
-																											<input class="form-check-input" type="checkbox" value="1">
+																										<div
+																											class="form-check form-check-sm form-check-custom form-check-solid">
+																											<input class="form-check-input checkbox"
+																												type="checkbox" value="${program}">
 																										</div>
 																									</td>
-																									<td class="pro_list_value"><c:out value="${program.getSchoolNumber()}" /></td>
-																									<td class="pro_list_value"><c:out value="${program.getSchoolName()}" /></td>
-																									<td class="pro_list_value"><c:out value="${program.getSchoolTeacherName()}" /></td>
-																									<td class="pro_list_value"><c:out value="${program.getSchoolPhone()}" /></td>
-																									<td class="pro_list_value"><c:out value="${program.getSchoolAddress()}" /></td>
-																									<td class="pro_list_value"><c:out value="${program.getSchoolTime()}" /></td>
-																									<td class="pro_list_value"><c:out value="${program.getSchoolIntroduce()}" /></td>
-																									<td class="pro_list_value"><c:out value="${program.getSchoolOpeningDate()}" /></td>
-																									<td class="pro_list_value"><c:out value="${program.getSchoolClosingDate()}" /></td>
-																									<td class="pro_list_value"><c:out value="${program.getSchoolPhoto()}" /></td>
-																									<td class="pro_list_value"><c:out value="${program.getSchoolLimitCount()}" /></td>
-																									<td class="pro_list_value"><c:out value="${program.getSchoolLimitCount() > programMap.get(program.getSchoolNumber()) ? '신청가능' : '마감'}" /></td>
-																									<td class="pro_list_value"><c:out value="${programMap.get(program.getSchoolNumber())}" /></td>
+																									<td class="pro_list_value number"><c:out
+																											value=" ${program.getSchoolNumber()}" /></td>
+																									<td class="pro_list_value" style="width: 90px;"><c:out
+																											value="${program.getSchoolName()}" /></td>
+																									<td class="pro_list_value" style="width: 50px;"><c:out
+																											value="${program.getSchoolTeacherName()}" />
+																									</td>
+																									<td class="pro_list_value" style="width: 85px;"><c:out
+																											value="${program.getSchoolPhone()}" /></td>
+																									<td class="pro_list_value" style="width: 100px"><c:out
+																											value="${program.getSchoolAddress()}" /></td>
+																									<td class="pro_list_value" style="width: 85px;"><c:out
+																											value="${program.getSchoolTime()}" /></td>
+																									<td class="pro_list_value"><c:out
+																											value="${program.getSchoolIntroduce()}" /></td>
+																									<td class="pro_list_value" style="width: 85px;">
+																										<c:out
+																											value="${program.getSchoolOpeningDate()}" />
+																									</td>
+																									<td class="pro_list_value" style="width: 85px;">
+																										<c:out
+																											value="${program.getSchoolClosingDate()}" />
+																									</td>
+																									<td class="pro_list_value"><c:out
+																											value="${program.getSchoolPhoto()}" /></td>
+																									<td class="pro_list_value"><c:out
+																											value="${program.getSchoolLimitCount()}" /></td>
+																									<td class="pro_list_value" style="width: 55px;">
+																										<c:out
+																											value="${program.getSchoolLimitCount() > programMap.get(program.getSchoolNumber()) ? '신청가능' : '마감'}" />
+																									</td>
+																									<td class="pro_list_value"><c:out
+																											value="${programMap.get(program.getSchoolNumber())}" /></td>
 																								</tr>
 																							</c:forEach>
 																						</c:when>
@@ -584,7 +605,7 @@
 																				class="col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start">
 																				<div class="dataTables_length"
 																					id="kt_customers_table_length">
-																					<label><select
+																					<!-- <label><select
 																						name="kt_customers_table_length"
 																						aria-controls="kt_customers_table"
 																						class="form-select form-select-sm form-select-solid">
@@ -592,34 +613,36 @@
 																							<option value="25">25</option>
 																							<option value="50">50</option>
 																							<option value="100">100</option>
-																					</select></label>
+																					</select></label> -->
 																				</div>
 																			</div>
 																			<div
 																				class="col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end">
-																				<div class="dataTables_paginate paging_simple_numbers" id="kt_customers_table_paginate">
-																					<table style="font-size:1.3rem">
+																				<div
+																					class="dataTables_paginate paging_simple_numbers"
+																					id="kt_customers_table_paginate">
+																					<table style="font-size: 1.3rem">
 																						<tr align="center" valign="middle">
 																							<td class="web-view">
-																								<c:if test="${prev}">
-																									<a href="${pageContext.request.contextPath}/school/programlist.sc?page=${startPage - 1}">&lt;</a>
-																								</c:if>
-																								<c:forEach var="i" begin="${startPage}" end="${endPage}">
+																							<c:if test="${prev}">
+																									<a href="${pageContext.request.contextPath}/school/adminprogramlist.sc?page=${startPage - 1}">&lt;</a>
+																								</c:if> <c:forEach var="i" begin="${startPage}"
+																									end="${endPage}">
 																									<c:choose>
 																										<c:when test="${not (i eq page)}">
-																											<a href="${pageContext.request.contextPath}/school/programlist.sc?page=${i}">
-																												<c:out value="${i}"/>&nbsp;&nbsp;
+																											<a
+																												href="${pageContext.request.contextPath}/school/adminprogramlist.sc?page=${i}">
+																												<c:out value="${i}" />&nbsp;&nbsp;
 																											</a>
 																										</c:when>
 																										<c:otherwise>
-																											<c:out value="${i}"/>&nbsp;&nbsp;
+																											<c:out value="${i}" />&nbsp;&nbsp;
 																										</c:otherwise>
 																									</c:choose>
-																								</c:forEach>
-																								<c:if test="${next}">
-																									<a href="${pageContext.request.contextPath}/school/programlist.sc?page=${endPage + 1}">&gt;</a>
-																								</c:if>
-																							</td>
+																								</c:forEach> <c:if test="${next}">
+																									<a
+																										href="${pageContext.request.contextPath}/school/adminprogramlist.sc?page=${endPage + 1}">&gt;</a>
+																								</c:if></td>
 																						</tr>
 																					</table>
 																				</div>
@@ -640,9 +663,11 @@
 																	<!--begin::Modal content-->
 																	<div class="modal-content">
 																		<!--begin::Form-->
-																		<form
+																		<form name="addProgramForm" method="post"
+																			enctype="multipart/form-data"
 																			class="form fv-plugins-bootstrap5 fv-plugins-framework"
-																			action="#" id="kt_modal_add_customer_form"
+																			action="/school/addprogram.sc"
+																			id="kt_modal_add_customer_form"
 																			data-kt-redirect="/metronic8/demo1/../demo1/apps/customers/list.html">
 																			<!--begin::Modal header-->
 																			<div class="modal-header"
@@ -688,61 +713,12 @@
 																					data-kt-scroll-offset="300px"
 																					style="max-height: 662px;">
 																					<!--begin::Input group-->
-																					<div class="fv-row mb-7 fv-plugins-icon-container">
-																						<!--begin::Label-->
-																						<label class="required fs-6 fw-semibold mb-2">Name</label>
-																						<!--end::Label-->
-																						<!--begin::Input-->
-																						<input type="text"
-																							class="form-control form-control-solid"
-																							placeholder="" name="name" value="Sean Bean">
-																						<!--end::Input-->
-																						<div
-																							class="fv-plugins-message-container invalid-feedback">
-																						</div>
-																					</div>
-																					<!--end::Input group-->
-																					<!--begin::Input group-->
-																					<div class="fv-row mb-7 fv-plugins-icon-container">
-																						<!--begin::Label-->
-																						<label class="fs-6 fw-semibold mb-2"> <span
-																							class="required">Email</span> <i
-																							class="fas fa-exclamation-circle ms-1 fs-7"
-																							data-bs-toggle="tooltip"
-																							aria-label="Email address must be active"
-																							data-kt-initialized="1"></i>
-																						</label>
-																						<!--end::Label-->
-																						<!--begin::Input-->
-																						<input type="email"
-																							class="form-control form-control-solid"
-																							placeholder="" name="email"
-																							value="sean@dellito.com">
-																						<!--end::Input-->
-																						<div
-																							class="fv-plugins-message-container invalid-feedback">
-																						</div>
-																					</div>
-																					<!--end::Input group-->
-																					<!--begin::Input group-->
-																					<div class="fv-row mb-15">
-																						<!--begin::Label-->
-																						<label class="fs-6 fw-semibold mb-2">Description</label>
-																						<!--end::Label-->
-																						<!--begin::Input-->
-																						<input type="text"
-																							class="form-control form-control-solid"
-																							placeholder="" name="description">
-																						<!--end::Input-->
-																					</div>
-																					<!--end::Input group-->
-																					<!--begin::Billing toggle-->
 																					<div class="fw-bold fs-3 rotate collapsible mb-7"
 																						data-bs-toggle="collapse"
 																						href="#kt_modal_add_customer_billing_info"
 																						role="button" aria-expanded="false"
 																						aria-controls="kt_customer_view_details">
-																						Shipping Information <span class="ms-2 rotate-180">
+																						Program Information <span class="ms-2 rotate-180">
 																							<!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
 																							<span class="svg-icon svg-icon-3"> <svg
 																									width="24" height="24" viewBox="0 0 24 24"
@@ -755,6 +731,91 @@
 																						</span> <!--end::Svg Icon-->
 																						</span>
 																					</div>
+																					<div class="fv-row mb-7 fv-plugins-icon-container">
+																						<!--begin::Label-->
+																						<label class="required fs-6 fw-semibold mb-2">강좌명</label>
+																						<!--end::Label-->
+																						<!--begin::Input-->
+																						<input type="text"
+																							class="form-control form-control-solid"
+																							placeholder="" name="schoolName" value="">
+																						<!--end::Input-->
+																						<div
+																							class="fv-plugins-message-container invalid-feedback">
+																						</div>
+																					</div>
+																					<!--end::Input group-->
+																					<!--begin::Input group-->
+																					<div class="fv-row mb-7 fv-plugins-icon-container">
+																						<!--begin::Label-->
+																						<label class="fs-6 fw-semibold mb-2"> <span
+																							class="required">강의시간</span> <i
+																							class="fas fa-exclamation-circle ms-1 fs-7"
+																							data-bs-toggle="tooltip"
+																							aria-label="Email address must be active"
+																							data-kt-initialized="1"></i>
+																						</label>
+																						<!--end::Label-->
+																						<!--begin::Input-->
+																						<input type="email"
+																							class="form-control form-control-solid"
+																							placeholder="" name="schoolTime" value="">
+																						<!--end::Input-->
+																						<div
+																							class="fv-plugins-message-container invalid-feedback">
+																						</div>
+																					</div>
+																					<div class="fv-row mb-7 fv-plugins-icon-container">
+																						<!--begin::Label-->
+																						<label class="fs-6 fw-semibold mb-2"> <span
+																							class="required">수강 가능 인원</span> <i
+																							class="fas fa-exclamation-circle ms-1 fs-7"
+																							data-bs-toggle="tooltip"
+																							aria-label="Email address must be active"
+																							data-kt-initialized="1"></i>
+																						</label>
+																						<!--end::Label-->
+																						<!--begin::Input-->
+																						<input type="email"
+																							class="form-control form-control-solid"
+																							placeholder="" name="schoolLimitCount" value="">
+																						<!--end::Input-->
+																						<div
+																							class="fv-plugins-message-container invalid-feedback">
+																						</div>
+																					</div>
+																					<!--end::Input group-->
+																					<!--begin::Input group-->
+																					<div class="fv-row mb-15">
+																						<!--begin::Label-->
+																						<label class="fs-6 fw-semibold mb-2">시작 일자</label>
+																						<!--end::Label-->
+																						<!--begin::Input-->
+																						<input type="text"
+																							class="form-control form-control-solid"
+																							placeholder="" name="schoolOpeningDate">
+																						<!--end::Input-->
+																					</div>
+																					<!--end::Input group-->
+																					<!--begin::Billing toggle-->
+																					<!-- <div class="fw-bold fs-3 rotate collapsible mb-7"
+																						data-bs-toggle="collapse"
+																						href="#kt_modal_add_customer_billing_info"
+																						role="button" aria-expanded="false"
+																						aria-controls="kt_customer_view_details">
+																						Program Information <span class="ms-2 rotate-180">
+																							begin::Svg Icon | path: icons/duotune/arrows/arr072.svg
+																							<span class="svg-icon svg-icon-3"> <svg
+																									width="24" height="24" viewBox="0 0 24 24"
+																									fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                                                        <path
+																										d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z"
+																										fill="currentColor">
+                                                                                                        </path>
+                                                                                                    </svg>
+																						</span> end::Svg Icon
+																						</span>
+																					</div> -->
 																					<!--end::Billing toggle-->
 																					<!--begin::Billing form-->
 																					<div id="kt_modal_add_customer_billing_info"
@@ -763,13 +824,12 @@
 																						<div
 																							class="d-flex flex-column mb-7 fv-row fv-plugins-icon-container">
 																							<!--begin::Label-->
-																							<label class="required fs-6 fw-semibold mb-2">Address
-																								Line 1</label>
+																							<label class="required fs-6 fw-semibold mb-2">마감
+																								일자</label>
 																							<!--end::Label-->
 																							<!--begin::Input-->
 																							<input class="form-control form-control-solid"
-																								placeholder="" name="address1"
-																								value="101, Collins Street">
+																								placeholder="" name="schoolClosingDate" value="">
 																							<!--end::Input-->
 																							<div
 																								class="fv-plugins-message-container invalid-feedback">
@@ -779,12 +839,11 @@
 																						<!--begin::Input group-->
 																						<div class="d-flex flex-column mb-7 fv-row">
 																							<!--begin::Label-->
-																							<label class="fs-6 fw-semibold mb-2">Address
-																								Line 2</label>
+																							<label class="fs-6 fw-semibold mb-2">장소</label>
 																							<!--end::Label-->
 																							<!--begin::Input-->
 																							<input class="form-control form-control-solid"
-																								placeholder="" name="address2" value="">
+																								placeholder="" name="schoolAddress" value="">
 																							<!--end::Input-->
 																						</div>
 																						<!--end::Input group-->
@@ -792,11 +851,11 @@
 																						<div
 																							class="d-flex flex-column mb-7 fv-row fv-plugins-icon-container">
 																							<!--begin::Label-->
-																							<label class="required fs-6 fw-semibold mb-2">Town</label>
+																							<label class="required fs-6 fw-semibold mb-2">강사명</label>
 																							<!--end::Label-->
 																							<!--begin::Input-->
 																							<input class="form-control form-control-solid"
-																								placeholder="" name="city" value="Melbourne">
+																								placeholder="" name="schoolTeacherName" value="">
 																							<!--end::Input-->
 																							<div
 																								class="fv-plugins-message-container invalid-feedback">
@@ -809,12 +868,11 @@
 																							<div
 																								class="col-md-6 fv-row fv-plugins-icon-container">
 																								<!--begin::Label-->
-																								<label class="required fs-6 fw-semibold mb-2">State
-																									/ Province</label>
+																								<label class="required fs-6 fw-semibold mb-2">연락처</label>
 																								<!--end::Label-->
 																								<!--begin::Input-->
 																								<input class="form-control form-control-solid"
-																									placeholder="" name="state" value="Victoria">
+																									placeholder="" name="schoolPhone" value="">
 																								<!--end::Input-->
 																								<div
 																									class="fv-plugins-message-container invalid-feedback">
@@ -825,12 +883,11 @@
 																							<div
 																								class="col-md-6 fv-row fv-plugins-icon-container">
 																								<!--begin::Label-->
-																								<label class="required fs-6 fw-semibold mb-2">Post
-																									Code</label>
+																								<label class="required fs-6 fw-semibold mb-2">소개글</label>
 																								<!--end::Label-->
 																								<!--begin::Input-->
 																								<input class="form-control form-control-solid"
-																									placeholder="" name="postcode" value="3000">
+																									placeholder="" name="schoolIntroduce" value="">
 																								<!--end::Input-->
 																								<div
 																									class="fv-plugins-message-container invalid-feedback">
@@ -839,282 +896,38 @@
 																							<!--end::Col-->
 																						</div>
 																						<!--end::Input group-->
+																						<div
+																							class="col-md-6 fv-row fv-plugins-icon-container"
+																							style="display: flex; justify-content: space-between; margin-top: 20px;">
+																							<label class="required fs-6 fw-semibold mb-2">이미지</label>
+																							<div class="wrap-upload-button btn-file"
+																								id="icon_img_upload_wrap" style="display: block">
+																								<button class="btn-image-upload" role="button">
+																									<div class="btn-content">
+																										<p class="icon">
+																											<i class="fa fa-picture-o"></i>
+																											<!--파일 첨부 후 .fa-plus로 변환 -->
+																										</p>
+																										<div>
+																											<!-- 이미지를 여기로 드래그 </div> -->
+																										</div>
+																								</button>
+																								<a href="javascript:void(0);"> <label>
+																										<input type="file" id="icon_img"
+																										name="schoolPhoto" style="display: none;">
+																										<img
+																										src="${pageContext.request.contextPath}/assets/images/admin/no-image.JPG"
+																										id="thumbnail"
+																										style="width: 300px; height: 250px;">
+																								</label>
+																								</a>
+																							</div>
+																						</div>
 																						<!--begin::Input group-->
 																						<div
 																							class="d-flex flex-column mb-7 fv-row fv-plugins-icon-container">
-																							<!--begin::Label-->
-																							<label class="fs-6 fw-semibold mb-2"> <span
-																								class="required">Country</span> <i
-																								class="fas fa-exclamation-circle ms-1 fs-7"
-																								data-bs-toggle="tooltip"
-																								aria-label="Country of origination"
-																								data-kt-initialized="1"></i>
-																							</label>
-																							<!--end::Label-->
 																							<!--begin::Input-->
-																							<select name="country"
-																								aria-label="Select a Country"
-																								data-control="select2"
-																								data-placeholder="Select a Country..."
-																								data-dropdown-parent="#kt_modal_add_customer"
-																								class="form-select form-select-solid fw-bold select2-hidden-accessible"
-																								data-select2-id="select2-data-13-9lcm"
-																								tabindex="-1" aria-hidden="true"
-																								data-kt-initialized="1">
-																								<option value="">Select a Country...</option>
-																								<option value="AF">Afghanistan</option>
-																								<option value="AX">Aland Islands</option>
-																								<option value="AL">Albania</option>
-																								<option value="DZ">Algeria</option>
-																								<option value="AS">American Samoa</option>
-																								<option value="AD">Andorra</option>
-																								<option value="AO">Angola</option>
-																								<option value="AI">Anguilla</option>
-																								<option value="AG">Antigua and Barbuda</option>
-																								<option value="AR">Argentina</option>
-																								<option value="AM">Armenia</option>
-																								<option value="AW">Aruba</option>
-																								<option value="AU">Australia</option>
-																								<option value="AT">Austria</option>
-																								<option value="AZ">Azerbaijan</option>
-																								<option value="BS">Bahamas</option>
-																								<option value="BH">Bahrain</option>
-																								<option value="BD">Bangladesh</option>
-																								<option value="BB">Barbados</option>
-																								<option value="BY">Belarus</option>
-																								<option value="BE">Belgium</option>
-																								<option value="BZ">Belize</option>
-																								<option value="BJ">Benin</option>
-																								<option value="BM">Bermuda</option>
-																								<option value="BT">Bhutan</option>
-																								<option value="BO">Bolivia,
-																									Plurinational State of</option>
-																								<option value="BQ">Bonaire, Sint
-																									Eustatius and Saba</option>
-																								<option value="BA">Bosnia and
-																									Herzegovina</option>
-																								<option value="BW">Botswana</option>
-																								<option value="BR">Brazil</option>
-																								<option value="IO">British Indian Ocean
-																									Territory</option>
-																								<option value="BN">Brunei Darussalam</option>
-																								<option value="BG">Bulgaria</option>
-																								<option value="BF">Burkina Faso</option>
-																								<option value="BI">Burundi</option>
-																								<option value="KH">Cambodia</option>
-																								<option value="CM">Cameroon</option>
-																								<option value="CA">Canada</option>
-																								<option value="CV">Cape Verde</option>
-																								<option value="KY">Cayman Islands</option>
-																								<option value="CF">Central African
-																									Republic</option>
-																								<option value="TD">Chad</option>
-																								<option value="CL">Chile</option>
-																								<option value="CN">China</option>
-																								<option value="CX">Christmas Island</option>
-																								<option value="CC">Cocos (Keeling)
-																									Islands</option>
-																								<option value="CO">Colombia</option>
-																								<option value="KM">Comoros</option>
-																								<option value="CK">Cook Islands</option>
-																								<option value="CR">Costa Rica</option>
-																								<option value="CI">Côte d'Ivoire</option>
-																								<option value="HR">Croatia</option>
-																								<option value="CU">Cuba</option>
-																								<option value="CW">Curaçao</option>
-																								<option value="CZ">Czech Republic</option>
-																								<option value="DK">Denmark</option>
-																								<option value="DJ">Djibouti</option>
-																								<option value="DM">Dominica</option>
-																								<option value="DO">Dominican Republic</option>
-																								<option value="EC">Ecuador</option>
-																								<option value="EG">Egypt</option>
-																								<option value="SV">El Salvador</option>
-																								<option value="GQ">Equatorial Guinea</option>
-																								<option value="ER">Eritrea</option>
-																								<option value="EE">Estonia</option>
-																								<option value="ET">Ethiopia</option>
-																								<option value="FK">Falkland Islands
-																									(Malvinas)</option>
-																								<option value="FJ">Fiji</option>
-																								<option value="FI">Finland</option>
-																								<option value="FR">France</option>
-																								<option value="PF">French Polynesia</option>
-																								<option value="GA">Gabon</option>
-																								<option value="GM">Gambia</option>
-																								<option value="GE">Georgia</option>
-																								<option value="DE">Germany</option>
-																								<option value="GH">Ghana</option>
-																								<option value="GI">Gibraltar</option>
-																								<option value="GR">Greece</option>
-																								<option value="GL">Greenland</option>
-																								<option value="GD">Grenada</option>
-																								<option value="GU">Guam</option>
-																								<option value="GT">Guatemala</option>
-																								<option value="GG">Guernsey</option>
-																								<option value="GN">Guinea</option>
-																								<option value="GW">Guinea-Bissau</option>
-																								<option value="HT">Haiti</option>
-																								<option value="VA">Holy See (Vatican
-																									City State)</option>
-																								<option value="HN">Honduras</option>
-																								<option value="HK">Hong Kong</option>
-																								<option value="HU">Hungary</option>
-																								<option value="IS">Iceland</option>
-																								<option value="IN">India</option>
-																								<option value="ID">Indonesia</option>
-																								<option value="IR">Iran, Islamic
-																									Republic of</option>
-																								<option value="IQ">Iraq</option>
-																								<option value="IE">Ireland</option>
-																								<option value="IM">Isle of Man</option>
-																								<option value="IL">Israel</option>
-																								<option value="IT">Italy</option>
-																								<option value="JM">Jamaica</option>
-																								<option value="JP">Japan</option>
-																								<option value="JE">Jersey</option>
-																								<option value="JO">Jordan</option>
-																								<option value="KZ">Kazakhstan</option>
-																								<option value="KE">Kenya</option>
-																								<option value="KI">Kiribati</option>
-																								<option value="KP">Korea, Democratic
-																									People's Republic of</option>
-																								<option value="KW">Kuwait</option>
-																								<option value="KG">Kyrgyzstan</option>
-																								<option value="LA">Lao People's
-																									Democratic Republic</option>
-																								<option value="LV">Latvia</option>
-																								<option value="LB">Lebanon</option>
-																								<option value="LS">Lesotho</option>
-																								<option value="LR">Liberia</option>
-																								<option value="LY">Libya</option>
-																								<option value="LI">Liechtenstein</option>
-																								<option value="LT">Lithuania</option>
-																								<option value="LU">Luxembourg</option>
-																								<option value="MO">Macao</option>
-																								<option value="MG">Madagascar</option>
-																								<option value="MW">Malawi</option>
-																								<option value="MY">Malaysia</option>
-																								<option value="MV">Maldives</option>
-																								<option value="ML">Mali</option>
-																								<option value="MT">Malta</option>
-																								<option value="MH">Marshall Islands</option>
-																								<option value="MQ">Martinique</option>
-																								<option value="MR">Mauritania</option>
-																								<option value="MU">Mauritius</option>
-																								<option value="MX">Mexico</option>
-																								<option value="FM">Micronesia,
-																									Federated States of</option>
-																								<option value="MD">Moldova, Republic of
-																								</option>
-																								<option value="MC">Monaco</option>
-																								<option value="MN">Mongolia</option>
-																								<option value="ME">Montenegro</option>
-																								<option value="MS">Montserrat</option>
-																								<option value="MA">Morocco</option>
-																								<option value="MZ">Mozambique</option>
-																								<option value="MM">Myanmar</option>
-																								<option value="NA">Namibia</option>
-																								<option value="NR">Nauru</option>
-																								<option value="NP">Nepal</option>
-																								<option value="NL">Netherlands</option>
-																								<option value="NZ">New Zealand</option>
-																								<option value="NI">Nicaragua</option>
-																								<option value="NE">Niger</option>
-																								<option value="NG">Nigeria</option>
-																								<option value="NU">Niue</option>
-																								<option value="NF">Norfolk Island</option>
-																								<option value="MP">Northern Mariana
-																									Islands</option>
-																								<option value="NO">Norway</option>
-																								<option value="OM">Oman</option>
-																								<option value="PK">Pakistan</option>
-																								<option value="PW">Palau</option>
-																								<option value="PS">Palestinian
-																									Territory, Occupied</option>
-																								<option value="PA">Panama</option>
-																								<option value="PG">Papua New Guinea</option>
-																								<option value="PY">Paraguay</option>
-																								<option value="PE">Peru</option>
-																								<option value="PH">Philippines</option>
-																								<option value="PL">Poland</option>
-																								<option value="PT">Portugal</option>
-																								<option value="PR">Puerto Rico</option>
-																								<option value="QA">Qatar</option>
-																								<option value="RO">Romania</option>
-																								<option value="RU">Russian Federation</option>
-																								<option value="RW">Rwanda</option>
-																								<option value="BL">Saint Barthélemy</option>
-																								<option value="KN">Saint Kitts and
-																									Nevis</option>
-																								<option value="LC">Saint Lucia</option>
-																								<option value="MF">Saint Martin (French
-																									part)</option>
-																								<option value="VC">Saint Vincent and
-																									the Grenadines</option>
-																								<option value="WS">Samoa</option>
-																								<option value="SM">San Marino</option>
-																								<option value="ST">Sao Tome and
-																									Principe</option>
-																								<option value="SA">Saudi Arabia</option>
-																								<option value="SN">Senegal</option>
-																								<option value="RS">Serbia</option>
-																								<option value="SC">Seychelles</option>
-																								<option value="SL">Sierra Leone</option>
-																								<option value="SG">Singapore</option>
-																								<option value="SX">Sint Maarten (Dutch
-																									part)</option>
-																								<option value="SK">Slovakia</option>
-																								<option value="SI">Slovenia</option>
-																								<option value="SB">Solomon Islands</option>
-																								<option value="SO">Somalia</option>
-																								<option value="ZA">South Africa</option>
-																								<option value="KR">South Korea</option>
-																								<option value="SS">South Sudan</option>
-																								<option value="ES">Spain</option>
-																								<option value="LK">Sri Lanka</option>
-																								<option value="SD">Sudan</option>
-																								<option value="SR">Suriname</option>
-																								<option value="SZ">Swaziland</option>
-																								<option value="SE">Sweden</option>
-																								<option value="CH">Switzerland</option>
-																								<option value="SY">Syrian Arab Republic
-																								</option>
-																								<option value="TW">Taiwan, Province of
-																									China</option>
-																								<option value="TJ">Tajikistan</option>
-																								<option value="TZ">Tanzania, United
-																									Republic of</option>
-																								<option value="TH">Thailand</option>
-																								<option value="TG">Togo</option>
-																								<option value="TK">Tokelau</option>
-																								<option value="TO">Tonga</option>
-																								<option value="TT">Trinidad and Tobago</option>
-																								<option value="TN">Tunisia</option>
-																								<option value="TR">Turkey</option>
-																								<option value="TM">Turkmenistan</option>
-																								<option value="TC">Turks and Caicos
-																									Islands</option>
-																								<option value="TV">Tuvalu</option>
-																								<option value="UG">Uganda</option>
-																								<option value="UA">Ukraine</option>
-																								<option value="AE">United Arab Emirates
-																								</option>
-																								<option value="GB">United Kingdom</option>
-																								<option value="US" selected="selected"
-																									data-select2-id="select2-data-15-sbgd">
-																									United States</option>
-																								<option value="UY">Uruguay</option>
-																								<option value="UZ">Uzbekistan</option>
-																								<option value="VU">Vanuatu</option>
-																								<option value="VE">Venezuela,
-																									Bolivarian Republic of</option>
-																								<option value="VN">Vietnam</option>
-																								<option value="VI">Virgin Islands</option>
-																								<option value="YE">Yemen</option>
-																								<option value="ZM">Zambia</option>
-																								<option value="ZW">Zimbabwe</option>
-																							</select><span
+																							<span
 																								class="select2 select2-container select2-container--bootstrap5"
 																								dir="ltr" data-select2-id="select2-data-14-gs1y"
 																								style="width: 100%;"><span
@@ -1143,28 +956,25 @@
 																								<!--begin::Label-->
 																								<div class="me-5">
 																									<!--begin::Label-->
-																									<label class="fs-6 fw-semibold">Use as
-																										a billing adderess?</label>
+																									<label class="fs-6 fw-semibold"></label>
 																									<!--end::Label-->
 																									<!--begin::Input-->
 																									<div class="fs-7 fw-semibold text-muted">
-																										If you need more info, please check budget
-																										planning</div>
+																									</div>
 																									<!--end::Input-->
 																								</div>
 																								<!--end::Label-->
 																								<!--begin::Switch-->
 																								<label
 																									class="form-check form-switch form-check-custom form-check-solid">
-																									<!--begin::Input--> <input
+																									<!--begin::Input--> <!-- <input
 																									class="form-check-input" name="billing"
 																									type="checkbox" value="1"
 																									id="kt_modal_add_customer_billing"
-																									checked="checked"> <!--end::Input--> <!--begin::Label-->
+																									checked="checked"> --> <!--end::Input--> <!--begin::Label-->
 																									<span
 																									class="form-check-label fw-semibold text-muted"
-																									for="kt_modal_add_customer_billing">Yes</span>
-																									<!--end::Label-->
+																									for="kt_modal_add_customer_billing"></span> <!--end::Label-->
 																								</label>
 																								<!--end::Switch-->
 																							</div>
@@ -1182,13 +992,18 @@
 																				<!--begin::Button-->
 																				<button type="reset"
 																					id="kt_modal_add_customer_cancel"
-																					class="btn btn-light me-3">Discard</button>
+																					class="btn btn-light me-3">취소</button>
 																				<!--end::Button-->
 																				<!--begin::Button-->
-																				<button type="submit"
+																				<button type="button" onclick="addProgram()"
 																					id="kt_modal_add_customer_submit"
-																					class="btn btn-primary">
-																					<span class="indicator-label">Submit</span>
+																					class="btn btn-primary submit">
+																					<span class="indicator-label">완료</span>
+																				</button>
+																				<button type="button" onclick="updateProgram()"
+																					id="kt_modal_add_customer_updateOk"
+																					class="btn btn-primary updateOk">
+																					<span class="indicator-label">수정완료</span>
 																				</button>
 																			</div>
 																		</form>
@@ -1336,7 +1151,8 @@
 </body>
 <!-- Code injected by live-server -->
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/admin/admin.js"></script>
+<script
+	src="${pageContext.request.contextPath}/assets/js/admin/admin.js"></script>
 <script>
 	// <![CDATA[  <-- For SVG support
 	if ('WebSocket' in window) {
@@ -1385,25 +1201,199 @@
 	}
 </script>
 <script>
-	var $checkboxes = $("input[type='checkbox']");
+	// 리스트 체크박스
+	var $checkboxes = $(".form-check-input.checkbox");
 	
-	$checkboxes.eq(0).on("click", function(){
-		console.log($checkboxes)
-		$checkboxes.prop("checked", $(this).is(":checked"));
-	});
+	var $schoolName = $("input[name='schoolName']");
+	var $schoolTime = $("input[name='schoolTime']");
+	var $schoolLimitCount = $("input[name='schoolLimitCount']");
+	var $schoolOpeningDate = $("input[name='schoolOpeningDate']");
+	var $schoolClosingDate = $("input[name='schoolClosingDate']");
+	var $schoolAddress = $("input[name='schoolAddress']");
+	var $schoolTeacherName = $("input[name='schoolTeacherName']");
+	var $schoolPhone = $("input[name='schoolPhone']");
+	var $schoolIntroduce = $("input[name='schoolIntroduce']");
+	let $schoolPhoto = $("#thumnail").attr('src');
 	
-	$checkboxes.on("click", function(){
-		$checkboxes.eq(0).prop("checked", $checkboxes.filter(":checked").length == $checkboxes.length);
-	});
+	// 추가 완료 버튼
+	var $addButton = $("#kt_modal_add_customer_submit");
+	// 수정 완료 버튼
+	var $updateButton = $("#kt_modal_add_customer_updateOk");
+
+	function inputCheck() {
+
+		if (!$schoolName.val()) {
+			$schoolName.focus();
+			return;
+		}
+		if (!$schoolTime.val()) {
+			$schoolTime.focus();
+			return;
+		}
+		if (!$schoolLimitCount.val()) {
+			$schoolLimitCount.focus();
+			return;
+		}
+		if (!$schoolOpeningDate.val()) {
+			$schoolOpeningDate.focus();
+			return;
+		}
+		if (!$schoolClosingDate.val()) {
+			$schoolClosingDate.focus();
+			return;
+		}
+		if (!$schoolAddress.val()) {
+			$schoolAddress.focus();
+			return;
+		}
+		if (!$schoolTeacherName.val()) {
+			$schoolTeacherName.focus();
+			return;
+		}
+		if (!$schoolPhone.val()) {
+			$schoolPhone.focus();
+			return;
+		}
+		if (!$schoolIntroduce.val()) {
+			$schoolIntroduce.focus();
+			return;
+		}
+	}
+
+	// 프로그램 삭제
+	$("#deleteProgrambutton").on('click', function() {
+				if ($checkboxes.filter(":checked").length == 0) {
+					alert("삭제할 프로그램을 선택하세요.");
+					return;
+				}
+
+				var $deleteData = $checkboxes.filter(":checked").closest('.row_program').find('.pro_list_value.number').text();
+
+				console.log($deleteData);
+
+				$.ajax({
+					url : "/school/deletepro.sc",
+					data : {
+						schoolNumber : $deleteData
+					},
+					success : function(data) {
+						console.log("삭제")
+						location.reload();
+					}
+				});
+			});
+
+	
+	// 프로그램 등록 모달창 띄우기
+	$("#addProgrambutton").on('click', function() {
 		
-	$("button.btn.btn-primary.delete").on('click', function(){
-		console.log("들어옴2")
-				
+		inputCheck();
+		
+		$addButton.css('display', 'block');
+		$updateButton.css('display', 'none');
+		
+		/* $addButton.on('click', function(){
+			addProgram();
+		}); */
+		
 		/* $.ajax({
-			url: "/school/deletepro.sc",
-			data: 
+			url : "/school/addprogram.sc",
+			data : {
+				schoolName : $schoolName.val(),
+				schoolTime : $schoolTime.val(),
+				schoolLimitCount : $schoolLimitCount.val(),
+				schoolOpeningDate : $schoolOpeningDate.val(),
+				schoolClosingDate : $schoolClosingDate.val(),
+				schoolAddress : $schoolAddress.val(),
+				schoolTeachername : $schoolTeacherName.val(),
+				schoolPhone : $schoolPhone.val(),
+				schoolIntroduce : $schoolIntroduce.val(),
+				schoolPhoto : $schoolPhoto
+			},
+			success : function() {
+				console.log("추가")
+				location.reload();
+			}
 		}); */
 	});
+
+	// 프로그램 등록 submit
+	function addProgram() {
+		inputCheck();
+
+		document.addProgramForm.submit();
+	}
+
+
+	// 프로그램 수정 모달창 띄우기
+	$("#schoolModifybutton").on('click', function() {
+		var $updateData;
+		var $schoolNumber;
+
+		if ($checkboxes.filter(":checked").length != 1) {
+			alert("하나의 프로그램을 선택하세요.");
+			return;
+		}
+
+		$updateData = $(".form-check-input.checkbox").filter(":checked").val().split(/=|, /);
+
+		$("#kt_modal_add_customer").css('display', 'block');
+		$addButton.css('display', 'none');
+		$updateButton.css('display', 'block');
+		
+		$schoolNumber = $updateData[1];
+		$schoolName.val($updateData[3]);
+		$schoolTeacherName.val($updateData[5]);
+		$schoolPhone.val($updateData[7]);
+		$schoolAddress.val($updateData[9]);
+		$schoolTime.val($updateData[11]);
+		$schoolIntroduce.val($updateData[13]);
+		$schoolOpeningDate.val($updateData[15]);
+		$schoolClosingDate.val($updateData[17]);
+		$schoolLimitCount.val($updateData[21]);
+		$schoolPhoto = $("#thumbnail").attr('src');
+
+		console.log($schoolPhoto)
+
+		/* $updateButton.on('click', function() {
+			updateProgram();
+		}); */
+
+	});
 	
+	// 프로그램 수정 submit
+	function updateProgram() {
+		inputCheck();
+		
+		$.ajax({
+			url : "/school/updatepro.sc",
+			enctype:'multipart/form-data',
+			data : {
+				schoolName : $schoolName.val(),
+				schoolTime : $schoolTime.val(),
+				schoolLimitCount : $schoolLimitCount.val(),
+				schoolOpeningDate : $schoolOpeningDate.val(),
+				schoolClosingDate : $schoolClosingDate.val(),
+				schoolAddress : $schoolAddress.val(),
+				schoolTeachername : $schoolTeacherName.val(),
+				schoolPhone : $schoolPhone.val(),
+				schoolIntroduce : $schoolIntroduce.val(),
+				schoolPhoto : $schoolPhoto
+			},
+			success : function() {
+				console.log("수정");
+				location.reload();
+			}
+		});
+	}
 </script>
 </html>
+
+
+
+
+
+
+
+
+

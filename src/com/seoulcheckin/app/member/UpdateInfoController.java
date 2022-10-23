@@ -21,22 +21,24 @@ public class UpdateInfoController implements Execute{
 		resp.setContentType("text/html; charset=utf-8");
 		PrintWriter out = resp.getWriter();
 		HttpSession session = req.getSession();
+		Result result = new Result();
 //		/*
 //		 * int memberNumber = (Integer)session.getAttribute("memberNumber");
 //		 * 
 //		 * System.out.println(memberNumber);
 //		 */
-		 int memberNumber = 1;
+		/*
+		 * int memberNumber = 1;
+		 * 
+		 * MemberDAO memberDAO = new MemberDAO(); JSONObject jsonObject = new
+		 * JSONObject(memberDAO.selectProgramCount(memberNumber)); 회원번호 정보 전달
+		 * 
+		 * 
+		 * out.print(jsonObject.toString()); out.close();
+		 */
 		
-		MemberDAO memberDAO = new MemberDAO();
-		JSONObject jsonObject = new JSONObject(memberDAO.selectProgramCount(memberNumber));
-//     회원번호 정보 전달 
-	
-
-		out.print(jsonObject.toString());
-		out.close();
+		result.setPath("/app/member/myPageChange.jsp");
 		
-		
-		return null;
+		return result;
 	}
 }

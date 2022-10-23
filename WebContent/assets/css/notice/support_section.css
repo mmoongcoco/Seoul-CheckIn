@@ -158,7 +158,7 @@ form{
     position: relative;
 }
 
-form.search input[type="submit"] {
+form.search > input[type="button"] {
     border: medium none;
     height: 48px;
     overflow: hidden;
@@ -176,7 +176,7 @@ form.search input[type="submit"] {
     display: block;
     background-position: -15px 15px;
 }
-button, html input[type=button], input[type=reset], input[type=submit] {
+button, html input[type=button], input[type=reset], input[type=button] {
     -webkit-appearance: button;
     cursor: pointer;
 }

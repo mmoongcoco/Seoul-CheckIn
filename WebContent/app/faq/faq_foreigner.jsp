@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>서울체크인 - 자주묻는질문</title>
+    <title>고객센터 - 외국인 회원</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/notice/FAQ.css">
     <script src="https://kit.fontawesome.com/eef865b2f8.js" crossorigin="anonymous"></script>
 </head>
@@ -115,35 +115,31 @@
                             <section class="section col-md-6 col-sm-6 col-xs-12">
                                 <div class="section-with-article-block">
                                     <h3>
-                                        <a
-                                            href="">이용 방법</a>
+                                        <a href="javascript:void(0)" style="cursor: default;">이용 방법</a>
                                     </h3>
                                     <ul class="article-list">
                                         <li class="article">
-                                            <a
-                                                href="">외국인 서비스 가입, 이용 절차가 궁금합니다.</a>
+                                            <a href="">외국인 - 이용방법 들어가야할 자리입니다</a>
+                                        </li>
+                                        <!-- <li class="article">
+                                            <a href="">외국인 서비스 가입, 이용 절차가 궁금합니다.</a>
                                         </li>
                                         <li class="article">
-                                            <a
-                                                href="">서비스를 영어로 이용하고 싶어요.</a>
-                                        </li>
+                                            <a href="">서비스를 영어로 이용하고 싶어요.</a>
+                                        </li> -->
                                     </ul>
                                 </div>
                             </section>
                             <section class="section col-md-6 col-sm-6 col-xs-12">
                                 <div class="section-with-article-block">
                                     <h3>
-                                        <a
-                                            href="">지원하기
-                                            ∙ 관리</a>
+                                        <a href="javascript:void(0)" style="cursor: default;">지원하기 ∙ 관리</a>
                                     </h3>
                                     <ul class="article-list">
                                         <li class="article">
-                                            <a
-                                                href="">지원한
-                                                회사에서 피드백이 없습니다. 어떻게 하면 되나요?</a>
+                                            <a href="">외국인 - 지원하기/관리 내용이 들어가야할 자리입니다</a>
                                         </li>
-                                        <li class="article">
+                                        <!-- <li class="article">
                                             <a
                                                 href="">서울체크인
                                                 이력서 양식을 꼭 사용해야 하나요?</a>
@@ -162,27 +158,25 @@
                                             <a
                                                 href="">작성
                                                 중 목록을 삭제하고 싶어요</a>
-                                        </li>
+                                        </li> -->
                                     </ul>
-                                    <a href=""
+                                    <!-- <a href=""
                                         class="see-all-articles btn"
                                         style="background: transparent;color: #3366FF !important;float: left;padding-left: 0px;font-size: 1.1em;">
                                         + 모두 보기
-                                    </a>
+                                    </a> -->
                                 </div>
                             </section>
                             <section class="section col-md-6 col-sm-6 col-xs-12">
                                 <div class="section-with-article-block">
                                     <h3>
-                                        <a href="">기타</a>
+                                        <a href="javascript:void(0)" style="cursor: default;">기타</a>
                                     </h3>
                                     <ul class="article-list">
                                         <li class="article">
-                                            <a
-                                                href="">취업활동증명서
-                                                발급은 어떻게 하나요</a>
+                                            <a href="">외국인 - 기타 내용이 들어가야할 자리입니다</a>
                                         </li>
-                                        <li class="article">
+                                       <!--  <li class="article">
                                             <a
                                                 href="">혜택/이벤트
                                                 및 추천 포지션 메일을 받고 싶지 않아요</a>
@@ -201,13 +195,13 @@
                                             <a
                                                 href="">원티드
                                                 카카오톡 알림을 받고 싶지 않아요</a>
-                                        </li>
+                                        </li> -->
                                     </ul>
-                                    <a href=""
+                                    <!-- <a href=""
                                         class="see-all-articles btn"
                                         style="background: transparent;color: #3366FF !important;float: left;padding-left: 0px;font-size: 1.1em;">
                                         + 모두 보기
-                                    </a>
+                                    </a> -->
                                 </div>
                             </section>
                         </div>

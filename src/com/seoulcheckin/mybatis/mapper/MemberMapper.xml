@@ -36,11 +36,22 @@
 		delete from tbl_member where member_number = #{member_number}
 	</delete>
 	
-	<select id="myMessage"  parameterType="_int" resultType="memberDTO">
-		select ms.message_title, ms.message_article, ms.message_send_date, member_name from tbl_message ms join tbl_member m on message_send_email = member_number and message_recive_email = #{messageReciveEmail};
+	<select id="myMessage"  parameterType="map" resultType="memberDTO">	
+		select ms.message_number, ms.message_article, ms.message_send_date, member_name 
+		from tbl_message ms join tbl_member m on message_send_email = member_number and message_recive_email = #{messageReciveEmail}
+		order by message_number desc limit #{startRow}, #{rowCount}
 	</select> 
 	
 	<!-- MyPage end   -->
+	
+	<select id="selectAll" parameterType="map" resultType="memberVO">
+		select member_number, member_classification, member_email, member_name, member_phone, member_password, member_photo
+		from tbl_member order by member_number desc limit #{startRow}, #{rowCount}
+	</select>
+	
+	<select id="selectCount" resultType="_int">
+		select count(member_number) from tbl_member
+	</select>
 </mapper>
 
 

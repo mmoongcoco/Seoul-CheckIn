@@ -13,6 +13,7 @@ import org.json.JSONObject;
 import com.seoulcheckin.app.Execute;
 import com.seoulcheckin.app.Result;
 import com.seoulcheckin.app.member.dao.MemberDAO;
+import com.seoulcheckin.app.message.dao.MessageDAO;
 
 public class SelectMessageCountController implements Execute{
 	@Override
@@ -27,8 +28,8 @@ public class SelectMessageCountController implements Execute{
 //		 */
 		 int memberNumber = 1;
 		 
-		 MemberDAO memberDAO = new MemberDAO();
-		 int result = memberDAO.selectMessageCount(memberNumber);
+		 MessageDAO messageDAO = new MessageDAO();
+		 int result = messageDAO.selectMessageCount(memberNumber);
 //	     회원번호 정보 전달 
 		
 			

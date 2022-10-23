@@ -20,4 +20,5 @@ public class MyProgramDAO {
 	public int classLimitCount(int schoolNumber) {
 		return sqlSession.selectOne("MyProgram.classLimitCount", schoolNumber);
 	}
+	
 }

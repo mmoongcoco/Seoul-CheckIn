@@ -9,22 +9,23 @@ public class MemberDTO {
 	private String memberPassword;
 	private String memberPhoto;
 	
-	private String messageTitle;
 	private String messageArticle;
 	private String messageSendDate;
-	
+	private String messageNumber;
 	
 	
 	
 	
 	 public MemberDTO() {;}
 	 
-	public String getMessageTitle() {
-		return messageTitle;
+	
+
+	public String getMessageNumber() {
+		return messageNumber;
 	}
 
-	public void setMessageTitle(String messageTitle) {
-		this.messageTitle = messageTitle;
+	public void setMessageNumber(String messageNumber) {
+		this.messageNumber = messageNumber;
 	}
 
 	public String getMessageArticle() {
@@ -103,13 +104,16 @@ public class MemberDTO {
 		this.memberPhoto = memberPhoto;
 	}
 
+
+
 	@Override
 	public String toString() {
 		return "MemberDTO [memberNumber=" + memberNumber + ", memberClassification=" + memberClassification
 				+ ", memberEmail=" + memberEmail + ", memberName=" + memberName + ", memberPhone=" + memberPhone
-				+ ", memberPassword=" + memberPassword + ", memberPhoto=" + memberPhoto + ", messageTitle="
-				+ messageTitle + ", messageArticle=" + messageArticle + ", messageSendDate=" + messageSendDate + "]";
+				+ ", memberPassword=" + memberPassword + ", memberPhoto=" + memberPhoto + ", messageArticle="
+				+ messageArticle + ", messageSendDate=" + messageSendDate + ", messageNumber=" + messageNumber + "]";
 	}
+
 
 }
 
